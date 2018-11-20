@@ -29,7 +29,6 @@ import { MenuComponent } from './food-estab/reviews-menu/menu/menu.component';
 import { ReviewsComponent } from './food-estab/reviews-menu/reviews/reviews.component';
 import { ShopCardComponent } from './home/shop-card/shop-card.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ShopViewComponent } from './shops/shop-view/shop-view.component';
 
 
 @NgModule({
@@ -54,8 +53,7 @@ import { ShopViewComponent } from './shops/shop-view/shop-view.component';
     ReviewsMenuComponent,
     MenuComponent,
     ReviewsComponent,
-    ShopCardComponent,
-    ShopViewComponent
+    ShopCardComponent
   ],
   imports: [
     BrowserModule,
