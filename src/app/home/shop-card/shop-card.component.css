@@ -1,0 +1,18 @@
+.mat-card-image {
+    margin: 16px 0;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.mat-card-image:first-child {
+    margin-top: unset;
+}
+
+mat-card {
+    margin: 10px 20px 10px 20px;
+    width: 300px;
+} 
+
+mat-card:hover {
+    cursor: pointer;
+}

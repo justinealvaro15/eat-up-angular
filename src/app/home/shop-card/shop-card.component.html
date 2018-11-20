@@ -1,0 +1,9 @@
+<mat-card (click)="goToShop(shop.fe_id)">
+  <img mat-card-image src="{{shop.image ? shop.image : 'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17665746.jpg'}}"> <br>
+  <mat-card-title>{{shop.fe_name}}</mat-card-title>
+  <mat-card-content>
+    {{shop.ratings}}<br>
+    {{shop.address}}<br>
+    {{isShopOpen(shop)}}
+  </mat-card-content>
+</mat-card>

@@ -27,6 +27,9 @@ import { AddtlDetailsComponent } from './food-estab/addtl-details/addtl-details.
 import { ReviewsMenuComponent } from './food-estab/reviews-menu/reviews-menu.component';
 import { MenuComponent } from './food-estab/reviews-menu/menu/menu.component';
 import { ReviewsComponent } from './food-estab/reviews-menu/reviews/reviews.component';
+import { ShopCardComponent } from './home/shop-card/shop-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ShopViewComponent } from './shops/shop-view/shop-view.component';
 
 
 @NgModule({
@@ -50,8 +53,9 @@ import { ReviewsComponent } from './food-estab/reviews-menu/reviews/reviews.comp
     AddtlDetailsComponent,
     ReviewsMenuComponent,
     MenuComponent,
-    ReviewsComponent
-
+    ReviewsComponent,
+    ShopCardComponent,
+    ShopViewComponent
   ],
   imports: [
     BrowserModule,
@@ -65,8 +69,9 @@ import { ReviewsComponent } from './food-estab/reviews-menu/reviews/reviews.comp
     MatIconModule,
     MatListModule,
     MatTabsModule,
-    FlexLayoutModule
-    MatCardModule
+    FlexLayoutModule,
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

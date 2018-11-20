@@ -22,4 +22,12 @@ export class ShopsService {
                 })
             );
     }
+
+    getShopByRating(){
+        return this.http.get<Shop[]>("http://localhost:3000/api/shops/topten");
+    }
+
+    getShopByNewest(){
+        return this.http.get<Shop[]>("http://localhost:3000/api/shops/newest");
+    }
 }
