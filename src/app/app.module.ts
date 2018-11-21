@@ -2,12 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTabsModule,MatCardModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 import { TrendingNewestComponent } from './home/trending-newest/trending-newest.component';
 import { TrendingComponent } from './home/trending-newest/trending/trending.component';
 import { NewestComponent } from './home/trending-newest/newest/newest.component';
@@ -28,8 +31,6 @@ import { ReviewsMenuComponent } from './food-estab/reviews-menu/reviews-menu.com
 import { MenuComponent } from './food-estab/reviews-menu/menu/menu.component';
 import { ReviewsComponent } from './food-estab/reviews-menu/reviews/reviews.component';
 import { ShopCardComponent } from './home/shop-card/shop-card.component';
-import { HttpClientModule } from '@angular/common/http';
-
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTabsModule,
     FlexLayoutModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
