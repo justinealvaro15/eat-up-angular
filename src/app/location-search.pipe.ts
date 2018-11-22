@@ -10,7 +10,8 @@ export class LocationSearchPipe implements PipeTransform {
           return [];
         if (location === null)
           return null;
-
+        if (location === "")
+          return null;
         var resultsArray=[];
 
         var fe_nameSearch = foodestablishments.filter( fe => {

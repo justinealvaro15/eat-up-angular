@@ -9,7 +9,9 @@ export class FcsSearchPipe implements PipeTransform {
       transform(foodestablishments: any[], fcs: string): any [] {
             if (!foodestablishments)
               return [];
-            if (fcs === null) //if there is no search term
+            if (fcs === null)
+              return null;
+            if (fcs === "")
               return null;
 
             var resultsArray=[];
@@ -67,6 +69,7 @@ export class FcsSearchPipe implements PipeTransform {
                 return comparison;
             }
             resultsArray.sort(compare); //alphabetical sort
+            console.log(resultsArray)
             return resultsArray;
 
       }
