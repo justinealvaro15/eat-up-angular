@@ -23,6 +23,7 @@
 
       //I send the user back to the login screen if domain does not match
       if (domain != yourDomain)
+         alert("Unauthorized Email Domain. Requires UP Mail");
          console.log("Unauthorized Email Domain. Requires UP Mail");
          return done(err);
     }
