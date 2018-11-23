@@ -31,6 +31,10 @@ import { ReviewsMenuComponent } from './food-estab/reviews-menu/reviews-menu.com
 import { MenuComponent } from './food-estab/reviews-menu/menu/menu.component';
 import { ReviewsComponent } from './food-estab/reviews-menu/reviews/reviews.component';
 import { ShopCardComponent } from './home/shop-card/shop-card.component';
+import { MapComponent } from './map/map.component';
+import { HomeSearchComponent } from './home-search/home-search.component';
+import { FcsSearchPipe } from './fcs-search.pipe';
+import { LocationSearchPipe } from './location-search.pipe';
 
 @NgModule({
   declarations: [
@@ -54,7 +58,11 @@ import { ShopCardComponent } from './home/shop-card/shop-card.component';
     ReviewsMenuComponent,
     MenuComponent,
     ReviewsComponent,
-    ShopCardComponent
+    ShopCardComponent,
+    MapComponent
+    HomeSearchComponent,
+    FcsSearchPipe,
+    LocationSearchPipe,
   ],
   imports: [
     BrowserModule,
