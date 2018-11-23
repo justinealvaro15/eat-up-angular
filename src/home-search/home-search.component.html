@@ -1,0 +1,27 @@
+<body>
+<!--ALIGN FORMS TO CENTER-->
+      <form >
+        <div class = "search">
+            <input type = "text" placeholder="food, canteen, stall"  [(ngModel)]="fcs" name ="fcs_search_term"><button class ="magnifying_glass"></button>
+        </div>
+        <p></p>
+        <div class = "search">
+            <input type = "text" placeholder="location"  [(ngModel)]="location" name = "location_search_term"><button class ="magnifying_glass"></button>
+        </div>
+      </form>
+
+      <br>
+      <button mdbBtn type="button" mdbWavesEffect><p>SEARCH</p></button>
+<br>
+<!-- to be removed>
+
+        fcs:
+        <ul *ngFor="let fe of mock_db | fcsSearch: fcs">
+            <li>{{fe.fe_name}}</li>
+        </ul>
+        location:
+        <ul *ngFor="let fe of mock_db | locationSearch: location">
+            <li>{{fe.fe_name}}</li>
+        </ul>
+<!---->
+</body>
