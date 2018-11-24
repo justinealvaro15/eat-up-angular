@@ -1,17 +1,17 @@
 <body>
 <!--ALIGN FORMS TO CENTER-->
-      <form >
-        <div class = "search">
-            <input type = "text" placeholder="food, canteen, stall"  [(ngModel)]="fcs" name ="fcs_search_term"><button class ="magnifying_glass"></button>
+    <br>    
+    <form [formGroup]="filter">
+        <div class="search">
+            <input type="text" placeholder="food, canteen, stall"  formControlName="name"> <button class="magnifying_glass"></button>
         </div>
         <p></p>
-        <div class = "search">
-            <input type = "text" placeholder="location"  [(ngModel)]="location" name = "location_search_term"><button class ="magnifying_glass"></button>
+        <div class="search">
+            <input type= "text" placeholder="location"  formControlName="location">
         </div>
-      </form>
+    </form>
 
-      <br>
-      <button mdbBtn type="button" mdbWavesEffect><p>SEARCH</p></button>
+    <br>
 <br>
 <!-- to be removed>
 
