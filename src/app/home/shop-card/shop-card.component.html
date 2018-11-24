@@ -2,8 +2,8 @@
   <img mat-card-image src="{{shop.image ? shop.image : 'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17665746.jpg'}}"> <br>
   <mat-card-title>{{shop.fe_name}}</mat-card-title>
   <mat-card-content>
-    {{shop.ratings}}<br>
+    {{shop.fe_avg_rating || "No ratings available"}}<br>
     {{shop.address}}<br>
-    {{isShopOpen(shop)}}
+    {{isShopOpen(shop) ? "Open" : "Closed"}}
   </mat-card-content>
 </mat-card>
