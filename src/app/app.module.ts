@@ -59,7 +59,7 @@ import { LocationSearchPipe } from './location-search.pipe';
     MenuComponent,
     ReviewsComponent,
     ShopCardComponent,
-    MapComponent
+    MapComponent,
     HomeSearchComponent,
     FcsSearchPipe,
     LocationSearchPipe,
