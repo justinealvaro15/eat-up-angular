@@ -26,20 +26,22 @@ export interface Shop {
     fe_avg_rating: number;
     no_of_ratings: number;
     Consumables: Consumables[];
-    BrandedConsumables: {
-        bc_name: string;
-        amount: string;
-        type: string;
-        price: number;
-        c_avg_rating: number;
-    }[];
+    BrandedConsumables: BrandedConsumables[];
     ComboMeal: any[];
     image: string;
-  }
+}
 
-  export interface Consumables {
+export interface Consumables {
     c_name: string;
     type: string;
     price: number;
     c_avg_rating?: number;
+}
+
+export interface BrandedConsumables {
+    bc_name: string;
+    amount: string;
+    type: string;
+    price: number;
+    c_avg_rating: number;
 }

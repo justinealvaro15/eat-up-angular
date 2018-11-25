@@ -1,27 +1,14 @@
-<body>
-<!--ALIGN FORMS TO CENTER-->
-    <br>    
-    <form [formGroup]="filter">
+<div class="search-container"> 
+    <div [formGroup]="filter" class="search-box-input">
         <div class="search">
-            <input type="text" placeholder="food, canteen, stall"  formControlName="name"> <button class="magnifying_glass"></button>
+            <input type="text" placeholder="food, canteen, stall" (keyup.enter)="setFiltersAndRedirect()" formControlName="fcs">
         </div>
         <p></p>
         <div class="search">
-            <input type= "text" placeholder="location"  formControlName="location">
+            <input type= "text" placeholder="location" (keyup.enter)="setFiltersAndRedirect()" formControlName="location">
         </div>
-    </form>
-
-    <br>
-<br>
-<!-- to be removed>
-
-        fcs:
-        <ul *ngFor="let fe of mock_db | fcsSearch: fcs">
-            <li>{{fe.fe_name}}</li>
-        </ul>
-        location:
-        <ul *ngFor="let fe of mock_db | locationSearch: location">
-            <li>{{fe.fe_name}}</li>
-        </ul>
-<!---->
-</body>
+    </div>
+    <div class="search-button-container">
+        <button class="magnifying_glass" (click)="setFiltersAndRedirect()"></button>
+    </div>
+</div>

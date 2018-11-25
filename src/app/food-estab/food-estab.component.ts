@@ -3,6 +3,7 @@ import { Shop } from '../shops/shops.model';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ShopsService } from '../shops/shops.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-food-estab',
@@ -29,5 +30,17 @@ export class FoodEstabComponent implements OnInit, OnDestroy {
     try {
       this.shopSubscription.unsubscribe()
     } catch { }
+  }
+
+  isShopOpen(shop: Shop): boolean {
+    const opening = moment().hour(shop.hours.opening.hour).minute(shop.hours.opening.minute);
+    const closing = moment().hour(shop.hours.closing.hour).minute(shop.hours.closing.minute);
+    const currentDate = moment();
+
+    const isOpenToday = shop.days_open.map(day => day.toLowerCase()).includes(currentDate.format('dddd').toLowerCase());
+    
+    const isOpenThisTime = currentDate.isSameOrAfter(opening) && currentDate.isSameOrBefore(closing);
+
+    return isOpenToday && isOpenThisTime;
   }
 }

@@ -1,18 +1,24 @@
-<mat-card>
-  <img mat-card-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYlXT-Fh4zKMMQK8VIHYIauWdTkUs5esCRd0oepSy-aC48RUa5" alt=""> <br>
-  <mat-card-content> 
-      <mat-card-title>shopName</mat-card-title>
-    <div id= "shopRating">shopRatings</div>
-    <div id="shopOpenClose">shopOpenClose</div>
-  </mat-card-content>
-  <mat-card-actions>
-      <app-addtl-details></app-addtl-details>
-  </mat-card-actions>
-</mat-card>
+<div class="food-establishment-container">
+    <div *ngIf="!shop" class="spinner-container">
+        <mat-spinner ></mat-spinner>
+    </div>
+    
+    <mat-card *ngIf="shop">
+        <img mat-card-image src="{{shop.image ? shop.image : 'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17665746.jpg'}}"> <br>
+        <mat-card-title>{{shop.fe_name}}</mat-card-title>
+        <mat-card-content>
+            <div>
+                {{shop.fe_avg_rating || "No ratings available"}}
+                <ng-container *ngIf="shop.no_of_ratings > 0">
+                    ({{shop.no_of_ratings}})
+                </ng-container>
+            </div>
+            <div>{{isShopOpen(shop) ? "Open" : "Closed"}}</div>
+            
+        </mat-card-content>
 
-
-<!-- 
-<ng-container *ngIf="shop">
-    <pre>{{shop | json}}</pre>
-</ng-container>
--->
+        <mat-card-actions>
+            <app-addtl-details [shop]="shop"></app-addtl-details>
+        </mat-card-actions>
+    </mat-card>
+</div>

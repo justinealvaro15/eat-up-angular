@@ -6,8 +6,23 @@
           Additional Details
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>Lorem ipsum shop. Up shop Lorem ipsum. 
-          Oble Lorem Ipsum. Why is this even Lorem Ipsum?
-      </p>
+      <div>Working Hours: {{displayHours()}}</div>
+      <div class="days-open-container">
+        <div>Days:</div>
+        <div *ngFor="let day of shop.days_open">
+          {{day}}
+        </div>
+      </div>
+      <div>Take-Out Cost: {{shop.AddlTakeOutCost || "Free"}}</div>
+      <div>Free Water: {{shop.FreeWater || "No"}}</div>
+      <div *ngIf="shop.BYOBIncentive">
+        BYOB Incentive: {{shop.BYOBIncentive}}
+      </div>
+      <div *ngIf="shop.SeatingCapacity">
+        Seating Capacity: {{shop.SeatingCapacity}}
+      </div>
+      <div *ngIf="shop.CLAYGO">
+        CLAYGO: {{shop.CLAYGO}}
+      </div>
     </mat-expansion-panel>
   </mat-accordion>

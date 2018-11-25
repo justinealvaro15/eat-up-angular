@@ -1,9 +1,9 @@
-<app-search-boxes (nameFilterChange)="onNameFilterChange($event)" (locationFilterChange)="onLocationFilterChange($event)"></app-search-boxes>
+<app-search-boxes></app-search-boxes>
 <mat-tab-group mat-align-tabs="center" style="height:100%">
   <mat-tab label="Trending" id = "trend" >
-    <app-shop-card *ngFor="let trendingShop of getFilteredShops(trendingShops)" [shop]="trendingShop"></app-shop-card>
+    <app-shop-card *ngFor="let trendingShop of trendingShops" [shop]="trendingShop"></app-shop-card>
   </mat-tab>
   <mat-tab label="Newest" id = "new">
-    <app-shop-card *ngFor="let newestShop of getFilteredShops(newestShops)" [shop]="newestShop"></app-shop-card>
+    <app-shop-card *ngFor="let newestShop of newestShops" [shop]="newestShop"></app-shop-card>
   </mat-tab>
 </mat-tab-group>
