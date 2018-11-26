@@ -22,8 +22,4 @@ export class AddtlDetailsComponent implements OnInit {
 
     return `${opening} to ${closing}`;
   }
-
-  displayDays(): string{
-    
-  }
 }

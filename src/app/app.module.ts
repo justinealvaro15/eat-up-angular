@@ -18,7 +18,6 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 // import { SearchBoxesComponent } from './search-boxes/search-boxes.component';
 import { SearchPageComponent } from './search-page/search-page.component';
-import { SearchResultsComponent } from './search-page/search-results/search-results.component';
 import { FoodEstabComponent } from './food-estab/food-estab.component';
 import { FoodEstabDisplayComponent } from './food-estab/food-estab-display/food-estab-display.component';
 import { AddRatingReviewComponent } from './food-estab/add-rating-review/add-rating-review.component';
@@ -46,7 +45,6 @@ import { HomeSearchComponent } from './home/search-boxes/search-boxes.component'
     HomeSearchComponent,
     // SearchBoxesComponent,
     SearchPageComponent,
-    SearchResultsComponent,
     FoodEstabComponent,
     FoodEstabDisplayComponent,
     AddRatingReviewComponent,

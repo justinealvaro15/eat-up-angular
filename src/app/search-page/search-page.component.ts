@@ -25,7 +25,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     try {
       this.getShopSubscription.unsubscribe();
-    } 
+    } catch { }
   }
 
   getFilteredShops() {
