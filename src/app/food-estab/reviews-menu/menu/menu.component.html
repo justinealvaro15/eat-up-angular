@@ -1,3 +1,12 @@
-<p>
-  menu works!
-</p>
+<mat-card *ngIf="shop.Consumables">
+  <mat-card-title>Consumables</mat-card-title>
+  <mat-card-content *ngFor="let consumable of shop.Consumables">
+    <div>{{consumable.c_name}}</div>
+  </mat-card-content>
+</mat-card>
+<mat-card *ngIf="shop.BrandedConsumables && shop.BrandedConsumables.length">
+  <mat-card-title>Branded Consumables</mat-card-title>
+  <mat-card-content *ngFor="let branded of shop.BrandedConsumables">
+    <div>{{branded.bc_name}}</div>
+  </mat-card-content>
+</mat-card>

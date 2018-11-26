@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Shop } from 'src/app/shops/shops.model';
 
 @Component({
   selector: 'app-reviews-menu',
@@ -12,4 +13,5 @@ export class ReviewsMenuComponent implements OnInit {
   ngOnInit() {
   }
 
+  @Input() shop: Shop;
 }

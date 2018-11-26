@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { Review } from './review.model';
 
 @Component({
   selector: 'app-reviews',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
+  openDialog() {
+    const review: Review = {
+      user_id: "asdaD123adgq234",
+      user_name: "Juan Dela Cruz",
+      review: "goooooood"
+    }
+
+    this.dialog.open(DialogDataExampleDialog, {
+      data: review
+    });
+  }
+}
+
+@Component({
+  selector: 'dialog-data-example-dialog',
+  templateUrl: 'dialog-data-example-dialog.html',
+})
+export class DialogDataExampleDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Review) {}
 }

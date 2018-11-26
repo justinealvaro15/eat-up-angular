@@ -1,8 +1,9 @@
 <div class="food-establishment-container">
+    <app-search-boxes></app-search-boxes>
     <div *ngIf="!shop" class="spinner-container">
         <mat-spinner ></mat-spinner>
     </div>
-    
+
     <mat-card *ngIf="shop">
         <img mat-card-image src="{{shop.image ? shop.image : 'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17665746.jpg'}}"> <br>
         <mat-card-title>{{shop.fe_name}}</mat-card-title>
@@ -21,4 +22,7 @@
             <app-addtl-details [shop]="shop"></app-addtl-details>
         </mat-card-actions>
     </mat-card>
+
+    <app-reviews-menu class="app-reviews-menu" [shop]="shop" *ngIf="shop"></app-reviews-menu>
 </div>
+
