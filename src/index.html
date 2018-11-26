@@ -8,14 +8,77 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<!--for Google Sign In-->
+
   <meta name = "google-signin-scope" content="profile email">
-  <meta name="google-signin-client_id" content="225734415155-3m5ad4glegmovbeuuat4hfl1ffvogbgg.apps.googleusercontent.com">
+  <meta name="google-signin-client_id" content="305506356766-0q3pes92ks9buimmcchbtek02f3an0oc.apps.googleusercontent.com">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 <body>
+  <script>
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: "+profile.getId()); //Don't send this directly to your server
+        console.log("Full Name: " + profile.getName());
+        console.log("Given Name: " + profile.getGivenName());
+        console.log("Family Name: " + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+
+        var myUserEntity = {};
+        myUserEntity.Id = profile.getId();
+        myUserEntity.Name = profile.getName();
+
+        //Store the entity object in sessionStorage where it will be accessible from all pages of your site.
+        sessionStorage.setItem('myUserEntity',JSON.stringify(myUserEntity));
+
+        //the ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://localhost:3000');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+          console.log('Signed in as: ' + xhr.responseText);
+        };
+        xhr.send('idtoken=' + id_token);
+
+        //@up.edu.ph only
+        const {OAuth2Client} = require('google-auth-library');
+        const client = new OAuth2Client("305506356766-0q3pes92ks9buimmcchbtek02f3an0oc.apps.googleusercontent.com");
+        async function verify() {
+          const ticket = await client.verifyIdToken({
+              idToken: token,
+              audience: "305506356766-0q3pes92ks9buimmcchbtek02f3an0oc.apps.googleusercontent.com",  // Specify the CLIENT_ID of the app that accesses the backend
+              // Or, if multiple clients access the backend:
+              //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+          });
+          const payload = ticket.getPayload();
+          const userid = payload['sub'];
+          // If request specified a G Suite domain:
+          const domain = payload['hd'];
+        }
+        verify().catch(console.error);
+//SET AN HD
+
+        alert("Signed In");
+      }
+
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            console.log('User signed out.');
+            alert("You have succesfully signed out");
+        });
+        sessionStorage.clear();
+      }
+
+  </script>
   <app-root></app-root>
+
 </body>
 </html>
