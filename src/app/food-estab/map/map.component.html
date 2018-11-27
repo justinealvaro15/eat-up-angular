@@ -1,0 +1,17 @@
+<h1>{{ title }}</h1>
+
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<agm-map
+  [latitude]="location?.lat"
+  [longitude]="location?.lng"
+  [zoom]="18"
+  [disableDefaultUI]="false"
+  [zoomControl]="true">
+  <agm-marker
+      [latitude]="location?.lat"
+      [longitude]="location?.lng">
+  </agm-marker>
+</agm-map>
+<p *ngIf="loading">Loading...</p>
