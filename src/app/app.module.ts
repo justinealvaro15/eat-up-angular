@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ApplicationRef } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +28,9 @@ import { ShopCardComponent } from './home/shop-card/shop-card.component';
 import { FcsSearchPipe } from './fcs-search.pipe';
 import { LocationSearchPipe } from './location-search.pipe';
 import { HomeSearchComponent } from './home/search-boxes/search-boxes.component';
+import { AgmCoreModule } from '@agm/core';
+import { GeocodeService } from './map/geocode.service';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,7 @@ import { HomeSearchComponent } from './home/search-boxes/search-boxes.component'
     MenuComponent,
     ReviewsComponent,
     ShopCardComponent,
-    // MapComponent,
+    MapComponent,
     FcsSearchPipe,
     LocationSearchPipe,
     DialogDataExampleDialog
@@ -74,9 +77,13 @@ import { HomeSearchComponent } from './home/search-boxes/search-boxes.component'
     MatExpansionModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    CommonModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBdIHu7rKwvX--qeJQWpjiDbWN2eAw_XMg'
+    })
   ],
-  providers: [],
+  providers: [GeocodeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
