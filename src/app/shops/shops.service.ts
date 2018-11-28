@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Subject, BehaviorSubject } from "rxjs";
+import {  BehaviorSubject } from "rxjs";
 import { map } from 'rxjs/operators';
 
 import { Shop } from "./shops.model";
@@ -12,6 +12,7 @@ export class ShopsService {
     }
     private shops: Shop[] = [];
     private _shops: BehaviorSubject<Shop[]> = new BehaviorSubject<Shop[]>([]);
+    filterChanged = new EventEmitter();
 
     filter = {
         location: '',
@@ -50,6 +51,7 @@ export class ShopsService {
 
     setFilter(key: FilterKeys, filterValue: string) {
         this.filter[key] = filterValue;
+        this.filterChanged.emit(this.filter);
     }
 
     clearFilters() {
