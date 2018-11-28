@@ -3,10 +3,10 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTabsModule,MatCardModule, MatProgressSpinnerModule, MatDialogModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { TrendingNewestComponent } from './home/trending-newest/trending-newest.component';
@@ -32,6 +32,17 @@ import { AgmCoreModule } from '@agm/core';
 import { GeocodeService } from './map/geocode.service';
 import { MapComponent } from './map/map.component';
 
+import { MatToolbarModule, 
+        MatButtonModule, 
+        MatSidenavModule, 
+        MatIconModule, 
+        MatListModule, 
+        MatTabsModule,
+        MatCardModule, 
+        MatProgressSpinnerModule,
+        MatDialogModule,
+        MatInputModule} from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,10 +64,15 @@ import { MapComponent } from './map/map.component';
     MapComponent,
     FcsSearchPipe,
     LocationSearchPipe,
-    DialogDataExampleDialog
+    DialogDataExampleDialog,
+    AddMenuItemComponent,
+    AddRatingReviewDialog,
+    AddMenuItemDialog
   ],
   entryComponents: [
-    DialogDataExampleDialog
+    DialogDataExampleDialog,
+    AddRatingReviewDialog,
+    AddMenuItemDialog
   ],
   imports: [
     FormsModule,
@@ -78,6 +94,7 @@ import { MapComponent } from './map/map.component';
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatInputModule,
     CommonModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBdIHu7rKwvX--qeJQWpjiDbWN2eAw_XMg'
