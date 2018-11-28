@@ -1,6 +1,11 @@
 <mat-tab-group mat-align-tabs="center" style="height:100%">
   <mat-tab label="Reviews" id = "review" >
-    <display-reviews></display-reviews>
+    <!-- use center-align-column to everything you want to center -->
+    <div class="center-align-column"> 
+      <display-reviews></display-reviews>
+      <display-reviews></display-reviews>
+      <display-reviews></display-reviews>
+    </div>
   </mat-tab>
   <mat-tab label="Menu" id = "menu">
     <app-menu [shop]="shop"></app-menu>
