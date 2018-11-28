@@ -15,14 +15,15 @@
                 </ng-container>
             </div>
             <div>{{isShopOpen(shop) ? "Open" : "Closed"}}</div>
-
         </mat-card-content>
-
         <mat-card-actions>
             <app-addtl-details [shop]="shop"></app-addtl-details>
         </mat-card-actions>
     </mat-card>
     <app-map></app-map>
-    
+    <mat-card>
+      <app-add-rating-review style = "margin-right: 10px"></app-add-rating-review> 
+      <app-add-menu-item></app-add-menu-item>
+      </mat-card>
     <app-reviews-menu class="app-reviews-menu" [shop]="shop" *ngIf="shop"></app-reviews-menu>
 </div>
