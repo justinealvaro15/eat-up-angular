@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { TrendingNewestComponent } from './home/trending-newest/trending-newest.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
@@ -23,14 +23,12 @@ import { ReviewsMenuComponent } from './food-estab/reviews-menu/reviews-menu.com
 import { MenuComponent } from './food-estab/reviews-menu/menu/menu.component';
 import { ReviewsComponent, DialogDataExampleDialog } from './food-estab/reviews-menu/reviews/reviews.component';
 import { ShopCardComponent } from './home/shop-card/shop-card.component';
-// import { MapComponent } from './map/map.component';
-// import { HomeSearchComponent } from './home-search/home-search.component';
 import { FcsSearchPipe } from './fcs-search.pipe';
 import { LocationSearchPipe } from './location-search.pipe';
 import { HomeSearchComponent } from './home/search-boxes/search-boxes.component';
 import { AgmCoreModule } from '@agm/core';
-import { GeocodeService } from './map/geocode.service';
-import { MapComponent } from './map/map.component';
+import { GeocodeService } from './food-estab/map/geocode.service';
+import { MapComponent } from './food-estab/map/map.component';
 import { AddMenuItemComponent, AddMenuItemDialog } from './food-estab/add-menu-item/add-menu-item.component';
 
 import { MatToolbarModule, 
@@ -96,7 +94,6 @@ import { MatToolbarModule,
     MatProgressSpinnerModule,
     MatDialogModule,
     MatInputModule,
-    CommonModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBdIHu7rKwvX--qeJQWpjiDbWN2eAw_XMg'
     })
