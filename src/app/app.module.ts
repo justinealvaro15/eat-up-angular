@@ -15,7 +15,7 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { FoodEstabComponent } from './food-estab/food-estab.component';
-import { AddRatingReviewComponent } from './food-estab/add-rating-review/add-rating-review.component';
+import { AddRatingReviewComponent, AddRatingReviewDialog } from './food-estab/add-rating-review/add-rating-review.component';
 import { RatingComponent } from './food-estab/add-rating-review/rating/rating.component';
 import { ReviewComponent } from './food-estab/add-rating-review/review/review.component';
 import { AddtlDetailsComponent } from './food-estab/addtl-details/addtl-details.component';
@@ -31,6 +31,7 @@ import { HomeSearchComponent } from './home/search-boxes/search-boxes.component'
 import { AgmCoreModule } from '@agm/core';
 import { GeocodeService } from './map/geocode.service';
 import { MapComponent } from './map/map.component';
+import { AddMenuItemComponent, AddMenuItemDialog } from './food-estab/add-menu-item/add-menu-item.component';
 
 import { MatToolbarModule, 
         MatButtonModule, 
