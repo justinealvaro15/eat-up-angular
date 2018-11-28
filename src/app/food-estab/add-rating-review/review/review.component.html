@@ -1,3 +1,7 @@
-<p>
-  review works!
-</p>
+<form class="example-form">
+    <mat-form-field [ngStyle]="{'font-size.px': size, 'width.px': width}" appearance="outline"  class="example-full-width">
+        <mat-label>The Story Behind Your Rating</mat-label>
+      <textarea  matInput name="second" #textarea maxlength="300" ></textarea>
+      <mat-hint align="end">{{textarea.value?.length || 0}}/300</mat-hint>
+    </mat-form-field>
+ </form>
