@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnInit {
-
+  size = 12;
+  width= 250;
   constructor() { }
 
   ngOnInit() {
