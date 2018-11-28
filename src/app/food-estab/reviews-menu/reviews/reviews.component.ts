@@ -1,36 +1,39 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
-import { Review } from './review.model';
+import {Component, Inject} from '@angular/core';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 
+export interface DialogData { //sample data for reference for server later
+  animal: 'panda' | 'unicorn' | 'lion';
+}
+
+/**
+ * @title Injecting data when opening a dialog
+ */
 @Component({
-  selector: 'app-reviews',
-  templateUrl: './reviews.component.html',
-  styleUrls: ['./reviews.component.css']
+  selector: 'display-reviews',
+  templateUrl: 'reviews.component.html',
+  styleUrls: ['reviews.component.css'],
 })
-export class ReviewsComponent implements OnInit {
-
-  constructor(public dialog: MatDialog) { }
-
-  ngOnInit() {
-  }
+export class ReviewsComponent {
+  constructor(public dialog: MatDialog) {}
 
   openDialog() {
-    const review: Review = {
-      user_id: "asdaD123adgq234",
-      user_name: "Juan Dela Cruz",
-      review: "goooooood"
-    }
-
-    this.dialog.open(DialogDataExampleDialog, {
-      data: review
+    this.dialog.open(ReviewsDialog, {
+      data: { //sample data for reference for server later
+        animal: 'panda'
+      }
     });
   }
 }
 
 @Component({
-  selector: 'dialog-data-example-dialog',
-  templateUrl: 'dialog-data-example-dialog.html',
+  selector: 'reviews-dialog',
+  templateUrl: 'reviews-dialog.component.html',
 })
-export class DialogDataExampleDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Review) {}
+export class ReviewsDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 }
+
+
+/**  Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license */

@@ -21,7 +21,7 @@ import { ReviewComponent } from './food-estab/add-rating-review/review/review.co
 import { AddtlDetailsComponent } from './food-estab/addtl-details/addtl-details.component';
 import { ReviewsMenuComponent } from './food-estab/reviews-menu/reviews-menu.component';
 import { MenuComponent } from './food-estab/reviews-menu/menu/menu.component';
-import { ReviewsComponent, DialogDataExampleDialog } from './food-estab/reviews-menu/reviews/reviews.component';
+import { ReviewsComponent, ReviewsDialog } from './food-estab/reviews-menu/reviews/reviews.component';
 import { ShopCardComponent } from './home/shop-card/shop-card.component';
 import { FcsSearchPipe } from './fcs-search.pipe';
 import { LocationSearchPipe } from './location-search.pipe';
@@ -66,12 +66,13 @@ import { MatToolbarModule,
     DialogDataExampleDialog,
     AddMenuItemComponent,
     AddRatingReviewDialog,
-    AddMenuItemDialog
+    AddMenuItemDialog,
+    ReviewsDialog
   ],
   entryComponents: [
-    DialogDataExampleDialog,
     AddRatingReviewDialog,
-    AddMenuItemDialog
+    AddMenuItemDialog,
+    ReviewsDialog
   ],
   imports: [
     FormsModule,
