@@ -1,3 +1,10 @@
-<p>
-  rating works!
-</p>
+<div class="rating">
+	<div style="display: inline-block" *ngFor="let starred of stars; let i = index" (click)="rate(i + (starred ? (value > i + 1 ? 1 : 0) : 1))">
+		<ng-container *ngIf="starred; else noStar">
+			<mat-icon class="filled">star</mat-icon>
+		</ng-container>
+		<ng-template #noStar>
+			<mat-icon class="empty">star_outline</mat-icon>
+		</ng-template>
+	</div>
+</div>
