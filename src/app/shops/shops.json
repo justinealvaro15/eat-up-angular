@@ -4,6 +4,10 @@
         "fe_name": "Albao Store",
         "type": "Kiosk",
         "address": "Roxas Ave Corner Roces St., Diliman, Quezon City, Metro Manila",
+        "coordinates": {
+            "long": 121.068563,
+            "lat": 14.653937
+        },
         "contact_person": null,
         "contact_number": null,
         "hours": {
@@ -48,6 +52,10 @@
         "fe_name": "Smokey's Store",
         "type": "Kiosk",
         "address": "Roxas Ave Corner Roces St., Diliman, Quezon City, Metro Manila",
+        "coordinates": {
+          "long": 121.068563,
+          "lat": 14.653937
+        },
         "contact_person": "Perla Buduan",
         "contact_number": "09178580281",
         "hours": {
@@ -153,6 +161,10 @@
         "fe_name": "Floriza's Store",
         "type": "Kiosk",
         "address": "Roxas Ave Corner Roces St., Diliman, Quezon City, Metro Manila",
+        "coordinates": {
+          "long": 121.068563,
+          "lat": 14.653937
+        },
         "contact_person": "Floriza 'Nene' Badion",
         "contact_number": null,
         "hours": {
@@ -222,6 +234,10 @@
         "fe_name": "Janine's Store",
         "type": "Kiosk",
         "address": "Roxas Ave Corner Roces St., Diliman, Quezon City, Metro Manila",
+        "coordinates": {
+          "long": 121.068563,
+          "lat": 14.653937
+        },
         "contact_person": "Janine",
         "contact_number": null,
         "hours": {
@@ -282,6 +298,10 @@
         "fe_name": "Isabel Bakes 'Cookies from Home'",
         "type": "Kiosk",
         "address": "Roxas Ave Corner Roces St., Diliman, Quezon City, Metro Manila",
+        "coordinates": {
+          "long": 121.068563,
+          "lat": 14.653937
+        },
         "contact_person": "Analyn Manarang",
         "contact_number": "09294061301",
         "hours": {
@@ -338,6 +358,10 @@
         "fe_name": "Famous Belgian Waffles",
         "type": "Kiosk",
         "address": "Roxas Ave Corner Roces St., Diliman, Quezon City, Metro Manila",
+        "coordinates": {
+          "long": 121.068563,
+          "lat": 14.653937
+        },
         "contact_person": "Analyn Manarang",
         "contact_number": "09294061301",
         "hours": {
@@ -416,6 +440,10 @@
         "fe_name": "Vargas Museum Cafe",
         "type": "Cafe",
         "address": "Vargas Museum, Roxas Ave, Diliman, Quezon City, Metro Manila",
+        "coordinates": {
+          "long": 121.066938,
+          "lat": 14.653313
+        },
         "contact_person": "Elvie Fernandez",
         "contact_number": "09756000017",
         "hours": {
@@ -462,6 +490,10 @@
         "fe_name": "Narry's Kiosk",
         "type": "Kiosk",
         "address": "UP Main Library, Diliman,Quezon City 1100,Metro Manila, Diliman, Quezon City, Metro Manila",
+        "coordinates": {
+            "long": 121.070977,
+            "lat": 14.654434
+        },
         "contact_person": "Narry",
         "contact_number": "09665427495",
         "hours": {
@@ -708,6 +740,10 @@
         "fe_name": "Chicksrule ",
         "type": "Kiosk",
         "address": "UP Main Library, Diliman,Quezon City 1100,Metro Manila, Diliman, Quezon City, Metro Manila",
+        "coordinates": {
+          "long": 121.070977,
+          "lat": 14.654434
+        },
         "contact_person": "Jennylyn",
         "contact_number": "09260923543",
         "hours": {
@@ -742,6 +778,10 @@
         "fe_name": "Tita Carm's Budget Meals ",
         "type": "Kiosk",
         "address": "UP Main Library, Diliman,Quezon City 1100,Metro Manila, Diliman, Quezon City, Metro Manila",
+        "coordinates": {
+          "long": 121.070977,
+          "lat": 14.654434
+        },
         "contact_person": "Tita Carms",
         "contact_number": "09777841231",
         "hours": {
@@ -837,12 +877,16 @@
         "price": 50,
         "cm_avg_rating": null }]
         }
-        
+
         {
         "fe_id": "011",
         "fe_name": "Diliman's Brew",
         "type": "Kiosk",
         "address": "UP Main Library, Diliman,Quezon City 1100,Metro Manila, Diliman, Quezon City, Metro Manila",
+        "coordinates": {
+          "long": 121.070977,
+          "lat": 14.654434
+        },
         "contact_person": null,
         "contact_number": null,
         "hours": {
@@ -880,6 +924,10 @@
         "fe_name": "Potato Corner",
         "type": "Kiosk",
         "address": "UP Main Library, Diliman,Quezon City 1100,Metro Manila, Diliman, Quezon City, Metro Manila",
+        "coordinates": {
+          "long": 121.070977,
+          "lat": 14.654434
+        },
         "contact_person": null,
         "contact_number": null,
         "hours": {
@@ -902,6 +950,10 @@
         "fe_name": "King's Crispy Liempo",
         "type": "Stall",
         "address": "Zoology Building, Quirino Avenue, Diliman, Diliman, Quezon City, 1101 Metro Manila",
+        "coordinates": {
+            "long": 121.071188,
+            "lat": 14.652687
+        },
         "contact_person": null,
         "contact_number": null,
         "hours": {
@@ -931,6 +983,10 @@
         "fe_name": "The Galley",
         "type": "Stall",
         "address": "Zoology Building, Quirino Avenue, Diliman, Diliman, Quezon City, 1101 Metro Manila",
+        "coordinates": {
+          "long": 121.071188,
+          "lat": 14.652687
+        },
         "contact_person": "Lea Mergal",
         "contact_number": "09169816934",
         "hours": {
@@ -966,6 +1022,10 @@
         "fe_name": "Gloria's",
         "type": "Stall",
         "address": "Zoology Building, Quirino Avenue, Diliman, Diliman, Quezon City, 1101 Metro Manila",
+        "coordinates": {
+          "long": 121.071188,
+          "lat": 14.652687
+        },
         "contact_person": null,
         "contact_number": null,
         "hours": {
@@ -1014,6 +1074,10 @@
         "fe_name": "IMAS",
         "type": "Stall",
         "address": "Zoology Building, Quirino Avenue, Diliman, Diliman, Quezon City, 1101 Metro Manila",
+        "coordinates": {
+          "long": 121.071188,
+          "lat": 14.652687
+        },
         "contact_person": "Nel",
         "contact_number": "09676073555",
         "hours": {
@@ -1047,6 +1111,10 @@
         "fe_name": "Phily's 'Beef Peppershop'",
         "type": "Stall",
         "address": "Zoology Building, Quirino Avenue, Diliman, Diliman, Quezon City, 1101 Metro Manila",
+        "coordinates": {
+          "long": 121.071188,
+          "lat": 14.652687
+        },
         "contact_person": "Grace Garcia",
         "contact_number": "09752688570",
         "hours": {
@@ -1090,6 +1158,10 @@
         "fe_name": "Erlinda's Service (former: Gloria's)",
         "type": "Canteen",
         "address": "T.H. Pardo de Tavera Street, Diliman, Quezon City, Metro Manila",
+        "coordinates": {
+            "long": 121.068188,
+            "lat": 14.651938
+        },
         "contact_person": "Ate Cheng",
         "contact_number": "9258246",
         "hours": {
