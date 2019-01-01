@@ -5,6 +5,8 @@ import { GoogleLoginProvider } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 import { LoginOpt } from "angularx-social-login";
 
+//https://www.npmjs.com/package/angularx-social-login
+
 const googleLoginOptions: LoginOpt = {
   scope: 'profile email'
 }; // https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig
@@ -39,3 +41,5 @@ export class GoogleAuthComponent implements OnInit {
   }
 
 }
+
+/*use a service between this component to whatever component needs the user details (name and email and photoUrl) */
