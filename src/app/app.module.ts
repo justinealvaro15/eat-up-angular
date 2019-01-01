@@ -28,7 +28,7 @@ import { LocationSearchPipe } from './location-search.pipe';
 import { HomeSearchComponent } from './home/search-boxes/search-boxes.component';
 
 
-import { MapComponent } from './food-estab/map/map.component';
+
 import { AddMenuItemComponent, AddMenuItemDialog } from './food-estab/add-menu-item/add-menu-item.component';
 
 import { MatToolbarModule, 
@@ -49,7 +49,7 @@ import { GoogleLoginProvider} from "angularx-social-login";
  let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("Google-OAuth-Client-Id")
+    provider: new GoogleLoginProvider("305506356766-0q3pes92ks9buimmcchbtek02f3an0oc")
   }
 ]);
  
@@ -74,7 +74,6 @@ export function provideConfig() {
     MenuComponent,
     ReviewsComponent,
     ShopCardComponent,
-    MapComponent,
     FcsSearchPipe,
     LocationSearchPipe,
     AddMenuItemComponent,
