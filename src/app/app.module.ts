@@ -12,7 +12,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { TrendingNewestComponent } from './home/trending-newest/trending-newest.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
-import { SignInComponent } from './auth/sign-in/sign-in.component';
+
 import { SearchPageComponent } from './search-page/search-page.component';
 import { FoodEstabComponent } from './food-estab/food-estab.component';
 import { AddRatingReviewComponent, AddRatingReviewDialog } from './food-estab/add-rating-review/add-rating-review.component';
@@ -26,8 +26,8 @@ import { ShopCardComponent } from './home/shop-card/shop-card.component';
 import { FcsSearchPipe } from './fcs-search.pipe';
 import { LocationSearchPipe } from './location-search.pipe';
 import { HomeSearchComponent } from './home/search-boxes/search-boxes.component';
-import { AgmCoreModule } from '@agm/core';
-import { GeocodeService } from './food-estab/map/geocode.service';
+
+
 import { MapComponent } from './food-estab/map/map.component';
 import { AddMenuItemComponent, AddMenuItemDialog } from './food-estab/add-menu-item/add-menu-item.component';
 
@@ -41,6 +41,21 @@ import { MatToolbarModule,
         MatProgressSpinnerModule,
         MatDialogModule,
         MatInputModule} from '@angular/material';
+import { GoogleAuthComponent } from './navigation/sidenav-list/google-auth/google-auth.component';
+
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider} from "angularx-social-login";
+ 
+ let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("Google-OAuth-Client-Id")
+  }
+]);
+ 
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -48,7 +63,6 @@ import { MatToolbarModule,
     TrendingNewestComponent,
     HeaderComponent,
     SidenavListComponent,
-    SignInComponent,
     HomeSearchComponent,
     SearchPageComponent,
     FoodEstabComponent,
@@ -66,7 +80,8 @@ import { MatToolbarModule,
     AddMenuItemComponent,
     AddRatingReviewDialog,
     AddMenuItemDialog,
-    ReviewsDialog
+    ReviewsDialog,
+    GoogleAuthComponent
   ],
   entryComponents: [
     AddRatingReviewDialog,
@@ -94,11 +109,14 @@ import { MatToolbarModule,
     MatProgressSpinnerModule,
     MatDialogModule,
     MatInputModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBdIHu7rKwvX--qeJQWpjiDbWN2eAw_XMg'
-    })
+    SocialLoginModule
   ],
-  providers: [GeocodeService],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
