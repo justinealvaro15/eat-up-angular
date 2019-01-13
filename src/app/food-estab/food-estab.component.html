@@ -1,4 +1,4 @@
-<div class="food-establishment-container">
+ <div class="food-establishment-container">
     <app-search-boxes></app-search-boxes>
     <div *ngIf="!shop" class="spinner-container">
         <mat-spinner ></mat-spinner>
@@ -24,7 +24,7 @@
       <app-add-rating-review style = "margin-right: 10px"></app-add-rating-review> 
       <app-add-menu-item></app-add-menu-item>
     </mat-card>
-    <!--<app-map></app-map>-->
+    <app-map [shop]= "shop" *ngIf = "shop"></app-map>
     <app-reviews-menu class="app-reviews-menu" [shop]="shop" *ngIf="shop"></app-reviews-menu>
     
 </div>
