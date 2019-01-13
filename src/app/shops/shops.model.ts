@@ -5,6 +5,10 @@ export interface Shop {
     fe_name: string;
     type: string;
     address: string;
+    coordinates: {
+        lat: number,
+        long:number
+    };
     contact_person: string;
     contact_number: string;
     hours:{
