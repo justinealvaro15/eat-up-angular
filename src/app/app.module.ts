@@ -28,7 +28,6 @@ import { LocationSearchPipe } from './location-search.pipe';
 import { HomeSearchComponent } from './home/search-boxes/search-boxes.component';
 
 
-
 import { AddMenuItemComponent, AddMenuItemDialog } from './food-estab/add-menu-item/add-menu-item.component';
 
 import { MatToolbarModule, 
@@ -41,11 +40,14 @@ import { MatToolbarModule,
         MatProgressSpinnerModule,
         MatDialogModule,
         MatInputModule} from '@angular/material';
-import { GoogleAuthComponent } from './navigation/sidenav-list/google-auth/google-auth.component';
+import { GoogleAuthComponent } from './navigation/google-auth/google-auth.component';
 
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider} from "angularx-social-login";
- 
+import { MapComponent } from './food-estab/map/map.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
+
  let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -80,7 +82,8 @@ export function provideConfig() {
     AddRatingReviewDialog,
     AddMenuItemDialog,
     ReviewsDialog,
-    GoogleAuthComponent
+    GoogleAuthComponent,
+    MapComponent
   ],
   entryComponents: [
     AddRatingReviewDialog,
@@ -108,7 +111,8 @@ export function provideConfig() {
     MatProgressSpinnerModule,
     MatDialogModule,
     MatInputModule,
-    SocialLoginModule
+    SocialLoginModule,
+    LeafletModule.forRoot()
   ],
   providers: [
     {
