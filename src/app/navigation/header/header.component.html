@@ -10,7 +10,7 @@
     <span fxHide.md   fxHide.lg fxHide.xl>eatUP</span>
 
     <div id="container" fxFlex fxLayout="row" fxLayoutAlign="space-around center" fxHide.xs  fxHide.sm  >
-      <a routerLink="/sign-in" class="child" id="child1">Sign In</a>
+      <app-google-auth [header] = "true" [sidenav] = "false"></app-google-auth>
       <a href="#"class="child">Home</a>
       <a href="#" class="child">| eatUP |</a>
       <a href="#" class="child">Settings</a>
