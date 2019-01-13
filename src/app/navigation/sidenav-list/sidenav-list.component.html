@@ -1,5 +1,5 @@
 <mat-nav-list>
-  <app-google-auth></app-google-auth>
+  <app-google-auth [header] = "false" [sidenav] = "true"></app-google-auth>
   <a mat-list-item routerLink="/" (click)="onClose()">Home</a>
   <a mat-list-item href="#" (click)="onClose()">Settings</a>
   <a mat-list-item href="#" (click)="onClose()">About eatUP</a>
