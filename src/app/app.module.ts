@@ -43,15 +43,21 @@ import { MatToolbarModule,
 import { GoogleAuthComponent } from './navigation/google-auth/google-auth.component';
 
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
-import { GoogleLoginProvider} from "angularx-social-login";
+import { GoogleLoginProvider, LoginOpt} from "angularx-social-login";
 import { MapComponent } from './food-estab/map/map.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
+const googleLoginOptions: LoginOpt = {
+  client_id: "305506356766-0q3pes92ks9buimmcchbtek02f3an0oc",
+  scope: 'profile email',
+  hosted_domain: 'up.edu.ph'
+}; // https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig
 
 
  let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("305506356766-0q3pes92ks9buimmcchbtek02f3an0oc")
+    provider: new GoogleLoginProvider("305506356766-0q3pes92ks9buimmcchbtek02f3an0oc", googleLoginOptions)
   }
 ]);
  
