@@ -3,14 +3,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
-import { LoginOpt } from "angularx-social-login";
 
 //https://www.npmjs.com/package/angularx-social-login
-
-const googleLoginOptions: LoginOpt = {
-  scope: 'profile email'
-}; // https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig
-
+//https://github.com/kangw3n/angular4-social-login/tree/0bb654f7034d7d154d59e629005203b397144f11
 
 @Component({
   selector: 'app-google-auth',
@@ -31,6 +26,7 @@ export class GoogleAuthComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   signInWithGoogle(): void {
+    window.alert("Sign in with your UP Mail account.");
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
