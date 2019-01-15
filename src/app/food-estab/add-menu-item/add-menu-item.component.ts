@@ -1,5 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { SocialUser } from "angularx-social-login";
+import { AuthService } from "angularx-social-login";
 
 export interface DialogData {
   animal: string;
@@ -18,8 +20,17 @@ export class AddMenuItemComponent {
 
   animal: string;
   name: string;
+  user:SocialUser;
+  loggedIn: boolean;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private authService: AuthService) {}
+
+  ngOnInit () {
+      this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddMenuItemDialog, {
