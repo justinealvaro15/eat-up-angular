@@ -50,6 +50,7 @@ export class AuthService {
     return this._authState.asObservable();
   }
 
+/*
   constructor(config: AuthServiceConfig) {
     this.providers = config.providers;
 
@@ -64,6 +65,7 @@ export class AuthService {
       });
     });
   }
+*/
 
   signIn(providerId: string, opt?: LoginOpt): Promise<SocialUser> {
     return new Promise((resolve, reject) => {
