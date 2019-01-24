@@ -46,6 +46,7 @@ import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, LoginOpt} from "angularx-social-login";
 import { MapComponent } from './food-estab/map/map.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { UserProfileComponent } from './navigation/user-profile/user-profile.component';
 
 const googleLoginOptions: LoginOpt = {
   client_id: "305506356766-0q3pes92ks9buimmcchbtek02f3an0oc",
@@ -89,7 +90,8 @@ export function provideConfig() {
     AddMenuItemDialog,
     ReviewsDialog,
     GoogleAuthComponent,
-    MapComponent
+    MapComponent,
+    UserProfileComponent
   ],
   entryComponents: [
     AddRatingReviewDialog,
