@@ -135,7 +135,6 @@ import {
     MatProgressSpinnerModule,
     MatDialogModule,
     MatInputModule,
-<<<<<<< Updated upstream
     SocialLoginModule,
     LeafletModule.forRoot()
   ],
@@ -144,14 +143,6 @@ import {
       provide: AuthServiceConfig,
       useFactory: provideConfig
     }
-=======
-    MatFormFieldModule,
-    MatSelectModule,
-    MatOptionModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBdIHu7rKwvX--qeJQWpjiDbWN2eAw_XMg'
-    })
->>>>>>> Stashed changes
   ],
   bootstrap: [AppComponent]
 })
