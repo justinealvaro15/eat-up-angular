@@ -1,5 +1,35 @@
-<h1 mat-dialog-title>Add Menu Item</h1>
+
+
 <div mat-dialog-content>
+  <h1 mat-dialog-title>Add Menu Item</h1>
+
+  <mat-form-field appearance="outline" class="container">
+    <mat-select placeholder="Category" [formControl]="data.foodGroupControl">
+      <mat-option value="1">-- None --</mat-option>
+      <mat-optgroup *ngFor="let group of data.foodGroups" [label]="group.name"
+                    [disabled]="group.disabled">
+        <mat-option *ngFor="let category of group.category" [value]="category.value">
+          {{category.viewValue}}
+        </mat-option>
+      </mat-optgroup>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="container">
+    <mat-label>Item Name</mat-label>
+    <input matInput #input1 maxlength="50"> 
+    <mat-hint align="end">{{input1.value?.length || 0}}/50</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="container" hintLabel="Value in Php">
+    <mat-label>Price</mat-label>
+    <input matInput #input2 maxlength="6" type="number"> 
+    <mat-hint align="end">{{input2.value?.length || 0}}/6</mat-hint>
+  </mat-form-field>
+</div>
+  
+
+<!-- <div mat-dialog-content>
   <mat-form-field [ngStyle]="{'font-size.px': size , 'width.px': width1}" appearance="outline" class="container"> 
     <mat-label>Item Name</mat-label>
     <input matInput
@@ -21,7 +51,8 @@
     <textarea matInput #input3 ></textarea>
     <mat-hint align="end">{{input3.value?.length || 0}}/100</mat-hint>
   </mat-form-field>
-</div>
+</div> -->
+
 <div mat-dialog-actions >
   <button mat-button (click)="onNoClick()">No Thanks</button>
   <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>

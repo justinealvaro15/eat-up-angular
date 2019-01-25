@@ -65,6 +65,22 @@ const googleLoginOptions: LoginOpt = {
 export function provideConfig() {
   return config;
 }
+import { 
+  MatToolbarModule, 
+  MatButtonModule, 
+  MatSidenavModule, 
+  MatIconModule, 
+  MatListModule, 
+  MatTabsModule,
+  MatCardModule, 
+  MatProgressSpinnerModule,
+  MatDialogModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatSelectModule,
+  MatOptionModule,
+  
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -119,6 +135,7 @@ export function provideConfig() {
     MatProgressSpinnerModule,
     MatDialogModule,
     MatInputModule,
+<<<<<<< Updated upstream
     SocialLoginModule,
     LeafletModule.forRoot()
   ],
@@ -127,6 +144,14 @@ export function provideConfig() {
       provide: AuthServiceConfig,
       useFactory: provideConfig
     }
+=======
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBdIHu7rKwvX--qeJQWpjiDbWN2eAw_XMg'
+    })
+>>>>>>> Stashed changes
   ],
   bootstrap: [AppComponent]
 })

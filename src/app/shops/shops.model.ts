@@ -29,10 +29,23 @@ export interface Shop {
     CLAYGO: string;
     fe_avg_rating: number;
     no_of_ratings: number;
-    Consumables: Consumables[];
-    BrandedConsumables: BrandedConsumables[];
+    Food:{
+        Branded: BrandedConsumables[];
+        StreetFoods: Consumables[];
+        Sweets: Consumables[];
+        Sandwiches: Consumables[];
+        PastaNoodles: Consumables[];
+        Meals: Consumables[];
+        Meryenda: Consumables[];
+    };
+    Beverages:{
+        Branded: BrandedConsumables[];
+        InHouse: Consumables[];
+    };
     ComboMeal: any[];
     image: string;
+    Consumables: Consumables[];
+    BrandedConsumables: BrandedConsumables[];
 }
 
 export interface Consumables {
