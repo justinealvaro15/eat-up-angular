@@ -47,6 +47,11 @@ import { GoogleLoginProvider, LoginOpt} from "angularx-social-login";
 import { MapComponent } from './food-estab/map/map.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { UserProfileComponent } from './navigation/user-profile/user-profile.component';
+import {ArraySortPipe} from 'src/app/pipes/alphabetical-sort.pipe';
+import { TermsOfServiceComponent } from './navigation/terms-of-service/terms-of-service.component';
+import { PrivacyPolicyComponent } from './navigation/privacy-policy/privacy-policy.component';
+import { AboutUsComponent } from './navigation/about-us/about-us.component';
+import { NgSelect2Module } from 'ng-select2';
 
 const googleLoginOptions: LoginOpt = {
   client_id: "305506356766-0q3pes92ks9buimmcchbtek02f3an0oc",
@@ -65,22 +70,6 @@ const googleLoginOptions: LoginOpt = {
 export function provideConfig() {
   return config;
 }
-import { 
-  MatToolbarModule, 
-  MatButtonModule, 
-  MatSidenavModule, 
-  MatIconModule, 
-  MatListModule, 
-  MatTabsModule,
-  MatCardModule, 
-  MatProgressSpinnerModule,
-  MatDialogModule,
-  MatInputModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatOptionModule,
-  
-} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -107,7 +96,12 @@ import {
     ReviewsDialog,
     GoogleAuthComponent,
     MapComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ArraySortPipe,
+    TermsOfServiceComponent,
+    PrivacyPolicyComponent,
+    AboutUsComponent,
+
   ],
   entryComponents: [
     AddRatingReviewDialog,
@@ -136,7 +130,8 @@ import {
     MatDialogModule,
     MatInputModule,
     SocialLoginModule,
-    LeafletModule.forRoot()
+    LeafletModule.forRoot(),
+    NgSelect2Module
   ],
   providers: [
     {

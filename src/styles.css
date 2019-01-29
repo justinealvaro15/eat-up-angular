@@ -8,3 +8,73 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex-direction: column;
     align-items: center;
 }
+
+
+@font-face {
+  font-family: 'latobold';
+  src: url('./assets/fonts/lato-bold-webfont.woff2') format('woff2'),
+       url('./assets/fonts/lato-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'latoregular';
+  src: url('./assets/fonts/lato-regular-webfont.woff2') format('woff2'),
+       url('./assets/fonts/lato-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'latolight';
+  src: url('./assets/fonts/lato-light-webfont.woff2') format('woff2'),
+       url('./assets/fonts/lato-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'ralewayregular';
+  src: url('./assets/fonts/raleway-regular-webfont.woff2') format('woff2'),
+       url('./assets/fonts/raleway-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'ralewaylight';
+  src: url('./assets/fonts/raleway-light-webfont.woff2') format('woff2'),
+       url('./assets/fonts/raleway-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'ralewayextralight';
+  src: url('./assets/fonts/raleway-extralight-webfont.woff2') format('woff2'),
+       url('./assets/fonts/raleway-extralight-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
