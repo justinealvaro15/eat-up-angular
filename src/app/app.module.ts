@@ -51,6 +51,7 @@ import {ArraySortPipe} from 'src/app/pipes/alphabetical-sort.pipe';
 import { TermsOfServiceComponent } from './navigation/terms-of-service/terms-of-service.component';
 import { PrivacyPolicyComponent } from './navigation/privacy-policy/privacy-policy.component';
 import { AboutUsComponent } from './navigation/about-us/about-us.component';
+import { NgSelect2Module } from 'ng-select2';
 
 const googleLoginOptions: LoginOpt = {
   client_id: "305506356766-0q3pes92ks9buimmcchbtek02f3an0oc",
@@ -99,7 +100,8 @@ export function provideConfig() {
     ArraySortPipe,
     TermsOfServiceComponent,
     PrivacyPolicyComponent,
-    AboutUsComponent
+    AboutUsComponent,
+
   ],
   entryComponents: [
     AddRatingReviewDialog,
@@ -128,7 +130,8 @@ export function provideConfig() {
     MatDialogModule,
     MatInputModule,
     SocialLoginModule,
-    LeafletModule.forRoot()
+    LeafletModule.forRoot(),
+    NgSelect2Module
   ],
   providers: [
     {
