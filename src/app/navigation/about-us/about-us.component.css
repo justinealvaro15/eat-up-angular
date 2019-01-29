@@ -1,7 +1,88 @@
-
-a{
-  margin: 0 10px;
-  color: white;
-  text-decoration: none;
+.bounds {
+  background-color: #0E9300;
+  height :800px;
 }
 
+
+
+@media only screen and (max-width: 425px){
+  .bounds{
+    background-color: white;
+  }
+  .arrow-pagename {
+    padding-top:20px;
+    text-align:center;
+    position: relative;
+    background:#B71C1C;
+    width: 100%;
+    color:  white;
+    padding: 0px 10px 10px 10px;
+    font-family: latoregular;
+  }
+  #back-arrow{
+    color: #F8E333;
+    font-size: 30px;
+  }
+  #pagename{
+    font-family: latolight;
+    font-size: 15px;
+    padding: 0px 0px 0px 10px;
+  }
+
+
+  #title{
+    top: 4%;
+    background:transparent;
+    width: 100%;
+    position: relative;
+  }
+
+  #main-title{
+    padding: 20px 30px 0px 30px;
+    color: #FF3C3C;
+    font-family: latobold;
+    font-size: 40px;
+  }  
+
+  #subtitle{
+    position: relative;
+    padding: 0px 55px 0px 30px;
+    color:#4136FF;
+    font-family: latoregular;
+    font-size: 23px;
+    align-self: flex-end;
+  }
+
+  h2{
+    position: relative;
+    font-family: latoregular;
+    font-size: 35px;
+    color: #F8E333;
+    padding: 0px 0px 0px 25px;
+  }
+
+  .content{
+    position: relative;
+    top: 10px;
+  }
+  p{
+    margin: 0px 30px 20px 30px;
+    color: rgb(82, 83, 82);
+    font-family: ralewaylight;
+    text-align: justify;
+  }
+
+  #up-logo-words{
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    top: 170px;
+    align-self: center;
+    padding: 10px 0px 10px 0px;
+  }
+
+  #detail-bottom{
+    position: relative;
+    top: 0px;
+  }
+}

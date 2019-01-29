@@ -3,8 +3,6 @@
   height :800px;
 }
 
-
-
 @media only screen and (max-width: 425px){
   .bounds{
     background-color: white;
@@ -37,26 +35,34 @@
   }
 
   h2{
-    position: relative;
+    position: absolute;
     font-family: latoregular;
     font-size: 35px;
+    right: 110px;
     color: #F8E333;
-    padding: 0px 0px 0px 25px;
+    text-align: left !important;
+    padding: 0px 0px 0px 0px;
   }
 
   #detail1{
     padding: 0px 10px 10px 30px;
-    top: 0px;
+    top: 10px;
     right: 10px;
-    height: 150px;
-    width: 200px; 
-    position: relative;
+    height: 140px;
+    width: 130px; 
+    position: absolute;
   }
 
   p{
-    margin: 20px 30px 20px 30px;
+    margin: 5px 30px 20px 30px;
     color: rgb(82, 83, 82);
     font-family: ralewaylight;
     text-align: justify;
+  }
+
+  h1{
+    margin: 20px 30px 0px 30px;
+    font-family: ralewaylight;
+    font-size: 20px;
   }
 }
