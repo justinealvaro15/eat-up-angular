@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ShopsService, FilterKeys } from 'src/app/shops/shops.service';
 import { Location } from 'src/app/location/location.model';
-import {ArraySortPipe} from 'src/app/pipes/alphabetical-sort.pipe';
 import { Select2OptionData } from 'ng-select2';
 import { Options } from 'select2';
 import {ViewEncapsulation} from '@angular/core';
