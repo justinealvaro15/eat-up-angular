@@ -1,3 +1,22 @@
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+  padding:5px;
+  background-color: #FBFBFB;
+  line-height: inherit;
+  width:295px;
+  height:36px;
+  border-width: 2px;
+  border-style:inset;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+  visibility: hidden;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder{
+  font-style:italic;
+  color:#737373 !important;
+}
+
 .search-container {
   display: flex;
   justify-content: center;
