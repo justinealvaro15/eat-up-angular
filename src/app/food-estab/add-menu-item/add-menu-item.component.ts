@@ -157,6 +157,10 @@ export class AddMenuItemComponent {
       }
     });
   }
+
+  alertUser() {
+    window.alert("Please sign-in with your UP Mail to use this feature.");
+  }
 }
 
 @Component({
