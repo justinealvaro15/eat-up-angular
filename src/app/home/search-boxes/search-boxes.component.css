@@ -6,6 +6,11 @@
   height:36px;
   border-width: 2px;
   border-style:inset;
+  text-align:center;
+}
+
+li {
+  text-align:left;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow{
@@ -15,6 +20,7 @@
 .select2-container--default .select2-selection--single .select2-selection__placeholder{
   font-style:italic;
   color:#737373 !important;
+
 }
 
 .search-container {
@@ -79,4 +85,3 @@ p {
 }
 form { display: inline-block; }
 
-body { text-align: center; }
