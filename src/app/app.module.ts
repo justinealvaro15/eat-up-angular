@@ -52,7 +52,7 @@ import { MapComponent } from './food-estab/map/map.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { UserProfileComponent } from './navigation/user-profile/user-profile.component';
 import { ArraySortPipe } from 'src/app/pipes/alphabetical-sort.pipe';
-import { TermsOfServiceComponent } from './navigation/terms-of-service/terms-of-service.component';
+import { TermsOfServicesComponent } from './navigation/terms-of-services/terms-of-services.component';
 import { PrivacyPolicyComponent } from './navigation/privacy-policy/privacy-policy.component';
 import { AboutUsComponent } from './navigation/about-us/about-us.component';
 import { NgSelect2Module } from 'ng-select2';
@@ -103,7 +103,7 @@ export function provideConfig() {
     MapComponent,
     UserProfileComponent,
     ArraySortPipe,
-    TermsOfServiceComponent,
+    TermsOfServicesComponent,
     PrivacyPolicyComponent,
     AboutUsComponent,
     TermsOfServicesComponent,
