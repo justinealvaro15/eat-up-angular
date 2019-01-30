@@ -21,7 +21,7 @@
 
   <mat-form-field appearance="outline" class="container" hintLabel="Value in Php">
     <mat-label>Price</mat-label>
-    <input matInput #input2 maxlength="6" type="number" formControlName="price"> 
+    <input matInput #input2 maxlength="6" type="tel" formControlName="price"> 
     <mat-hint align="end">{{input2.value?.length || 0}}/6</mat-hint>
   </mat-form-field>
   
