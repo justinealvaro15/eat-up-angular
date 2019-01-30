@@ -10,7 +10,10 @@ import { icon, marker, polyline, latLng, tileLayer } from 'leaflet';
 })
 
 export class MapComponent implements OnInit {
-
+  
+  //marker for food-estab
+  food_estab: any;
+  
   @Input() shop: Shop;
 
   constructor() { 
@@ -18,21 +21,18 @@ export class MapComponent implements OnInit {
   
   ngOnInit() {
   	console.log(this.shop.coordinates.long);
-  	console.log(this.shop.coordinates.lat);
+    console.log(this.shop.coordinates.lat);
+    this.food_estab = marker([this.shop.coordinates.lat, this.shop.coordinates.long], {
+      icon: icon({
+        iconSize: [ 25, 41 ],
+        iconAnchor: [ 13, 41 ],
+        iconUrl: 'leaflet/marker-icon.png',
+        shadowUrl: 'leaflet/marker-shadow.png'
+      })
+    }); 
   }
 
 
-   //marker for food-estab
-/*  
-  food_estab = marker([this.shop.coordinates.lat, this.shop.coordinates.long], {
-  	icon: icon({
-      iconSize: [ 25, 41 ],
-      iconAnchor: [ 13, 41 ],
-      iconUrl: 'leaflet/marker-icon.png',
-      shadowUrl: 'leaflet/marker-shadow.png'
-    })
-  }); 
-*/
   options = {
     layers: [
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
