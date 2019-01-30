@@ -7,8 +7,10 @@
         fxHide.md fxHide.lg fxHide.xl>
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
-    <span fxHide.md   fxHide.lg fxHide.xl>eatUP</span>
-
+    <a href="/">
+      <span fxHide.md   fxHide.lg fxHide.xl>eatUP</span>
+    </a>
+  
     <div id="container" fxFlex fxLayout="row" fxLayoutAlign="space-around center" fxHide.xs  fxHide.sm  >
       <app-google-auth [header] = "true" [sidenav] = "false"></app-google-auth>
       <a href="#"class="child">Home</a>
