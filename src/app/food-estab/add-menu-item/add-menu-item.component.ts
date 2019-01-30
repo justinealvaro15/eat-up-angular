@@ -44,7 +44,7 @@ export const FoodBeveragesMapping: {
   },
   brandedFood: {
     group: 'Food',
-    type: 'Meals'
+    type: 'Branded'
   },
   streetFoods: {
     group: 'Food',
