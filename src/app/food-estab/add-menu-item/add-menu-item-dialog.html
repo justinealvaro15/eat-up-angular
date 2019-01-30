@@ -1,10 +1,8 @@
-
-
-<div mat-dialog-content>
+<div mat-dialog-content [formGroup]="data.addFoodFormGroup">
   <h1 mat-dialog-title>Add Menu Item</h1>
 
   <mat-form-field appearance="outline" class="container">
-    <mat-select placeholder="Category" [formControl]="data.foodGroupControl">
+    <mat-select placeholder="Category" formControlName="foodCategoryAndType">
       <mat-option value="1">-- None --</mat-option>
       <mat-optgroup *ngFor="let group of data.foodGroups" [label]="group.name"
                     [disabled]="group.disabled">
@@ -17,13 +15,19 @@
 
   <mat-form-field appearance="outline" class="container">
     <mat-label>Item Name</mat-label>
-    <input matInput #input1 maxlength="50"> 
+    <input matInput #input1 maxlength="50" formControlName="name"> 
     <mat-hint align="end">{{input1.value?.length || 0}}/50</mat-hint>
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="container" hintLabel="Value in Php">
     <mat-label>Price</mat-label>
-    <input matInput #input2 maxlength="6" type="number"> 
+    <input matInput #input2 maxlength="6" type="number" formControlName="price"> 
+    <mat-hint align="end">{{input2.value?.length || 0}}/6</mat-hint>
+  </mat-form-field>
+  
+  <mat-form-field appearance="outline" class="container" hintLabel="Amount" *ngIf="isBranded()">
+    <mat-label>Amount</mat-label>
+    <input matInput #input2 maxlength="6" type="text" formControlName="amount"> 
     <mat-hint align="end">{{input2.value?.length || 0}}/6</mat-hint>
   </mat-form-field>
 </div>
@@ -54,8 +58,8 @@
 </div> -->
 
 <div mat-dialog-actions >
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="getAddedMenu()" cdkFocusInitial>Add</button>
 </div>
 
 

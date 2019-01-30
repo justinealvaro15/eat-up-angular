@@ -50,15 +50,12 @@ export interface Shop {
 
 export interface Consumables {
     c_name: string;
-    type: string;
     price: number;
     c_avg_rating?: number;
+    username?: string;
 }
 
-export interface BrandedConsumables {
-    bc_name: string;
+export interface BrandedConsumables extends Consumables {
+    // bc_name: string;
     amount: string;
-    type: string;
-    price: number;
-    c_avg_rating: number;
 }

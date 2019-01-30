@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ApplicationRef } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
@@ -30,16 +30,20 @@ import { HomeSearchComponent } from './home/search-boxes/search-boxes.component'
 
 import { AddMenuItemComponent, AddMenuItemDialog } from './food-estab/add-menu-item/add-menu-item.component';
 
-import { MatToolbarModule, 
-        MatButtonModule, 
-        MatSidenavModule, 
-        MatIconModule, 
-        MatListModule, 
-        MatTabsModule,
-        MatCardModule, 
-        MatProgressSpinnerModule,
-        MatDialogModule,
-        MatInputModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDialogModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatProgressSpinnerModule,
+  MatSidenavModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatSelectModule,
+  MatOptionModule,
+} from '@angular/material';
 import { GoogleAuthComponent } from './navigation/google-auth/google-auth.component';
 
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
@@ -47,12 +51,12 @@ import { GoogleLoginProvider, LoginOpt} from "angularx-social-login";
 import { MapComponent } from './food-estab/map/map.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { UserProfileComponent } from './navigation/user-profile/user-profile.component';
-import {ArraySortPipe} from 'src/app/pipes/alphabetical-sort.pipe';
-
+import { ArraySortPipe } from 'src/app/pipes/alphabetical-sort.pipe';
+import { TermsOfServiceComponent } from './navigation/terms-of-service/terms-of-service.component';
 import { PrivacyPolicyComponent } from './navigation/privacy-policy/privacy-policy.component';
 import { AboutUsComponent } from './navigation/about-us/about-us.component';
 import { NgSelect2Module } from 'ng-select2';
-import { TermsOfServicesComponent } from './navigation/terms-of-services/terms-of-services.component';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 const googleLoginOptions: LoginOpt = {
   client_id: "305506356766-0q3pes92ks9buimmcchbtek02f3an0oc",
@@ -132,8 +136,10 @@ export function provideConfig() {
     MatDialogModule,
     MatInputModule,
     SocialLoginModule,
-    LeafletModule.forRoot(),
-    NgSelect2Module
+    NgSelect2Module,
+    MatSelectModule,
+    MatOptionModule,
+    LeafletModule.forRoot()
   ],
   providers: [
     {

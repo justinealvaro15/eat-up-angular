@@ -1,5 +1,5 @@
-import {Component, Inject,ViewEncapsulation} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { Component, Inject,ViewEncapsulation } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { SocialUser } from "angularx-social-login";
 import { AuthService } from "angularx-social-login";
 

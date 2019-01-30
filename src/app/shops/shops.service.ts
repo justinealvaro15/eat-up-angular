@@ -1,14 +1,23 @@
-import { Injectable, EventEmitter } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import {  BehaviorSubject } from "rxjs";
+import { Injectable, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {  BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Shop } from "./shops.model";
+import { Shop } from './shops.model';
+import { AddedMenu } from '../food-estab/add-menu-item/add-menu-item.component';
+import { AuthService, SocialUser } from 'angularx-social-login';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class ShopsService {
-    constructor(private http: HttpClient) {
+    user: SocialUser;
+    constructor(
+        private http: HttpClient,
+        private authService: AuthService
+    ) {
         this.updateShopList();
+        this.authService.authState.subscribe((user) => {
+            this.user = user;
+        })
     }
     private shops: Shop[] = [];
     private _shops: BehaviorSubject<Shop[]> = new BehaviorSubject<Shop[]>([]);
@@ -20,7 +29,7 @@ export class ShopsService {
     }
 
     getShopsDisplay(){
-        return this.http.get<Shop[]>("http://localhost:3000/api/shops");
+        return this.http.get<Shop[]>('http://localhost:3000/api/shops');
     }
 
     updateShopList() {
@@ -38,11 +47,11 @@ export class ShopsService {
     }
 
     getShopByRating(){
-        return this.http.get<Shop[]>("http://localhost:3000/api/shops/topten");
+        return this.http.get<Shop[]>('http://localhost:3000/api/shops/topten');
     }
 
     getShopByNewest(){
-        return this.http.get<Shop[]>("http://localhost:3000/api/shops/newest");
+        return this.http.get<Shop[]>('http://localhost:3000/api/shops/newest');
     }
 
     getShops(): BehaviorSubject<Shop[]> {
@@ -64,6 +73,14 @@ export class ShopsService {
         return this._shops.getValue().filter((shop) => {
             return this.isLocationMatch(shop) && this.isFCSMatch(shop);
         });
+    }
+
+    addFoodOrBeverageByShopId(shopId: string, addedMenu: AddedMenu) {
+        const payload =  {
+            user: this.user,
+            addedMenu
+        }
+        this.http.post(`http://localhost:3000/api/shops/${shopId}/${addedMenu.group.toLowerCase()}`, payload).subscribe();
     }
 
     private isLocationMatch(shop: Shop): boolean {
