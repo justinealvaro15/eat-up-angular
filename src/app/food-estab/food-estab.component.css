@@ -1,3 +1,19 @@
+.mat-card-content{
+    text-align: left;
+}
+
+mat-card.mat-card{
+    text-align:center;
+}
+
+mat-card-title.mat-card-title{
+    text-align: left;
+}
+
+.mat-expansion-panel-body{
+    text-align: left;
+}
+
 .mat-card-image{
     width: 100%;
     max-height: 400px;
