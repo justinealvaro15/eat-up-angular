@@ -20,7 +20,7 @@ li {
 .select2-container--default .select2-selection--single .select2-selection__placeholder{
   font-style:italic;
   color:#737373 !important;
-
+  font-size:15px;
 }
 
 .search-container {
