@@ -16,7 +16,7 @@ import { SocialUser } from "angularx-social-login";
 export class GoogleAuthComponent implements OnInit {
 
   private user: SocialUser;
-  private loggedIn: boolean;
+  public loggedIn: boolean;
 
   //to know whether it was accessed from sidenav or header
   @Input () sidenav: boolean;
