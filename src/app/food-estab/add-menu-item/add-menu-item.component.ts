@@ -112,7 +112,7 @@ export class AddMenuItemComponent {
   ];
 
   public user: SocialUser;
-  private loggedIn: boolean;
+  public loggedIn: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
