@@ -366,7 +366,7 @@ export class HomeSearchComponent implements OnInit {
 
   setFiltersAndRedirect() {
     this.shopService.setFilter(FilterKeys.Location, this.filter.get('location').value); //passes the ID of the location to shopService
-    console.log(this.filter.get('location').value);
+
     this.shopService.setFilter(FilterKeys.FCS, this.filter.get('fcs').value);
 
     if (this.route.snapshot.url.toString() !== 'search') {
