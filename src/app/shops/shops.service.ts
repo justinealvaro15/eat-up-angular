@@ -28,7 +28,7 @@ export class ShopsService {
         fcs: ''
     }
 
-    getShopsDisplay(){
+    getShopsDisplay() {
         return this.http.get<Shop[]>('http://localhost:3000/api/shops');
     }
 
@@ -36,6 +36,14 @@ export class ShopsService {
         this.getShopsDisplay().toPromise().then((shops) => {
             this._shops.next(shops);
         })
+    }
+
+    getCoordinatesByLocationId(locationId: string) {
+        return this.http.get<Shop|null>(`http://localhost:3000/api/locations/${locationId}`).pipe(
+            map((location: any) => {
+                return location.length > 0 ? location[0].coordinates : null;
+            })
+        );
     }
 
     getShopById(shopId: string) {
@@ -47,7 +55,7 @@ export class ShopsService {
     }
 
     getShopByRating(){
-        return this.http.get<Shop[]>('http://localhost:3000/api/shops/topten');
+        return this.http.get<Shop[]>('http://localhost:3000/api/shops/topten'); 
     }
 
     getShopByNewest(){

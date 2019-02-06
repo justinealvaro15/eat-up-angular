@@ -374,5 +374,5 @@ export class HomeSearchComponent implements OnInit {
     }
   }
 
-
+ 
 }
