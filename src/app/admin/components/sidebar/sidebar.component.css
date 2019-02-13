@@ -1,0 +1,24 @@
+.logo{
+  height: 100px !important;
+  
+}
+
+.logo img{
+  position: absolute !important;
+  top: 20% !important;
+  width: 60px;
+  height: 60px;
+  border-radius: 50% !important;
+}
+
+.admin-name{
+  position: absolute !important;
+  top: 35% !important;
+  left: 35% !important;
+  text-transform: capitalize !important;
+  color: black !important;
+}
+
+button{
+  border: none !important;
+}

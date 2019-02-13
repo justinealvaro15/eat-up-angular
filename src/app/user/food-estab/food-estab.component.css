@@ -1,0 +1,72 @@
+.mat-card-content{
+    text-align: left;
+}
+
+mat-card.mat-card{
+    text-align:center;
+}
+
+mat-card-title.mat-card-title{
+    text-align: left;
+}
+
+.mat-expansion-panel-body{
+    text-align: left;
+}
+
+.mat-card-image{
+    width: 100%;
+    max-height: 400px;
+}
+
+mat-card {
+    margin: 10px 20px 10px 20px;
+    width: 80%;
+} 
+
+.spinner-container {
+    height: 100%;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+
+mat-spinner {
+    top: -45px;
+}
+
+.food-establishment-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mat-tab-header {
+    z-index: 9999;
+    position: sticky !important;
+    top: 52px;
+    background-color: white !important;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label {
+    min-width: 50% !important;
+    padding: 5px;
+    background-color: white;
+    color: red;
+    font-weight: 700;
+}
+
+.mat-tab-label-active{
+    min-width: 50% !important;
+    padding: 5px;
+    background-color: #e9e9e9;
+    color:black;
+    font-weight: 700;
+}
+
+.app-reviews-menu {
+    width: 100%;
+    height: 100%;
+}
