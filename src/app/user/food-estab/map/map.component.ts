@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Shop } from './../../../user/shops/shops.model';
+import { Shop } from 'src/app/shops/shops.model';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { icon, marker, polyline, latLng, tileLayer } from 'leaflet';
+
 
 @Component({
   selector: 'app-map',
@@ -13,6 +14,7 @@ export class MapComponent implements OnInit {
   
   //marker for food-estab
   food_estab: any;
+  options: any;
   
   @Input() shop: Shop;
 
@@ -20,8 +22,7 @@ export class MapComponent implements OnInit {
   }
   
   ngOnInit() {
-  	console.log(this.shop.coordinates.long);
-    console.log(this.shop.coordinates.lat);
+
     this.food_estab = marker([this.shop.coordinates.lat, this.shop.coordinates.long], {
       icon: icon({
         iconSize: [ 25, 41 ],
@@ -30,22 +31,24 @@ export class MapComponent implements OnInit {
         shadowUrl: 'leaflet/marker-shadow.png'
       })
     }); 
-  }
 
-
-  options = {
+  	console.log(this.shop.coordinates.long);
+    console.log(this.shop.coordinates.lat);
+    this.options = {
     layers: [
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
-      })
-     
+      }),
+      this.food_estab
     ],
     zoom: 15,
     center: latLng([ 14.654409, 121.068691])
+    /**maxBounds: latLng( latLng([14.661029, 121.060825]),latLng([14.647888, 121.074258]) )*/
   };
 
-  
 
+    
+  }
 
   
 
