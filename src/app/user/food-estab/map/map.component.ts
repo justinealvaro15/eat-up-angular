@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Shop } from 'src/app/shops/shops.model';
+import { Shop } from 'app/user/shops/shops.model';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { icon, marker, polyline, latLng, tileLayer } from 'leaflet';
 
