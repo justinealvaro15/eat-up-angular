@@ -9,6 +9,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { PrivacyPolicyComponent } from './navigation/privacy-policy/privacy-policy.component';
 import { TermsOfServicesComponent } from './navigation/terms-of-services/terms-of-services.component';
 import { AboutUsComponent } from './navigation/about-us/about-us.component';
+import { UserProfileComponent } from './navigation/user-profile/user-profile.component';
 
 
 
@@ -21,7 +22,8 @@ const routes: Routes = [
     { path: 'shops/:shopId', component: FoodEstabComponent },
     { path: 'privacy-policy', component: PrivacyPolicyComponent },
     { path: 'terms-of-services', component: TermsOfServicesComponent},
-    { path: 'about-us', component: AboutUsComponent}
+    { path: 'about-us', component: AboutUsComponent},
+    { path: 'user-profile', component: UserProfileComponent},
     ]
 }
 ];

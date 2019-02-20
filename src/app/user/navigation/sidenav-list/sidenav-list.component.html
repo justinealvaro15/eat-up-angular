@@ -1,6 +1,14 @@
 <mat-nav-list>
-  <app-google-auth [header] = "false" [sidenav] = "true"></app-google-auth>
+  <div class="user-logged-in">
+    <a mat-list-item [routerLink]="['/user/user-profile']" (click)="onClose()">
+    <img class = "user-pic" src="https://cdn-images-1.medium.com/max/1200/1*T5ZZInLN4A0XW26JWkNWTA.jpeg">
+    <h1 class = "user-name">Lois Anne Leal</h1>
+    </a>
+  </div>
   <a mat-list-item [routerLink]="['/user/about-us']" (click)="onClose()">About Us</a>
   <a mat-list-item [routerLink]="['/user/privacy-policy']" (click)="onClose()">Privacy Policy</a>
   <a mat-list-item [routerLink]="['/user/terms-of-services']" (click)="onClose()">Terms of Services</a>
+  <a mat-list-item [routerLink]="['/user/user-profile']" (click)="onClose()">Userprofile</a>
+  <hr>
+  <app-google-auth [header] = "false" [sidenav] = "true"></app-google-auth>
 </mat-nav-list>
