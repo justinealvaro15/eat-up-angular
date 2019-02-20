@@ -81,7 +81,6 @@ export class AddRatingReviewDialog {
 
   getAddedReview(): AddedReview {
     const addReviewFormGroup = this.data.addReviewFormGroup;
-
     return {
       rating: addReviewFormGroup.get('rating').value,
       review: addReviewFormGroup.get('review').value
