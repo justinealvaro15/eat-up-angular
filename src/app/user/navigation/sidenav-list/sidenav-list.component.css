@@ -27,10 +27,32 @@ mat-sidenav-container, mat-sidenav-content, mat-sidenav{
   }
   
   a{
-    margin: 0 10px;
+    position: relative;
     color: white;
     text-decoration: none;
   }
   
-  
+  .user-logged-in{
+    position: relative;
+    top: 0;
+    height: 100px;
+    background-color: #B71C1C;
+  }
+  .user-pic{
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50% !important;
+  }
+
+  .user-name{
+    position: absolute;
+    font-family: LatoRegular;
+    font-size: 17px;
+    color: white;
+    top: 60%;
+    left: 35%;
+  }
   
