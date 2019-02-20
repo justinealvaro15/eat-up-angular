@@ -1,4 +1,14 @@
 button {
+  position: absolute !important;
   border-color:transparent !important;
   box-shadow: none !important;
+  right: 5% !important;
+  top: 40px !important;
+}
+
+.navbar-brand{
+  position: absolute !important;
+  top: 25px !important;
+  left: 5% !important;
+  font-size: 20px !important;
 }
