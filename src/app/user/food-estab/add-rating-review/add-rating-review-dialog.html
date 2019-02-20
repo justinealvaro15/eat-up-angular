@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Review shopName{{data.shopName}}</h1>
 <div mat-dialog-content [formGroup]="data.addReviewFormGroup">
-  <!-- <app-rating [(ngModel)]="ratenum"></app-rating>
-  <hr> -->
+  <app-rating formControlName="rating"></app-rating>
+  <hr>
   <!-- <app-review></app-review> -->
   <mat-form-field [ngStyle]="{'font-size.px': size, 'width.px': width}" appearance="outline"  class="example-form">
     <mat-label>Add review</mat-label>

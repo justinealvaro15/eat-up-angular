@@ -51,6 +51,7 @@ export class AddRatingReviewComponent {
   }
 
   openDialog(): void {
+    this.addReviewFormGroup.get('review').setValue('');
     const dialogRef = this.dialog.open(AddRatingReviewDialog, {
       width: '500px',
       data: {
@@ -59,7 +60,9 @@ export class AddRatingReviewComponent {
     });
 
     dialogRef.afterClosed().subscribe((result: AddedReview) => {
+      if (result) {
         this.reviewService.addReview(this.shop.fe_id, result);
+      }
     });
   }
 }
@@ -70,6 +73,7 @@ export class AddRatingReviewComponent {
   templateUrl: 'add-rating-review-dialog.html',
 })
 export class AddRatingReviewDialog {
+  ratenum = 5;
 
   constructor(
     public dialogRef: MatDialogRef<AddRatingReviewDialog>,
@@ -81,6 +85,7 @@ export class AddRatingReviewDialog {
 
   getAddedReview(): AddedReview {
     const addReviewFormGroup = this.data.addReviewFormGroup;
+    this
     return {
       rating: addReviewFormGroup.get('rating').value,
       review: addReviewFormGroup.get('review').value

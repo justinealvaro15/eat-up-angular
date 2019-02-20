@@ -40,15 +40,14 @@ export class RatingComponent implements ControlValueAccessor{
 
   get value(): number {
     if(!this.disabled){
-    return this.stars.reduce((total, starred) => {
-      return total + (starred ? 1 : 0);
-    }, 0);
+      return this.stars.reduce((total, starred) => {
+        return total + (starred ? 1 : 0);
+      }, 0);
     }
   }
   rate(rating: number) {
     if (!this.disabled) {
-      this.writeValue(rating);
-      
+      this.writeValue(rating);      
     }
   }
 
