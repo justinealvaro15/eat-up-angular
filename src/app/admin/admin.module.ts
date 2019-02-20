@@ -17,13 +17,16 @@ import { NotificationsComponent } from './misc-pages/notifications/notifications
 
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
+
 import {
   MatButtonModule,
   MatInputModule,
   MatRippleModule,
   MatFormFieldModule,
   MatTooltipModule,
-  MatSelectModule
+  MatSelectModule,
+  MatGridListModule,
+  MatIconModule
 } from '@angular/material';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
@@ -39,7 +42,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MatTooltipModule,
     AdminRouting,
     RouterModule,
-
+    MatGridListModule,
+    MatIconModule
   ],
   declarations: [
     AdminComponent,

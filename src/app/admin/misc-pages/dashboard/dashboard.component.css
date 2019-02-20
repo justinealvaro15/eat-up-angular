@@ -1,0 +1,35 @@
+.options{
+  margin-bottom: 20px;
+}
+
+mat-icon{
+  position: absolute;
+  font-size: 60px;
+  top: 30%;
+  left: 33%;
+  color: white; 
+}
+
+.admins{
+  background-color: #B71C1C ; 
+}
+
+.users{
+  background-color: #0F1C9D; 
+}
+
+.food-estab{
+  background-color: #0E9300; 
+}
+
+.menu{
+  background-color: #F7E017; 
+}
+
+.tile-text{
+  position: absolute;
+  top: 65%;
+  font-size: 15px;
+  color: white;
+  font-family: LatoRegular;
+}
