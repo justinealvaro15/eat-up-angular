@@ -1,11 +1,16 @@
 <h1 mat-dialog-title>Review shopName{{data.shopName}}</h1>
-<div mat-dialog-content>
-  <app-rating [(ngModel)]="ratenum"></app-rating>
-  <hr>
-  <app-review></app-review>
+<div mat-dialog-content [formGroup]="data.addReviewFormGroup">
+  <!-- <app-rating [(ngModel)]="ratenum"></app-rating>
+  <hr> -->
+  <!-- <app-review></app-review> -->
+  <mat-form-field [ngStyle]="{'font-size.px': size, 'width.px': width}" appearance="outline"  class="example-form">
+    <mat-label>Add review</mat-label>
+    <input  matInput formControlName="review" #input2 maxlength="300">
+    <mat-hint align="end">{{input2.value?.length || 0}}/300</mat-hint>
+  </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.review" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="getAddedReview()" cdkFocusInitial>Add</button>
 </div>
 
