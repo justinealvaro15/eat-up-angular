@@ -107,7 +107,7 @@ export function provideConfig() {
     PrivacyPolicyComponent,
     AboutUsComponent,
     TermsOfServicesComponent,
-
+    UserProfileComponent
   ],
   entryComponents: [
     AddRatingReviewDialog,
