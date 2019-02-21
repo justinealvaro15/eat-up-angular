@@ -22,10 +22,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
       console.log(filter);
       if (filter.location) {
         this.shopService.getCoordinatesByLocationId(filter.location).toPromise().then(location => {
-          this.shopService.setCoordinates(filter.location.coordinates.long, filter.location.coordinates.lat);
-          // NOTE: how to get coordinates from shopService:
-          // this.shopService.coordinate
-          console.log(location);
+          // console.log(location); sa sear
         }); 
       }
     })
