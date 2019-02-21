@@ -12,6 +12,10 @@ import { LocationService } from '../location/location.service';
 @Injectable({ providedIn: 'root' })
 export class ShopsService {
     user: SocialUser;
+    coordinate: {
+        long: string,
+        lat: string
+    }
     constructor(
         private locationService: LocationService,
         private http: HttpClient,
@@ -30,6 +34,11 @@ export class ShopsService {
     filter = {
         location: '',
         fcs: ''
+    }
+
+    setCoordinates(long: string, lat: string) {
+        this.coordinate.long = long;
+        this.coordinate.lat = lat;
     }
 
     getShopsDisplay() {
