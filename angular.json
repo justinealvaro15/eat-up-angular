@@ -17,8 +17,15 @@
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": [
+              "assets",
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/leaflet/dist/images",
+                "output": "assets/"
+              }
+
             ],
             "styles": [
               "./node_modules/leaflet/dist/leaflet.css",
@@ -97,6 +104,7 @@
               "node_modules/select2/dist/js/select2.min.js"
             ],
             "styles": [
+              "./node_modules/leaflet/dist/leaflet.css",
               "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
               "src/assets/scss/material-dashboard.scss",
               "src/assets/css/demo.css",
@@ -104,6 +112,12 @@
               "node_modules/select2/dist/css/select2.min.css"
             ],
             "assets": [
+              "assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/leaflet/dist/images",
+                "output": "leaflet/"
+              },
               "src/assets",
               "src/favicon.ico"
             ]

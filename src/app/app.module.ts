@@ -6,7 +6,7 @@ import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
 import { routing } from './app-routing.module';
 import { NgSelect2Module } from 'ng-select2';
-
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +16,8 @@ import { NgSelect2Module } from 'ng-select2';
     routing,
     UserModule,
     AdminModule,
-    NgSelect2Module
+    NgSelect2Module,
+    LeafletModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
