@@ -4,3 +4,7 @@
   height: 130px;
   overflow: hidden;
 }
+
+.left-align {
+  text-align: left;
+}
