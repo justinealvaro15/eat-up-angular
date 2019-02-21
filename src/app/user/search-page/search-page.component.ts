@@ -17,8 +17,14 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.getShopSubscription = this.shopService.filterChanged.subscribe(() => {
+    this.getShopSubscription = this.shopService.filterChanged.subscribe((filter) => {
       this.getFilteredShops();
+      console.log(filter);
+      if (filter.location) {
+        this.shopService.getCoordinatesByLocationId(filter.location).toPromise().then(location => {
+          console.log(location);
+        }); 
+      }
     })
     this.getFilteredShops();
   }

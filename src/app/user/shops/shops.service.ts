@@ -43,7 +43,6 @@ export class ShopsService {
     }
 
     getCoordinatesByLocationId(locationId: string) { 
-        
         return this.http.get<Shop|null>(`http://localhost:3000/api/location/${locationId}`).pipe( 
             map((location: any) => {
                 return location.length > 0 ? location[0].coordinates : null;
@@ -94,6 +93,7 @@ export class ShopsService {
     getFilteredShops(): Shop[] { //has to be modified
         //get FCS Matches first then order from nearest to farthest
         return this._shops.getValue().filter((shop) => {
+            // console.log(shop);
             return this.isLocationMatch(shop) && this.isFCSMatch(shop);
         });
     }
@@ -110,7 +110,7 @@ export class ShopsService {
         //how to get shops
         var distanceArr;
         // console.log("lc:");
-         console.log(locationCoors);
+        //  console.log(locationCoors);
         // console.log("sc:");
         // console.log(typeof shopsCoor);
      
