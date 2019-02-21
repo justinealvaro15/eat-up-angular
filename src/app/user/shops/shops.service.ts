@@ -54,7 +54,8 @@ export class ShopsService {
     getCoordinatesByLocationId(locationId: string) { 
         return this.http.get<Shop|null>(`http://localhost:3000/api/location/${locationId}`).pipe( 
             map((location: any) => {
-                console.log(location[0].coordinates);
+                // console.log(location[0].coordinates);
+                this.setCoordinates(location[0].coordinates.long, location[0].coordinates.lat);
                 return location.length > 0 ? location[0].coordinates : null;
             })
         );
