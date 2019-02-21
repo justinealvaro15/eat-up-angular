@@ -22,7 +22,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
       console.log(filter);
       if (filter.location) {
         this.shopService.getCoordinatesByLocationId(filter.location).toPromise().then(location => {
-          // console.log(location); sa sear
+          // console.log(location);
         }); 
       }
     })

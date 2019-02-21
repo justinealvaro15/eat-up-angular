@@ -25,6 +25,10 @@ export class ShopsService {
         this.authService.authState.subscribe((user) => {
             this.user = user;
         })
+        this.coordinate = {
+            long: null,
+            lat: null
+        }
     }
     private locationCoors:Location;
     private shops: Shop[] = [];
@@ -54,8 +58,10 @@ export class ShopsService {
     getCoordinatesByLocationId(locationId: string) { 
         return this.http.get<Shop|null>(`http://localhost:3000/api/location/${locationId}`).pipe( 
             map((location: any) => {
-                // console.log(location[0].coordinates);
-                this.setCoordinates(location[0].coordinates.long, location[0].coordinates.lat);
+                // console.log(location[0].coordinates.long);
+                if(location.length > 0){
+                    this.setCoordinates(location[0].coordinates.long, location[0].coordinates.lat);
+                }
                 return location.length > 0 ? location[0].coordinates : null;
             })
         );
