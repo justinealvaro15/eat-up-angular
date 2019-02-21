@@ -4,13 +4,16 @@ import {  BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Shop } from './shops.model';
+import { Location } from '../location/location.model';
 import { AddedMenu } from '../food-estab/add-menu-item/add-menu-item.component';
 import { AuthService, SocialUser } from 'angularx-social-login';
+import { LocationService } from '../location/location.service';
 
 @Injectable({ providedIn: 'root' })
 export class ShopsService {
     user: SocialUser;
     constructor(
+        private locationService: LocationService,
         private http: HttpClient,
         private authService: AuthService
     ) {
@@ -19,6 +22,7 @@ export class ShopsService {
             this.user = user;
         })
     }
+    private locationCoors:Location;
     private shops: Shop[] = [];
     private _shops: BehaviorSubject<Shop[]> = new BehaviorSubject<Shop[]>([]);
     filterChanged = new EventEmitter();
@@ -28,7 +32,7 @@ export class ShopsService {
         fcs: ''
     }
 
-    getShopsDisplay(){
+    getShopsDisplay() {
         return this.http.get<Shop[]>('http://localhost:3000/api/shops');
     }
 
@@ -36,6 +40,15 @@ export class ShopsService {
         this.getShopsDisplay().toPromise().then((shops) => {
             this._shops.next(shops);
         })
+    }
+
+    getCoordinatesByLocationId(locationId: string) { 
+        
+        return this.http.get<Shop|null>(`http://localhost:3000/api/location/${locationId}`).pipe( 
+            map((location: any) => {
+                return location.length > 0 ? location[0].coordinates : null;
+            })
+        );
     }
 
     getShopById(shopId: string) {
@@ -47,7 +60,7 @@ export class ShopsService {
     }
 
     getShopByRating(){
-        return this.http.get<Shop[]>('http://localhost:3000/api/shops/topten');
+        return this.http.get<Shop[]>('http://localhost:3000/api/shops/topten'); 
     }
 
     getShopByNewest(){
@@ -68,12 +81,6 @@ export class ShopsService {
             this.filter[filterKey] = '';
         })
     }
-    
-    getFilteredShops(): Shop[] {
-        return this._shops.getValue().filter((shop) => {
-            return this.isLocationMatch(shop) && this.isFCSMatch(shop);
-        });
-    }
 
     addFoodOrBeverageByShopId(shopId: string, addedMenu: AddedMenu) {
         const payload =  {
@@ -83,11 +90,40 @@ export class ShopsService {
         this.http.post(`http://localhost:3000/api/shops/${shopId}/${addedMenu.group.toLowerCase()}`, payload).subscribe();
     }
 
-    private isLocationMatch(shop: Shop): boolean {
-        if (!this.filter.location) {
-            return true;
-        }
 
+    getFilteredShops(): Shop[] { //has to be modified
+        //get FCS Matches first then order from nearest to farthest
+        return this._shops.getValue().filter((shop) => {
+            return this.isLocationMatch(shop) && this.isFCSMatch(shop);
+        });
+    }
+
+    private isLocationMatch(shop: Shop): boolean { 
+        /* Takes the chosen location's coordinates(LC) from getCoordinatesbyLocationId (how to access it to here)
+            Takes all shops coordinates (SC) from shop service getShopsCoordinates
+            Applies Euclidean Distance (ED) on all SC with LC
+            Stores the resulting ED in an array of [(shop id, ED),... ] in order of lowest to highest
+            returns list of shops in that order */
+          //  ]
+        var locationCoors = this.getCoordinatesByLocationId(this.filter.location); //need to get the return
+        var shopsCoor = shop.coordinates;//this.getShopsDisplay(); //to get an Array of Shops Coordinates (is it possible to limit the returned value to shopId and coordinates only?)
+        //how to get shops
+        var distanceArr;
+        // console.log("lc:");
+         console.log(locationCoors);
+        // console.log("sc:");
+        // console.log(typeof shopsCoor);
+     
+  
+        //Euclidean Distance
+        //loop over all shops
+            //var distance  = Math.hypot(locationCoor.lat - shop.lat , locationCoor.long - shop.long);
+            //var shopscoor = [shopId, distance]
+            //distanceArr.push(shopscoor)
+        //distanceArr.sort(function(a,b) {
+        //    return a[1] - b[1];
+        //})
+        //use distanceArr to sort how it should be ordered on result
         return shop.address.toLowerCase().includes(this.filter.location.toLowerCase());
     }
 
