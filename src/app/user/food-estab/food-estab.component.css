@@ -1,16 +1,4 @@
-.mat-card-content{
-    text-align: left;
-}
-
-mat-card.mat-card{
-    text-align:center;
-}
-
-mat-card-title.mat-card-title{
-    text-align: left;
-}
-
-.mat-expansion-panel-body{
+.card{
     text-align: left;
 }
 
