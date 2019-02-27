@@ -20,12 +20,16 @@
               <img class="small-profile-picture" src={{user.photoUrl}} alt="profile-picture">
             </div>
             <ng-template #loggedOut>
-                <img class="small-profile-picture" src="./../../assets/sidenav-stuff/Profile/sample-pic.jpg" alt="profile-picture">
+                <img class="small-profile-picture" src="./../../assets/sidenav-stuff/Profile/default.png" alt="profile-picture">
             </ng-template>
-         
       </div>
       <div class="name" fxFlex="10" >
-          {{user.name}}
+          <div *ngIf="loggedIn; else loggedOut">
+            {{user.name}}
+          </div>
+          <ng-template #loggedOut>
+            Username
+          </ng-template>
       </div>
       <div fxFlex="10" >
        <div class="num-rev">75</div>
