@@ -1,8 +1,15 @@
 <mat-nav-list>
   <div class="user-logged-in">
     <a mat-list-item [routerLink]="['/user/user-profile']" (click)="onClose()">
-    <img class = "user-pic" src="https://cdn-images-1.medium.com/max/1200/1*T5ZZInLN4A0XW26JWkNWTA.jpeg">
-    <h1 class = "user-name">Lois Anne Leal</h1>
+    <div *ngIf = "loggedIn; else loggedOut"> 
+        <img class = "user-pic" src={{user.photoUrl}}>
+        <h1 class = "user-name">{{user.name}}</h1>
+    </div>
+    <ng-template #loggedOut>
+        <img class = "user-pic" src="./../../assets/sidenav-stuff/Profile/default.png">
+    <h1 class = "user-name">Username</h1>
+    </ng-template>
+    
     </a>
   </div>
   <a mat-list-item [routerLink]="['/user/about-us']" (click)="onClose()">About Us</a>

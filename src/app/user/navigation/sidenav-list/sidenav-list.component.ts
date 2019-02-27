@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { AuthService, SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'app-sidenav-list',
@@ -7,9 +8,16 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class SidenavListComponent implements OnInit {
   @Output() closeSidenav = new EventEmitter<void>();
-  constructor() { }
+  public user: SocialUser;
+  public loggedIn: boolean;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
   }
 
   onClose() {
