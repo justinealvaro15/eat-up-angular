@@ -1,4 +1,10 @@
-<button mat-raised-button color="primary" (click)="openDialog()" class="cont">
+<button *ngIf = "loggedIn; else loggedOut" mat-raised-button color="primary" (click)="openDialog()" class="cont">
     <mat-icon id = "str">stars</mat-icon> <span>Add Review</span>
 </button>
+<ng-template #loggedOut>
+    <button mat-raised-button color="primary" (click)="alertUser()" class="cont">
+        <mat-icon id = "str">stars</mat-icon> <span>Add Review</span>
+    </button>
+</ng-template>
+
   
