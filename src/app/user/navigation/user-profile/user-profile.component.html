@@ -6,8 +6,9 @@
     
   <div fxLayout="column"
        fxFlexFill >
-    
+      
       <img src="./../../assets/sidenav-stuff/Profile/Juse-user-profile.jpg" alt="background" class="bg">
+      
       <div class ="arrow" fxFlex="5" fxFlexAlign="start" >
           <a href="#" >
             <mat-icon id ="back-arrow"> arrow_back</mat-icon>
@@ -15,10 +16,16 @@
           Profile
       </div>
       <div  fxFlex="30"  >
-          <img class="small-profile-picture" src="./../../assets/sidenav-stuff/Profile/sample-pic.jpg" alt="profile-picture">
+          <div *ngIf="loggedIn; else loggedOut">
+              <img class="small-profile-picture" src={{user.photoUrl}} alt="profile-picture">
+            </div>
+            <ng-template #loggedOut>
+                <img class="small-profile-picture" src="./../../assets/sidenav-stuff/Profile/sample-pic.jpg" alt="profile-picture">
+            </ng-template>
+         
       </div>
       <div class="name" fxFlex="10" >
-          Lois Anne Leal
+          {{user.name}}
       </div>
       <div fxFlex="10" >
        <div class="num-rev">75</div>
