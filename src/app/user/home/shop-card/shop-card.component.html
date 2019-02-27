@@ -1,9 +1,36 @@
+
+
+<div class="basic-container">
+    <mat-grid-list cols="1" rowHeight="fit" gutterSize="3px">
+    <mat-grid-tile>
 <mat-card class="card" (click)="goToShop(shop.fe_id)">
-  <img mat-card-image src="{{shop.image ? shop.image : 'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17665746.jpg'}}" alt="food-estab-image"> 
-  <mat-card-title>{{shop.fe_name}}</mat-card-title>
-  <mat-card-content>
-    <div>{{shop.fe_avg_rating || "No ratings available"}}</div>
-    <div>{{shop.address}}</div>
-    <div>{{isShopOpen(shop) ? "Open" : "Closed"}}</div>
-  </mat-card-content>
+  
+  <div fxLayout="row">
+      <div class="foodestab-pictures" fxFlex="50">
+        <img mat-card-image src="{{shop.image ? shop.image : 'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17665746.jpg'}}" alt="food-estab-image">      
+      </div>
+   
+      <div fxFlex fxFlexAlign="center">
+        <div fxLayout="row">
+          <mat-card-title>{{shop.fe_name}}</mat-card-title>
+        </div>
+       
+        <mat-card-content>
+            <div fxLayout="row">  
+              <div class="star-ratings">
+                <div class="fill-ratings" style="width: 40%"> <!-- here. need the width to change depending sa computations ng ratings as percentage-->
+                  <span>★★★★★</span>
+                </div>
+                <div class="empty-ratings">
+                  <span>★★★★★</span>
+                </div>
+              </div>
+            </div>
+          <div fxLayout="row">{{shop.address}}</div>
+          <div fxLayout="row">{{isShopOpen(shop) ? "Open" : "Closed"}}</div>
+        </mat-card-content>
+      </div>
+  </div>
 </mat-card>
+</mat-grid-tile>
+</mat-grid-list>

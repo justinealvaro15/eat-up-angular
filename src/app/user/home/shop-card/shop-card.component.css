@@ -1,18 +1,58 @@
-.mat-card-image {
-    margin: 16px 0;
-    max-width: 300px;
-    max-height: 300px;
+.star-ratings {
+  unicode-bidi: bidi-override;
+  display: inline-flex;
+  color: #ccc;
+  font-size: 25px;
+  position: relative;
+  margin: 2px;
+  padding: 0;
 }
 
-.mat-card-image:first-child {
-    margin-top: unset;
-}
+  .fill-ratings {
+    color: #F7E017;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    
+    /* Allows us to grab the width of the span elements*/
+    
+  }
+  span {
+    display: inline-block;
+  }
+  .empty-ratings {
+    padding: 0;
+    display: block;
+    z-index: 0;
+  }
+
+
+
+mat-card img{ /*this makes de image in src fit to the size of specified below*/
+    width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+  }
 
 mat-card {
-    margin: 10px 20px 10px 20px;
-    width: 88%;
+    margin-left: 10px;
+    margin-right: 10px;
 } 
 
+.card, img{
+    height: 130px;
+}
 mat-card:hover {
     cursor: pointer;
 }
+
+mat-grid-list{
+    height: 150px;
+}
+
+h1 {
+    font-size: 5em;
+}
+

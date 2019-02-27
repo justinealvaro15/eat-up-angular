@@ -43,6 +43,7 @@ import {
   MatToolbarModule,
   MatSelectModule,
   MatOptionModule,
+  MatGridListModule
 } from '@angular/material';
 import { GoogleAuthComponent } from './navigation/google-auth/google-auth.component';
 
@@ -139,6 +140,7 @@ export function provideConfig() {
     NgSelect2Module,
     MatSelectModule,
     MatOptionModule,
+    MatGridListModule,
     LeafletModule.forRoot()
   ],
   providers: [

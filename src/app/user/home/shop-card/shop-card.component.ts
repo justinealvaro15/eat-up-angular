@@ -9,7 +9,7 @@ import * as moment from 'moment';
   styleUrls: ['./shop-card.component.css']
 })
 export class ShopCardComponent implements OnInit {
-
+  
   constructor(
     private router: Router
   ) { }
@@ -18,6 +18,7 @@ export class ShopCardComponent implements OnInit {
   }
 
   @Input() shop: Shop;
+
 
   goToShop(shopId: string) {
     this.router.navigate(['/user/shops', shopId]);
