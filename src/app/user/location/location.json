@@ -1,6 +1,6 @@
  {
         "id":"1",
-        "name": "UP Asian Institute of Tourism",
+        "name": "UP Asian Institute of Tourism (UP AIT)",
         "coordinates": {
           "lat": "14.660688",
           "long": "121.061188"
@@ -8,7 +8,7 @@
       }, 
       {
         "id":"2",
-        "name":"College of Human Kinetics",
+        "name":"College of Human Kinetics (UP CHK)",
         "coordinates": {
           "lat": "14.659188", 
           "long" :"121.062812"
@@ -24,7 +24,7 @@
       }, 
       {
         "id":"4",
-        "name": "UP Department of Military Science & Tactics Complex",
+        "name": "UP Department of Military Science & Tactics Complex (UP DMST)",
         "coordinates": {
           "lat": "14.658813", 
           "long": "121.064312"
@@ -32,7 +32,7 @@
       },
       {
         "id":"5",
-        "name": "UP College of Social Work and Community Development",
+        "name": "UP College of Social Work and Community Development (CSWCD)",
         "coordinates": {
           "lat": "14.657188",
           "long": "121.063688"
@@ -416,7 +416,7 @@
       }, 
       {
         "id":"53",
-        "name":"UP College of Arts and Letters",
+        "name":"UP College of Arts and Letters (CAL)",
         "coordinates": {
           "lat":"14.652687", 
           "long":"121.067313"
@@ -440,7 +440,7 @@
       }, 
       {
         "id":"56",
-        "name": "Marine Science Institute",
+        "name": "Marine Science Institute (UP MSI)",
         "coordinates": {
           "lat":"14.650437", 
           "long":"121.069188"
@@ -456,7 +456,7 @@
       },
       {
         "id":"58",
-        "name":"UP Electrical and Electronics Engineering Institute",
+        "name":"UP Electrical and Electronics Engineering Institute (UP EEEI)",
         "coordinates": {
           "lat":"14.649562", 
           "long":"121.068312"
@@ -464,7 +464,7 @@
       },
       {
         "id":"59",
-        "name":"UP Alumni Engineers' Centennial Hall",
+        "name":"UP Alumni Engineers' Centennial Hall (UP AECH)",
         "coordinates": {
           "lat":"14.648438", 
           "long":"121.068437"
@@ -488,7 +488,7 @@
       },
       {
         "id":"62",
-        "name":"Office of the University Registrar",
+        "name":"Office of the University Registrar (OUR)",
         "coordinates": {
           "lat":"14.651187", 
           "long":"121.066813"
@@ -552,7 +552,7 @@
       },
       {
         "id":"70",
-        "name":"UP College of Fine Arts",
+        "name":"UP College of Fine Arts (FA)",
         "coordinates": {
           "lat":"14.652188", 
           "long":"121.061812"
@@ -566,7 +566,6 @@
           "long":"121.060938"
         }
       },
-      {
         "id":"72",
         "name":"Campus Maintenance Office, Business Concession Office",
         "coordinates": {
@@ -607,7 +606,7 @@
         }.
        {
          "id":"77",
-        "name":"National Institure for Geological Sciences(NIGS)",
+        "name":"National Institure for Geological Sciences (NIGS)",
         "coordinates": {
           "lat":"14.648341", 
           "long":"121.069472"
