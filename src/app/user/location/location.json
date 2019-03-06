@@ -604,5 +604,12 @@
         "coordinates": {
           "lat":"14.654919", 
           "long":"121.067616"
+        }.
+       {
+         "id":"77",
+        "name":"National Institure for Geological Sciences(NIGS)",
+        "coordinates": {
+          "lat":"14.648341", 
+          "long":"121.069472"
         }
       }
