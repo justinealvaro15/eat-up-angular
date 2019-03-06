@@ -610,5 +610,13 @@
         "coordinates": {
           "lat":"14.648341", 
           "long":"121.069472"
-        }
+        },
+         {
+         "id":"78",
+        "name":"College of Arts and Sciences and Alumni Association (CASAA)",
+        "coordinates": {
+          "lat":"14.652650", 
+          "long":"121.071204"
+        },
+
       }
