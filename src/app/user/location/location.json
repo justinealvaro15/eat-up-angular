@@ -603,27 +603,30 @@
         "coordinates": {
           "lat":"14.654919", 
           "long":"121.067616"
-        }.
+        },
        {
          "id":"77",
         "name":"National Institure for Geological Sciences (NIGS)",
         "coordinates": {
           "lat":"14.648341", 
           "long":"121.069472"
-        },
+        }
+       },
          {
          "id":"78",
         "name":"College of Arts and Sciences and Alumni Association (CASAA)",
         "coordinates": {
           "lat":"14.652650", 
           "long":"121.071204"
-        },
+        }
+       },
         {
          "id":"79",
         "name":"Diliman Learning Resource Center (DLRC)",
         "coordinates": {
           "lat":"14.652096", 
           "long":"121.070327"
-        },
+         }
+        }
 
       }
