@@ -46,7 +46,11 @@ export interface Shop {
     image: string;
     Consumables: Consumables[];
     BrandedConsumables: BrandedConsumables[];
-    Nearest_Bldgs: {id: number};
+    Nearest_Bldgs: LocationID[];
+}
+
+export interface LocationID {
+    id: number;
 }
 
 export interface Consumables {
