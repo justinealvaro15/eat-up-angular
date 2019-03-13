@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Shop } from './shops.model';
+import { Shop, Consumables } from './shops.model';
 import { Location } from '../location/location.model';
 import { AddedMenu } from '../food-estab/add-menu-item/add-menu-item.component';
 import { AuthService, SocialUser } from 'angularx-social-login';
@@ -109,6 +109,12 @@ export class ShopsService {
 
 
     getFilteredShops(): Shop[] { //has to be modified
+        const fcsFiltered = this._shops.getValue().filter((shop)=> {
+            return this.isFCSMatch(shop);
+        });
+        return this.isArrayShopNearBldg(fcsFiltered);
+
+
          //get FCS Matches first then order from nearest to farthest
          if (this.filter.fcs && this.filter.location) { //both location and fcs
             const filteredShops = this._shops.getValue().filter((shop)=> {
@@ -169,6 +175,10 @@ export class ShopsService {
             and figures out whether the chosen building of the user
             is near one of those shops.
         */
+        if (!this.filter.location) {
+            return filteredShops;
+        }
+
         let arrayShopsNearBldg=[];
         for (var i = 0;i<filteredShops.length;i++) {
           
@@ -196,7 +206,6 @@ export class ShopsService {
         const hasConsumableInFoodEstab = this.isConsumableInFoodEstab(shop); //not workin
         console.log("IN isFCSMatch");
         return isFoodEstabName || hasConsumableInFoodEstab;
-       
     }
 
     private isShopNearBldg(shop: Shop): boolean { //Location Only 
@@ -211,16 +220,26 @@ export class ShopsService {
     }
 
     private isConsumableInFoodEstab(shop: Shop): boolean {
-        let hasConsumable = false
+        // let hasConsumable = false
 
-        shop.Consumables.forEach((consumable) => {
-            
-            if (consumable.c_name.toLowerCase().includes(this.filter.fcs.toLowerCase())) {
-                hasConsumable = true;
-            }
+        const hasFood = Object.keys(shop.Food).find(foodKey => {
+            return this.isInConsumables(shop.Food[foodKey], this.filter.fcs);
         });
-        console.log(this.filter.fcs+" "+hasConsumable);
-        return hasConsumable;
+
+        const hasBeverage = Object.keys(shop.Beverages).find(bevKey => {
+            return this.isInConsumables(shop.Beverages[bevKey], this.filter.fcs);
+        });
+
+        return hasFood || hasBeverage;
+        // console.log(this.filter.fcs+" "+hasConsumable);
+        // return false;
+    }
+
+    private isInConsumables(consumables: Consumables[] = [], search: string): boolean {
+        return !!(consumables.find((_consumable) => {
+            return _consumable.c_name.toLowerCase().includes(search.toLowerCase());
+        }));
+        // return false;
     }
 }
 

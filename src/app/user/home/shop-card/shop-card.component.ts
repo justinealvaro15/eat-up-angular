@@ -24,16 +24,21 @@ export class ShopCardComponent implements OnInit {
     this.router.navigate(['/user/shops', shopId]);
   }
 
-  isShopOpen(shop: Shop): boolean {
-    const opening = moment().hour(shop.hours.opening.hour).minute(shop.hours.opening.minute);
-    const closing = moment().hour(shop.hours.closing.hour).minute(shop.hours.closing.minute);
+  isShopOpen(): boolean {
+    const opening = moment().hour(this.shop.hours.opening.hour).minute(this.shop.hours.opening.minute);
+    const closing = moment().hour(this.shop.hours.closing.hour).minute(this.shop.hours.closing.minute);
     const currentDate = moment();
 
-    const isOpenToday = shop.days_open.map(day => day.toLowerCase()).includes(currentDate.format('dddd').toLowerCase());
+    const isOpenToday = this.shop.days_open.map(day => day.toLowerCase()).includes(currentDate.format('dddd').toLowerCase());
     
     const isOpenThisTime = currentDate.isSameOrAfter(opening) && currentDate.isSameOrBefore(closing);
 
     return isOpenToday && isOpenThisTime;
+  }
+
+  getShopPercentRating() {
+    const ratingInPercent = this.shop.fe_avg_rating/5*100;
+    return `${ratingInPercent}%`;
   }
 
 }
