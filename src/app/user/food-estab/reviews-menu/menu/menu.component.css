@@ -5,3 +5,11 @@
     align-items: center;
     overflow: hidden;
 }
+
+.item {
+    width: 100%;
+    align-self: left;
+    font-size: 11pt;
+    margin-left: 0px; 
+    margin-right: 0px;
+}
