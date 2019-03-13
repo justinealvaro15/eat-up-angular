@@ -8,28 +8,35 @@
   padding: 0;
 }
 
-  .fill-ratings {
-    color: #F7E017;
-    padding: 0;
-    position: absolute;
-    z-index: 1;
-    display: block;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    
-    /* Allows us to grab the width of the span elements*/
-    
-  }
-  span {
-    display: inline-block;
-  }
-  .empty-ratings {
-    padding: 0;
-    display: block;
-    z-index: 0;
-  }
+.fill-ratings {
+  color: #F7E017;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  
+  /* Allows us to grab the width of the span elements*/
+  
+}
+span {
+  display: inline-block;
+}
+.empty-ratings {
+  padding: 0;
+  display: block;
+  z-index: 0;
+}
 
+.open {
+  color: green;
+}
+
+.closed {
+  color: red;
+}
 
 
 mat-card img{ /*this makes de image in src fit to the size of specified below*/
