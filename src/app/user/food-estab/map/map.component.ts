@@ -39,11 +39,14 @@ export class MapComponent implements OnInit {
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
       }),
-      this.food_estab
+      this.food_estab,
+
     ],
     zoom: 15,
-    center: latLng([ 14.654409, 121.068691])
-    /**maxBounds: latLng( latLng([14.661029, 121.060825]),latLng([14.647888, 121.074258]) )*/
+    minZoom: 14,
+    center: latLng([ 14.654409, 121.068691]),
+    maxBounds: [ [14.663444, 121.055124],
+                [14.645623, 121.076978] ]
   };
 
 
