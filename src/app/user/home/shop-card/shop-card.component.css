@@ -1,45 +1,39 @@
 .star-ratings {
   unicode-bidi: bidi-override;
   display: inline-flex;
-  color: #ccc;
-  font-size: 25px;
+  color: rgb(150, 148, 148);
+  font-size: 22px;
   position: relative;
-  margin: 2px;
   padding: 0;
+  padding-bottom: 2px;
 }
 
-.fill-ratings {
-  color: #F7E017;
-  padding: 0;
-  position: absolute;
-  z-index: 1;
-  display: block;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  
-  /* Allows us to grab the width of the span elements*/
-  
-}
-span {
-  display: inline-block;
-}
-.empty-ratings {
-  padding: 0;
-  display: block;
-  z-index: 0;
-}
+  .fill-ratings {
+    color:rgb(251, 255, 0);
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    
+    /* Allows us to grab the width of the span elements*/
+    
+  }
+  span {
+    display: inline-block;
+  }
+  .empty-ratings {
+    padding: 0;
+    display: block;
+    z-index: 0;
+  }
 
-.open {
-  color: green;
-}
-
-.closed {
-  color: red;
-}
 
 
 mat-card img{ /*this makes de image in src fit to the size of specified below*/
+    display: block;
     width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
   }
 
@@ -48,18 +42,46 @@ mat-card {
     margin-right: 10px;
 } 
 
+mat-card:hover {
+  cursor: pointer;
+}
+
 .card, img{
     height: 130px;
 }
-mat-card:hover {
-    cursor: pointer;
-}
+
 
 mat-grid-list{
     height: 150px;
 }
 
-h1 {
-    font-size: 5em;
+.shop-name{
+  font-family: latoregular;
+  font-size: 17px;
+  color:black;
+}
+
+.open-close, .rating-in-parentheses, .addr{
+  font-family: ralewaylight;
+}
+
+.addr{
+  color: 	#616161;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.rating-in-parentheses{
+  color: rgb(51, 51, 51);
+  font-size: 11px;
+  margin-left: 3px;
+}
+
+.open {
+  color: green;
+}
+
+.closed {
+  color: red;
 }
 
