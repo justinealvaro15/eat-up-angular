@@ -24,7 +24,9 @@
       <app-add-rating-review [shop]="shop" style="margin-right: 10px"></app-add-rating-review> 
       <app-add-menu-item [shop]="shop"></app-add-menu-item>
     </mat-card>
-    <app-map [shop]="shop" *ngIf="shop"></app-map>
+    <mat-card>  
+        <app-map [shop]="shop" *ngIf="shop"></app-map>
+    </mat-card>
     <app-reviews-menu class="app-reviews-menu" [shop]="shop" *ngIf="shop"></app-reviews-menu>
     
 </div>
