@@ -230,7 +230,7 @@ export class ShopsService {
             return this.isInConsumables(shop.Beverages[bevKey], this.filter.fcs);
         });
 
-        return hasFood || hasBeverage;
+        return !!hasFood || !!hasBeverage;
         // console.log(this.filter.fcs+" "+hasConsumable);
         // return false;
     }
@@ -242,7 +242,7 @@ export class ShopsService {
         // return false;
     }
 }
-
+ 
 export enum FilterKeys {
     FCS = 'fcs',
     Location = 'location'
