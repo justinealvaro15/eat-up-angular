@@ -1,0 +1,25 @@
+<mat-card-title>{{title}}</mat-card-title>
+<mat-card *ngFor="let consumable of consumables" class="item">
+  <div class="consumable-item">
+    <div class="consumable-name">
+      {{consumable.c_name}}
+    </div>
+    <div class="consumable-right">
+      <span class="price">
+        ₱{{consumable.price}}
+      </span>
+      <button mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button
+        #tooltip="matTooltip"
+        [matTooltip]="getTooltipText(consumable)"
+        (click)="tooltip.toggle()">
+        <mat-icon>info</mat-icon>
+      </button>
+      <!-- <button mat-icon-button>
+        <mat-icon>info</mat-icon>
+      </button> -->
+    </div> 
+  </div>
+</mat-card>

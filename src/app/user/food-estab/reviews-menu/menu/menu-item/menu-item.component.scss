@@ -1,0 +1,42 @@
+.item {
+    width: 100%;
+    align-self: left;
+    font-size: 11pt;
+    margin-left: 0px; 
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+.mat-card-title{
+    margin-bottom: 20px;
+}
+
+.consumable-item {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.consumable-name {
+    max-width: 60%;
+}
+
+.consumable-right {
+    align-items: center;
+    display: flex;
+}
+
+.consumable-right button,
+.consumable-right mat-icon {
+    width: 25px;
+    height: 25px;
+    margin: 0 4px;
+    display: block;
+    color: gray;
+}
+
+.price {
+    margin-right: 8.5px;
+}

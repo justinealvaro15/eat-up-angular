@@ -1,65 +1,56 @@
-<mat-card *ngIf="shop.Food.Meals">
-  <mat-card-title>Meals</mat-card-title>
-  <mat-card *ngFor="let consumable of shop.Food.Meals" class="item">{{consumable.c_name}}, Php {{consumable.price}}</mat-card>
-  <!-- <mat-card-content *ngFor="let consumable of shop.Food.Meals">
-    <div>{{consumable.c_name}}, Php {{consumable.price}}</div>
-  </mat-card-content> -->
+<mat-card *ngIf="shop.Food.Meals && shop.Food.Meals.length">
+  <!-- <mat-card-title>Meals</mat-card-title>
+  <mat-card *ngFor="let consumable of shop.Food.Meals" class="item">
+    <div class="consumable-item">
+      <div class="consumable-name">
+        {{consumable.c_name}}
+      </div>
+      <div class="consumable-right">
+        <span class="price">
+          ₱{{consumable.price}}
+        </span>
+        <button mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>info</mat-icon>
+        </button>
+      </div> 
+    </div>
+  </mat-card> -->
+  <app-menu-item [consumables]="shop.Food.Meals" title="Meals"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Food.Meryenda && shop.Food.Meryenda.length">
-  <mat-card-title>Meryenda</mat-card-title>
-  <mat-card-content *ngFor="let consumable of shop.Food.Meryenda">
-    <div>{{consumable.c_name}}, Php {{consumable.price}}</div>
-  </mat-card-content>
+    <app-menu-item [consumables]="shop.Food.Meryenda" title="Meryenda"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Food.Sandwiches && shop.Food.Sandwiches.length">
-  <mat-card-title>Sandwiches</mat-card-title>
-  <mat-card-content *ngFor="let consumable of shop.Food.Sandwiches">
-    <div>{{consumable.c_name}}, Php {{consumable.price}}</div>
-  </mat-card-content>
+  <app-menu-item [consumables]="shop.Food.Sandwiches" title="Sandwiches"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Food.PastaNoodles && shop.Food.PastaNoodles.length">
-  <mat-card-title>Pasta/Noodles</mat-card-title>
-  <mat-card-content *ngFor="let consumable of shop.Food.PastaNoodles">
-    <div>{{consumable.c_name}}, Php {{consumable.price}}</div>
-  </mat-card-content>
+  <app-menu-item [consumables]="shop.Food.PastaNoodles" title="Pasta/Noodles"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Food.Sweets && shop.Food.Sweets.length">
-  <mat-card-title>Sweets</mat-card-title>
-  <mat-card-content *ngFor="let consumable of shop.Food.Sweets">
-    <div>{{consumable.c_name}}, Php {{consumable.price}}</div>
-  </mat-card-content>
+  <app-menu-item [consumables]="shop.Food.Sweets" title="Sweets"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Food.StreetFoods && shop.Food.StreetFoods.length">
-  <mat-card-title>Streed Foods</mat-card-title>
-  <mat-card-content *ngFor="let consumable of shop.Food.StreetFoods">
-    <div>{{consumable.c_name}}, Php {{consumable.price}}</div>
-  </mat-card-content>
+  <app-menu-item [consumables]="shop.Food.StreetFoods" title="Street Foods"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Food.Branded && shop.Food.Branded.length">
-  <mat-card-title>Branded Foods</mat-card-title>
-  <mat-card-content *ngFor="let consumable of shop.Food.Branded">
-    <div>{{consumable.c_name}}, Php {{consumable.price}}</div>
-  </mat-card-content>
+  <app-menu-item [consumables]="shop.Food.Branded" title="Branded Food"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Beverages.InHouse && shop.Beverages.InHouse.length">
-  <mat-card-title>In-house</mat-card-title>
-  <mat-card-content *ngFor="let consumable of shop.Beverages.InHouse">
-    <div>{{consumable.c_name}}, Php {{consumable.price}}</div>
-  </mat-card-content>
+  <app-menu-item [consumables]="shop.Beverages.InHouse" title="In-House Drinks"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Beverages.Branded && shop.Beverages.Branded.length">
-  <mat-card-title>Branded Beverages</mat-card-title>
-  <mat-card-content *ngFor="let consumable of shop.Beverages.Branded">
-    <div>{{consumable.c_name}}, Php {{consumable.price}}</div>
-  </mat-card-content>
+  <app-menu-item [consumables]="shop.Beverages.Branded" title="Branded Drinks"></app-menu-item>
 </mat-card>
 
 <!-- <mat-card *ngIf="shop.BrandedConsumables && shop.BrandedConsumables.length">
