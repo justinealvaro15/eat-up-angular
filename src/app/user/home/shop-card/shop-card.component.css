@@ -8,27 +8,27 @@
   padding-bottom: 2px;
 }
 
-  .fill-ratings {
-    color:rgb(251, 255, 0);
-    padding: 0;
-    position: absolute;
-    z-index: 1;
-    display: block;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    
-    /* Allows us to grab the width of the span elements*/
-    
-  }
-  span {
-    display: inline-block;
-  }
-  .empty-ratings {
-    padding: 0;
-    display: block;
-    z-index: 0;
-  }
+.fill-ratings {
+  color:rgb(251, 255, 0);
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  
+  /* Allows us to grab the width of the span elements*/
+  
+}
+span {
+  display: inline-block;
+}
+.empty-ratings {
+  padding: 0;
+  display: block;
+  z-index: 0;
+}
 
 
 
@@ -79,9 +79,11 @@ mat-grid-list{
 
 .open {
   color: green;
+  font-weight: bold;
 }
 
 .closed {
   color: red;
+  font-weight: bold;
 }
 

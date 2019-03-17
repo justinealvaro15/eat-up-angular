@@ -15,14 +15,7 @@
        
         <mat-card-content>
             <div fxLayout="row">  
-              <div class="star-ratings">
-                <div class="fill-ratings" [ngStyle]="{'width': getShopPercentRating()}"> <!-- here. need the width to change depending sa computations ng ratings as percentage-->
-                  <span>★★★★★</span>
-                </div>
-                <div class="empty-ratings">
-                  <span>★★★★★</span>
-                </div>
-              </div>
+              <app-stars [stars]="shop.fe_avg_rating"></app-stars>
               <div class = "rating-in-parentheses"> &middot; {{shop.fe_avg_rating || "0.0"}}</div>
             </div>
           <div fxLayout="row" class= "addr">{{shop.address}}</div>

@@ -9,12 +9,12 @@
         <mat-card-title>{{shop.fe_name}}</mat-card-title>
         <mat-card-content>
             <div>
-                {{shop.fe_avg_rating || "No ratings available"}}
+                <app-stars [stars]="shop.fe_avg_rating"></app-stars>
                 <ng-container *ngIf="shop.no_of_ratings > 0">
                     ({{shop.no_of_ratings}})
                 </ng-container>
             </div>
-            <div>{{isShopOpen(shop) ? "Open" : "Closed"}}</div>
+            <div class= "open-close" [class.closed]="!isShopOpen()" [class.open]="isShopOpen()">{{isShopOpen(shop) ? "Open" : "Closed"}}</div>
         </mat-card-content>
         <mat-card-actions>
             <app-addtl-details [shop]="shop"></app-addtl-details>

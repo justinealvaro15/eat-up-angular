@@ -40,5 +40,4 @@ export class ShopCardComponent implements OnInit {
     const ratingInPercent = this.shop.fe_avg_rating/5*100;
     return `${ratingInPercent}%`;
   }
-
 }

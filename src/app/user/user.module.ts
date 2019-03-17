@@ -61,6 +61,7 @@ import { AboutUsComponent } from './navigation/about-us/about-us.component';
 import { NgSelect2Module } from 'ng-select2';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { MenuItemComponent } from './food-estab/reviews-menu/menu/menu-item/menu-item.component';
+import { StarsComponent } from './food-estab/stars/stars.component';
 
 const googleLoginOptions: LoginOpt = {
   client_id: "305506356766-0q3pes92ks9buimmcchbtek02f3an0oc",
@@ -112,7 +113,8 @@ export function provideConfig() {
     AboutUsComponent,
     TermsOfServicesComponent,
     UserProfileComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    StarsComponent
   ],
   entryComponents: [
     AddRatingReviewDialog,
