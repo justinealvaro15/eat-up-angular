@@ -1,8 +1,8 @@
 <div mat-dialog-content [formGroup]="data.addFoodFormGroup">
-  <h1 mat-dialog-title>Add Menu Item</h1>
+  <h1 mat-dialog-title>{{ data.isEdit ? 'Edit Menu Item' : 'Add Menu Item' }}</h1>
 
   <mat-form-field appearance="outline" class="container">
-    <mat-select placeholder="Category" formControlName="foodCategoryAndType">
+    <mat-select placeholder="Category" formControlName="foodCategoryAndType" [disabled]="data.isEdit">
       <mat-option value="1">-- None --</mat-option>
       <mat-optgroup *ngFor="let group of data.foodGroups" [label]="group.name"
                     [disabled]="group.disabled">
@@ -27,39 +27,14 @@
   
   <mat-form-field appearance="outline" class="container" hintLabel="Amount" *ngIf="isBranded()">
     <mat-label>Amount</mat-label>
-    <input matInput #input3 maxlength="6" type="text" formControlName="amount"> 
+    <input matInput #input3 maxlength="6" formControlName="amount"> 
     <mat-hint align="end">{{input3.value?.length || 0}}/6</mat-hint>
   </mat-form-field>
 </div>
   
-
-<!-- <div mat-dialog-content>
-  <mat-form-field [ngStyle]="{'font-size.px': size , 'width.px': width1}" appearance="outline" class="container"> 
-    <mat-label>Item Name</mat-label>
-    <input matInput
-           #input1 
-           maxlength = "30"
-    > 
-    <mat-hint align="end">{{input1.value?.length || 0}}/30</mat-hint>
-  </mat-form-field>
-
-   <mat-form-field [ngStyle]="{'font-size.px': size, 'width.px': width2}" appearance="outline"> 
-    <mat-label>Price</mat-label>
-    <input matInput #input2> 
-    <span matPrefix>P&nbsp;</span>
-    <mat-hint align="end">{{input2.value?.length || 0}}/6</mat-hint>
-  </mat-form-field>
-  
-  <mat-form-field [ngStyle]="{'font-size.px': size,  'width.px': width1}" appearance="outline" class="container"> 
-    <mat-label>Brief Description</mat-label>
-    <textarea matInput #input3 ></textarea>
-    <mat-hint align="end">{{input3.value?.length || 0}}/100</mat-hint>
-  </mat-form-field>
-</div> -->
-
 <div mat-dialog-actions >
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="getAddedMenu()" cdkFocusInitial>Add</button>
+  <button mat-button [mat-dialog-close]="getAddedMenu()" cdkFocusInitial>{{ data.isEdit ? 'Edit' : 'Add' }}</button>
 </div>
 
 

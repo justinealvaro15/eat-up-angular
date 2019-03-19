@@ -53,14 +53,15 @@ export interface LocationID {
     id: number;
 }
 
-export interface Consumables {
+export class Consumables {
     c_name: string;
     price: number;
     c_avg_rating?: number;
     username?: string;
+    amount?: string;
 }
 
-export interface BrandedConsumables extends Consumables {
+export class BrandedConsumables extends Consumables {
     // bc_name: string;
     amount: string;
 }

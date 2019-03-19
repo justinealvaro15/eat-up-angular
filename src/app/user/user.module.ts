@@ -62,6 +62,7 @@ import { NgSelect2Module } from 'ng-select2';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { MenuItemComponent } from './food-estab/reviews-menu/menu/menu-item/menu-item.component';
 import { StarsComponent } from './food-estab/stars/stars.component';
+// import { AuthService } from './auth.service';
 
 const googleLoginOptions: LoginOpt = {
   client_id: "305506356766-0q3pes92ks9buimmcchbtek02f3an0oc",
@@ -70,7 +71,7 @@ const googleLoginOptions: LoginOpt = {
 }; // https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig
 
 
- let config = new AuthServiceConfig([
+ const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
     provider: new GoogleLoginProvider("305506356766-0q3pes92ks9buimmcchbtek02f3an0oc", googleLoginOptions)
@@ -152,10 +153,11 @@ export function provideConfig() {
     LeafletModule.forRoot()
   ],
   providers: [
-    {
-      provide: AuthServiceConfig,
-      useFactory: provideConfig
-    }
+    // {
+    //   provide: AuthServiceConfig,
+    //   useFactory: provideConfig
+    // },
+    // AuthService
   ],
   bootstrap: [UserComponent]
 })

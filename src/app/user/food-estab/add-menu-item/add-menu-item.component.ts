@@ -1,81 +1,18 @@
 import { Component, Inject, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { SocialUser } from "angularx-social-login";
-import { AuthService } from "angularx-social-login";
+import { SocialUser, AuthService } from "angularx-social-login";
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Shop, Consumables, BrandedConsumables } from './../../../user/shops/shops.model';
 import { ShopsService } from './../../../user/shops/shops.service';
+import { FoodGroup, AddedMenu, FoodBeveragesMapping } from '../food-group';
 
 export interface DialogData {
   foodGroup: FoodGroup[];
   foodGroupControl: FormControl;
   addFoodFormGroup: FormGroup;
+  isEdit?: boolean;
 }
 
-export interface FoodGroupAndCategory {
-  group: string;
-  type: string;
-  isBranded?: boolean;
-}
-
-export interface AddedMenu extends FoodGroupAndCategory {
-  name: string;
-  price: number;
-  amount: string;
-}
-
-export interface Category {
-  value: FoodGroupAndCategory;
-  viewValue: string;
-}
-
-export interface FoodGroup {
-  disabled?: boolean;
-  name: string;
-  category: Category[];
-}
-
-export const FoodBeveragesMapping: {
-  [key: string]: FoodGroupAndCategory
-} = {
-  meals: {
-    group: 'Food',
-    type: 'Meals'
-  },
-  brandedFood: {
-    group: 'Food',
-    type: 'Branded'
-  },
-  streetFoods: {
-    group: 'Food',
-    type: 'StreetFoods'
-  },
-  sweets: {
-    group: 'Food',
-    type: 'Sweets'
-  },
-  sandwiches: {
-    group: 'Food',
-    type: 'Sandwiches'
-  },
-  meryenda: {
-    group: 'Food',
-    type: 'Meryenda'
-  },
-  pastaNoodles: {
-    group: 'Food',
-    type: 'PastaNoodles'
-  },
-  brandedBeverage: {
-    group: 'Beverages',
-    type: 'Branded',
-    isBranded: true
-  },
-  inHouseBeverage: {
-    group: 'Beverages',
-    type: 'InHouse'
-  }
-}
 
 /**
  * @title Dialog Overview

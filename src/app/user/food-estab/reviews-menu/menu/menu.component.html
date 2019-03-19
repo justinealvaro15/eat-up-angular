@@ -18,39 +18,39 @@
       </div> 
     </div>
   </mat-card> -->
-  <app-menu-item [consumables]="shop.Food.Meals" title="Meals"></app-menu-item>
+  <app-menu-item [consumables]="shop.Food.Meals" title="Meals" [shop]="shop" foodOrBev="Food" type="Meals"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Food.Meryenda && shop.Food.Meryenda.length">
-    <app-menu-item [consumables]="shop.Food.Meryenda" title="Meryenda"></app-menu-item>
+    <app-menu-item [consumables]="shop.Food.Meryenda" title="Meryenda" [shop]="shop" foodOrBev="Food" type="Meryenda"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Food.Sandwiches && shop.Food.Sandwiches.length">
-  <app-menu-item [consumables]="shop.Food.Sandwiches" title="Sandwiches"></app-menu-item>
+  <app-menu-item [consumables]="shop.Food.Sandwiches" title="Sandwiches" [shop]="shop" foodOrBev="Food" type="Sandwiches"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Food.PastaNoodles && shop.Food.PastaNoodles.length">
-  <app-menu-item [consumables]="shop.Food.PastaNoodles" title="Pasta/Noodles"></app-menu-item>
+  <app-menu-item [consumables]="shop.Food.PastaNoodles" title="Pasta/Noodles" [shop]="shop" foodOrBev="Food" type="Meryenda"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Food.Sweets && shop.Food.Sweets.length">
-  <app-menu-item [consumables]="shop.Food.Sweets" title="Sweets"></app-menu-item>
+  <app-menu-item [consumables]="shop.Food.Sweets" title="Sweets" [shop]="shop" foodOrBev="Food" type="Sweets"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Food.StreetFoods && shop.Food.StreetFoods.length">
-  <app-menu-item [consumables]="shop.Food.StreetFoods" title="Street Foods"></app-menu-item>
+  <app-menu-item [consumables]="shop.Food.StreetFoods" title="Street Foods" [shop]="shop" foodOrBev="Food" type="StreetFoods"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Food.Branded && shop.Food.Branded.length">
-  <app-menu-item [consumables]="shop.Food.Branded" title="Branded Food"></app-menu-item>
+  <app-menu-item [consumables]="shop.Food.Branded" title="Branded Food" [shop]="shop" foodOrBev="Food" type="Branded"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Beverages.InHouse && shop.Beverages.InHouse.length">
-  <app-menu-item [consumables]="shop.Beverages.InHouse" title="In-House Drinks"></app-menu-item>
+  <app-menu-item [consumables]="shop.Beverages.InHouse" title="In-House Drinks" [shop]="shop" foodOrBev="Beverages" type="InHouse"></app-menu-item>
 </mat-card>
 
 <mat-card *ngIf="shop.Beverages.Branded && shop.Beverages.Branded.length">
-  <app-menu-item [consumables]="shop.Beverages.Branded" title="Branded Drinks"></app-menu-item>
+  <app-menu-item [consumables]="shop.Beverages.Branded" title="Branded Drinks" [shop]="shop" foodOrBev="Beverages" type="Branded"></app-menu-item>
 </mat-card>
 
 <!-- <mat-card *ngIf="shop.BrandedConsumables && shop.BrandedConsumables.length">

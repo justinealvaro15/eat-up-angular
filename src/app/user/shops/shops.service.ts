@@ -3,11 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Shop, Consumables } from './shops.model';
+import { Shop, Consumables, BrandedConsumables } from './shops.model';
 import { Location } from '../location/location.model';
-import { AddedMenu } from '../food-estab/add-menu-item/add-menu-item.component';
 import { AuthService, SocialUser } from 'angularx-social-login';
 import { LocationService } from '../location/location.service';
+import { AddedMenu } from '../food-estab/food-group';
 
 @Injectable({ providedIn: 'root' })
 export class ShopsService {
@@ -104,9 +104,20 @@ export class ShopsService {
             user: this.user,
             addedMenu
         }
-        this.http.post(`http://localhost:3000/api/shops/${shopId}/${addedMenu.group.toLowerCase()}`, payload).subscribe();
+        this.http.post(`http://localhost:3000/api/shops/${shopId}/food`, payload).subscribe();
     }
 
+    editFoodOrBeverageByShopid(shopId: string, group: string, type: string, editedMenu: Consumables[] | BrandedConsumables[]) {
+        const payload = {
+            // user: this.user,
+            updatedMenu: {
+                group,
+                type
+            },
+            value: editedMenu
+        }
+        this.http.put(`http://localhost:3000/api/shops/${shopId}/food`, payload).toPromise().then((res) => { console.log(res); });
+    }
 
     getFilteredShops(): Shop[] { //has to be modified
         const fcsFiltered = this._shops.getValue().filter((shop)=> {
