@@ -59,7 +59,7 @@ export class RatingComponent implements ControlValueAccessor{
       this.onChange(this.value);
       this.ratenum = rating;
       //access rating here c
-      console.log(this.ratenum);
+      // console.log(this.ratenum);
     }
 
   }
