@@ -29,4 +29,13 @@ export class ReviewsService {
         }
         this.http.post(`http://localhost:3000/api/reviews/${shopId}`, payload).subscribe();
     }
+
+    editReviewByShopid(shopId: string, rating: number, review: string) {
+        const payload = {
+            rating,
+            review,
+            user: this.user
+        }
+        this.http.put(`http://localhost:3000/api/reviews/${shopId}`, payload).subscribe();
+    }
 }

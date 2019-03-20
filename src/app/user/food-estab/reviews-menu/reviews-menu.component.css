@@ -28,3 +28,7 @@
     flex-direction: column;
     align-items: center;
 }
+
+.divider {
+    border-width: 100%;
+}

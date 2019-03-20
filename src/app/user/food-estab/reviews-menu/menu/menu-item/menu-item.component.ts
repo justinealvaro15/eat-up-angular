@@ -64,7 +64,7 @@ export class MenuItemComponent implements OnInit {
     this.addFoodFormGroup.get('name').setValue(consumable.c_name);
     this.addFoodFormGroup.get('price').setValue(consumable.price);
     console.log(consumable instanceof BrandedConsumables);
-    if (consumable instanceof BrandedConsumables) { 
+    if (consumable.amount) { 
       this.addFoodFormGroup.get('amount').setValue(consumable.amount);
     }
 
