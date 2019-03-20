@@ -2,8 +2,14 @@
 <mat-card *ngFor="let consumable of consumables; let i = index" class="item">
   <div class="consumable-item">
     <div class="consumable-name">
-      {{consumable.c_name}}
+      <span>
+        {{consumable.c_name}}
+      </span>
+      <span *ngIf="consumable.amount">
+        ({{consumable.amount}})
+      </span>
     </div>
+
     <div class="consumable-right">
       <span class="price">
         ₱{{consumable.price}}
