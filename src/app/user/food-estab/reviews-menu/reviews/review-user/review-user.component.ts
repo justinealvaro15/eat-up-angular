@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';
 import { ReviewsDialog } from 'app/user/food-estab/reviews-menu/reviews/reviews.component';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { AddRatingReviewDialog, AddedReview } from 'app/user/food-estab/add-rating-review/add-rating-review.component';
+import * as moment from 'moment';
 
 export interface DialogData {
   addReviewFormGroup: FormGroup;
@@ -40,14 +41,18 @@ export class ReviewUserComponent implements OnInit {
       this.loggedIn = (user != null);
     });
     this.reviewService.getReviewsByNewest(this.shop.fe_id).subscribe((reviews) => {
-      this.reviews = reviews.filter(_review => {
-        return _review.user_id == this.user.id;
-      })
+      this.reviews = reviews;
     });
     this.addReviewFormGroup = this.formBuilder.group({
       rating: new FormControl(),
       review: new FormControl()
     });
+  }
+
+  getFilteredReviews(): Review[] {
+    return (this.user ? this.reviews.filter(_review => {
+      return _review.user_id == this.user.id;
+    }) : this.reviews) || [];
   }
 
   openReview(review: Review) {
@@ -64,6 +69,10 @@ export class ReviewUserComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: AddedReview) => {
       if (result.rating && result.review) {
+        review.rating = result.rating;
+        review.review = result.review;
+        review.date = moment().format('lll');
+
         this.reviewService.editReviewByShopid(this.shop.fe_id, result.rating, result.review)
       }
     })

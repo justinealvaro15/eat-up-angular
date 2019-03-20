@@ -1,4 +1,4 @@
-<mat-card class="example-card" *ngFor="let review of reviews">
+<mat-card class="example-card" *ngFor="let review of getFilteredReviews()">
   <mat-card-header>
     <img mat-card-avatar [src]="review.photoUrl">
     <mat-card-title>{{review.firstName}}</mat-card-title>

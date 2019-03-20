@@ -35,10 +35,14 @@ export class ReviewsComponent {
       this.loggedIn = (user != null);
     });
     this.reviewService.getReviewsByNewest(this.shop.fe_id).subscribe((reviews) => {
-      this.reviews = reviews.filter(_review => {
-        return _review.user_id !== this.user.id;
-      })
+      this.reviews = reviews;
     });
+  }
+
+  getFilteredReviews(): Review[] {
+    return (this.user ? this.reviews.filter(_review => {
+      return _review.user_id !== this.user.id;
+    }) : this.reviews) || [];
   }
 
   openDialog(review: Review) {

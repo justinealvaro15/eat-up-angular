@@ -6,5 +6,5 @@ export interface Review {
     photoUrl: string;
     rating: number;
     review: string;
-    date: Date;
+    date: Date | string;
 }
