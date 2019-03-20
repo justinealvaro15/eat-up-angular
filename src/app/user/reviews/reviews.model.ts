@@ -1,5 +1,5 @@
 export interface Review {
-    userId: string;
+    user_id: string;
     fe_id: string;
     firstName: string;
     lastName: string;

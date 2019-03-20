@@ -1,10 +1,17 @@
 .example-card{
   width: 300px;
   line-height: 20px;
-  height: 130px;
+  height: 100%;
   overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 .left-align {
   text-align: left;
+}
+
+.content {
+  font-weight: normal;
+  overflow-wrap: break-word;
+  overflow: hidden;
 }

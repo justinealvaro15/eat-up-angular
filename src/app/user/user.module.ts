@@ -22,6 +22,7 @@ import { AddtlDetailsComponent } from './food-estab/addtl-details/addtl-details.
 import { ReviewsMenuComponent } from './food-estab/reviews-menu/reviews-menu.component';
 import { MenuComponent } from './food-estab/reviews-menu/menu/menu.component';
 import { ReviewsComponent, ReviewsDialog } from './food-estab/reviews-menu/reviews/reviews.component';
+import { ReviewUserComponent } from './food-estab/reviews-menu/reviews/review-user/review-user.component';
 import { ShopCardComponent } from './home/shop-card/shop-card.component';
 import { FcsSearchPipe } from './fcs-search.pipe';
 import { LocationSearchPipe } from './location-search.pipe';
@@ -98,6 +99,7 @@ export function provideConfig() {
     ReviewsMenuComponent,
     MenuComponent,
     ReviewsComponent,
+    ReviewUserComponent,
     ShopCardComponent,
     FcsSearchPipe,
     LocationSearchPipe,
@@ -115,7 +117,7 @@ export function provideConfig() {
     TermsOfServicesComponent,
     UserProfileComponent,
     MenuItemComponent,
-    StarsComponent
+    StarsComponent,
   ],
   entryComponents: [
     AddRatingReviewDialog,
