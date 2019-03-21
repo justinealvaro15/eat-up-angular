@@ -81,7 +81,7 @@ export class AddMenuItemComponent {
     });
 
     dialogRef.afterClosed().subscribe((result: AddedMenu) => {
-      if (result.group && result.type) {
+      if (result && result.group && result.type) {
         const newMenu: Consumables | BrandedConsumables = {
           c_name: result.name,
           price: result.price,

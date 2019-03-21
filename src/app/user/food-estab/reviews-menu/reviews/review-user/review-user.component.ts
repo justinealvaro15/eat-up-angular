@@ -21,12 +21,13 @@ export interface DialogData {
 })
 export class ReviewUserComponent implements OnInit {
   @Input() shop: Shop;
+  @Input() reviews: Review[];
   addReviewFormGroup: FormGroup;
 
   public user: SocialUser;
   public loggedIn: boolean;
 
-  reviews: Review[] = [];
+  // reviews: Review[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,9 +41,9 @@ export class ReviewUserComponent implements OnInit {
       this.user = user;
       this.loggedIn = (user != null);
     });
-    this.reviewService.getReviewsByNewest(this.shop.fe_id).subscribe((reviews) => {
-      this.reviews = reviews;
-    });
+    // this.reviewService.getReviewsByNewest(this.shop.fe_id).subscribe((reviews) => {
+    //   this.reviews = reviews;
+    // });
     this.addReviewFormGroup = this.formBuilder.group({
       rating: new FormControl(),
       review: new FormControl()
@@ -68,13 +69,22 @@ export class ReviewUserComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: AddedReview) => {
-      if (result.rating && result.review) {
+      if (result && result.rating && result.review) {
         review.rating = result.rating;
         review.review = result.review;
         review.date = moment().format('lll');
+
+        let newAvgRating: number = this.shop.fe_avg_rating * this.reviews.length;
+        newAvgRating += result.rating;
+        newAvgRating -= result.oldRating;
+        newAvgRating /= (this.reviews.length);
+        
+        this.shop.fe_avg_rating = newAvgRating;
 
         this.reviewService.editReviewByShopid(this.shop.fe_id, result.rating, result.review)
       }
     })
   }
+
+
 }

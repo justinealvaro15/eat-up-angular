@@ -18,10 +18,11 @@ export interface ReviewDialogData {
 })
 export class ReviewsComponent {
   @Input() shop: Shop;
+  @Input() reviews: Review[];
   public user: SocialUser;
   public loggedIn: boolean;
 
-  reviews: Review[] = [];
+  // reviews: Review[] = [];
 
   constructor(
     private reviewService: ReviewsService,
@@ -34,9 +35,9 @@ export class ReviewsComponent {
       this.user = user;
       this.loggedIn = (user != null);
     });
-    this.reviewService.getReviewsByNewest(this.shop.fe_id).subscribe((reviews) => {
-      this.reviews = reviews;
-    });
+    // this.reviewService.getReviewsByNewest(this.shop.fe_id).subscribe((reviews) => {
+    //   this.reviews = reviews;
+    // });
   }
 
   getFilteredReviews(): Review[] {

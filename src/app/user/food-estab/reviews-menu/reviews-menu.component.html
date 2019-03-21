@@ -2,9 +2,9 @@
   <mat-tab label="Reviews" id = "review" >
     <!-- use center-align-column to everything you want to center -->
     <div class="center-align-column"> 
-      <app-review-user [shop]="shop"></app-review-user>
+      <app-review-user [shop]="shop" [reviews]="reviews"></app-review-user>
       <mat-divider class="divider"></mat-divider>
-      <display-reviews [shop]="shop"></display-reviews>
+      <display-reviews [shop]="shop" [reviews]="reviews"></display-reviews>
     </div>
   </mat-tab>
   <mat-tab label="Menu" id = "menu">
