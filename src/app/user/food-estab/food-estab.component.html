@@ -1,4 +1,17 @@
- <div class="food-establishment-container">
+<mat-grid-list cols="5" rowHeight="2:1" gutterSize="0">
+    <mat-grid-tile rowspan="8" colspan="5">1</mat-grid-tile>
+    <mat-grid-tile rowspan="2"  colspan = "3" id="secBox">2</mat-grid-tile>
+    <mat-grid-tile rowspan="2"  colspan="2" id="thirdBox">3</mat-grid-tile>
+    <mat-grid-tile rowspan="2"  colspan="1" id="fourthBox">4.1</mat-grid-tile>
+    <mat-grid-tile rowspan="2"  colspan="1" id="fourthBox">4.2</mat-grid-tile>
+    <mat-grid-tile rowspan="2"  colspan="1" id="fourthBox">4.3</mat-grid-tile>
+    <mat-grid-tile rowspan="2"  colspan="1" id="fourthBox">4.4</mat-grid-tile>
+    <mat-grid-tile rowspan="2" colspan="1" id="fourthBox">4.5</mat-grid-tile>
+    <mat-grid-tile rowspan="2" colspan="5" id="fourthBox">4.5</mat-grid-tile>
+  </mat-grid-list>
+
+<!--
+<div class="food-establishment-container">
     <app-search-boxes></app-search-boxes>
     <div *ngIf="!shop" class="spinner-container">
         <mat-spinner ></mat-spinner>
@@ -30,3 +43,4 @@
     <app-reviews-menu class="app-reviews-menu" *ngIf="shop" [shop]="shop" [reviews]="reviews"></app-reviews-menu>
     
 </div>
+-->

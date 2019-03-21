@@ -1,3 +1,27 @@
+mat-grid-tile {
+    background: #BC000B;
+  }
+  
+#secBox{
+    background: blue;
+}
+
+#thirdBox{
+    background:yellow;
+}
+
+#fourthBox{
+    background: yellowgreen
+}
+
+#two-one{
+    background: violet;
+}
+
+#two-two{
+    background: mediumslateblue;
+}
+/*
 .card{
     text-align: left;
 }
@@ -37,7 +61,7 @@ mat-spinner {
     background-color: white !important;
 }
 
-/* Styles for the active tab label */
+
 .mat-tab-label {
     min-width: 50% !important;
     padding: 5px;
@@ -72,3 +96,4 @@ mat-spinner {
     color: red;
     font-weight: bold;
 }
+*/
