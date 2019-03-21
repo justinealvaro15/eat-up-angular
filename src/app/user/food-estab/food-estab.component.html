@@ -21,12 +21,12 @@
         </mat-card-actions>
     </mat-card>
     <mat-card>
-      <app-add-rating-review [shop]="shop" style="margin-right: 10px"></app-add-rating-review> 
-      <app-add-menu-item [shop]="shop"></app-add-menu-item>
+      <app-add-rating-review [shop]="shop" [reviews]="reviews" style="margin-right: 10px" *ngIf="shop"></app-add-rating-review> 
+      <app-add-menu-item [shop]="shop" *ngIf="shop"></app-add-menu-item>
     </mat-card>
     <mat-card>  
         <app-map [shop]="shop" *ngIf="shop"></app-map>
     </mat-card>
-    <app-reviews-menu class="app-reviews-menu" [shop]="shop" *ngIf="shop"></app-reviews-menu>
+    <app-reviews-menu class="app-reviews-menu" *ngIf="shop" [shop]="shop" [reviews]="reviews"></app-reviews-menu>
     
 </div>
