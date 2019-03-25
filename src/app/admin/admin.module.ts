@@ -6,9 +6,9 @@ import { AdminRouting } from './admin-routing.module';
 import { AdminComponent} from './admin.component';
 
 /*main-pages*/
-import {AdminsComponent} from './main-pages/admins/admins.component';
+import { AdminsComponent } from './main-pages/admins/admins.component';
 import { UsersComponent } from './main-pages/users/users.component';
-import { FoodEstablishmentsComponent } from './main-pages/food-establishments/food-establishments.component';
+import { FoodEstablishmentsComponent, AddShopDialog } from './main-pages/food-establishments/food-establishments.component';
 import { MenuComponent } from './main-pages/menu/menu.component';
 
 /* misc-pages*/
@@ -43,7 +43,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AdminRouting,
     RouterModule,
     MatGridListModule,
-    MatIconModule
+    MatIconModule,
+    AddShopDialog
+  ],
+  entryComponents: [
+    AddShopDialog
   ],
   declarations: [
     AdminComponent,
