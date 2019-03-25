@@ -124,28 +124,7 @@ export class ShopsService {
             return this.isFCSMatch(shop);
         });
         return this.isArrayShopNearBldg(fcsFiltered);
-
-
-         //get FCS Matches first then order from nearest to farthest
-         if (this.filter.fcs && this.filter.location) { //both location and fcs
-            const filteredShops = this._shops.getValue().filter((shop)=> {
-                return this.isFCSMatch(shop);
-            });
-            return this.isArrayShopNearBldg(filteredShops);
-         }
-         else { //either location and fcs only
-                return this._shops.getValue().filter((shop) => {
-                    // console.log(shop)    
-                    if (this.filter.fcs) { //fcs search only
-                       return this.isFCSMatch(shop);
-                    }
-                    else if (this.filter.location != 0){ //location only 
-                        return this.isShopNearBldg(shop);
-                    }
-                });
-         }
-        
-     }
+    }
 
     private getNearestShops(...args) { //any number of parameters (in this case 0 or 1)
         /* Takes the chosen location's coordinates(LC) from getCoordinatesbyLocationId (how to access it to here)
