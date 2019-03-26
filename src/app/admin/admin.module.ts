@@ -53,7 +53,6 @@ import { UserCardComponent } from './main-pages/users/user-card/user-card.compon
     AdminRouting,
     RouterModule,
     MatGridListModule,
-    AddShopDialog,
     MatIconModule,
     MatDividerModule,
     MatListModule,
@@ -79,7 +78,8 @@ import { UserCardComponent } from './main-pages/users/user-card/user-card.compon
     UserListComponent,
     MakeAdminDialog,
     DeacUserDialog,
-    UserCardComponent
+    UserCardComponent,
+    AddShopDialog
 
   ],
   entryComponents: [
