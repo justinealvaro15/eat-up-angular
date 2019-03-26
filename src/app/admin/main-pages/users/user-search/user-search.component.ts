@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Options } from 'select2';
 import {ViewEncapsulation} from '@angular/core';
-import { AdminService } from './../../../admin.service';
 import { UsersService, FilterKeys } from './../users.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
