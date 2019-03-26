@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Shop, Consumables } from './shops.model';
+import { Shop, Consumables, BrandedConsumables } from './shops.model';
 import { Location } from '../location/location.model';
-import { AddedMenu } from '../food-estab/add-menu-item/add-menu-item.component';
+import { AddedMenu } from '../food-estab/food-group';
 import { AuthService, SocialUser } from 'angularx-social-login';
 import { LocationService } from '../location/location.service';
 
@@ -107,33 +107,23 @@ export class ShopsService {
         this.http.post(`http://localhost:3000/api/shops/${shopId}/${addedMenu.group.toLowerCase()}`, payload).subscribe();
     }
 
+    editFoodOrBeverageByShopid(shopId: string, group: string, type: string, editedMenu: Consumables[] | BrandedConsumables[]) {	
+        const payload = {	
+            // user: this.user,	
+            updatedMenu: {	
+                group,	
+                type	
+            },	
+            value: editedMenu	
+        }	
+        this.http.put(`http://localhost:3000/api/shops/${shopId}/food`, payload).toPromise().then((res) => { console.log(res); });	
+    }
 
     getFilteredShops(): Shop[] { //has to be modified
         const fcsFiltered = this._shops.getValue().filter((shop)=> {
             return this.isFCSMatch(shop);
         });
-        return this.isArrayShopNearBldg(fcsFiltered);
-
-
-         //get FCS Matches first then order from nearest to farthest
-         if (this.filter.fcs && this.filter.location) { //both location and fcs
-            const filteredShops = this._shops.getValue().filter((shop)=> {
-                return this.isFCSMatch(shop);
-            });
-            return this.isArrayShopNearBldg(filteredShops);
-         }
-         else { //either location and fcs only
-                return this._shops.getValue().filter((shop) => {
-                    // console.log(shop)    
-                    if (this.filter.fcs) { //fcs search only
-                       return this.isFCSMatch(shop);
-                    }
-                    else if (this.filter.location != 0){ //location only 
-                        return this.isShopNearBldg(shop);
-                    }
-                });
-         }
-        
+        return this.isArrayShopNearBldg(fcsFiltered);        
      }
 
     private getNearestShops(...args) { //any number of parameters (in this case 0 or 1)

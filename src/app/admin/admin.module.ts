@@ -35,7 +35,7 @@ import { TableListComponent } from './table-list/table-list.component';
 import { TypographyComponent } from './typography/typography.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { AddAdminComponent } from './main-pages/admins/add-admin/add-admin.component';
+// import { AddAdminComponent } from './main-pages/admins/add-admin/add-admin.component';
 import { UserSearchComponent } from './main-pages/users/user-search/user-search.component';
 import { UserListComponent, MakeAdminDialog, DeacUserDialog } from './main-pages/users/user-list/user-list.component';
 import { UserCardComponent } from './main-pages/users/user-card/user-card.component';
@@ -74,7 +74,7 @@ import { UserCardComponent } from './main-pages/users/user-card/user-card.compon
     TypographyComponent,
     UpgradeComponent,
     UserProfileComponent,
-    AddAdminComponent,
+    // AddAdminComponent,
     UserSearchComponent,
     UserListComponent,
     MakeAdminDialog,
