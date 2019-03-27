@@ -1,3 +1,122 @@
 <div mat-dialog-content [formGroup]="data.addShopFormGroup">
-     <h1>Add a Food Establishment</h1>
+    <h1>Add an Establishment</h1>
+
+    <mat-form-field appearance="outline" class="container">
+        <mat-label>Establishment Name</mat-label>
+        <input matInput #fe_name maxlength="30" formControlName="fe_name">
+        <mat-hint align="end">{{fe_name.value?.length || 0}}/30</mat-hint>
+        <mat-error *ngIf="fe_name?.hasError('required')">
+            Establishment Name is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="container" formControlname="type">
+        <mat-select placeholder="Type">
+            <mat-option value="Kiosk">Kiosk</mat-option>
+            <mat-option value="Canteen">Canteen</mat-option>
+            <mat-option value="Stall">Stall</mat-option>
+            <mat-option value="Cafe">Cafe</mat-option>
+        </mat-select>
+        <mat-error *ngIf="type?.hasError('required')">
+            Type is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="container">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address">
+        <mat-error *ngIf="address?.hasError('required')">
+            Address is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="container">
+        <mat-label>Longitude</mat-label>
+        <input matInput formControlName="long" type="number">
+        <mat-error *ngIf="long?.hasError('required')">
+            Longitude is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="container">
+        <mat-label>Latitude</mat-label>
+        <input matInput formControlName="lat" type="number">
+        <mat-error *ngIf="latitude?.hasError('required')">
+            Latitude is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="container">
+        <mat-label>Contact Person</mat-label>
+        <input matInput #contact maxlength="30" formControlName="contact_person">
+        <mat-hint align="end">{{contact.value?.length || 0}}/30</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="container">
+        <mat-label>Contact Number</mat-label>
+        <input matInput formControlName="contact_number">
+    </mat-form-field>
+
+    <!-- days open -->
+    <div appearance="outline" class="container">
+        <input [ngxTimepicker]="picker" formControlName="opening_hours" [format]="24" placeholder="Opening Hours">
+        <ngx-material-timepicker #picker [enableKeyboardInput]="true"></ngx-material-timepicker>
+        <mat-error *ngIf="opening_hours?.hasError('required')">
+            Opening Hours is <strong>required</strong>
+        </mat-error>
+    </div>
+
+    <div appearance="outline" class="container">
+        <input [ngxTimepicker]="picker2" formControlName="closing_hours" [format]="24" placeholder="Closing Hours">
+        <ngx-material-timepicker #picker2 [enableKeyboardInput]="true"></ngx-material-timepicker>
+        <mat-error *ngIf="closing_hours?.hasError('required')">
+            Closing Hours is <strong>required</strong>
+        </mat-error>
+    </div>
+    
+    <mat-form-field appearance="outline" class="container" hintLabel="Value in Php">
+        <mat-label>Extra Rice Price</mat-label>
+        <input matInput type="tel" formControlName="ExtraRice"> 
+        <mat-hint align="end">Leave blank if none</mat-hint>
+    </mat-form-field>
+          
+    <mat-form-field appearance="outline" class="container" hintLabel="Value in Php">
+        <mat-label>Additional Takeout Costs</mat-label>
+        <input matInput type="tel" formControlName="AddlTakeOutCost"> 
+        <mat-hint align="end">Leave blank if none</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="container">
+        <mat-label>Seating Capacity</mat-label>
+        <input matInput type="tel" formControlName="SeatingCapacity"> 
+        <mat-hint align="end">Leave blank if none</mat-hint>
+    </mat-form-field>
+
+    <!-- free water? -->
+    <!-- BYOB incentive? -->
+    <!-- CLAYGO? -->
+    
+
+    <!-- fe_name: new FormControl('', [Validators.required]),
+    type: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required]),
+    // coordinates: new FormControl(),
+    long: new FormControl('', [Validators.required]),
+    lat: new FormControl('', [Validators.required]),
+    contact_person: new FormControl(),
+    contact_number: new FormControl(),
+    opening_hours: new FormControl('', [Validators.required]),
+    closing_hours: new FormControl('', [Validators.required]),
+    days_open: new FormControl('', [Validators.required]),
+    ExtraRice: new FormControl(),
+    AddlTakeOutCost: new FormControl(),
+    FreeWater: new FormControl(),
+    BYOBIncentive: new FormControl(),
+    SeatingCapacity: new FormControl(),
+    CLAYGO: new FormControl() -->
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="getAddedShop()" cdkFocusInitial>Add</button>
 </div>
