@@ -360,8 +360,9 @@ export class HomeSearchComponent implements OnInit {
 
 
   setFiltersAndRedirect() {
-    this.shopService.setFilter(FilterKeys.Location, this.filter.get('location').value.trim());
-    this.shopService.setFilter(FilterKeys.FCS, this.filter.get('fcs').value.trim());
+  
+    this.shopService.setFilter(FilterKeys.Location, this.filter.get('location').value);
+    this.shopService.setFilter(FilterKeys.FCS, this.filter.get('fcs').value);
 
     if (this.route.snapshot.url.toString() !== 'search') {
       this.router.navigate(['/user/search']);
