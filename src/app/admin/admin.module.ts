@@ -3,10 +3,11 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminRouting } from './admin-routing.module';
-import { AdminComponent} from './admin.component';
+import { AdminComponent } from './admin.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 /*main-pages*/
-import {AdminsComponent} from './main-pages/admins/admins.component';
+import { AdminsComponent } from './main-pages/admins/admins.component';
 import { UsersComponent } from './main-pages/users/users.component';
 import { FoodEstablishmentsComponent, AddShopDialog } from './main-pages/food-establishments/food-establishments.component';
 import { MenuComponent } from './main-pages/menu/menu.component';
@@ -27,7 +28,8 @@ import {
   MatGridListModule,
   MatIconModule,
   MatDividerModule,
-  MatListModule
+  MatListModule,
+  MatDialogModule
 } from '@angular/material';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StatsComponent } from './misc-pages/stats/stats.component';
@@ -56,7 +58,9 @@ import { UserCardComponent } from './main-pages/users/user-card/user-card.compon
     MatIconModule,
     MatDividerModule,
     MatListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    NgxMaterialTimepickerModule
   ],
   declarations: [
     AdminComponent,
