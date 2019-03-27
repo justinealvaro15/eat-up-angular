@@ -89,7 +89,7 @@ export class ShopsService {
     }
 
     setFilter(key: FilterKeys, filterValue: string) {
-        this.filter[key] = filterValue.trim();
+        this.filter[key] = filterValue;
         this.filterChanged.emit(this.filter);
     }
 

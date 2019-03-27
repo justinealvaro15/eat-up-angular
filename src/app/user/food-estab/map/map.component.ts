@@ -42,9 +42,9 @@ export class MapComponent implements OnInit {
       this.food_estab,
 
     ],
-    zoom: 14,
+    zoom: 16,
     minZoom: 14,
-    center: latLng([ 14.654409, 121.068691]),
+    center: latLng([ this.shop.coordinates.lat, this.shop.coordinates.long]),
     maxBounds: [ [14.663444, 121.055124],
                 [14.645623, 121.076978] ]
   };

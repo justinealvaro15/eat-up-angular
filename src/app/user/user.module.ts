@@ -14,7 +14,7 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 
 import { SearchPageComponent } from './search-page/search-page.component';
-import { FoodEstabComponent } from './food-estab/food-estab.component';
+import { FoodEstabComponent, MapDialog } from './food-estab/food-estab.component';
 import { AddRatingReviewComponent, AddRatingReviewDialog } from './food-estab/add-rating-review/add-rating-review.component';
 import { RatingComponent } from './food-estab/add-rating-review/rating/rating.component';
 import { ReviewComponent } from './food-estab/add-rating-review/review/review.component';
@@ -108,6 +108,7 @@ export function provideConfig() {
     AddRatingReviewDialog,
     AddMenuItemDialog,
     ReviewsDialog,
+    MapDialog,
     GoogleAuthComponent,
     MapComponent,
     UserProfileComponent,
@@ -123,7 +124,8 @@ export function provideConfig() {
   entryComponents: [
     AddRatingReviewDialog,
     AddMenuItemDialog,
-    ReviewsDialog
+    ReviewsDialog,
+    MapDialog
   ],
   imports: [
     FormsModule,
