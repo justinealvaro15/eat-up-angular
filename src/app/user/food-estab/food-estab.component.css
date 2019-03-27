@@ -1,27 +1,172 @@
-mat-grid-tile {
+#one{
+    margin-left: 15px;
+}
+.food-estab-img{
+    height: 100%;
+}
+
+.food-estab-img::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom right, red, blue);
+    opacity: 0.6;
+  }
+.back-arrow{
+    position: absolute;
+    color: #F8E333;
+    font-size: 35px;
+    top: 10px;
+    left: 5px;
+}
+
+.map-container{
+    display: flex ;
+    position: absolute;
+    top: 350px;
+    right: 30px;
+}
+
+.map-button{
+    border-radius: 50% ;
+    height: 70px;
+    width: 70px;
+    text-align: center;
+    line-height: 55px;
     background: #BC000B;
+    
+}
+
+.map-icon{
+    font-size: 40px;
+    text-align: center;
+    padding-right: 40px;
+    color: #F8E333;
+}
+
+
+.shop-name{
+    font-family: latoregular;
+    font-size: 30px;
+    color:black;
+    margin-bottom: 12px;
+    margin-top: 10px;
+    overflow-wrap: break-word;
+    line-height: 30px;
+  }
+
+
+.rating-with-dot{
+    color: rgb(51, 51, 51);
+    font-size: 13px;
+    margin-left: 3px;
+  }
+
+.addr{
+   color: 	#616161;
+   font-size: 15px;
+   margin-top: 5px;
+}
+
+.food-estab-identity{
+    padding-top: 10px;
+    padding-left: 10px
+}
+  
+
+.store-hours{
+    margin-top: 0px;
+    font-family: latoregular;
+    font-size: 16px;
+    color:black;
+    margin-right: 3px;
+    margin-left: 5px;
+}
+
+.value-store-hours{
+    font-family: latoregular;
+    color: 	#616161;
+   font-size: 14px;
+}
+
+.addtl-details-buttons{
+    background: transparent;
+    border:none;
+    font-size: 13px;
+}
+
+.addtl-details-icons{
+    position: absolute;
+    top: 0px;    
+    font-size: 30px;
+}
+
+.addtl-details-name{
+    position: absolute;
+    top: 15px;
+    font-size: 13px;
+    left: 0px;
+    width: auto;
+}
+
+
+
+.days-button{
+    font-size: 10px;
+}
+
+.mat-button-toggle {
+    width: 75px;
+    height: 80px;
+    background-color: white ;
+    font-size: 20px;
+    color:#616161;
+    padding-right: 30px;
+  }
+
+  .mat-button-toggle-checked {
+    background-color: #F8E333;
+    color: blue;
   }
   
-#secBox{
-    background: blue;
+  .addtl-details-info{
+      margin-top: 10px;
+      font-family: latobold;
+      font-size: 15px; 
+  }
+
+  .open-close-container{
+    position: absolute;
+    top: 50px;
+    width: 80px;
+    height: 30px;
+    right: 20px;
+    text-align: center;
+    border-radius: 10%;
+    font-weight: bold;
+    font-size: 15px;
+    
+  }
+
+  .open-close{
+    font-family: ralewaylight;
+    padding-top: 8px;
 }
 
-#thirdBox{
-    background:yellow;
+.open {
+    color: green;
+    border: solid 1px green;
+}
+  
+.closed {
+    color: red;
+    border: solid 1px red;
 }
 
-#fourthBox{
-    background: yellowgreen
-}
-
-#two-one{
-    background: violet;
-}
-
-#two-two{
-    background: mediumslateblue;
-}
-/*
+  /*
 .card{
     text-align: left;
 }
@@ -83,17 +228,5 @@ mat-spinner {
     height: 100%;
 }
 
-.open-close{
-    font-family: ralewaylight;
-}
 
-.open {
-    color: green;
-    font-weight: bold;
-}
-  
-.closed {
-    color: red;
-    font-weight: bold;
-}
 */
