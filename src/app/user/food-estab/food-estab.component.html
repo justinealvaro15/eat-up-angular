@@ -77,8 +77,8 @@
             </div>
             </div>
             </mat-grid-tile>
-            <mat-grid-tile rowspan="2"  colspan="5">
-                <app-add-rating-review [shop]="shop" style="margin-right: 20px"></app-add-rating-review> 
+            <mat-grid-tile rowspan="2"  colspan="5" *ngIf="shop">
+                <app-add-rating-review *ngIf="reviews" [shop]="shop" [reviews]="reviews" style="margin-right: 20px"></app-add-rating-review> 
                 <app-add-menu-item [shop]="shop"></app-add-menu-item>
             </mat-grid-tile>
 
@@ -91,7 +91,7 @@
 </div>
 
 <div>
-        <app-reviews-menu class="app-reviews-menu" [shop]="shop" *ngIf="shop"></app-reviews-menu>
+        <app-reviews-menu class="app-reviews-menu" *ngIf="shop && reviews" [shop]="shop" [reviews]="reviews"></app-reviews-menu>
 </div>
     
 
