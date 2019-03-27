@@ -16,7 +16,7 @@
         <mat-card-content>
             <div fxLayout="row">  
               <app-stars [stars]="shop.fe_avg_rating"></app-stars>
-              <div class = "rating-in-parentheses"> &middot; {{shop.fe_avg_rating || "0.0"}}</div>
+              <div class = "rating-in-parentheses"> &middot; {{shop.fe_avg_rating || "Not yet rated"}}</div>
             </div>
           <div fxLayout="row" class= "addr">{{shop.address}}</div>
           <div fxLayout="row" class= "open-close" [class.closed]="!isShopOpen()" [class.open]="isShopOpen()">{{isShopOpen() ? "Open" : "Closed"}}</div>

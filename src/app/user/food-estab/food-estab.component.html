@@ -19,7 +19,7 @@
                     <div class="shop-name"> {{shop.fe_name}} </div>
                         <div fxLayout="row">
                             <app-stars [stars]="shop.fe_avg_rating"></app-stars>
-                            <div class = "rating-with-dot"> &middot; {{shop.fe_avg_rating || "0.0"}}</div>
+                            <div class = "rating-with-dot"> &middot; {{shop.fe_avg_rating || "Not yet rated"}}</div>
                             <!--<div class = "rating-with-dot">  ( {{shop.no_of_ratings}} )  </div> -->
                         </div>
                         <div fxLayout="row" class= "addr"> {{shop.address}} </div>
@@ -40,7 +40,9 @@
             </div>
         </mat-grid-tile>
         <mat-grid-tile rowspan="1"  colspan="2">
-            <div style="font-size: 13px; font-family: latobold">M T W Th F S</div>
+            <div *ngFor="let day of days_week" [class.closed-day]="!isShopOpenDay(day)" [class.open-day]="isShopOpenDay(day)">
+                {{day}}&nbsp;
+            </div>
         </mat-grid-tile>
        
             <mat-grid-tile rowspan="3"  colspan="5">

@@ -17,6 +17,7 @@ export class FoodEstabComponent implements OnInit, OnDestroy {
   shop: Shop;
   shopSubscription: Subscription;
   reviews: Review[] = [];
+  days_week: string[] = ["Su", "M", "T", "W", "Th", "F", "Sa"];
 
   constructor(
     private route: ActivatedRoute,
@@ -48,5 +49,23 @@ export class FoodEstabComponent implements OnInit, OnDestroy {
     const isOpenThisTime = currentDate.isSameOrAfter(opening) && currentDate.isSameOrBefore(closing);
 
     return isOpenToday && isOpenThisTime;
+  }
+
+  isShopOpenDay(day: string): boolean {
+    if(day == "Su"){
+      return this.shop.days_open.indexOf("Sunday") !== -1;
+    } else if(day == "M"){
+      return this.shop.days_open.indexOf("Monday") !== -1;
+    } else if(day == "T"){
+      return this.shop.days_open.indexOf("Tuesday") !== -1;
+    } else if(day == "W"){
+      return this.shop.days_open.indexOf("Wednesday") !== -1;
+    } else if(day == "Th"){
+      return this.shop.days_open.indexOf("Thursday") !== -1;
+    } else if(day == "F"){
+      return this.shop.days_open.indexOf("Friday") !== -1;
+    } else if(day == "Sa"){
+      return this.shop.days_open.indexOf("Saturday") !== -1;
+    }
   }
 }
