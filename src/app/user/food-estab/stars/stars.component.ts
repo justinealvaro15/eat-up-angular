@@ -4,7 +4,7 @@ import { Shop } from 'app/user/shops/shops.model';
 @Component({
   selector: 'app-stars',
   templateUrl: './stars.component.html',
-  styleUrls: ['./stars.component.scss']
+  styleUrls: ['./stars.component.css']
 })
 export class StarsComponent implements OnInit {
   // @Input() shop: Shop;
