@@ -46,7 +46,8 @@ import {
   MatOptionModule,
   MatGridListModule,
   MatDividerModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatButtonToggleModule
 } from '@angular/material';
 import { GoogleAuthComponent } from './navigation/google-auth/google-auth.component';
 
@@ -152,6 +153,7 @@ export function provideConfig() {
     MatGridListModule,
     MatDividerModule,
     MatTooltipModule,
+    MatButtonToggleModule,
     LeafletModule.forRoot()
   ],
   providers: [
