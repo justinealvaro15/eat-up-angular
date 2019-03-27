@@ -166,6 +166,17 @@
     border: solid 1px red;
 }
 
+.open-day {
+    font-size: 13px;
+    font-family: latobold;
+    color: green;
+}
+
+.closed-day {
+    font-size: 13px;
+    font-family: latobold;
+    color: grey;
+}
   /*
 .card{
     text-align: left;

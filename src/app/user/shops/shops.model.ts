@@ -22,6 +22,7 @@ export interface Shop {
         };
     };
     days_open: string[];
+    ExtraRice: string;
     AddlTakeOutCost: string;
     FreeWater: string;
     BYOBIncentive: string;

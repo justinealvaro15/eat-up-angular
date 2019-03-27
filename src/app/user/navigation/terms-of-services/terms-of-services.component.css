@@ -22,9 +22,10 @@
     font-size: 30px;
   }
   #pagename{
-    font-family: latolight;
+    font-family: latobold;
     font-size: 15px;
-    padding: 0px 0px 0px 10px;
+    color: white;
+    padding: 0px 0px 30px 10px;
   }
 
 
@@ -54,15 +55,20 @@
   }
 
   p{
-    margin: 5px 30px 20px 30px;
+    margin: 15px 30px 20px 30px;
     color: rgb(82, 83, 82);
     font-family: ralewaylight;
     text-align: justify;
+    font-size: 14px;
   }
 
   h1{
-    margin: 20px 30px 0px 30px;
+    margin: 0px 30px 0px 30px;
     font-family: ralewaylight;
-    font-size: 20px;
+    font-size: 15px;
+  }
+
+  .content{
+    margin-top: 20px;
   }
 }
