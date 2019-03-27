@@ -24,9 +24,9 @@
     font-size: 30px;
   }
   #pagename{
-    font-family: latolight;
+    font-family: latobold;
     font-size: 15px;
-    padding: 0px 0px 0px 10px;
+    padding: 15px 0px 0px 10px;
   }
 
 
@@ -46,7 +46,7 @@
 
   #subtitle{
     position: relative;
-    padding: 0px 55px 0px 30px;
+    padding: 30px 55px 0px 30px;
     color:#4136FF;
     font-family: latoregular;
     font-size: 23px;
@@ -63,10 +63,11 @@
 
   .content{
     position: relative;
-    top: 10px;
+    top: 30px;
   }
   p{
-    margin: 0px 30px 20px 30px;
+    font-size: 15px;
+    margin: 20px 30px 20px 30px;
     color: rgb(82, 83, 82);
     font-family: ralewaylight;
     text-align: justify;

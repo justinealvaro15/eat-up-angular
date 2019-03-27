@@ -1,4 +1,4 @@
-<div class="search-container"> 
+<div class="search-container" fxFlex fxLayout= "rows" fxLayoutAlign="center"> 
     <div [formGroup]="filter" class="search-box-input">
         <div class="search">
             <input type="text" placeholder="food, canteen, stall" (keyup.enter)="setFiltersAndRedirect()" formControlName="fcs">

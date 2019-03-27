@@ -24,9 +24,9 @@
     font-size: 30px;
   }
   #pagename{
-    font-family: latolight;
+    font-family: latobold;
     font-size: 15px;
-    padding: 0px 0px 0px 10px;
+    padding: 15px 0px 0px 10px;
   }
 
 
@@ -58,5 +58,6 @@
     color: rgb(82, 83, 82);
     font-family: ralewaylight;
     text-align: justify;
+    font-size: 13px;
   }
 }
