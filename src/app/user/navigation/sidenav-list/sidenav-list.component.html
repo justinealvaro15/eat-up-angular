@@ -6,7 +6,7 @@
         <h1 class = "user-name">{{user.name}}</h1>
     </div>
     <ng-template #loggedOut>
-        <img class = "user-pic" src="./../../assets/sidenav-stuff/Profile/default.png">
+        <img class = "user-pic" src="./../../assets/sidenav-stuff/Profile/default.png" (click)="alertUser()">
     <h1 class = "user-name">Username</h1>
     </ng-template>
     

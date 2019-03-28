@@ -23,4 +23,7 @@ export class SidenavListComponent implements OnInit {
   onClose() {
     this.closeSidenav.emit();
   }
+  alertUser() {
+    window.alert("Please sign-in with your UP Mail to use this feature.");
+  }
 }
