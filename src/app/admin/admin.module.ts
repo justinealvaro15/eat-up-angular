@@ -29,7 +29,8 @@ import {
   MatIconModule,
   MatDividerModule,
   MatListModule,
-  MatDialogModule
+  MatDialogModule,
+  MatCardModule
 } from '@angular/material';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StatsComponent } from './misc-pages/stats/stats.component';
@@ -41,6 +42,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserSearchComponent } from './main-pages/users/user-search/user-search.component';
 import { UserListComponent, MakeAdminDialog, DeacUserDialog } from './main-pages/users/user-list/user-list.component';
 import { UserCardComponent } from './main-pages/users/user-card/user-card.component';
+import { ShopCardAdminComponent } from './main-pages/food-establishments/shop-card-admin/shop-card-admin.component';
 
 @NgModule({
   imports: [
@@ -60,7 +62,8 @@ import { UserCardComponent } from './main-pages/users/user-card/user-card.compon
     MatListModule,
     ReactiveFormsModule,
     MatDialogModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    MatCardModule
   ],
   declarations: [
     AdminComponent,
@@ -83,7 +86,8 @@ import { UserCardComponent } from './main-pages/users/user-card/user-card.compon
     MakeAdminDialog,
     DeacUserDialog,
     UserCardComponent,
-    AddShopDialog
+    AddShopDialog,
+    ShopCardAdminComponent
 
   ],
   entryComponents: [

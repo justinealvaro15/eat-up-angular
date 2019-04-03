@@ -41,7 +41,7 @@ export interface DialogData {
 @Component({
   selector: 'app-food-establishments',
   templateUrl: './food-establishments.component.html',
-  styleUrls: ['./food-establishments.component.scss']
+  styleUrls: ['./food-establishments.component.css']
 })
 export class FoodEstablishmentsComponent implements OnInit {
   addShopFormGroup: FormGroup;

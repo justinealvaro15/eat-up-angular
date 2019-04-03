@@ -1,0 +1,30 @@
+<!--
+<div class="basic-container">
+  <mat-grid-list cols="1" rowHeight="fit" gutterSize="3px">
+  <mat-grid-tile>
+<mat-card class="card" (click)="goToShop(shop.fe_id)">
+
+<div fxLayout="row">
+    <div class="foodestab-pictures" fxFlex="50">
+      <img mat-card-image src="{{shop.image ? shop.image : 'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17665746.jpg'}}" alt="food-estab-image">      
+    </div>
+ 
+    <div fxFlex fxFlexAlign="center">
+      <div fxLayout="row">
+        <mat-card-title class="shop-name">{{shop.fe_name}}</mat-card-title>
+      </div>
+     
+      <mat-card-content>
+          <div fxLayout="row">  
+            <app-stars [stars]="shop.fe_avg_rating"></app-stars>
+            <div class = "rating-in-parentheses"> &middot; {{shop.fe_avg_rating || "Not yet rated"}}</div>
+          </div>
+        <div fxLayout="row" class= "addr">{{shop.address}}</div>
+        <div fxLayout="row" class= "open-close" [class.closed]="!isShopOpen()" [class.open]="isShopOpen()">{{isShopOpen() ? "Open" : "Closed"}}</div>
+      </mat-card-content>
+    </div>
+</div>
+</mat-card>
+</mat-grid-tile>
+</mat-grid-list>
+-->
