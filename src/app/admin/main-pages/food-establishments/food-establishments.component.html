@@ -1,4 +1,7 @@
+<!--insert here the search box -->
+
 <button class="add" mat-fab color="primary" (click)="openDialog()">
   <mat-icon>add</mat-icon>
 </button>
 
+<app-shop-card-admin *ngFor="let trendingShop of trendingShops" [shop]="trendingShop"></app-shop-card-admin>
