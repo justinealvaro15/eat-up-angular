@@ -2,7 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from './user.model';
+import { User, Admin } from './user.model';
 import { AuthService, SocialUser } from 'angularx-social-login';
 
 @Injectable({
@@ -49,6 +49,10 @@ export class UsersService {
   setFilter(key: FilterKeys, filterValue: string) {
     this.filter[key] = filterValue;
     this.filterChanged.emit(this.filter);
+  }
+
+  addAdmin(newAdmin: Admin) {
+    return this.http.post<Admin>('http://localhost:3000/api/admin', newAdmin);
   }
 
   private isNameorEmailMatch(user:User): boolean{

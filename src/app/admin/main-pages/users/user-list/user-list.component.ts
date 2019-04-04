@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UsersService } from '../users.service';
 import { HttpClientModule }    from '@angular/common/http';
 import { Subscription } from 'rxjs';
-import { User } from '../user.model';
+import { User, Admin } from '../user.model';
 
 
 @Component({
@@ -46,31 +46,39 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.users = this.usersService.getFilteredUsers();
   }
 
-  makeAdmin():void {
+  makeAdmin(user: User):void {
     const dialogRef = this.dialog.open(MakeAdminDialog, {
       width: '350px',
-      // data: {
-      //   foodGroups: this.foodGroups,
-      //   foodGroupControl: this.foodGroupControl,
-      //   addFoodFormGroup: this.addFoodFormGroup,
-      // }
+      data: {
+          email: user.email,
+          name: user.name
+          //photoUrl:
+      }
     });
 
-    // dialogRef.afterClosed().subscribe((result: AddedMenu) => {
-    //   if (result.group && result.type) {
-    //     const newMenu: Consumables | BrandedConsumables = {
-    //       c_name: result.name,
-    //       price: result.price,
-    //       c_avg_rating: 0,
-    //       amount: result.amount,
-    //     };
-    //     this.shop[result.group][result.type].push(newMenu);
-
-    //     this.shopService.addFoodOrBeverageByShopId(this.shop.fe_id, result);
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe((result: Admin) => {
+      const date = new Date();
+       if (result.email && result.name) {
+         const newAdmin: Admin = {
+           email: result.email,
+           name: result.name,
+           admin_since: {
+             year: date.getFullYear(),
+             month: date.getMonth(),
+             day: date.getDate(),
+             hour: date.getHours(),
+             minute: date.getMinutes(),
+             second: date.getSeconds()
+           }
+           //photoUrl:
+         };
+         this.usersService.addAdmin(newAdmin);
+         window.alert(result.name + " is now an Admin");
+        }
+    });
   }
-  deacUser():void {
+
+  deacUser(user: User):void {
     const dialogRef = this.dialog.open(DeacUserDialog, {
       width: '350px',
       // data: {
@@ -109,15 +117,18 @@ export class MakeAdminDialog {
 
   constructor (
     public dialogRef: MatDialogRef<MakeAdminDialog>,
-    //@Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: Admin
   ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  onYesClick() {
-
+  onYesClick(): any {
+    return { //does not return
+      email: this.data.email,
+      name: this.data.name
+    }
   }
 }
 

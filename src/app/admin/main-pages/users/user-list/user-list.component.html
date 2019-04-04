@@ -11,8 +11,8 @@
             </div>
                
         </div>
-        <button class = "makeAdmin-button" mat-raised-button (click)="makeAdmin()">Make Admin</button>
-        <button class = "deacUser-button" mat-raised-button (click)="deacUser()">Deactivate User</button>
+        <button class = "makeAdmin-button" mat-raised-button (click)="makeAdmin(user)">Make Admin</button>
+        <button class = "deacUser-button" mat-raised-button (click)="deacUser(user)">Deactivate User</button>
 
     <mat-divider *ngIf="!last">  </mat-divider>
     <br style = "line-height:5;">
