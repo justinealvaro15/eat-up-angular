@@ -21,7 +21,7 @@ export class ShopCardComponent implements OnInit {
 
 
   goToShop(shopId: string) {
-    this.router.navigate(['/user/shops', shopId]);
+    this.router.navigate(['/eat-up/user/shops', shopId]);
   }
 
   isShopOpen(): boolean {

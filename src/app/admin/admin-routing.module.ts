@@ -13,7 +13,7 @@ import { MenuComponent } from './main-pages/menu/menu.component';
 
 
 const routes: Routes =[
-    { path: 'admin',
+    { path: 'eat-up/admin',
     component: AdminComponent,
     children: [
     { path: '', component: DashboardComponent  },

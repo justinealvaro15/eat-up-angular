@@ -14,7 +14,7 @@ import { UserProfileComponent } from './navigation/user-profile/user-profile.com
 
 
 const routes: Routes = [
-  { path: 'user',
+  { path: 'eat-up/user',
     component: UserComponent,
     children: [
     { path: 'shops', component: TrendingNewestComponent },

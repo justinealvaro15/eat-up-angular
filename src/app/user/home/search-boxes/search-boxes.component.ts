@@ -365,7 +365,7 @@ export class HomeSearchComponent implements OnInit {
     this.shopService.setFilter(FilterKeys.FCS, this.filter.get('fcs').value);
 
     if (this.route.snapshot.url.toString() !== 'search') {
-      this.router.navigate(['/user/search']);
+      this.router.navigate(['/eat-up/user/search']);
     }
   }
 
