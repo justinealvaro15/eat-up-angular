@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
 */
 const routes: Routes = [
-  { path: '', redirectTo: 'eat-up/user/shops', pathMatch: 'full'}
+  { path: '', redirectTo: '/eat-up/user/shops', pathMatch: 'full'}
 ];
 
 export const routing = RouterModule.forRoot(routes);
