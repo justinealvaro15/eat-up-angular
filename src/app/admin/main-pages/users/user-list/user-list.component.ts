@@ -73,7 +73,7 @@ export class UserListComponent implements OnInit, OnDestroy {
            //photoUrl:
          };
          this.usersService.addAdmin(newAdmin);
-         window.alert(result.name + " is now an Admin");
+         window.alert(result.name + " is now an Admin"); //RUNS
         }
     });
   }
