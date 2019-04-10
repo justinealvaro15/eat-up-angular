@@ -29,7 +29,7 @@ export interface User {
       };
     }
     reviews_made: number;
-  
+    isAdmin: boolean;
   }
 export interface Admin {
   email: string;

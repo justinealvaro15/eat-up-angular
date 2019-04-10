@@ -19,7 +19,6 @@ export class UserListComponent implements OnInit, OnDestroy {
   getUsersSubscription: Subscription;
   filter: FormGroup;
 
-
   constructor(
     private fb: FormBuilder,
     public dialog: MatDialog,
@@ -49,6 +48,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   getFilteredUsers() {
     this.users = this.usersService.getFilteredUsers();
+ 
   }
 
   makeAdmin(user: User):void {
@@ -82,6 +82,7 @@ export class UserListComponent implements OnInit, OnDestroy {
          if (!this.usersService.alreadyAdmin()) {
            this.usersService.addAdmin(newAdmin); //do only if not already in db
            window.alert(result.name + " is now an Admin"); 
+           this.isAdmin = true;
          } else {
            window.alert(result.name + " is already an Admin");
          }
