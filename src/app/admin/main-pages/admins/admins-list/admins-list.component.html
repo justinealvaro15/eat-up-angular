@@ -1,0 +1,24 @@
+<div > <!--insert inside div: *ngIf = "Admins" --> 
+  <div> <!-- insert inside div: *ngFor-->
+    <hr>
+      <mat-grid-list cols="5" rowHeight="75px">
+            <mat-grid-tile colspan="1">
+                <img class = "admin-picture" src="https://technology.mb.com.ph/wp-content/uploads/2017/06/ROOOOM.jpg" alt="admin-picture">
+            </mat-grid-tile>
+      
+            <mat-grid-tile colspan="2">
+                <div fxLayout = "row">
+                    <div class = "admin-name"> Rommel Feria </div>
+                    <div class = "admin-email"> rpferia@up.edu.ph </div>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="2">
+               
+                    <button class = "deacUser-button" mat-raised-button (click)="deacUser(user)">Deactivate Admin</button>
+             
+            </mat-grid-tile>
+      </mat-grid-list>
+  </div>
+  <hr>
+  <footer> Eat UP Copyright 2019</footer>
+</div> 

@@ -43,6 +43,8 @@ import { UserSearchComponent } from './main-pages/users/user-search/user-search.
 import { UserListComponent, MakeAdminDialog, DeacUserDialog } from './main-pages/users/user-list/user-list.component';
 import { UserCardComponent } from './main-pages/users/user-card/user-card.component';
 import { ShopCardAdminComponent } from './main-pages/food-establishments/shop-card-admin/shop-card-admin.component';
+import { AdminsListComponent } from './main-pages/admins/admins-list/admins-list.component';
+import { AdminSearchComponent } from './main-pages/admins/admin-search/admin-search.component';
 
 @NgModule({
   imports: [
@@ -87,7 +89,9 @@ import { ShopCardAdminComponent } from './main-pages/food-establishments/shop-ca
     DeacUserDialog,
     UserCardComponent,
     AddShopDialog,
-    ShopCardAdminComponent
+    ShopCardAdminComponent,
+    AdminsListComponent,
+    AdminSearchComponent
 
   ],
   entryComponents: [
