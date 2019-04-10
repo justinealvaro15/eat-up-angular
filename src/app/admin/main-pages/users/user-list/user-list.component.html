@@ -14,7 +14,7 @@
             </mat-grid-tile>
             <mat-grid-tile colspan="2">
                 <div fxFlex class = "container-buttons" >
-                        <div *ngIf = "!user.isAdmin;  else notAdmin">
+                        <div *ngIf = "!isAdmin(user);else notAdmin">
                             <button class = "makeAdmin-button" mat-raised-button (click)="makeAdmin(user)">
                                 <div class = "text-inside"> Make Admin </div>
                             </button>
