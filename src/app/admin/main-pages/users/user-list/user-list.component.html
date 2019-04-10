@@ -1,22 +1,27 @@
-<mat-list *ngIf = "users"> 
-    <mat-list-item *ngFor="let user of users">
-        
-        <div class = "logo">
-            <div class ="logo-img">
-                <img class = "profilePic" src="/assets/img/faces/pupper.png">
-                <div class="userInitialInfo">
-                    <p class="user-name">{{user.name}}</p>
-                    <p class="email"> {{user.email}}</p>
+<div *ngIf = "users">
+    <div *ngFor="let user of users">
+        <hr>
+        <mat-grid-list cols="5" rowHeight="75px">
+            <mat-grid-tile colspan="1">
+                <img class = "user-picture" src="https://vignette.wikia.nocookie.net/sakurasounopetnakanojo/images/d/d7/Ryuunosuke_Akasaka.png/revision/latest?cb=20150109171438&path-prefix=es" alt="user-picture">
+            </mat-grid-tile>
+      
+            <mat-grid-tile colspan="2">
+                <div fxLayout = "row">
+                    <div class = "user-name"> {{user.name}} </div>
+                    <div class = "user-email"> {{user.email}} </div>
                 </div>
-            </div>
-               
-        </div>
-        <button class = "makeAdmin-button" mat-raised-button (click)="makeAdmin(user)">Make Admin</button>
-        <button class = "deacUser-button" mat-raised-button (click)="deacUser(user)">Deactivate User</button>
-
-    <mat-divider *ngIf="!last">  </mat-divider>
-    <br style = "line-height:5;">
-
-    </mat-list-item>
-    
-</mat-list>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="2">
+                <div fxFlex class = "container-buttons" >
+                        <button class = "makeAdmin-button" mat-raised-button (click)="makeAdmin(user)">
+                            <div class = "text-inside"> Make Admin </div>
+                        </button>
+                        <button class = "deacUser-button" mat-raised-button (click)="deacUser(user)">Deactivate User</button>
+                </div>
+            </mat-grid-tile>
+          </mat-grid-list>
+    </div>
+    <hr>
+    <footer> Eat UP Copyright 2019</footer>
+</div>
