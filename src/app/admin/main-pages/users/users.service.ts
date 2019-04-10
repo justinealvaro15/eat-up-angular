@@ -52,7 +52,7 @@ export class UsersService {
   }
 
   addAdmin(newAdmin: Admin) {
-    return this.http.post<Admin>('http://localhost:3000/api/admin', newAdmin);
+    return this.http.post<Admin>('http://localhost:3000/api/admin', newAdmin).subscribe();
   }
 
   private isNameorEmailMatch(user:User): boolean{
