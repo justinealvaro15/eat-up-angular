@@ -53,6 +53,8 @@
   <app-menu-item [consumables]="shop.Beverages.Branded" title="Branded Drinks" [shop]="shop" foodOrBev="Beverages" type="Branded"></app-menu-item>
 </mat-card>
 
+<app-add-menu-item [shop]="shop"></app-add-menu-item>
+
 <!-- <mat-card *ngIf="shop.BrandedConsumables && shop.BrandedConsumables.length">
   <mat-card-title>Branded Consumables</mat-card-title>
   <mat-card-content *ngFor="let branded of shop.BrandedConsumables">
