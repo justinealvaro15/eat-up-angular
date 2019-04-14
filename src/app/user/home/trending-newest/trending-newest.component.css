@@ -21,3 +21,9 @@
     color:black;
     font-weight: 700;
 }
+
+footer{
+    position: relative;
+    font-size: 10px;
+    margin: 0px 0px 13px 10px;
+  }

@@ -1,10 +1,10 @@
 import { Component, Inject, Input, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { UsersService } from '../users.service';
+import { UsersService, FilterKeys } from '../users.service';
 import { HttpClientModule }    from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { User, Admin } from '../user.model';
-
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-user-list',
@@ -14,22 +14,27 @@ import { User, Admin } from '../user.model';
 export class UserListComponent implements OnInit, OnDestroy {
   users: User[] =[];
   allUsers:User[] = [];
+  admins : Admin[]=[];
   getFilteredUserSubscription: Subscription;
   getUsersSubscription: Subscription;
-
+  filter: FormGroup;
+  is_admin: true;
+  is_not_admin: false;
   constructor(
+    private fb: FormBuilder,
     public dialog: MatDialog,
     private usersService: UsersService
   ) { }
 
   ngOnInit() {
-
+    this.filter = this.fb.group({
+      name_or_email: new FormControl(this.usersService.filter.name_or_email)
+    });
     this.getUsersSubscription = this.usersService.getUsersDisplay().subscribe((users) => { //For Initialization
        this.getFilteredUsers();
     });
     this.getFilteredUserSubscription = this.usersService.filterChanged.subscribe((filter) => { 
       this.getFilteredUsers();
-      console.log(filter);
      
     })
     this.getFilteredUsers();
@@ -44,9 +49,20 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   getFilteredUsers() {
     this.users = this.usersService.getFilteredUsers();
+ 
+  }
+
+  isAdmin(user:User): boolean {
+    console.log(user.isAdmin);
+    if (user.isAdmin==true) {
+      return this.is_admin;
+    } else if (user.isAdmin==false){
+      return this.is_not_admin;
+    }
   }
 
   makeAdmin(user: User):void {
+   
     const dialogRef = this.dialog.open(MakeAdminDialog, {
       width: '350px',
       data: {
@@ -72,35 +88,34 @@ export class UserListComponent implements OnInit, OnDestroy {
            }
            //photoUrl:
          };
-         this.usersService.addAdmin(newAdmin);
-         window.alert(result.name + " is now an Admin"); //RUNS
+         this.usersService.setFilter(FilterKeys.Name_Or_Email,user.email);
+         if (!this.usersService.alreadyAdmin()) {
+           this.usersService.addAdmin(newAdmin); //do only if not already in db
+           window.alert(result.name + " is now an Admin"); 
+        
+         } else {
+           window.alert(result.name + " is already an Admin");
+         }
+         this.usersService.setFilter(FilterKeys.Name_Or_Email,"");
+       
+         
         }
     });
   }
 
   deacUser(user: User):void {
+    //needs to change user status from active to inactive
     const dialogRef = this.dialog.open(DeacUserDialog, {
       width: '350px',
-      // data: {
-      //   foodGroups: this.foodGroups,
-      //   foodGroupControl: this.foodGroupControl,
-      //   addFoodFormGroup: this.addFoodFormGroup,
-      // }
+      data: {
+          email: user.email
+      }
     });
 
-    // dialogRef.afterClosed().subscribe((result: AddedMenu) => {
-    //   if (result.group && result.type) {
-    //     const newMenu: Consumables | BrandedConsumables = {
-    //       c_name: result.name,
-    //       price: result.price,
-    //       c_avg_rating: 0,
-    //       amount: result.amount,
-    //     };
-    //     this.shop[result.group][result.type].push(newMenu);
-
-    //     this.shopService.addFoodOrBeverageByShopId(this.shop.fe_id, result);
-    //   }
-    // });
+    
+     dialogRef.afterClosed().subscribe((result: any) => {
+          this.usersService.deactivateUser(result);
+     });
   }
 }
 
@@ -120,12 +135,12 @@ export class MakeAdminDialog {
     @Inject(MAT_DIALOG_DATA) public data: Admin
   ) {}
 
-  onNoClick(): void {
+  onNoClick(): void { //on remove as admin
     this.dialogRef.close();
   }
 
-  onYesClick(): any {
-    return { //does not return
+  onYesClick(): any { //on make admin
+    return { 
       email: this.data.email,
       name: this.data.name
     }
@@ -145,15 +160,22 @@ export class DeacUserDialog {
 
   constructor (
     public dialogRef: MatDialogRef<DeacUserDialog>,
-    //@Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: User
   ) {}
 
-  onNoClick(): void {
+  onNoClick(): void {  //or on activate user
+    // return {
+    //   email : this.data.email,
+    //   status: "activate"
+    // }
     this.dialogRef.close();
   }
 
-  onYesClick() {
-
+  onYesClick() { //or on deactivate user
+    return {
+      email : this.data.email,
+      status: "deactivate"
+    }
   }
 }
 

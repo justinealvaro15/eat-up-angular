@@ -9,14 +9,21 @@
             <mat-grid-tile colspan="2">
                 <div fxLayout = "row">
                     <div class = "user-name"> {{user.name}} </div>
-                    <div class = "user-email"> {{user.email}} </div>
+                    <div class = "user-email"> {{user.email}} {{user.isAdmin}}</div>
                 </div>
             </mat-grid-tile>
             <mat-grid-tile colspan="2">
                 <div fxFlex class = "container-buttons" >
-                        <button class = "makeAdmin-button" mat-raised-button (click)="makeAdmin(user)">
-                            <div class = "text-inside"> Make Admin </div>
-                        </button>
+                        <div *ngIf = "!isAdmin(user);else notAdmin">
+                            <button class = "makeAdmin-button" mat-raised-button (click)="makeAdmin(user)">
+                                <div class = "text-inside"> Make Admin </div>
+                            </button>
+                       </div>
+                       <ng-template #notAdmin>    
+                            <button class = "alreadyAdmin-button" mat-raised-button disabled="disabled">
+                                    <div class = "text-inside"> Admin </div>
+                            </button>
+                       </ng-template>
                         <button class = "deacUser-button" mat-raised-button (click)="deacUser(user)">Deactivate User</button>
                 </div>
             </mat-grid-tile>
