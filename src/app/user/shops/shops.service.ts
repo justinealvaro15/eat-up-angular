@@ -88,6 +88,10 @@ export class ShopsService {
         return this._shops
     }
 
+    getShopByHighestId() {
+        return this.http.get<Shop>('http://localhost:3000/api/shops/highest');
+    }
+
     setFilter(key: FilterKeys, filterValue: string) {
         this.filter[key] = filterValue;
         this.filterChanged.emit(this.filter);
@@ -124,7 +128,7 @@ export class ShopsService {
             return this.isFCSMatch(shop);
         });
         return this.isArrayShopNearBldg(fcsFiltered);        
-     }
+    }
 
     private getNearestShops(...args) { //any number of parameters (in this case 0 or 1)
         /* Takes the chosen location's coordinates(LC) from getCoordinatesbyLocationId (how to access it to here)

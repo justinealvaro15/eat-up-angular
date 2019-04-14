@@ -5,3 +5,20 @@
     margin-right: 20px;
     margin-bottom: 20px;
 }
+
+.days-open {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.days-open.day {
+    display: flex;
+    flex-direction: column;
+}
+
+.control-styles {
+    margin: 0 auto; 
+    width:300px; 
+    padding-top: 25px
+}
