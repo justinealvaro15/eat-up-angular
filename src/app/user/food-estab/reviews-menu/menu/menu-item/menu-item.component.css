@@ -11,6 +11,9 @@
     margin-bottom: 20px;
 }
 
+mat-card{
+    margin-top: 1px;
+}
 .consumable-item {
     display: flex;
     justify-content: space-between;
