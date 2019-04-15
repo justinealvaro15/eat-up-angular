@@ -1,5 +1,5 @@
 <div mat-dialog-content>
-    Would you like to make Pupper McDoge an Admin?
+    Would you like to make {{data.name}} an Admin?
 </div>
 <button mat-raised-button color="primary" (click)="onNoClick()"> No </button>
 <button mat-raised-button [mat-dialog-close]="onYesClick()" > Yes </button>
