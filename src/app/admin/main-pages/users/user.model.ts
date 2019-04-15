@@ -29,6 +29,7 @@ export interface User {
       };
     }
     reviews_made: number;
+    active:boolean;
     isAdmin: boolean;
   }
 export interface Admin {

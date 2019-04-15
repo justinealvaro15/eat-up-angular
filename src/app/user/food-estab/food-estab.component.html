@@ -36,7 +36,8 @@
         <mat-grid-tile rowspan="1"  colspan="3">
             <div fxLayout="row" fxLayoutAlign = "start">
                 <div class = "store-hours"> Store Hours: </div>
-                <div class = "value-store-hours"> 7:00 AM to 5:30 PM </div>
+                <div class = "value-store-hours"> {{setOpeningHour(shop)}}:{{setOpeningMins(shop)}}AM to {{setClosingHour(shop)}}:{{setClosingMins(shop)}} PM </div>
+               
                 <!--<div class = "rating-with-dot">  ( {{shop.no_of_ratings}} )  </div> -->
             </div>
         </mat-grid-tile>

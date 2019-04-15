@@ -20,6 +20,10 @@ export class FoodEstabComponent implements OnInit, OnDestroy {
   shopSubscription: Subscription;
   reviews: Review[] = [];
   days_week: string[] = ["Su", "M", "T", "W", "Th", "F", "Sa"];
+  opening_hour: string;
+  opening_mins: string;
+  closing_hour: string;
+  closing_mins: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,6 +38,42 @@ export class FoodEstabComponent implements OnInit, OnDestroy {
     this.reviewService.getReviewsByNewest(shopId).subscribe((reviews) => {
       this.reviews = reviews;
     });
+  }
+
+  setOpeningHour(shop:Shop) {
+       //setting hours
+      if (this.shop.hours.opening.hour > 12) {
+        return this.opening_hour = String(this.shop.hours.opening.hour - 12);
+      } else {
+        return this.opening_hour = String(this.shop.hours.opening.hour);
+      }
+  }
+
+  setOpeningMins(shop:Shop) {
+    //setting minutes
+    if (String(this.shop.hours.opening.minute).length==1) {
+      return this.opening_mins = "0" + String(this.shop.hours.opening.minute);
+    } else {
+      return this.opening_mins = String(this.shop.hours.opening.minute);
+    }
+  }
+
+  setClosingHour(shop:Shop){
+    if (this.shop.hours.closing.hour > 12) {
+      return this.closing_hour = String(this.shop.hours.closing.hour - 12);
+    } else {
+      return this.closing_hour = String(this.shop.hours.closing.hour);
+    }
+    
+  }
+  setClosingMins(shop:Shop) {
+
+    if (String(this.shop.hours.closing.minute).length==1) {
+      return this.closing_mins = "0" + String(this.shop.hours.closing.minute);
+    } else {
+      return this.closing_mins = String(this.shop.hours.closing.minute);
+    }
+  
   }
 
   ngOnDestroy() {
