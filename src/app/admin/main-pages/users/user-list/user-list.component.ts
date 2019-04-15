@@ -108,7 +108,9 @@ export class UserListComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(DeacUserDialog, {
       width: '350px',
       data: {
-          email: user.email
+          email: user.email,
+          name: user.name,
+          active: user.active
       }
     });
 
@@ -174,53 +176,8 @@ export class DeacUserDialog {
   onYesClick() { //or on deactivate user
     return {
       email : this.data.email,
-      status: "deactivate"
+      name: this.data.name,
+      active: this.data.active
     }
   }
 }
-
-/*
-@Component({
-  selector: 'add-menu-item-dialog',
-  templateUrl: 'add-menu-item-dialog.html',
-})
-export class AddMenuItemDialog {
-  size = 12;
-  width1 = 250;
-  width2 = 100;
-  height = 100;
-
-  constructor(
-    public dialogRef: MatDialogRef<AddMenuItemDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-    }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-
-  getAddedMenu(): AddedMenu {
-    const addFoodFormGroup = this.data.addFoodFormGroup;
-    const foodCategoryAndType = addFoodFormGroup.get('foodCategoryAndType').value;
-
-    return {
-      group: foodCategoryAndType ? foodCategoryAndType.group : null,
-      type: foodCategoryAndType ? foodCategoryAndType.type : null,
-      name: addFoodFormGroup.get('name').value,
-      price: addFoodFormGroup.get('price').value,
-      amount: foodCategoryAndType ? 
-        foodCategoryAndType.isBranded ? addFoodFormGroup.get('amount').value : undefined
-        : undefined
-    }
-  }
-
-  isBranded(): boolean {
-    const addFoodFormGroup = this.data.addFoodFormGroup;
-    const foodCategoryAndType = addFoodFormGroup.get('foodCategoryAndType').value;
-
-    return foodCategoryAndType ? foodCategoryAndType.isBranded : false
-  }
-}
-
-*/

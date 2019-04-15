@@ -34,7 +34,7 @@ export class UsersService {
     } 
 
     getUsersDisplay() {
-      return this.http.get<User[]>('http://localhost:3000/api/users');
+      return this.http.get<User[]>(`http://localhost:3000/api/users`);
     }
 
   updateUserList() {
@@ -45,7 +45,7 @@ export class UsersService {
 
   getFilteredUsers():User[] {
     return this._users.getValue().filter((user)=> { //EMPTY
-      return this.isUserNameorEmailMatch(user);
+      return this.isUserNameorEmailMatch(user) ;
      });
   }
 
@@ -56,7 +56,10 @@ export class UsersService {
 
   deactivateUser(user: any) { //active user to inactive user
     //search the particular user then make user.status = inactive
-
+    const payload = {
+      active: false
+    }
+    return this.http.put<User>(`http://localhost:3000/api/users/${user.email} `,payload).toPromise().then((res)=>{console.log(res); });
   }
 
   addAdmin(newAdmin: Admin) {
@@ -68,6 +71,22 @@ export class UsersService {
       return this.isAdminEmailMatch(admin);
     });
   }
+
+  // private isActive(user:User): boolean {
+  //   if (user.active == true) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
+  getUserByEmail(email: string) {
+    return this.http.get<User | null>(`http://localhost:3000/api/users/${email}`).pipe(
+        map((users: any) => {
+            return users.length > 0 ? users[0] : null;
+        })
+    );
+}
 
   private isAdminEmailMatch(admin: Admin): boolean {
     if (!this.filter.name_or_email) {
