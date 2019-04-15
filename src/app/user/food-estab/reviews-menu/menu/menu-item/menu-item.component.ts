@@ -11,7 +11,7 @@ import { FoodGrouping, FoodGroup, AddedMenu, FoodBeveragesMapping } from 'app/us
 @Component({
   selector: 'app-menu-item',
   templateUrl: './menu-item.component.html',
-  styleUrls: ['./menu-item.component.scss']
+  styleUrls: ['./menu-item.component.css']
 })
 export class MenuItemComponent implements OnInit {
   @Input() title: string;

@@ -8,6 +8,7 @@ import { routing } from './app-routing.module';
 import { NgSelect2Module } from 'ng-select2';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { AuthServiceConfig, GoogleLoginProvider, LoginOpt } from 'angularx-social-login';
+
 // import { AuthService } from 'angularx-social-login';
 
 
@@ -41,7 +42,7 @@ export function provideConfig() {
     UserModule,
     AdminModule,
     NgSelect2Module,
-    LeafletModule.forRoot(),
+    LeafletModule.forRoot()
     // AuthService.for
   ],
   providers: [{

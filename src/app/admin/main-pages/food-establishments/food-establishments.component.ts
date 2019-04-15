@@ -1,9 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { ShopsService } from 'app/user/shops/shops.service';
 import { Shop } from 'app/user/shops/shops.model';
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { LocationData, Location } from 'app/user/location/location.model';
+import { Subscription } from 'rxjs';
 
 export interface AddedShop {
   fe_name: string,
@@ -13,25 +14,24 @@ export interface AddedShop {
   long: number,
   contact_person: string,
   contact_number: string,
-  opening_hours: string,
-  closing_hours: string,
-  // hours:{
-  //     opening: {
-  //         hour: number,
-  //         minute: number
-  //     },
-  //     closing: {
-  //         hour: number,
-  //         minute: number
-  //     };
-  // };
+  hours:{
+    opening: {
+        hour: number,
+        minute: number
+    },
+    closing: {
+        hour: number,
+        minute: number
+    };
+  };
   days_open: string[],
   ExtraRice: string,
   AddlTakeOutCost: string,
   FreeWater: string,
   BYOBIncentive: string,
   SeatingCapacity: string | number,
-  CLAYGO: string
+  CLAYGO: string,
+  NearBuildings: Location[]
 }
 
 export interface DialogData {
@@ -45,6 +45,9 @@ export interface DialogData {
 })
 export class FoodEstablishmentsComponent implements OnInit {
   addShopFormGroup: FormGroup;
+  shopWithHighestId: Shop;
+  highestId: string;
+  subscriptions: Subscription[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,24 +57,27 @@ export class FoodEstablishmentsComponent implements OnInit {
 
   ngOnInit() {
     this.addShopFormGroup = this.formBuilder.group({
-      fe_name: new FormControl(),
+      fe_name: new FormControl('', [Validators.required]),
       type: new FormControl(),
-      address: new FormControl(),
-      // coordinates: new FormControl(),
-      long: new FormControl(),
-      lat: new FormControl(),
+      address: new FormControl('', [Validators.required]),
+      long: new FormControl('', [Validators.required]),
+      lat: new FormControl('', [Validators.required]),
       contact_person: new FormControl(),
       contact_number: new FormControl(),
-      opening_hours: new FormControl(),
-      closing_hours: new FormControl(),
-      days_open: new FormControl(),
+      opening_hours: new FormControl('', [Validators.required]),
+      closing_hours: new FormControl('', [Validators.required]),
+      days_open: new FormArray([]),
       ExtraRice: new FormControl(),
       AddlTakeOutCost: new FormControl(),
-      FreeWater: new FormControl(),
-      BYOBIncentive: new FormControl(),
       SeatingCapacity: new FormControl(),
-      CLAYGO: new FormControl()
-    })
+      NearBuildings: new FormControl(),
+      AddtlDetails: new FormControl()
+    });
+    this.subscriptions.push(this.shopService.getShopByHighestId().subscribe((shop) => {
+      this.shopWithHighestId = shop;
+      this.highestId = String(Number(this.shopWithHighestId[0].fe_id) + 1);
+      this.highestId = ('000' + this.highestId).substr(-3);
+    }));
   }
 
   openDialog(): void {
@@ -83,9 +89,9 @@ export class FoodEstablishmentsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: AddedShop) => {
-      if (result) {
+      if (result && this.shopWithHighestId) {
         const newShop: Shop = {
-          fe_id: "999",
+          fe_id: this.highestId as string,
           fe_name: result.fe_name,
           type: result.type,
           address: result.address,
@@ -95,15 +101,14 @@ export class FoodEstablishmentsComponent implements OnInit {
           },
           contact_person: result.contact_person,
           contact_number: result.contact_number,
-          hours: null,
-          days_open: null,
+          hours: result.hours,
+          days_open: result.days_open,
           AddlTakeOutCost: result.AddlTakeOutCost || "None",
           FreeWater: result.FreeWater || "No",
           BYOBIncentive: result.BYOBIncentive || "None",
           SeatingCapacity: result.BYOBIncentive || "None",
           CLAYGO: result.CLAYGO || "No",
           ExtraRice: result.ExtraRice || "None",
-
           fe_avg_rating: 0,
           no_of_ratings: 0,
           Food: {
@@ -121,10 +126,15 @@ export class FoodEstablishmentsComponent implements OnInit {
           },
           ComboMeal: null,
           image: null,
+          Nearest_Bldgs: null,
           Consumables: null,
-          BrandedConsumables: null,
-          Nearest_Bldgs: null
+          BrandedConsumables: null
         }
+        // console.log(result.NearBuildings);
+        // console.log(result.hours);
+        // console.log(result.days_open);
+
+        // console.log(this.shopWithHighestId);
         console.log(newShop);
       }
     })
@@ -133,13 +143,50 @@ export class FoodEstablishmentsComponent implements OnInit {
 
 @Component({
   selector: 'add-shop-dialog',
-  templateUrl: 'add-shop-dialog.html'
+  templateUrl: 'add-shop-dialog.html',
+  styleUrls: ['./food-establishments.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AddShopDialog {
   // size = 12;
   // width1 = 250;
   // width2 = 100;
   // height = 100;
+  locationData: Location[] = LocationData;
+
+  days = [{
+    display: 'Sun',
+    value: 'Sunday'
+  }, {
+    display: 'M',
+    value: 'Monday'
+  }, {
+    display: 'T',
+    value: 'Tuesday'
+  }, {
+    display: 'W',
+    value: 'Wednesday'
+  }, {
+    display: 'Th',
+    value: 'Thursday'
+  }, {
+    display: 'F',
+    value: 'Friday'
+  }, {
+    display: 'Sat',
+    value: 'Saturday'
+  }];
+
+  addtlDetails = [{
+    display: 'Free Water',
+    value: '1'
+  }, {
+    display: 'Bring Your Own Baon Incentive',
+    value: '2'
+  }, {
+    display: 'CLAYGO',
+    value: '3'
+  }];
 
   constructor(
     public dialogRef: MatDialogRef<AddShopDialog>,
@@ -149,10 +196,47 @@ export class AddShopDialog {
   onNoClick(): void {
     this.dialogRef.close();
   }
+  
+  onDaysOpenChange(dayValue:string, isChecked: boolean) {
+    const daysOpen = <FormArray>this.data.addShopFormGroup.get('days_open');
+  
+    if(isChecked) {
+      daysOpen.push(new FormControl(dayValue));
+    } else {
+      let index = daysOpen.controls.findIndex(x => x.value === dayValue)
+      daysOpen.removeAt(index);
+    }
+  }
+  
+
+  addShop() {
+    if (this.data.addShopFormGroup.valid) {
+      this.dialogRef.close(this.getAddedShop());
+    }
+  }
 
   getAddedShop(): AddedShop {
     const addShopFormGroup = this.data.addShopFormGroup;
+    const op_hr = addShopFormGroup.get('opening_hours').value.split(":");
+    const cl_hr = addShopFormGroup.get('closing_hours').value.split(":");
+    const addtl = addShopFormGroup.get('AddtlDetails').value;
+    var freeWater = 'No';
+    var byob = 'None';
+    var claygo = 'No';
 
+
+    if(addtl.indexOf('1') >= 0) {
+      freeWater = 'Yes';
+    } 
+
+    if(addtl.indexOf('2') >= 0) {
+      byob = 'Yes';
+    }
+
+    if(addtl.indexOf('3') >= 0) {
+      claygo = 'Yes'
+    }
+    
     return {
       fe_name: addShopFormGroup.get('fe_name').value,
       type: addShopFormGroup.get('type').value,
@@ -161,15 +245,24 @@ export class AddShopDialog {
       lat: addShopFormGroup.get('lat').value,
       contact_person: addShopFormGroup.get('contact_person').value,
       contact_number: addShopFormGroup.get('contact_number').value,
-      opening_hours: addShopFormGroup.get('opening_hours').value,
-      closing_hours: addShopFormGroup.get('closing_hours').value,
+      hours: {
+        opening: {
+          hour: op_hr[0],
+          minute: op_hr[1]
+        },
+        closing: {
+          hour: cl_hr[0],
+          minute: cl_hr[1]
+        }
+      },
       days_open: addShopFormGroup.get('days_open').value,
       ExtraRice: addShopFormGroup.get('ExtraRice').value,
       AddlTakeOutCost: addShopFormGroup.get('AddlTakeOutCost').value,
-      FreeWater: addShopFormGroup.get('FreeWater').value,
-      BYOBIncentive: addShopFormGroup.get('BYOBIncentive').value,
+      FreeWater: freeWater,
+      BYOBIncentive: byob,
       SeatingCapacity: addShopFormGroup.get('SeatingCapacity').value,
-      CLAYGO: addShopFormGroup.get('CLAYGO').value
+      CLAYGO: claygo,
+      NearBuildings: addShopFormGroup.get('NearBuildings').value
     }
-  } 
+  }
 }
