@@ -45,6 +45,8 @@ import { UserCardComponent } from './main-pages/users/user-card/user-card.compon
 import { ShopCardAdminComponent } from './main-pages/food-establishments/shop-card-admin/shop-card-admin.component';
 import { AdminsListComponent } from './main-pages/admins/admins-list/admins-list.component';
 import { AdminSearchComponent } from './main-pages/admins/admin-search/admin-search.component';
+import { RatingsReviewsComponent } from './misc-pages/stats/ratings-reviews/ratings-reviews.component';
+import { UserContributionsComponent } from './misc-pages/stats/user-contributions/user-contributions.component';
 
 @NgModule({
   imports: [
@@ -91,7 +93,9 @@ import { AdminSearchComponent } from './main-pages/admins/admin-search/admin-sea
     AddShopDialog,
     ShopCardAdminComponent,
     AdminsListComponent,
-    AdminSearchComponent
+    AdminSearchComponent,
+    RatingsReviewsComponent,
+    UserContributionsComponent
 
   ],
   entryComponents: [

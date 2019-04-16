@@ -10,6 +10,10 @@ import { UsersComponent } from './main-pages/users/users.component';
 import { FoodEstablishmentsComponent } from './main-pages/food-establishments/food-establishments.component';
 import { MenuComponent } from './main-pages/menu/menu.component';
 
+import { StatsComponent } from './misc-pages/stats/stats.component';
+import { RatingsReviewsComponent } from './misc-pages/stats/ratings-reviews/ratings-reviews.component';
+import { UserContributionsComponent } from './misc-pages/stats/user-contributions/user-contributions.component';
+
 
 
 const routes: Routes =[
@@ -21,7 +25,10 @@ const routes: Routes =[
     { path: 'admins',                   component: AdminsComponent},
     { path: 'users',                    component: UsersComponent},
     { path: 'food-establishments',      component: FoodEstablishmentsComponent},
-    { path: 'menu',                     component:MenuComponent}
+    { path: 'menu',                     component: MenuComponent},
+    { path: 'stats',                    component: StatsComponent},
+    { path: 'stats/ratings-reviews',          component: RatingsReviewsComponent},
+    { path: 'stats/user-contributions',       component: UserContributionsComponent}
     ]}
   ];
     // { path: 'dashboard',      component: DashboardComponent },

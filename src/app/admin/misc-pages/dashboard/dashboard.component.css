@@ -33,3 +33,10 @@ mat-icon{
   color: white;
   font-family: LatoRegular;
 }
+
+button{
+  width: 90%;
+  height: 50%;
+  margin-bottom: 10px;
+  margin-left: 5%;
+}

@@ -21,6 +21,25 @@
       </span>
     </form>
     -->
+    <ul class = "nav">
+        <li routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/eat-up/admin/dashboard']">
+                <i class="material-icons">dashboard</i>
+                 <p>
+                <span class="d-lg-none d-md-block">Dashboard</span>
+                </p>
+            </a>
+        </li>
+        <li routerLinkActive = "active">
+            <a class="nav-link" [routerLink]="['stats']">
+                <i class="material-icons">show_chart</i>
+                <p>
+                    <span class="d-lg-none d-md-block">Stats</span>
+                </p>
+            </a>
+        </li> 
+    </ul>
+    <hr>
     <ul class="nav navbar-nav nav-mobile-menu">
         <li class="nav-item">
             <ul class="nav">
@@ -31,25 +50,11 @@
                             </a>
                         </li>
             </ul>
-            <hr>
-            <ul class = "nav">
-                <li routerLinkActive="active">
-                    <a class="nav-link" [routerLink]="['/eat-up/admin/dashboard']">
-                        <i class="material-icons">dashboard</i>
-                         <p>
-                        <span class="d-lg-none d-md-block">Dashboard</span>
-                        </p>
-                    </a>
-                </li>
-            </ul>
-            <!--
-            <a class="nav-link" [routerLink]="['/admin/dashboard']">
-                    <i class="material-icons">show_chart</i>
-                    <p>
-                        <span class="d-lg-none d-md-block">Stats</span>
-                    </p>
-                </a>
-            <hr>
+        \
+            
+   
+            
+          <!--
             <a class="nav-link" href="#pablo">
                     <p>
                         <span class="d-lg-none d-md-block">Sign out</span>

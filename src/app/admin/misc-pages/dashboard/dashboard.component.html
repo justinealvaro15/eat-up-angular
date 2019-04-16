@@ -4,8 +4,8 @@
              <mat-grid-list cols="2" rowHeight="1:1" [gutterSize]="'20px'">
               <mat-grid-tile class = "admins" [routerLink]="['/eat-up/admin/admins']"                  ><mat-icon>person</mat-icon><h1 class="tile-text">Admins</h1></mat-grid-tile>
               <mat-grid-tile class = "users"  [routerLink]="['/eat-up/admin/users']"                   ><mat-icon>people</mat-icon><h1 class="tile-text">Users</h1></mat-grid-tile>
-              <mat-grid-tile class = "food-estab" [routerLink]="['/eat-up/admin/food-establishments']" ><mat-icon>restaurant</mat-icon><h1 class="tile-text">Food Establishments</h1></mat-grid-tile>
-              <mat-grid-tile class = "menu"  [routerLink]="['/eat-up/admin/menu']"                     ><mat-icon>content_paste</mat-icon><h1 class="tile-text">Menu</h1></mat-grid-tile>
+              <mat-grid-tile class = "food-estab" [routerLink]="['/eat-up/admin/food-establishments']" ><mat-icon>store</mat-icon><h1 class="tile-text">Food Establishments</h1></mat-grid-tile>
+              <mat-grid-tile class = "menu"  [routerLink]="['/eat-up/admin/menu']"                     ><mat-icon>restaurant</mat-icon><h1 class="tile-text">Menu</h1></mat-grid-tile>
               </mat-grid-list>
           </div>      
         <div class="row">
@@ -13,17 +13,13 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-warning card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">content_copy</i>
+                            <i class="material-icons">remove_red_eye</i>
                         </div>
-                        <p class="card-category">Used Space</p>
-                        <h3 class="card-title">49/50
-                            <small>GB</small>
-                        </h3>
+                        <p class="card-category">Total Views</p>
+                        <h3 class="card-title"> 700 </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons text-danger">warning</i>
-                            <a href="#pablo">Get More Space...</a>
                         </div>
                     </div>
                 </div>
@@ -32,18 +28,18 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-success card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">store</i>
+                            <i class="material-icons"> people </i>
                         </div>
-                        <p class="card-category">Revenue</p>
-                        <h3 class="card-title">$34,245</h3>
+                        <p class="card-category">No. of Users</p>
+                        <h3 class="card-title">700</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">date_range</i> Last 24 Hours
                         </div>
                     </div>
                 </div>
             </div>
+            <!--
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header card-header-danger card-header-icon">
@@ -418,7 +414,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+        <button  mat-raised-button color="primary" [routerLink]="['../stats/ratings-reviews']">Ratings and Reviews</button>
+        <button  mat-raised-button color="primary" [routerLink]="['../stats/user-contributions']">User Contributions</button>
     </div>
   </div>
   
