@@ -44,7 +44,7 @@ export class UsersService {
   }
 
   getFilteredUsers():User[] {
-    return this._users.getValue().filter((user)=> { //EMPTY
+    return this._users.getValue().filter((user)=> { 
       return this.isUserNameorEmailMatch(user) ;
      });
   }
@@ -54,6 +54,9 @@ export class UsersService {
     this.filterChanged.emit(this.filter);
   }
 
+  addUser (newUser: User) {
+    return this.http.post<User>('http://localhost:3000/api/users', newUser).subscribe();
+  }
   deactivateUser(user: any) { //active user to inactive user
     //search the particular user then make user.status = inactive
     const payload = {

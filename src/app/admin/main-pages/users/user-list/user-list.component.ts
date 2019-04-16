@@ -55,8 +55,10 @@ export class UserListComponent implements OnInit, OnDestroy {
   isAdmin(user:User): boolean {
     console.log(user.isAdmin);
     if (user.isAdmin==true) {
+      console.log("is Admin");
       return this.is_admin;
     } else if (user.isAdmin==false){
+      console.log("is not Admin");
       return this.is_not_admin;
     }
   }

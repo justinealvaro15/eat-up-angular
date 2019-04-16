@@ -1,6 +1,7 @@
 export interface User {
     email: string; 
     name: string;
+    photo: string; 
     date_joined: { //DATE
       year: number;
       month: number;
