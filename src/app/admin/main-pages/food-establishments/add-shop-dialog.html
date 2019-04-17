@@ -31,8 +31,8 @@
         <input matInput formControlName="lat" type="number" required>
     </mat-form-field>
 
-    <div appearance="outline" class="container">
-        <mat-label>Days Open:</mat-label>
+    <div appearance="outline" class="container time">
+        <mat-label class="title">Days Open:</mat-label>
         <div class="days-open">
             <div *ngFor="let day of days" class="day">
                 <div>{{day.display}}</div>
@@ -52,13 +52,15 @@
         <input matInput formControlName="contact_number">
     </mat-form-field>
 
-    <div appearance="outline" class="container">
-        <input [ngxTimepicker]="picker" formControlName="opening_hours" [format]="24" placeholder="Opening Hours" required>
+    <div appearance="outline" class="container time">
+        <h4 class="title">Select Opening Time</h4>
+        <input [ngxTimepicker]="picker" formControlName="opening_hours" [format]="24" placeholder="Opening Hours" required class="mat-form-field-flex">
         <ngx-material-timepicker #picker [enableKeyboardInput]="true"></ngx-material-timepicker>
     </div>
 
-    <div appearance="outline" class="container">
-        <input [ngxTimepicker]="picker2" formControlName="closing_hours" [format]="24" placeholder="Closing Hours" required>
+    <div appearance="outline" class="container time">
+        <h4 class="title">Select Closing Time</h4>
+        <input [ngxTimepicker]="picker2" formControlName="closing_hours" [format]="24" placeholder="Closing Hours" required class="mat-form-field-flex">
         <ngx-material-timepicker #picker2 [enableKeyboardInput]="true"></ngx-material-timepicker>
     </div>
     
@@ -96,9 +98,11 @@
         </mat-select>
     </mat-form-field>
 
-    <!-- free water? -->
-    <!-- BYOB incentive? -->
-    <!-- CLAYGO? -->
+    <div class="container">
+        <h4 class="title">Select Food Establishment Image</h4>
+        <input type="file" formControlName="image" class="subtitle">  
+    </div>
+</div>
     
 
     <!-- fe_name: new FormControl('', [Validators.required]),
@@ -118,7 +122,7 @@
     BYOBIncentive: new FormControl(),
     SeatingCapacity: new FormControl(),
     CLAYGO: new FormControl() -->
-</div>
+
 
 <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Cancel</button>

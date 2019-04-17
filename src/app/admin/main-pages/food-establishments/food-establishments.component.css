@@ -6,6 +6,10 @@
     margin-bottom: 20px;
 }
 
+.container.time {
+    margin-bottom: 10px;
+}
+
 .days-open {
     display: flex;
     flex-direction: row;
@@ -22,3 +26,40 @@
     width:300px; 
     padding-top: 25px
 }
+
+.title {
+    margin-bottom: 3px;
+    color: black;
+    font-size: 12px;
+    filter: contrast(100%);
+    font-weight: normal;
+}
+
+.subtitle {
+    color: black;
+    font-size: 11px;
+    font-weight: lighter;
+}
+
+mat-label {
+    margin-bottom: 3px;
+    color: black;
+    font-size: 12px;
+    filter: contrast(100%);
+}
+
+mat-hint, .mat-hint {
+    font-size: 11px;
+}
+
+.mat-select-value, .mat-option-text, .mat-select-placeholder, .mat-input {
+    word-wrap: break-word;
+    font-size: 12px;
+    color: black;
+}
+
+.ng-untouched, .ng-pristine, .ng-invalid {
+    color: black;
+    font-size: 12px;
+}
+

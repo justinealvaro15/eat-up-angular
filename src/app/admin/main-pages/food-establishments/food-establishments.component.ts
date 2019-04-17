@@ -31,7 +31,8 @@ export interface AddedShop {
   BYOBIncentive: string,
   SeatingCapacity: string | number,
   CLAYGO: string,
-  NearBuildings: Location[]
+  NearBuildings: Location[],
+  image: File
 }
 
 export interface DialogData {
@@ -71,7 +72,8 @@ export class FoodEstablishmentsComponent implements OnInit {
       AddlTakeOutCost: new FormControl(),
       SeatingCapacity: new FormControl(),
       NearBuildings: new FormControl(),
-      AddtlDetails: new FormControl()
+      AddtlDetails: new FormControl(),
+      image: new FormControl()
     });
     this.subscriptions.push(this.shopService.getShopByHighestId().subscribe((shop) => {
       this.shopWithHighestId = shop;
@@ -262,7 +264,8 @@ export class AddShopDialog {
       BYOBIncentive: byob,
       SeatingCapacity: addShopFormGroup.get('SeatingCapacity').value,
       CLAYGO: claygo,
-      NearBuildings: addShopFormGroup.get('NearBuildings').value
+      NearBuildings: addShopFormGroup.get('NearBuildings').value,
+      image: addShopFormGroup.get('image').value
     }
   }
 }
