@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Inject, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { ShopsService } from 'app/user/shops/shops.service';
@@ -31,7 +31,8 @@ export interface AddedShop {
   BYOBIncentive: string,
   SeatingCapacity: string | number,
   CLAYGO: string,
-  NearBuildings: Location[]
+  NearBuildings: Location[],
+  image: any
 }
 
 export interface DialogData {
@@ -56,6 +57,11 @@ export class FoodEstablishmentsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.subscriptions.push(this.shopService.getShopByHighestId().subscribe((shop) => {
+      this.shopWithHighestId = shop;
+      this.highestId = String(Number(this.shopWithHighestId[0].fe_id) + 1);
+      this.highestId = ('000' + this.highestId).substr(-3);
+    }));
     this.addShopFormGroup = this.formBuilder.group({
       fe_name: new FormControl('', [Validators.required]),
       type: new FormControl(),
@@ -71,13 +77,10 @@ export class FoodEstablishmentsComponent implements OnInit {
       AddlTakeOutCost: new FormControl(),
       SeatingCapacity: new FormControl(),
       NearBuildings: new FormControl(),
-      AddtlDetails: new FormControl()
+      AddtlDetails: new FormControl([]),
+      image: null,
+      highestId: this.highestId
     });
-    this.subscriptions.push(this.shopService.getShopByHighestId().subscribe((shop) => {
-      this.shopWithHighestId = shop;
-      this.highestId = String(Number(this.shopWithHighestId[0].fe_id) + 1);
-      this.highestId = ('000' + this.highestId).substr(-3);
-    }));
   }
 
   openDialog(): void {
@@ -125,7 +128,7 @@ export class FoodEstablishmentsComponent implements OnInit {
             InHouse: []
           },
           ComboMeal: null,
-          image: null,
+          image: result.image,
           Nearest_Bldgs: null,
           Consumables: null,
           BrandedConsumables: null
@@ -136,6 +139,7 @@ export class FoodEstablishmentsComponent implements OnInit {
 
         // console.log(this.shopWithHighestId);
         console.log(newShop);
+        this.shopService.addFoodEstablishment(newShop);
       }
     })
   }
@@ -148,11 +152,13 @@ export class FoodEstablishmentsComponent implements OnInit {
   encapsulation: ViewEncapsulation.None
 })
 export class AddShopDialog {
+  @ViewChild('fileInput') fileInput: ElementRef;
   // size = 12;
   // width1 = 250;
   // width2 = 100;
   // height = 100;
   locationData: Location[] = LocationData;
+  file: any = null;
 
   days = [{
     display: 'Sun',
@@ -224,17 +230,18 @@ export class AddShopDialog {
     var byob = 'None';
     var claygo = 'No';
 
-
-    if(addtl.indexOf('1') >= 0) {
-      freeWater = 'Yes';
-    } 
-
-    if(addtl.indexOf('2') >= 0) {
-      byob = 'Yes';
-    }
-
-    if(addtl.indexOf('3') >= 0) {
-      claygo = 'Yes'
+    if(addtl){
+      if(addtl.indexOf('1') >= 0) {
+        freeWater = 'Yes';
+      } 
+  
+      if(addtl.indexOf('2') >= 0) {
+        byob = 'Yes';
+      }
+  
+      if(addtl.indexOf('3') >= 0) {
+        claygo = 'Yes'
+      }
     }
     
     return {
@@ -262,7 +269,21 @@ export class AddShopDialog {
       BYOBIncentive: byob,
       SeatingCapacity: addShopFormGroup.get('SeatingCapacity').value,
       CLAYGO: claygo,
-      NearBuildings: addShopFormGroup.get('NearBuildings').value
+      NearBuildings: addShopFormGroup.get('NearBuildings').value,
+      image: addShopFormGroup.get('image').value
+    }
+  }
+
+  onFileChange(event) {
+    let reader = new FileReader();
+    if(event.target.files && event.target.files.length > 0) {
+      this.file = event.target.files[0];
+      reader.readAsDataURL(this.file);
+      // reader.read
+      reader.onload = (image) => {
+        console.log(image);
+        this.data.addShopFormGroup.get('image').setValue(reader.result)
+      };
     }
   }
 }

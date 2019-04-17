@@ -114,12 +114,24 @@ export class NavbarComponent implements OnInit {
       if(titlee.charAt(0) === '#'){
           titlee = titlee.slice( 2 );
       }
-      titlee = titlee.split('/').pop();
+      
 
       for(var item = 0; item < this.listTitles.length; item++){
           if(this.listTitles[item].path === titlee){
               return this.listTitles[item].title;
           }
+      }
+
+      titlee = titlee.split('/').pop();
+
+      if(titlee == 'ratings-reviews'){
+          return 'Ratings and Reviews';
+      }
+      else if(titlee == 'user-contributions'){
+          return 'User Contributions';
+      }
+      else if(titlee == 'stats'){
+          return 'Stats';
       }
       return 'Dashboard';
     }

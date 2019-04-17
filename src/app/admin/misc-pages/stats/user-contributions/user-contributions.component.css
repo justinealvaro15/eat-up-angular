@@ -1,0 +1,39 @@
+table{
+  text-align: center !important;
+  margin: 0px 0px 0px 0px;
+  background: transparent;
+  width: 100%;
+}
+
+.center{
+  text-align: center !important;
+  padding-left:  15px;
+}
+
+.center-menu{
+  text-align: center !important;
+  padding-left:  25px;
+}
+
+
+th {
+  background: #BC000B;
+  color: yellow;
+}
+
+td, .mat-cell {
+  padding: 13px;
+}
+
+
+footer{
+  position: relative;
+  font-size: 10px;
+  margin: 10px 0px 13px 15px;
+}
+
+
+.mat-column-name {
+  flex: 0 0 25% !important;
+  min-width: 100px !important;
+}
