@@ -100,7 +100,7 @@
 
     <div class="container">
         <h4 class="title">Select Food Establishment Image</h4>
-        <input type="file" formControlName="image" class="subtitle">  
+        <input type="file" (change)="onFileChange($event)" class="subtitle" #fileInput>  
     </div>
 </div>
     
