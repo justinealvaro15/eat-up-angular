@@ -4,6 +4,5 @@
 </div>
 <ng-template #logOut>
 	<a *ngIf = "sidenav" mat-list-item href="#" (click)="signOut();">Sign out</a>
-	<!-- is sign out really needed? https://github.com/google/google-api-javascript-client/issues/419-->
 	<a *ngIf = "header" href="#" (click)="signOut();">Sign out</a>
 </ng-template>
