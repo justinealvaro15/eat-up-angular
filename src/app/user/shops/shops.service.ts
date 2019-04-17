@@ -8,6 +8,7 @@ import { Location } from '../location/location.model';
 import { AddedMenu } from '../food-estab/food-group';
 import { AuthService, SocialUser } from 'angularx-social-login';
 import { LocationService } from '../location/location.service';
+import { AddedShop } from 'app/admin/main-pages/food-establishments/food-establishments.component';
 
 @Injectable({ providedIn: 'root' })
 export class ShopsService {
@@ -121,6 +122,10 @@ export class ShopsService {
             value: editedMenu	
         }	
         this.http.put(`http://localhost:3000/api/shops/${shopId}/food`, payload).toPromise().then((res) => { console.log(res); });	
+    }
+
+    addFoodEstablishment(addedShop: Shop) {
+        this.http.post(`http://localhost:3000/api/add_shop`, addedShop).subscribe();
     }
 
     getFilteredShops(): Shop[] { //has to be modified
