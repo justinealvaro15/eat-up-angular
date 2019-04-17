@@ -14,20 +14,21 @@
     <td mat-cell *matCellDef="let user"> {{user.name}} </td>
   </ng-container>
 
-  <!-- Weight Column -->
+  <!-- Average Rating Column -->
   <ng-container matColumnDef="aveRating" colspan = 2>
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
       <div class="center"> Ave. Ratings </div>  </th>
     <td mat-cell *matCellDef="let user"> {{user.aveRating}} </td>
   </ng-container>
 
-  <!-- Symbol Column -->
+  <!-- Total Reviews Column -->
   <ng-container matColumnDef="totalReviews">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> 
       <div class="center"> Total Reviews </div> </th>
     <td mat-cell *matCellDef="let user"> {{user.totalReviews}} </td>
   </ng-container>
 
+    <!-- Menu Items Added Column -->
   <ng-container matColumnDef="addedMenuItems">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> 
       <div class="center-menu" > Menu Items Added </div> </th>

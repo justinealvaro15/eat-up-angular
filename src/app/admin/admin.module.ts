@@ -32,7 +32,7 @@ import {
   MatDialogModule,
   MatCardModule,
   MatSortModule,
-  MatTableModule
+  MatTableModule,
 } from '@angular/material';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StatsComponent } from './misc-pages/stats/stats.component';
@@ -71,7 +71,8 @@ import { UserContributionsComponent } from './misc-pages/stats/user-contribution
     NgxMaterialTimepickerModule,
     MatCardModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ],
   declarations: [
     AdminComponent,

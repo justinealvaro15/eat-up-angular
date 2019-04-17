@@ -1,3 +1,9 @@
-<p>
-  ratings-reviews works!
-</p>
+<br style = "line-height:8;">
+<mat-form-field>
+  <mat-label>Filter by</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let option of options" [value]="option.value">
+      {{option.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
