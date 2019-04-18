@@ -1,16 +1,21 @@
 <mat-nav-list>
   <div class="user-logged-in">
-    <a mat-list-item [routerLink]="['/eat-up/user/user-profile']" (click)="onClose()">
+   
     <div *ngIf = "loggedIn; else loggedOut"> 
-        <img class = "user-pic" src={{user.photoUrl}}>
-        <h1 class = "user-name">{{user.name}}</h1>
+        <a mat-list-item [routerLink]="['/eat-up/user/user-profile']" (click)="onClose()">
+          <img class = "user-pic" src={{user.photoUrl}}>
+          <h1 class = "user-name">{{user.name}}</h1>
+        </a>    
     </div>
     <ng-template #loggedOut>
-        <img class = "user-pic" src="./../../assets/sidenav-stuff/Profile/default.png" (click)="alertUser()">
-    <h1 class = "user-name">Username</h1>
+      <a mat-list-item (click)="alertUser()"> 
+          <img class = "user-pic" src="./../../assets/sidenav-stuff/Profile/default.png" >
+          <h1 class = "user-name">Username</h1>
+      </a>
+       
     </ng-template>
     
-    </a>
+    
   </div>
   <a mat-list-item [routerLink]="['/eat-up/user/about-us']" (click)="onClose()">About Us</a>
   <a mat-list-item [routerLink]="['/eat-up/user/privacy-policy']" (click)="onClose()">Privacy Policy</a>
