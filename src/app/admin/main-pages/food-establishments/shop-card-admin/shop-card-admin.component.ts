@@ -20,7 +20,7 @@ export class ShopCardAdminComponent implements OnInit {
 
 
   goToShop(shopId: string) {
-    this.router.navigate(['/user/shops', shopId]);
+    this.router.navigate(['/eat-up/admin/shops', shopId]);
   }
 
   isShopOpen(): boolean {
@@ -36,7 +36,7 @@ export class ShopCardAdminComponent implements OnInit {
   }
 
   getShopPercentRating() {
-    const ratingInPercent = this.shop.fe_avg_rating/5*100;
+    const ratingInPercent = (this.shop.fe_avg_rating/5*100);
     return `${ratingInPercent}%`;
   }
 }

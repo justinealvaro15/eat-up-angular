@@ -1,4 +1,4 @@
-<!--
+
 <div class="basic-container">
   <mat-grid-list cols="1" rowHeight="fit" gutterSize="3px">
   <mat-grid-tile>
@@ -16,8 +16,15 @@
      
       <mat-card-content>
           <div fxLayout="row">  
-            <app-stars [stars]="shop.fe_avg_rating"></app-stars>
-            <div class = "rating-in-parentheses"> &middot; {{shop.fe_avg_rating || "Not yet rated"}}</div>
+            <div class="star-ratings">
+              <div class="fill-ratings" [ngStyle]="{'width': getShopPercentRating()}">
+                <span>★★★★★</span>
+              </div>
+              <div class="empty-ratings">
+                <span>★★★★★</span>
+              </div>
+            </div>
+            <div class = "rating-in-parentheses"> &middot; {{shop.fe_avg_rating ? shop.fe_avg_rating.toFixed(2) : "Not yet rated"}}</div>
           </div>
         <div fxLayout="row" class= "addr">{{shop.address}}</div>
         <div fxLayout="row" class= "open-close" [class.closed]="!isShopOpen()" [class.open]="isShopOpen()">{{isShopOpen() ? "Open" : "Closed"}}</div>
@@ -27,4 +34,3 @@
 </mat-card>
 </mat-grid-tile>
 </mat-grid-list>
--->

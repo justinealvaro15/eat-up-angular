@@ -49,6 +49,7 @@ export class FoodEstablishmentsComponent implements OnInit {
   shopWithHighestId: Shop;
   highestId: string;
   subscriptions: Subscription[] = [];
+  shops: Shop[] = []
 
   constructor(
     private formBuilder: FormBuilder,
@@ -57,6 +58,9 @@ export class FoodEstablishmentsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.subscriptions.push(this.shopService.getShopsDisplay().subscribe((shops) => {
+      this.shops = shops;
+    }));
     this.subscriptions.push(this.shopService.getShopByHighestId().subscribe((shop) => {
       this.shopWithHighestId = shop;
       this.highestId = String(Number(this.shopWithHighestId[0].fe_id) + 1);
