@@ -91,6 +91,7 @@ export class AddMenuItemComponent {
         this.shop[result.group][result.type].push(newMenu);
 
         this.shopService.addFoodOrBeverageByShopId(this.shop.fe_id, result);
+        window.alert("Food Item Added");
       }
     });
   }
