@@ -88,6 +88,7 @@ export class AddRatingReviewComponent {
 
         this.reviews.push(newReview);
         this.reviewService.addReview(this.shop.fe_id, result);
+        window.alert("Your review has been submitted!");
       }
     });
   }
@@ -97,6 +98,7 @@ export class AddRatingReviewComponent {
       return  this.user ? _review.user_id === this.user.id : false;
     });
   }
+  
   alertUser() {
     window.alert("Please sign-in with your UP Mail to use this feature.");
   }
@@ -111,8 +113,19 @@ export class AddRatingReviewDialog {
   ratenum = 5;
   oldRating = 0;
 
+  public user: SocialUser;
+  public loggedIn: boolean;
+
+  ngOnInit() {
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
+  }
+
   constructor(
     public dialogRef: MatDialogRef<AddRatingReviewDialog>,
+    private authService: AuthService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
       this.oldRating = this.data.addReviewFormGroup.get('rating').value * 1;
     }

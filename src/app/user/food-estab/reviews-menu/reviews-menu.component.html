@@ -6,9 +6,15 @@
   <mat-tab label="Reviews" id = "review" >
     <!-- use center-align-column to everything you want to center -->
     <div class="center-align-column"> 
-      <app-review-user [shop]="shop" [reviews]="reviews"></app-review-user>
-      <mat-divider class="divider"></mat-divider>
-      <display-reviews [shop]="shop" [reviews]="reviews"></display-reviews>
+      <div *ngIf ="loggedIn; else noUserLoggedIn"> 
+          <app-review-user [shop]="shop" [reviews]="reviews"></app-review-user>
+          <mat-divider class="divider"></mat-divider>
+          <display-reviews [shop]="shop" [reviews]="reviews"></display-reviews>
+      </div>
+      <ng-template #noUserLoggedin> 
+          <app-review-user [shop]="shop" [reviews]="reviews"></app-review-user>
+      </ng-template>
+      
     </div>
   <!--  <footer> Eat UP Copyright 2019</footer>-->
   </mat-tab>

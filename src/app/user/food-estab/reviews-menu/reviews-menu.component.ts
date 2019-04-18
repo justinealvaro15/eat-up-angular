@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Shop } from './../../shops/shops.model';
 import { Review } from 'app/user/reviews/reviews.model';
+import { SocialUser } from "angularx-social-login";
+import { AuthService } from "angularx-social-login";
 
 @Component({
   selector: 'app-reviews-menu',
@@ -8,10 +10,18 @@ import { Review } from 'app/user/reviews/reviews.model';
   styleUrls: ['./reviews-menu.component.css']
 })
 export class ReviewsMenuComponent implements OnInit {
+  public user: SocialUser;
+  public loggedIn: boolean;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
   }
 
   @Input() shop: Shop;

@@ -1,9 +1,8 @@
 <div *ngIf = "!loggedIn ; else logOut">
-	<a *ngIf = "sidenav" mat-list-item routerLink="/" (click)="signInWithGoogle()">Sign in</a>
-	<a *ngIf = "header" routerLink="/"  (click)="signInWithGoogle()">Sign in</a> 
+	<a *ngIf = "sidenav" mat-list-item routerLink="/" (click)="signInWithGoogle()&&addUser()">Sign in</a>
+	<a *ngIf = "header" routerLink="/"  (click)="signInWithGoogle()&&addUser()">Sign in</a> 
 </div>
 <ng-template #logOut>
-	<a *ngIf = "sidenav" mat-list-item href="#" onclick="signOut();">Sign out</a>
-	<!-- is sign out really needed? https://github.com/google/google-api-javascript-client/issues/419-->
-	<a *ngIf = "header" href="#" onclick="signOut();">Sign out</a>
+	<a *ngIf = "sidenav" mat-list-item href="#" (click)="signOut();">Sign out</a>
+	<a *ngIf = "header" href="#" (click)="signOut();">Sign out</a>
 </ng-template>

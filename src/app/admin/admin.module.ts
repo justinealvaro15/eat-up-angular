@@ -77,7 +77,8 @@ import { AdminFoodEstabComponent } from './main-pages/food-establishments/admin-
     MatSortModule,
     MatTableModule,
     MatTabsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatSelectModule
   ],
   declarations: [
     AdminComponent,

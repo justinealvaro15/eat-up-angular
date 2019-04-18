@@ -81,7 +81,8 @@ export class ReviewUserComponent implements OnInit {
         
         this.shop.fe_avg_rating = newAvgRating;
 
-        this.reviewService.editReviewByShopid(this.shop.fe_id, result.rating, result.review)
+        this.reviewService.editReviewByShopid(this.shop.fe_id, result.rating, result.review);
+        window.alert("You have edited your review.");
       }
     })
   }
