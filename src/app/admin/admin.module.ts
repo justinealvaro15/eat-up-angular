@@ -32,7 +32,8 @@ import {
   MatDialogModule,
   MatCardModule,
   MatSortModule,
-  MatTableModule
+  MatTableModule,
+  MatTabsModule
 } from '@angular/material';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StatsComponent } from './misc-pages/stats/stats.component';
@@ -49,6 +50,9 @@ import { AdminsListComponent } from './main-pages/admins/admins-list/admins-list
 import { AdminSearchComponent } from './main-pages/admins/admin-search/admin-search.component';
 import { RatingsReviewsComponent } from './misc-pages/stats/ratings-reviews/ratings-reviews.component';
 import { UserContributionsComponent } from './misc-pages/stats/user-contributions/user-contributions.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AdminFoodEstabComponent } from './main-pages/food-establishments/admin-food-estab/admin-food-estab.component';
+
 
 @NgModule({
   imports: [
@@ -71,7 +75,9 @@ import { UserContributionsComponent } from './misc-pages/stats/user-contribution
     NgxMaterialTimepickerModule,
     MatCardModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MatTabsModule,
+    FlexLayoutModule
   ],
   declarations: [
     AdminComponent,
@@ -99,8 +105,8 @@ import { UserContributionsComponent } from './misc-pages/stats/user-contribution
     AdminsListComponent,
     AdminSearchComponent,
     RatingsReviewsComponent,
-    UserContributionsComponent
-
+    UserContributionsComponent,
+    AdminFoodEstabComponent
   ],
   entryComponents: [
     MakeAdminDialog,

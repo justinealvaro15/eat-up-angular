@@ -13,6 +13,7 @@ import { MenuComponent } from './main-pages/menu/menu.component';
 import { StatsComponent } from './misc-pages/stats/stats.component';
 import { RatingsReviewsComponent } from './misc-pages/stats/ratings-reviews/ratings-reviews.component';
 import { UserContributionsComponent } from './misc-pages/stats/user-contributions/user-contributions.component';
+import { AdminFoodEstabComponent } from './main-pages/food-establishments/admin-food-estab/admin-food-estab.component';
 
 
 
@@ -28,7 +29,8 @@ const routes: Routes =[
     { path: 'menu',                     component: MenuComponent},
     { path: 'stats',                    component: StatsComponent},
     { path: 'stats/ratings-reviews',          component: RatingsReviewsComponent},
-    { path: 'stats/user-contributions',       component: UserContributionsComponent}
+    { path: 'stats/user-contributions',       component: UserContributionsComponent},
+    { path: 'shops/:shopId', component: AdminFoodEstabComponent }
     ]}
   ];
     // { path: 'dashboard',      component: DashboardComponent },
