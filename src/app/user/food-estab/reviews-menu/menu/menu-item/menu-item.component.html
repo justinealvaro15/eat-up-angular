@@ -14,9 +14,12 @@
       <span class="price">
         ₱{{consumable.price}}
       </span>
-      <button (click)="openMenu(consumable, i)" mat-icon-button>
-        <mat-icon>edit</mat-icon>
-      </button>
+      <div *ngIf = "loggedIn">
+        <button (click)="openMenu(consumable, i)" mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      
       <button mat-icon-button
         #tooltip="matTooltip"
         [matTooltip]="getTooltipText(consumable)"

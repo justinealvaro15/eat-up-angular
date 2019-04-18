@@ -93,6 +93,7 @@ export class MenuItemComponent implements OnInit {
         this.shop[result.group][result.type][index] = newMenu;
 
         this.shopService.editFoodOrBeverageByShopid(this.shop.fe_id, result.group, result.type, this.shop[result.group][result.type]);
+        window.alert("Food item Updated!");
       }
     });
   }
