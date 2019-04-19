@@ -18,13 +18,13 @@ export class UserSearchComponent implements OnInit {
 
   ngOnInit() {
      this.filter = this.fb.group({
-      name_or_email: new FormControl(this.userService.filter.name_or_email)
+      name_or_id: new FormControl(this.userService.filter.name_or_id)
     });
   }
 
   setFilters(){
-    console.log(this.filter.get('name_or_email').value);
+    console.log(this.filter.get('name_or_id').value);
 
-    this.userService.setFilter(FilterKeys.Name_Or_Email, this.filter.get('name_or_email').value);
+    this.userService.setFilter(FilterKeys.Name_Or_Id, this.filter.get('name_or_id').value);
   }
 }
