@@ -139,6 +139,15 @@ export class ShopsService {
         return this.isArrayShopNearBldg(fcsFiltered);        
     }
 
+    deactivateShop(shopId: string, active: boolean) {
+        // console.log(active);
+        const payload = {
+            active: active
+        }
+
+        this.http.put(`http://localhost:3000/api/admin/deactivate/shop/${shopId}`, payload).subscribe();
+    }
+
     private getNearestShops(...args) { //any number of parameters (in this case 0 or 1)
         /* Takes the chosen location's coordinates(LC) from getCoordinatesbyLocationId (how to access it to here)
            Takes all shops coordinates (SC) from shop service getShopsCoordinates
