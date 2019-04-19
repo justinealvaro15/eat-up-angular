@@ -52,7 +52,7 @@ export class ShopsService {
     }
 
     getShopsDisplay() {
-        return this.http.get<Shop[]>('http://localhost:3000/api/shops/display');
+        return this.http.get<Shop[]>('http://localhost:3000/api/shops');
     }
 
     updateShopList() {
