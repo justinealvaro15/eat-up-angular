@@ -1,3 +1,15 @@
+
+.example-card{
+  width: 120% !important;
+  margin-top: 10px;
+  left: -10%;  
+}
+
+.space-below{
+  height: 50px;
+}
+/*
+
 .example-card{
   width: 300px;
   line-height: 20px;
@@ -16,3 +28,4 @@
   overflow: hidden;
 }
 
+*/

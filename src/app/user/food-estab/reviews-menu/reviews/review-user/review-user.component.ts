@@ -17,7 +17,7 @@ export interface DialogData {
 @Component({
   selector: 'app-review-user',
   templateUrl: './review-user.component.html',
-  styleUrls: ['./review-user.component.scss']
+  styleUrls: ['./review-user.component.css']
 })
 export class ReviewUserComponent implements OnInit {
   @Input() shop: Shop;

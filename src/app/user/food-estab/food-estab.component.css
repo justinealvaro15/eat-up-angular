@@ -1,6 +1,4 @@
-#one{
-    margin-left: 15px;
-}
+
 
 .food-estab-img{
     height: 100%;
@@ -47,49 +45,11 @@
 }
 
 
-.shop-name{
-    font-family: latoregular;
-    font-size: 30px;
-    color:black;
-    margin-bottom: 12px;
-    margin-top: 10px;
-    overflow-wrap: break-word;
-    line-height: 30px;
-  }
 
 
-.rating-with-dot{
-    color: rgb(51, 51, 51);
-    font-size: 13px;
-    margin-left: 3px;
-  }
+ 
 
-.addr{
-   color: 	#616161;
-   font-size: 15px;
-   margin-top: 5px;
-}
 
-.food-estab-identity{
-    padding-top: 10px;
-    padding-left: 10px
-}
-  
-
-.store-hours{
-    margin-top: 0px;
-    font-family: latoregular;
-    font-size: 16px;
-    color:black;
-    margin-right: 3px;
-    margin-left: 5px;
-}
-
-.value-store-hours{
-    font-family: latoregular;
-    color: 	#616161;
-   font-size: 14px;
-}
 
 .addtl-details-buttons{
     background: transparent;
@@ -117,19 +77,7 @@
     font-size: 10px;
 }
 
-.mat-button-toggle {
-    width: 75px;
-    height: 80px;
-    background-color: white ;
-    font-size: 20px;
-    color:#616161;
-    padding-right: 30px;
-  }
 
-  .mat-button-toggle-checked {
-    background-color: #F8E333;
-    color: blue;
-  }
   
   .addtl-details-info{
       margin-top: 10px;
@@ -143,7 +91,7 @@
     margin-top: 60%;
     margin-left: 25%;
     width: 80px;
-    height: 40px;
+    height: 30px;
     text-align: center;
     border-radius: 10%;
     font-weight: bold;
@@ -178,9 +126,297 @@
     color: grey;
 }
 
+.spinner-container {
+    height: 100%;
+}
 
+mat-spinner {
+    position: absolute;
+    top: 160px;
+    left: 130px;
+}
+@media (min-width: 330px) {
+    .addr{
+        color: 	#616161;
+        font-size: 14px;
+        margin-top: 5px;
+     }
+} 
+@media (min-width: 320px) { 
+    #one{
+        margin-left: 15px;
+    }
+    .food-estab-identity{
+        padding-top: 10px;
+    }
+    .shop-name{
+        font-family: latoregular;
+        font-size: 19px;
+        color:black;
+        margin-bottom: 0px;
+        margin-top: 10px;
+        margin-bottom: 3px;
+        overflow-wrap: break-word;
+        line-height: 20px;
+      }
+    
+    
+    .rating-with-dot{
+        color: rgb(51, 51, 51);
+        font-size: 13px;
+        margin-left: 3px;
+      }
+    
+    .addr{
+       color: 	#616161;
+       font-size: 12px;
+       margin-top: 5px;
+    }
 
+    .mat-button-toggle {
+        width: 60px;
+        height: 78px;
+        background-color: white ;
+        font-size: 20px;
+        color:#616161;
+        padding-right: 30px;
+      }
+    
+      .mat-button-toggle-checked {
+        background-color: #F8E333;
+        color: blue;
+      }
+      .addtl-details-info{
+        margin-top: 4px;
+        font-family: latobold;
+        font-size: 13px; 
+        margin-left: 2px;
+    }
+  
+      .store-hours{
+        margin-top: 0px;
+        font-family: latoregular;
+        font-size: 13px;
+        color:black;
+        margin-right: 3px;
+        margin-left: 8px;
+    }
+    
+    .value-store-hours{
+        font-family: latoregular;
+        color: 	#616161;
+       font-size: 11px;
+    }
+        
+.map-button{
+    position: absolute;
+    top: 0px;
+    margin-top: 10%;
+    margin-left: 30%;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    line-height: 55px;
+    background: #BC000B;
+    
+}
 
+.map-icon{
+    font-size: 30px;
+    text-align: center;
+    padding-top: 27%;
+    padding-right: 30px;
+    color: #F8E333;
+}   
+
+.open-close-container{
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 360px) { 
+    #one{
+        margin-left: 15px;
+    }
+    .food-estab-identity{
+        padding-top: 10px;
+    }
+    .shop-name{
+        font-family: latoregular;
+        font-size: 21px;
+        color:black;
+        margin-bottom: 0px;
+        margin-top: 10px;
+        margin-bottom: 6px;
+        overflow-wrap: break-word;
+        line-height: 23px;
+      }
+    
+    
+    .rating-with-dot{
+        color: rgb(51, 51, 51);
+        font-size: 13px;
+        margin-left: 3px;
+      }
+    
+    .addr{
+       color: 	#616161;
+       font-size: 13px;
+       margin-top: 5px;
+    }
+
+    .mat-button-toggle {
+        width: 67px;
+        height: 80px;
+        background-color: white ;
+        font-size: 20px;
+        color:#616161;
+        padding-right: 30px;
+      }
+    
+      .mat-button-toggle-checked {
+        background-color: #F8E333;
+        color: blue;
+      }
+
+      .store-hours{
+        margin-top: 0px;
+        font-family: latoregular;
+        font-size: 15px;
+        color:black;
+        margin-right: 3px;
+        margin-left: 8px;
+    }
+    
+    .value-store-hours{
+        font-family: latoregular;
+        color: 	#616161;
+       font-size: 13px;
+    }
+}
+
+@media (min-width: 375px) { 
+    #one{
+        margin-left: 18px;
+    }
+    .food-estab-identity{
+        padding-top: 10px;
+    }
+    .shop-name{
+        font-family: latoregular;
+        font-size: 21px;
+        color:black;
+        margin-bottom: 0px;
+        margin-top: 10px;
+        margin-bottom: 6px;
+        overflow-wrap: break-word;
+        line-height: 25px;
+      }
+    
+    
+    .rating-with-dot{
+        color: rgb(51, 51, 51);
+        font-size: 13px;
+        margin-left: 3px;
+      }
+    
+    .addr{
+       color: 	#616161;
+       font-size: 14px;
+       margin-top: 5px;
+    }
+
+    .mat-button-toggle {
+        width: 70px;
+        height: 80px;
+        background-color: white ;
+        font-size: 20px;
+        color:#616161;
+        padding-right: 30px;
+      }
+    
+      .mat-button-toggle-checked {
+        background-color: #F8E333;
+        color: blue;
+      }
+
+      .store-hours{
+        margin-top: 0px;
+        font-family: latoregular;
+        font-size: 15px;
+        color:black;
+        margin-right: 3px;
+        margin-left: 8px;
+    }
+    
+    .value-store-hours{
+        font-family: latoregular;
+        color: 	#616161;
+       font-size: 13px;
+    }
+}
+
+@media (min-width: 393px) { 
+    #one{
+        margin-left: 8px;
+    }
+    .food-estab-identity{
+        padding-top: 10px;
+        padding-left: 8px
+    }
+    .shop-name{
+        font-family: latoregular;
+        font-size: 22px;
+        color:black;
+        margin-bottom: 12px;
+        margin-top: 10px;
+        overflow-wrap: break-word;
+        line-height: 22px;
+      }
+    
+    
+    .rating-with-dot{
+        color: rgb(51, 51, 51);
+        font-size: 13px;
+        margin-left: 3px;
+      }
+    
+    .addr{
+       color: 	#616161;
+       font-size: 15px;
+       margin-top: 5px;
+    }
+
+    .mat-button-toggle {
+        width: 75px;
+        height: 80px;
+        background-color: white ;
+        font-size: 20px;
+        color:#616161;
+        padding-right: 30px;
+      }
+    
+      .mat-button-toggle-checked {
+        background-color: #F8E333;
+        color: blue;
+      }
+
+      .store-hours{
+        margin-top: 0px;
+        font-family: latoregular;
+        font-size: 16px;
+        color:black;
+        margin-right: 3px;
+        margin-left: 5px;
+    }
+    
+    .value-store-hours{
+        font-family: latoregular;
+        color: 	#616161;
+       font-size: 14px;
+    }
+}
   /*
 .card{
     text-align: left;
@@ -196,16 +432,6 @@ mat-card {
     width: 80%;
 } 
 
-.spinner-container {
-    height: 100%;
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-}
-
-mat-spinner {
-    top: -45px;
-}
 
 .food-establishment-container {
     display: flex;
