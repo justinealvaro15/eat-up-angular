@@ -100,7 +100,7 @@ export class UserListComponent implements OnInit, OnDestroy {
          } else {
            window.alert(result.first_name + " is already an Admin");
          }
-         this.usersService.setFilter(FilterKeys.Name_Or_Id,"");
+         this.usersService.setFilter(FilterKeys.Name_Or_Id ,"");
        
          
         }

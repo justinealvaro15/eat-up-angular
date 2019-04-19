@@ -6,9 +6,6 @@ import { SocialUser } from "angularx-social-login";
 import { User } from "../../../admin/main-pages/users/user.model";
 import { UsersService, FilterKeys } from "../../../admin/main-pages/users/users.service";
 
-//https://www.npmjs.com/package/angularx-social-login
-//https://github.com/kangw3n/angular4-social-login/tree/0bb654f7034d7d154d59e629005203b397144f11
-
 @Component({
   selector: 'app-google-auth',
   templateUrl: './google-auth.component.html',
@@ -29,16 +26,17 @@ export class GoogleAuthComponent implements OnInit {
       this.user = user;
       this.loggedIn = (user != null);
     });
-    //maybe do the adding here?
-    if (this.loggedIn) { //there is a logged in user
-      this.usersService.setFilter(FilterKeys.Name_Or_Email,this.user.email);
-      if (!this.usersService.getFilteredUsers()) { //NEW USER
-        this.addUser(); //add new user to DB
-      } else { //RETURNING USER
+    //maybe do the adding here? does not work
+    // if (this.loggedIn) { //there is a logged in user
+    //   this.usersService.setFilter(FilterKeys.Name_Or_Email,this.user.email);
+    //   if (!this.usersService.getFilteredUsers()) { //NEW USER
+    //     console.log("adding user");
+    //     this.addUser(); //add new user to DB
+    //   } else { //RETURNING USER
 
-      }
+    //   }
      
-    }
+    // }
   }
 
   constructor(
@@ -50,7 +48,9 @@ export class GoogleAuthComponent implements OnInit {
     console.log("in signInWithGoogle");
     //window.alert("Sign in with your UP Mail account."); No need since the google log in pop up will inform the user
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID); 
-
+    
+    //n this.addUser();
+    console.log("done");
   }
 
 
@@ -59,8 +59,9 @@ export class GoogleAuthComponent implements OnInit {
       console.log("no log in");
       const date = new Date();
       const newUser: User = {
-         email: this.user.email,
-         name: this.user.firstName + " " + this.user.lastName,
+         user_id: this.user.id,
+         first_name: this.user.firstName,
+         last_name: this.user.lastName,
          photo: this.user.photoUrl,
          date_joined: {
             year: date.getFullYear(),

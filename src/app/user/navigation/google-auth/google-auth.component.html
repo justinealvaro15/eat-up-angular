@@ -1,6 +1,6 @@
 <div *ngIf = "!loggedIn ; else logOut">
-	<a *ngIf = "sidenav" mat-list-item routerLink="/" (click)="signInWithGoogle()&&addUser()">Sign in</a>
-	<a *ngIf = "header" routerLink="/"  (click)="signInWithGoogle()&&addUser()">Sign in</a> 
+	<a *ngIf = "sidenav" mat-list-item routerLink="/" (click)="signInWithGoogle()">Sign in</a>
+	<a *ngIf = "header" routerLink="/"  (click)="signInWithGoogle()">Sign in</a> 
 </div>
 <ng-template #logOut>
 	<a *ngIf = "sidenav" mat-list-item href="#" (click)="signOut();">Sign out</a>
