@@ -4,6 +4,11 @@
     </div>
 
     <div *ngIf="shop.active">
+        <div class="top-button">
+            <button mat-raised-button color="primary">Edit {{shop.fe_name}}</button>
+            <mat-slide-toggle color="primary" [checked]="!shop.active">Deactivate {{shop.fe_name}}</mat-slide-toggle>
+        </div>
+
         <mat-grid-list cols="5" rowHeight="2:1" gutterSize="0">
             <mat-grid-tile rowspan="8" colspan="5">
                 <img class="food-estab-img" src="{{shop.image ? shop.image : 'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17665746.jpg'}}" alt="food establishment picture">
