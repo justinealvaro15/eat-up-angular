@@ -25,6 +25,6 @@ export class UserSearchComponent implements OnInit {
   setFilters(){
     console.log(this.filter.get('name_or_id').value);
 
-    this.userService.setFilter(FilterKeys.Name_Or_Id, this.filter.get('name_or_Ids').value);
+    this.userService.setFilter(FilterKeys.Name_Or_Id, this.filter.get('name_or_id').value);
   }
 }
