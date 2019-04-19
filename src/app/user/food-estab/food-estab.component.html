@@ -1,7 +1,7 @@
 <div class="food-establishment-container">
-        <div *ngIf="!shop" class="spinner-container">
+    <div *ngIf="!shop" class="spinner-container">
         <mat-spinner ></mat-spinner>
-        </div>
+    </div>
 </div>
 <div *ngIf="shop" >
     <mat-grid-list cols="5" rowHeight="2:1" gutterSize="0">
@@ -26,11 +26,11 @@
                     </div>
                 </div>
         </mat-grid-tile>
-        <mat-grid-tile rowspan="4"  colspan="2" id="thirdBox" >
+        <mat-grid-tile rowspan="4"  colspan="2">
                 <div fxFlex fxLayout = "row">
                 <div class="map-button" (click) = "showMap()"> <mat-icon class="map-icon">place</mat-icon></div>
                 <div class="open-close-container" [class.closed]="!isShopOpen()" [class.open]="isShopOpen()">
-                    <div class= "open-close"  >{{isShopOpen(shop) ? "Open Now" : "Closed Now"}}</div>
+                    <div class= "open-close"  >{{isShopOpen(shop) ? "Open" : "Closed"}}</div>
                 </div>
             </div>
         </mat-grid-tile>
@@ -84,7 +84,7 @@
             </div>
             </mat-grid-tile>
             <mat-grid-tile rowspan="2"  colspan="5" *ngIf="shop">
-                <app-add-rating-review *ngIf="reviews" [shop]="shop" [reviews]="reviews" style="margin-right: 20px"></app-add-rating-review> 
+                <app-add-rating-review *ngIf="reviews" [shop]="shop" [reviews]="reviews" style="margin-right: 20px;"></app-add-rating-review> 
             </mat-grid-tile>
 
         </mat-grid-list>

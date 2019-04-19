@@ -16,9 +16,9 @@
               <mat-card-content>
                   <div fxLayout="row">  
                     <app-stars [stars]="shop.fe_avg_rating"></app-stars>
-                    <div class = "rating-in-parentheses"> &middot; {{shop.fe_avg_rating ? shop.fe_avg_rating.toFixed(2) : "Not yet rated"}}</div>
+                    <div class = "rating-in-parentheses"> &middot; {{shop.fe_avg_rating ? shop.fe_avg_rating.toFixed(2) : "0.0"}}</div>
                   </div>
-                <div fxLayout="row" class= "addr">{{shop.address}}</div>
+                <div fxLayout="row" class= "addr line-clamp line-clamp-2">{{shop.address}}</div>
                 <div fxLayout="row" class= "open-close" [class.closed]="!isShopOpen()" [class.open]="isShopOpen()">{{isShopOpen() ? "Open" : "Closed"}}</div>
               </mat-card-content>
             </div>
