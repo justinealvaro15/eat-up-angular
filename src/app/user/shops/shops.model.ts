@@ -2,6 +2,7 @@
 
 export interface Shop {
     fe_id: string;
+    active: boolean;
     fe_name: string;
     type: string;
     address: string;
