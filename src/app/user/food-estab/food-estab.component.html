@@ -37,7 +37,7 @@
                     <div fxFlex fxLayout = "row">
                     <div class="map-button" (click) = "showMap()"> <mat-icon class="map-icon">place</mat-icon></div>
                     <div class="open-close-container" [class.closed]="!isShopOpen()" [class.open]="isShopOpen()">
-                        <div class= "open-close"  >{{isShopOpen(shop) ? "Open Now" : "Closed Now"}}</div>
+                        <div class= "open-close"  >{{isShopOpen(shop) ? "Open" : "Closed"}}</div>
                     </div>
                 </div>
             </mat-grid-tile>
