@@ -33,7 +33,8 @@ import {
   MatCardModule,
   MatSortModule,
   MatTableModule,
-  MatTabsModule
+  MatTabsModule,
+  MatButtonToggleModule
 } from '@angular/material';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StatsComponent } from './misc-pages/stats/stats.component';
@@ -78,7 +79,8 @@ import { AdminFoodEstabComponent } from './main-pages/food-establishments/admin-
     MatTableModule,
     MatTabsModule,
     FlexLayoutModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonToggleModule
   ],
   declarations: [
     AdminComponent,
