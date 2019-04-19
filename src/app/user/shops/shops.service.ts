@@ -47,8 +47,12 @@ export class ShopsService {
         //console.log("inSetCoordinates: "+ this.coordinate.lat + " " + this.coordinate.long);
     }
 
-    getShopsDisplay() {
+    getAllShops() {
         return this.http.get<Shop[]>('http://localhost:3000/api/shops');
+    }
+
+    getShopsDisplay() {
+        return this.http.get<Shop[]>('http://localhost:3000/api/shops/display');
     }
 
     updateShopList() {

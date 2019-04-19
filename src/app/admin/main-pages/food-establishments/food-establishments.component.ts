@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 
 export interface AddedShop {
   fe_name: string,
+  active: boolean,
   type: string,
   address: string,
   lat: number,
@@ -58,7 +59,7 @@ export class FoodEstablishmentsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.subscriptions.push(this.shopService.getShopsDisplay().subscribe((shops) => {
+    this.subscriptions.push(this.shopService.getAllShops().subscribe((shops) => {
       this.shops = shops;
     }));
     this.subscriptions.push(this.shopService.getShopByHighestId().subscribe((shop) => {
@@ -99,6 +100,7 @@ export class FoodEstablishmentsComponent implements OnInit {
       if (result && this.shopWithHighestId) {
         const newShop: Shop = {
           fe_id: this.highestId as string,
+          active: true,
           fe_name: result.fe_name,
           type: result.type,
           address: result.address,
@@ -250,6 +252,7 @@ export class AddShopDialog {
     
     return {
       fe_name: addShopFormGroup.get('fe_name').value,
+      active: true,
       type: addShopFormGroup.get('type').value,
       address: addShopFormGroup.get('address').value,
       long: addShopFormGroup.get('long').value,
