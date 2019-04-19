@@ -74,7 +74,6 @@ export class AddRatingReviewComponent {
           user_id: this.user.id,
           fe_id: this.shop.fe_id,
           firstName: this.user.firstName,
-          lastName: this.user.lastName,
           photoUrl: this.user.photoUrl,
           rating: result.rating,
           review: result.review,
