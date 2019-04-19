@@ -1,6 +1,7 @@
 export interface User {
-    email: string; 
-    name: string;
+    user_id: string; 
+    first_name: string;
+    last_name: string;
     photo: string; 
     date_joined: { //DATE
       year: number;
@@ -34,8 +35,9 @@ export interface User {
     isAdmin: boolean;
   }
 export interface Admin {
-  email: string;
-  name: string;
+  user_id: string;
+  first_name: string;
+  last_name:string;
   //photoUrl: string;
   admin_since: { //DATE
     year: number;

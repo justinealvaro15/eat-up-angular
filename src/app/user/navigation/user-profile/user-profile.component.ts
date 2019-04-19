@@ -24,9 +24,9 @@ export class UserProfileComponent implements OnInit {
       this.numReviews = this.getUserNumReviews(this.user.email)[0].reviews_made;
     });
   }
-  getUserNumReviews(email) {
+  getUserNumReviews(id) {
     this.loggedInUser = this.usersService.getFilteredUsers().filter(user =>{
-        return user.email == email;
+        return user.user_id== id;
     });
     console.log(this.loggedInUser);
     return this.loggedInUser;

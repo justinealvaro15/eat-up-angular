@@ -20,7 +20,7 @@ export class UsersService {
         // }) 
     }
     filter = {
-      name_or_email:''
+      name_or_id:''
     }
     private _users: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
     private _admins: BehaviorSubject<Admin[]> = new BehaviorSubject<Admin[]>([]);
@@ -71,7 +71,7 @@ export class UsersService {
 
   alreadyAdmin(): Admin[] {
     return this._admins.getValue().filter((admin)=> {
-      return this.isAdminEmailMatch(admin);
+      return this.isAdminIdMatch(admin);
     });
   }
 
@@ -91,29 +91,29 @@ export class UsersService {
     );
 }
 
-  private isAdminEmailMatch(admin: Admin): boolean {
-    if (!this.filter.name_or_email) {
+  private isAdminIdMatch(admin: Admin): boolean {
+    if (!this.filter.name_or_id) {
       return true;
     }
-    const isEmail = admin.email.toLowerCase().includes(this.filter.name_or_email.toLowerCase());
+    const isId = admin.user_id===this.filter.name_or_id;
 
-    return isEmail;
+    return isId;
   }
 
   private isUserNameorEmailMatch(user:User): boolean{
-    if (!this.filter.name_or_email) {
+    if (!this.filter.name_or_id) {
         return true;
     }
+    const name = user.first_name + " " + user.last_name;
+    const isName = name.toLowerCase().includes(this.filter.name_or_id.toLowerCase());
+    const isId = user.user_id === this.filter.name_or_id;
 
-    const isName = user.name.toLowerCase().includes(this.filter.name_or_email.toLowerCase());
-    const isEmail = user.email.toLowerCase().includes(this.filter.name_or_email.toLowerCase());
-
-    return isName || isEmail;
+    return isName || isId;
   }
 
 }
 
  
 export enum FilterKeys {
-  Name_Or_Email='name_or_email'
+  Name_Or_Id='name_or_id'
 }

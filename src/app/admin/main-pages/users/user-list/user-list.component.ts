@@ -28,7 +28,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.filter = this.fb.group({
-      name_or_email: new FormControl(this.usersService.filter.name_or_email)
+      name_or_id: new FormControl(this.usersService.filter.name_or_id)
     });
     this.getUsersSubscription = this.usersService.getUsersDisplay().subscribe((users) => { //For Initialization
        this.getFilteredUsers();
@@ -68,18 +68,20 @@ export class UserListComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(MakeAdminDialog, {
       width: '350px',
       data: {
-          email: user.email,
-          name: user.name
+          user_id: user.user_id,
+          first_name: user.first_name,
+          last_name: user.last_name
           //photoUrl:
       }
     });
 
     dialogRef.afterClosed().subscribe((result: Admin) => {
       const date = new Date();
-       if (result.email && result.name) {
+       if (result.user_id && result.first_name&&result.last_name) {
          const newAdmin: Admin = {
-           email: result.email,
-           name: result.name,
+           user_id: result.user_id,
+           first_name: result.first_name,
+           last_name: result.last_name,
            admin_since: {
              year: date.getFullYear(),
              month: date.getMonth(),
@@ -90,15 +92,15 @@ export class UserListComponent implements OnInit, OnDestroy {
            }
            //photoUrl:
          };
-         this.usersService.setFilter(FilterKeys.Name_Or_Email,user.email);
+         this.usersService.setFilter(FilterKeys.Name_Or_Id,user.user_id);
          if (!this.usersService.alreadyAdmin()) {
            this.usersService.addAdmin(newAdmin); //do only if not already in db
-           window.alert(result.name + " is now an Admin"); 
+           window.alert(result.first_name + " is now an Admin"); 
         
          } else {
-           window.alert(result.name + " is already an Admin");
+           window.alert(result.first_name + " is already an Admin");
          }
-         this.usersService.setFilter(FilterKeys.Name_Or_Email,"");
+         this.usersService.setFilter(FilterKeys.Name_Or_Id,"");
        
          
         }
@@ -110,8 +112,9 @@ export class UserListComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(DeacUserDialog, {
       width: '350px',
       data: {
-          email: user.email,
-          name: user.name,
+          user_id: user.user_id,
+          first_name: user.first_name,
+          last_name:user.last_name,
           active: user.active
       }
     });
@@ -145,8 +148,9 @@ export class MakeAdminDialog {
 
   onYesClick(): any { //on make admin
     return { 
-      email: this.data.email,
-      name: this.data.name
+      user_id: this.data.user_id,
+      first_name: this.data.first_name,
+      last_name: this.data.last_name
     }
   }
 }
@@ -177,8 +181,9 @@ export class DeacUserDialog {
 
   onYesClick() { //or on deactivate user
     return {
-      email : this.data.email,
-      name: this.data.name,
+      user_id : this.data.user_id,
+      first_name: this.data.first_name,
+      last_name:this.data.last_name,
       active: this.data.active
     }
   }
