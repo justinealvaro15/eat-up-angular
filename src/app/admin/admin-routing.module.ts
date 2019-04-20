@@ -28,9 +28,9 @@ const routes: Routes =[
     { path: 'food-establishments',      component: FoodEstablishmentsComponent},
     { path: 'menu',                     component: MenuComponent},
     { path: 'stats',                    component: StatsComponent},
-    { path: 'stats/ratings-reviews',          component: RatingsReviewsComponent},
-    { path: 'stats/user-contributions',       component: UserContributionsComponent},
-    { path: 'shops/:shopId', component: AdminFoodEstabComponent }
+    { path: 'stats/ratings-reviews',       component: RatingsReviewsComponent},
+    { path: 'stats/user-contributions',    component: UserContributionsComponent},
+    { path: 'food-establishments/:shopId', component: AdminFoodEstabComponent }
     ]}
   ];
     // { path: 'dashboard',      component: DashboardComponent },

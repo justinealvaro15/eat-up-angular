@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoadingService } from './loading.service';
 
 @Component({
   selector: 'app-root',
@@ -6,12 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  isLoading = false;
 
   constructor(
-
+    public loadingScreenService: LoadingService
   ){ }
 
   ngOnInit() {
-    
+    this.loadingScreenService.getIsLoading().subscribe(value => {
+      Promise.resolve().then(() => this.isLoading = value);
+    })
   }
 }
