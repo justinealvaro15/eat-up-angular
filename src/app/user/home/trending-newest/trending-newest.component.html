@@ -1,4 +1,6 @@
+<div>
 <app-search-boxes></app-search-boxes>
+</div>
 <mat-tab-group mat-align-tabs="center" style="height:100%">
   <mat-tab label="Trending" id = "trend" >
     <app-shop-card *ngFor="let trendingShop of trendingShops" [shop]="trendingShop"></app-shop-card>

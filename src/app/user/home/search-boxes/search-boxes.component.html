@@ -1,14 +1,16 @@
 <div class="search-container" fxFlex fxLayout= "rows" fxLayoutAlign="center"> 
     <div [formGroup]="filter" class="search-box-input">
-        <div class="search">
+        <div >
             <input type="text" placeholder="food, canteen, stall" (keyup.enter)="setFiltersAndRedirect()" formControlName="fcs">
         </div>
-        <p></p>
-        <div class="search">
-             <ng-select2 [width]="295" [data]="exampleData" [options]="options" formControlName="location"></ng-select2> 
+        <div >
+             <ng-select2 [data]="exampleData" [options]="options" formControlName="location"></ng-select2> 
         </div>
+        
     </div>
     <div class="search-button-container">
-        <button class="magnifying_glass" (click)="setFiltersAndRedirect()"></button>
+        <button class="magnifying_glass" (click)="setFiltersAndRedirect()">
+            <mat-icon class="search-icon"> search </mat-icon>
+        </button>
     </div>
 </div>
