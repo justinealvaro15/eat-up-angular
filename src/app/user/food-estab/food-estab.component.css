@@ -126,15 +126,15 @@
     color: grey;
 }
 
-.spinner-container {
+/* .spinner-container {
     height: 100%;
-}
+} */
 
-mat-spinner {
+/* mat-spinner {
     position: absolute;
     top: 160px;
     left: 130px;
-}
+} */
 @media (min-width: 330px) {
     .addr{
         color: 	#616161;

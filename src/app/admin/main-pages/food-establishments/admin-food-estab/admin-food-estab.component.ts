@@ -40,7 +40,11 @@ export class AdminFoodEstabComponent implements OnInit {
 
   ngOnInit() {
     const shopId = this.route.snapshot.paramMap.get('shopId');
-    this.shopSubscription = this.shopService.getShopById(shopId).subscribe(shop => this.shop = shop);
+    this.loadingService.showLoading();
+    this.shopSubscription = this.shopService.getShopById(shopId).subscribe(shop => {
+      this.loadingService.hideLoading();
+      this.shop = shop;
+    });
     this.reviewService.getReviewsByNewest(shopId).subscribe((reviews) => {
       this.reviews = reviews;
     });
