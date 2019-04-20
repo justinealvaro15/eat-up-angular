@@ -1,0 +1,4 @@
+<button *ngIf="loggedIn; else loggedOut" mat-raised-button color="primary" (click)="openDialog()">Add Menu Item</button>
+<ng-template #loggedOut>
+	<button mat-raised-button color="primary" (click)="alertUser()">Add Menu Item</button>	
+</ng-template>	

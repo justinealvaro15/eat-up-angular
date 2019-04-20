@@ -55,6 +55,9 @@ import { RatingsReviewsComponent } from './misc-pages/stats/ratings-reviews/rati
 import { UserContributionsComponent } from './misc-pages/stats/user-contributions/user-contributions.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AdminFoodEstabComponent } from './main-pages/food-establishments/admin-food-estab/admin-food-estab.component';
+import { AdminMenuComponent } from './main-pages/food-establishments/admin-food-estab/admin-menu/admin-menu.component';
+import { AdminMenuItemComponent } from './main-pages/food-establishments/admin-food-estab/admin-menu/admin-menu-item/admin-menu-item.component';
+import { AdminAddMenuItemComponent, AdminAddMenuItemDialog } from './main-pages/food-establishments/admin-food-estab/admin-menu/admin-add-menu-item/admin-add-menu-item.component';
 
 
 @NgModule({
@@ -113,13 +116,18 @@ import { AdminFoodEstabComponent } from './main-pages/food-establishments/admin-
     AdminSearchComponent,
     RatingsReviewsComponent,
     UserContributionsComponent,
-    AdminFoodEstabComponent
+    AdminFoodEstabComponent,
+    AdminMenuComponent,
+    AdminMenuItemComponent,
+    AdminAddMenuItemComponent,
+    AdminAddMenuItemDialog
   ],
   entryComponents: [
     MakeAdminDialog,
     DeacUserDialog,
     AcUserDialog,
-    AddShopDialog
+    AddShopDialog,
+    AdminAddMenuItemDialog
   ]
 })
 
