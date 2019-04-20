@@ -5,6 +5,7 @@ import { ShopsService } from 'app/user/shops/shops.service';
 import { Shop } from 'app/user/shops/shops.model';
 import { LocationData, Location } from 'app/user/location/location.model';
 import { Subscription } from 'rxjs';
+import { LoadingService } from 'app/loading.service';
 
 export interface AddedShop {
   fe_name: string,
@@ -30,14 +31,22 @@ export interface AddedShop {
   AddlTakeOutCost: string,
   FreeWater: string,
   BYOBIncentive: string,
-  SeatingCapacity: string | number,
+  SeatingCapacity: number | string,
   CLAYGO: string,
-  NearBuildings: Location[],
+  NearBuildings: any[],
   image: any
 }
 
+export const SHOP_TYPE = Object.freeze([
+  'Kiosk',
+  'Canteen',
+  'Stall',
+  'Cafe'
+])
+
 export interface DialogData {
   addShopFormGroup: FormGroup;
+  isEdit?: boolean;
 }
 
 @Component({
@@ -51,15 +60,19 @@ export class FoodEstablishmentsComponent implements OnInit {
   highestId: string;
   subscriptions: Subscription[] = [];
   shops: Shop[] = []
+  
 
   constructor(
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
-    private shopService: ShopsService
+    private shopService: ShopsService,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit() {
+    this.loadingService.showLoading();
     this.subscriptions.push(this.shopService.getAllShops().subscribe((shops) => {
+      this.loadingService.hideLoading();
       this.shops = shops;
     }));
     this.subscriptions.push(this.shopService.getShopByHighestId().subscribe((shop) => {
@@ -92,11 +105,12 @@ export class FoodEstablishmentsComponent implements OnInit {
     const dialogRef = this.dialog.open(AddShopDialog, {
       width: '350px',
       data: {
-        addShopFormGroup: this.addShopFormGroup
+        addShopFormGroup: this.addShopFormGroup,
+        isEdit: false
       }
     });
 
-    dialogRef.afterClosed().subscribe((result: AddedShop) => {
+    dialogRef.afterClosed().toPromise().then((result: AddedShop) => {
       if (result && this.shopWithHighestId) {
         const newShop: Shop = {
           fe_id: this.highestId as string,
@@ -115,7 +129,7 @@ export class FoodEstablishmentsComponent implements OnInit {
           AddlTakeOutCost: result.AddlTakeOutCost || "None",
           FreeWater: result.FreeWater || "No",
           BYOBIncentive: result.BYOBIncentive || "None",
-          SeatingCapacity: result.BYOBIncentive || "None",
+          SeatingCapacity: result.SeatingCapacity || "None",
           CLAYGO: result.CLAYGO || "No",
           ExtraRice: result.ExtraRice || "None",
           fe_avg_rating: 0,
@@ -134,17 +148,11 @@ export class FoodEstablishmentsComponent implements OnInit {
             InHouse: []
           },
           ComboMeal: null,
-          image: result.image,
-          Nearest_Bldgs: null,
+          Nearest_Bldgs: result.NearBuildings,
           Consumables: null,
-          BrandedConsumables: null
+          BrandedConsumables: null,
+          image: result.image
         }
-        // console.log(result.NearBuildings);
-        // console.log(result.hours);
-        // console.log(result.days_open);
-
-        // console.log(this.shopWithHighestId);
-        console.log(newShop);
         this.shopService.addFoodEstablishment(newShop);
       }
     })
@@ -200,6 +208,8 @@ export class AddShopDialog {
     value: '3'
   }];
 
+  SHOP_TYPE = SHOP_TYPE;
+
   constructor(
     public dialogRef: MatDialogRef<AddShopDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
@@ -213,11 +223,18 @@ export class AddShopDialog {
     const daysOpen = <FormArray>this.data.addShopFormGroup.get('days_open');
   
     if(isChecked) {
-      daysOpen.push(new FormControl(dayValue));
+      let index = daysOpen.controls.findIndex(x => x.value === dayValue);
+      if (index < 0) {
+        daysOpen.push(new FormControl(dayValue));
+      }
     } else {
       let index = daysOpen.controls.findIndex(x => x.value === dayValue)
       daysOpen.removeAt(index);
     }
+  }
+
+  isDayOpenCheck(day: {display: string, value: string}): boolean {
+    return this.data.addShopFormGroup.get('days_open').value.findIndex(_day => day.value === _day) >= 0;
   }
   
 
@@ -276,7 +293,11 @@ export class AddShopDialog {
       BYOBIncentive: byob,
       SeatingCapacity: addShopFormGroup.get('SeatingCapacity').value,
       CLAYGO: claygo,
-      NearBuildings: addShopFormGroup.get('NearBuildings').value,
+      NearBuildings: addShopFormGroup.get('NearBuildings').value.map((nearBuildingId) => {
+        return {
+          id: Number(nearBuildingId)
+        }
+      }),
       image: addShopFormGroup.get('image').value
     }
   }

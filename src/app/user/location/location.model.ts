@@ -8,7 +8,7 @@ export interface Location {
 }
 
 export const LocationData: Location[] = [
-  {
+  	{
 		id:"1",
 		name: "UP Asian Institute of Tourism (UP AIT)",
 		coordinates: {

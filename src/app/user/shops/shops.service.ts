@@ -9,6 +9,7 @@ import { AddedMenu } from '../food-estab/food-group';
 import { AuthService, SocialUser } from 'angularx-social-login';
 import { LocationService } from '../location/location.service';
 import { AddedShop } from 'app/admin/main-pages/food-establishments/food-establishments.component';
+import { LoadingService } from 'app/loading.service';
 
 @Injectable({ providedIn: 'root' })
 export class ShopsService {
@@ -20,7 +21,8 @@ export class ShopsService {
     constructor(
         private locationService: LocationService,
         private http: HttpClient,
-        private authService: AuthService
+        private authService: AuthService,
+        private loadingScreenService: LoadingService
     ) {
         this.updateShopList();
         this.authService.authState.subscribe((user) => {
@@ -129,7 +131,36 @@ export class ShopsService {
     }
 
     addFoodEstablishment(addedShop: Shop) {
-        this.http.post(`http://localhost:3000/api/add_shop`, addedShop).subscribe();
+        this.loadingScreenService.showLoading();
+        return this.http.post(`http://localhost:3000/api/admin/add/shop`, addedShop).toPromise().then(() => this.loadingScreenService.hideLoading());
+    }
+
+    editFoodEstablishment(shopId: string, editedShop: AddedShop) {
+        const payload = {
+            // remove image in payload
+            updatedShop: {
+                fe_name: editedShop.fe_name,
+                type: editedShop.type,
+                address: editedShop.address,
+                coordinates: {
+                    long: editedShop.long,
+                    lat: editedShop.lat,
+                },
+                contact_person: editedShop.contact_person,
+                contact_number: editedShop.contact_number,
+                hours: editedShop.hours,
+                days_open: editedShop.days_open,
+                AddlTakeOutCost: editedShop.AddlTakeOutCost,
+                FreeWater: editedShop.FreeWater,
+                BYOBIncentive: editedShop.BYOBIncentive,
+                SeatingCapacity: editedShop.SeatingCapacity,
+                CLAYGO: editedShop.CLAYGO,
+                Nearest_Bldgs: editedShop.NearBuildings
+            }
+        }
+        this.loadingScreenService.showLoading();
+        this.http.put(`http://localhost:3000/api/admin/edit/shop/${shopId}`, payload).toPromise().then(() => this.loadingScreenService.hideLoading());
+        window.alert("Food Establishment Updated!");
     }
 
     getFilteredShops(): Shop[] { //has to be modified
@@ -139,7 +170,7 @@ export class ShopsService {
         return this.isArrayShopNearBldg(fcsFiltered);        
     }
 
-    deactivateShop(shopId: string, active: boolean) {
+    deactivateFoodEstablishment(shopId: string, active: boolean) {
         // console.log(active);
         const payload = {
             active: active
