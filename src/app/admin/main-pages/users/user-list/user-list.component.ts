@@ -89,17 +89,10 @@ export class UserListComponent implements OnInit, OnDestroy {
            }
            //photoUrl:
          };
-        // this.usersService.setFilter(FilterKeys.Name_Or_Id,user.user_id);
-        // if (!this.usersService.alreadyAdmin()) {
-           this.usersService.addAdmin(newAdmin); //do only if not already in db
-           this.usersService.adminStatus(newAdmin);
-           window.alert(result.first_name + " is now an Admin"); 
-        
-        //  } else {
-        //    window.alert(result.first_name + " is already an Admin");
-        //  }
-        //  this.usersService.setFilter(FilterKeys.Name_Or_Id ,"");
-         window.location.reload();
+        this.usersService.addAdmin(newAdmin);
+        this.usersService.adminStatus(newAdmin);
+        window.alert(result.first_name + " is now an Admin"); 
+        window.location.reload();
          
         }
     });
