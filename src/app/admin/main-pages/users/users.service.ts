@@ -113,9 +113,11 @@ export class UsersService {
     if (!this.filter.name_or_id) {
       return true;
     }
-    const isId = admin.user_id===this.filter.name_or_id;
 
-    return isId;
+    const name = admin.first_name + " " + admin.last_name;
+    const isId = admin.user_id===this.filter.name_or_id;
+    const isName = name.toLowerCase().includes(this.filter.name_or_id.toLowerCase());
+    return isId||isName;
   }
 
   private isUserNameorEmailMatch(user:User): boolean{
