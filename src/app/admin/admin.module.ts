@@ -45,7 +45,8 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 // import { AddAdminComponent } from './main-pages/admins/add-admin/add-admin.component';
 import { UserSearchComponent } from './main-pages/users/user-search/user-search.component';
-import { UserListComponent, MakeAdminDialog, DeacUserDialog } from './main-pages/users/user-list/user-list.component';
+import { UserListComponent, MakeAdminDialog, DeacUserDialog, AcUserDialog
+ } from './main-pages/users/user-list/user-list.component';
 import { UserCardComponent } from './main-pages/users/user-card/user-card.component';
 import { ShopCardAdminComponent } from './main-pages/food-establishments/shop-card-admin/shop-card-admin.component';
 import { AdminsListComponent } from './main-pages/admins/admins-list/admins-list.component';
@@ -104,6 +105,7 @@ import { AdminFoodEstabComponent } from './main-pages/food-establishments/admin-
     UserListComponent,
     MakeAdminDialog,
     DeacUserDialog,
+    AcUserDialog,
     UserCardComponent,
     AddShopDialog,
     ShopCardAdminComponent,
@@ -116,6 +118,7 @@ import { AdminFoodEstabComponent } from './main-pages/food-establishments/admin-
   entryComponents: [
     MakeAdminDialog,
     DeacUserDialog,
+    AcUserDialog,
     AddShopDialog
   ]
 })
