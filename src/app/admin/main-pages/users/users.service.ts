@@ -59,12 +59,30 @@ export class UsersService {
   }
   deactivateUser(user: any) { //active user to inactive user
     //search the particular user then make user.status = inactive
+    console.log(user.user_id);
     const payload = {
+      user,
       active: false
     }
-    return this.http.put<User>(`http://localhost:3000/api/users/${user.email} `,payload).toPromise().then((res)=>{console.log(res); });
+    return this.http.put<User>(`http://localhost:3000/api/users/${user.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
   }
 
+  activateUser(user: any) { //active user to inactive user
+    //search the particular user then make user.status = active
+    const payload = {
+      user,
+      active: true
+    }
+    return this.http.put<User>(`http://localhost:3000/api/users/${user.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
+  }
+
+  adminStatus (user:any) {
+    const payload = {
+      user,
+      isAdmin: true
+    }
+    return this.http.put<User>(`http://localhost:3000/api/users/${user.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
+  }
   addAdmin(newAdmin: Admin) {
     return this.http.post<Admin>('http://localhost:3000/api/admin', newAdmin).subscribe();
   }

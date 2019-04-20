@@ -56,13 +56,18 @@ button {
 }
 
 .mat-raised-button[disabled][disabled] {
-    background-color:rgb(51, 204, 51);
+    background-color:rgb(0, 205, 70);
     color: black;
 }
 
 .deacUser-button {
     background-color: red;
 }
+
+.acUser-button {
+    background-color: rgb(18, 0, 122);
+}
+
 
 footer{
     position: absolute;

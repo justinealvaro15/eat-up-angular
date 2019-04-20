@@ -53,12 +53,9 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   isAdmin(user:User): boolean {
-    console.log(user.isAdmin);
     if (user.isAdmin==true) {
-      console.log("is Admin");
       return this.is_admin;
     } else if (user.isAdmin==false){
-      console.log("is not Admin");
       return this.is_not_admin;
     }
   }
@@ -92,37 +89,62 @@ export class UserListComponent implements OnInit, OnDestroy {
            }
            //photoUrl:
          };
-         this.usersService.setFilter(FilterKeys.Name_Or_Id,user.user_id);
-         if (!this.usersService.alreadyAdmin()) {
+        // this.usersService.setFilter(FilterKeys.Name_Or_Id,user.user_id);
+        // if (!this.usersService.alreadyAdmin()) {
            this.usersService.addAdmin(newAdmin); //do only if not already in db
+           this.usersService.adminStatus(newAdmin);
            window.alert(result.first_name + " is now an Admin"); 
         
-         } else {
-           window.alert(result.first_name + " is already an Admin");
-         }
-         this.usersService.setFilter(FilterKeys.Name_Or_Id ,"");
-       
+        //  } else {
+        //    window.alert(result.first_name + " is already an Admin");
+        //  }
+        //  this.usersService.setFilter(FilterKeys.Name_Or_Id ,"");
+         window.location.reload();
          
         }
     });
   }
 
+  acUser(user:User) : void {
+      const dialogRef = this.dialog.open(AcUserDialog, {
+        width: '350px',
+        data: {
+            user_id: user.user_id,
+            first_name: user.first_name,
+            last_name:user.last_name,
+            active: user.active
+        }
+      });
+
+      
+      dialogRef.afterClosed().subscribe((result: any) => {
+            this.usersService.activateUser(result);
+            window.location.reload();
+      });
+  }
+
   deacUser(user: User):void {
     //needs to change user status from active to inactive
-    const dialogRef = this.dialog.open(DeacUserDialog, {
-      width: '350px',
-      data: {
-          user_id: user.user_id,
-          first_name: user.first_name,
-          last_name:user.last_name,
-          active: user.active
-      }
-    });
-
+    if (!user.isAdmin) {
+      const dialogRef = this.dialog.open(DeacUserDialog, {
+        width: '350px',
+        data: {
+            user_id: user.user_id,
+            first_name: user.first_name,
+            last_name:user.last_name,
+            active: user.active
+        }
+      });
+  
+      
+       dialogRef.afterClosed().subscribe((result: any) => {
+            this.usersService.deactivateUser(result);
+            window.location.reload();
+       });
+    } else {
+      window.alert('Remove ' + user.first_name + " " + user.last_name+" as Admin before deactivating as a user.");
+    }
     
-     dialogRef.afterClosed().subscribe((result: any) => {
-          this.usersService.deactivateUser(result);
-     });
   }
 }
 
@@ -176,6 +198,36 @@ export class DeacUserDialog {
     //   email : this.data.email,
     //   status: "activate"
     // }
+    this.dialogRef.close();
+  }
+
+  onYesClick() { //or on deactivate user
+    return {
+      user_id : this.data.user_id,
+      first_name: this.data.first_name,
+      last_name:this.data.last_name,
+      active: this.data.active
+    }
+  }
+}
+
+@Component ({
+  selector: 'ac-user-dialog',
+  templateUrl: 'ac-user-dialog.html'
+})
+
+export class AcUserDialog {
+  size = 12;
+  width1 = 250;
+  width2 = 100;
+  height = 100;
+
+  constructor (
+    public dialogRef: MatDialogRef<AcUserDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: User
+  ) {}
+
+  onNoClick(): void {  //or on activate user
     this.dialogRef.close();
   }
 
