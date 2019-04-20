@@ -39,6 +39,12 @@ export class AdminFoodEstabComponent implements OnInit {
     });
   }
 
+  deactivateShop() {
+    this.shop.active = !this.shop.active;
+    console.log(this.shop.active);
+    this.shopService.deactivateShop(this.shop.fe_id, this.shop.active);
+  }
+
   setOpeningHour(shop:Shop) {
     //setting hours
     if (this.shop.hours.opening.hour > 12) {

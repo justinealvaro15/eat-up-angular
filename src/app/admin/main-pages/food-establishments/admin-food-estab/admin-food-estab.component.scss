@@ -2,6 +2,18 @@
     margin-left: 15px;
 }
 
+.top-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.option {
+    word-wrap: break-word;
+    margin-bottom: 15px;
+}
+
 .container {
     padding-top: 80px;
 }
