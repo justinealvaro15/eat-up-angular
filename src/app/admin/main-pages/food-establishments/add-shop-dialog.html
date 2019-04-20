@@ -1,5 +1,5 @@
 <div mat-dialog-content [formGroup]="data.addShopFormGroup">
-    <h1>Add an Establishment</h1>
+    <h1>{{ data.isEdit ? 'Edit Food Establishment' : 'Add an Establishment' }}</h1>
 
     <mat-form-field appearance="outline" class="container">
         <mat-label>Establishment Name</mat-label>
@@ -7,12 +7,10 @@
         <mat-hint align="end">{{fe_name.value?.length || 0}}/30</mat-hint>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="container" formControlname="type">
-        <mat-select placeholder="Type">
-            <mat-option value="Kiosk">Kiosk</mat-option>
-            <mat-option value="Canteen">Canteen</mat-option>
-            <mat-option value="Stall">Stall</mat-option>
-            <mat-option value="Cafe">Cafe</mat-option>
+    <mat-form-field appearance="outline" class="container" >
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+            <mat-option *ngFor="let type of SHOP_TYPE" [value]="type">{{type}}</mat-option>
         </mat-select>
     </mat-form-field>
 
@@ -34,9 +32,9 @@
     <div appearance="outline" class="container time">
         <mat-label class="title">Days Open:</mat-label>
         <div class="days-open">
-            <div *ngFor="let day of days" class="day">
+            <div *ngFor="let day of days; let i = index" class="day">
                 <div>{{day.display}}</div>
-                <input type="checkbox" (change)="onDaysOpenChange(day.value, $event.target.checked)">
+                <input type="checkbox" (change)="onDaysOpenChange(day.value, $event.target.checked)" [checked]="isDayOpenCheck(day)">
             </div>
         </div>
     </div>
@@ -98,33 +96,13 @@
         </mat-select>
     </mat-form-field>
 
-    <div class="container">
+    <div class="container" *ngIf="!data.isEdit">
         <h4 class="title">Select Food Establishment Image</h4>
         <input type="file" (change)="onFileChange($event)" class="subtitle" #fileInput>  
     </div>
 </div>
-    
-
-    <!-- fe_name: new FormControl('', [Validators.required]),
-    type: new FormControl('', [Validators.required]),
-    address: new FormControl('', [Validators.required]),
-    // coordinates: new FormControl(),
-    long: new FormControl('', [Validators.required]),
-    lat: new FormControl('', [Validators.required]),
-    contact_person: new FormControl(),
-    contact_number: new FormControl(),
-    opening_hours: new FormControl('', [Validators.required]),
-    closing_hours: new FormControl('', [Validators.required]),
-    days_open: new FormControl('', [Validators.required]),
-    ExtraRice: new FormControl(),
-    AddlTakeOutCost: new FormControl(),
-    FreeWater: new FormControl(),
-    BYOBIncentive: new FormControl(),
-    SeatingCapacity: new FormControl(),
-    CLAYGO: new FormControl() -->
-
 
 <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Cancel</button>
-    <button mat-button (click)="addShop()" cdkFocusInitial>Add</button>
+    <button mat-button (click)="addShop()" cdkFocusInitial>{{ data.isEdit ? 'Edit' : 'Add' }}</button>
 </div>

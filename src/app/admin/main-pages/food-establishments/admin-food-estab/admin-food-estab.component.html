@@ -1,7 +1,7 @@
 <div *ngIf="shop" class="container">
     <div class="top-button">
-        <button class="option" mat-raised-button color="primary">Edit {{shop.fe_name}}</button>
-        <mat-slide-toggle class="option" color="primary" [checked]="!shop.active" (change)="deactivateShop()">Deactivate {{shop.fe_name}}</mat-slide-toggle>
+        <button class="option" mat-raised-button color="primary" (click)="openShop(shop)">Edit {{shop.fe_name}}</button>
+        <mat-slide-toggle class="option" color="primary" [checked]="!shop.active" (change)="deactivateFoodEstablishment()">Deactivate {{shop.fe_name}}</mat-slide-toggle>
     </div>
 
     <mat-grid-list cols="5" rowHeight="2:1" gutterSize="0">
@@ -39,7 +39,7 @@
                 <div fxFlex fxLayout = "row">
                 <div class="map-button" (click) = "showMap()"> <mat-icon class="map-icon">place</mat-icon></div>
                 <div class="open-close-container" [class.closed]="!isShopOpen()" [class.open]="isShopOpen()">
-                    <div class= "open-close"  >{{isShopOpen(shop) ? "Open Now" : "Closed Now"}}</div>
+                    <div class= "open-close"  >{{isShopOpen(shop) ? "Open" : "Closed"}}</div>
                 </div>
             </div>
         </mat-grid-tile>

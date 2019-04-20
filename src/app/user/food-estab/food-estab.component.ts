@@ -8,6 +8,7 @@ import { ReviewsService } from '../reviews/reviews.service';
 import { Review } from '../reviews/reviews.model';
 import { MapComponent } from './map/map.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { LoadingService } from 'app/loading.service';
 
 @Component({
   selector: 'app-food-estab',
@@ -29,13 +30,16 @@ export class FoodEstabComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private shopService: ShopsService,
     private reviewService: ReviewsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit() {
+    this.loadingService.showLoading();
     const shopId = this.route.snapshot.paramMap.get('shopId');
     this.shopSubscription = this.shopService.getShopById(shopId).subscribe(shop => this.shop = shop);
     this.reviewService.getReviewsByNewest(shopId).subscribe((reviews) => {
+      this.loadingService.hideLoading();
       this.reviews = reviews;
     });
   }

@@ -20,7 +20,7 @@ export class ShopCardAdminComponent implements OnInit {
 
 
   goToShop(shopId: string) {
-    this.router.navigate(['/eat-up/admin/shops', shopId]);
+    this.router.navigate(['/eat-up/admin/food-establishments', shopId]);
   }
 
   isShopOpen(): boolean {

@@ -1,4 +1,21 @@
 
+.deactivated.mat-card {
+    margin-top: 20px;
+    width: 75%;
+    display: flex;
+    justify-content: center;
+}
+
+.food-estab {
+    display: flex;
+    justify-content: center
+}
+
+.deac-text {
+    font-size: 13px;
+    color: black;
+    word-wrap: break-word;
+}
 
 .food-estab-img{
     height: 100%;
@@ -126,15 +143,15 @@
     color: grey;
 }
 
-.spinner-container {
+/* .spinner-container {
     height: 100%;
-}
+} */
 
-mat-spinner {
+/* mat-spinner {
     position: absolute;
     top: 160px;
     left: 130px;
-}
+} */
 @media (min-width: 330px) {
     .addr{
         color: 	#616161;

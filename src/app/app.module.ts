@@ -8,6 +8,10 @@ import { routing } from './app-routing.module';
 import { NgSelect2Module } from 'ng-select2';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { AuthServiceConfig, GoogleLoginProvider, LoginOpt } from 'angularx-social-login';
+import { LoadingService } from './loading.service';
+import { MatProgressSpinnerModule } from '@angular/material';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingHttpInterceptorService } from './loading-http-interceptor.service';
 
 // import { AuthService } from 'angularx-social-login';
 
@@ -42,13 +46,15 @@ export function provideConfig() {
     UserModule,
     AdminModule,
     NgSelect2Module,
+    MatProgressSpinnerModule,
     LeafletModule.forRoot()
     // AuthService.for
   ],
   providers: [{
     provide: AuthServiceConfig,
     useFactory: provideConfig
-  }],
+  }, LoadingService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

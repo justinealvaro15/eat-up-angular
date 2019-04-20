@@ -8,6 +8,9 @@ import { ReviewsService } from 'app/user/reviews/reviews.service';
 import { MatDialog } from '@angular/material';
 import { Review } from 'app/user/reviews/reviews.model';
 import { Subscription } from 'rxjs';
+import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { AddShopDialog, SHOP_TYPE, AddedShop } from '../food-establishments.component';
+import { LoadingService } from 'app/loading.service';
 
 @Component({
   selector: 'app-admin-food-estab',
@@ -24,25 +27,126 @@ export class AdminFoodEstabComponent implements OnInit {
   closing_hour: string;
   closing_mins: string;
 
+  addShopFormGroup: FormGroup;
+
   constructor(
     private route: ActivatedRoute,
     private shopService: ShopsService,
     private reviewService: ReviewsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private formBuilder: FormBuilder,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit() {
     const shopId = this.route.snapshot.paramMap.get('shopId');
-    this.shopSubscription = this.shopService.getShopById(shopId).subscribe(shop => this.shop = shop);
+    this.loadingService.showLoading();
+    this.shopSubscription = this.shopService.getShopById(shopId).subscribe(shop => {
+      this.loadingService.hideLoading();
+      this.shop = shop;
+    });
     this.reviewService.getReviewsByNewest(shopId).subscribe((reviews) => {
       this.reviews = reviews;
     });
+    this.addShopFormGroup = this.formBuilder.group({
+      fe_name: new FormControl('', [Validators.required]),
+      type: new FormControl(),
+      address: new FormControl('', [Validators.required]),
+      long: new FormControl('', [Validators.required]),
+      lat: new FormControl('', [Validators.required]),
+      contact_person: new FormControl(),
+      contact_number: new FormControl(),
+      opening_hours: new FormControl('', [Validators.required]),
+      closing_hours: new FormControl('', [Validators.required]),
+      days_open: new FormArray([]),
+      ExtraRice: new FormControl(),
+      AddlTakeOutCost: new FormControl(),
+      SeatingCapacity: new FormControl(),
+      NearBuildings: new FormControl(),
+      AddtlDetails: new FormControl([]),
+      image: null
+    });
   }
 
-  deactivateShop() {
+  openShop(shop: Shop) {
+    const opening_hours = shop.hours.opening.hour.toString() + ":" + shop.hours.opening.minute.toString();
+    const closing_hours = shop.hours.closing.hour.toString() + ":" + shop.hours.closing.minute.toString();
+    this.addShopFormGroup.get('opening_hours').setValue(opening_hours);
+    this.addShopFormGroup.get('closing_hours').setValue(closing_hours);
+
+    const days_openForm = <FormArray>this.addShopFormGroup.get('days_open');
+    while (days_openForm.length !== 0) {
+      days_openForm.removeAt(0)
+    }
+    shop.days_open.forEach((dayOpen) => days_openForm.push(new FormControl(dayOpen)));
+
+    const NearBuildings = shop.Nearest_Bldgs.map((nearBuilding) => {
+      return String(nearBuilding.id)
+    });
+    this.addShopFormGroup.get('NearBuildings').setValue(NearBuildings);
+
+    const AddtlDetails: any[] = [];
+    if(shop.FreeWater === "Yes") {
+      AddtlDetails.push('1');
+    }
+
+    if(shop.BYOBIncentive === "Yes") {
+      AddtlDetails.push('2');
+    }
+
+    if(shop.CLAYGO === "Yes") {
+      AddtlDetails.push('3');
+    }
+    this.addShopFormGroup.get('AddtlDetails').setValue(AddtlDetails);
+
+    this.addShopFormGroup.get('fe_name').setValue(shop.fe_name);
+    this.addShopFormGroup.get('type').setValue(SHOP_TYPE.find(shopType => shop.type === shopType));
+    this.addShopFormGroup.get('address').setValue(shop.address);
+    this.addShopFormGroup.get('long').setValue(shop.coordinates.long);
+    this.addShopFormGroup.get('lat').setValue(shop.coordinates.lat);
+    this.addShopFormGroup.get('contact_person').setValue(shop.contact_person);
+    this.addShopFormGroup.get('contact_number').setValue(shop.contact_number);
+    this.addShopFormGroup.get('ExtraRice').setValue(shop.ExtraRice);
+    this.addShopFormGroup.get('AddlTakeOutCost').setValue(shop.AddlTakeOutCost);
+    this.addShopFormGroup.get('SeatingCapacity').setValue(shop.SeatingCapacity);
+    // this.addShopFormGroup.get('image').setValue(shop.image);
+
+    const dialogRef = this.dialog.open(AddShopDialog, {
+      width: '350px',
+      data: {
+        addShopFormGroup: this.addShopFormGroup,
+        isEdit: true
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result: AddedShop) => {
+      shop.fe_name = result.fe_name;
+      shop.type = result.type;
+      shop.address = result.address;
+      shop.coordinates.long = result.long;
+      shop.coordinates.lat = result.lat;
+      shop.contact_person = result.contact_person;
+      shop.contact_number = result.contact_number;
+      shop.hours.opening.hour = result.hours.opening.hour;
+      shop.hours.opening.minute = result.hours.opening.minute;
+      shop.hours.closing.hour = result.hours.closing.hour;
+      shop.hours.closing.minute = result.hours.closing.minute;
+      shop.days_open = result.days_open;
+      shop.AddlTakeOutCost = result.AddlTakeOutCost;
+      shop.FreeWater = result.FreeWater;
+      shop.BYOBIncentive = result.BYOBIncentive;
+      shop.SeatingCapacity = result.SeatingCapacity;
+      shop.CLAYGO = result.CLAYGO;
+      shop.Nearest_Bldgs = result.NearBuildings;
+
+      this.shopService.editFoodEstablishment(this.shop.fe_id, result);
+    });
+  }
+
+  deactivateFoodEstablishment() {
     this.shop.active = !this.shop.active;
     console.log(this.shop.active);
-    this.shopService.deactivateShop(this.shop.fe_id, this.shop.active);
+    this.shopService.deactivateFoodEstablishment(this.shop.fe_id, this.shop.active);
   }
 
   setOpeningHour(shop:Shop) {
