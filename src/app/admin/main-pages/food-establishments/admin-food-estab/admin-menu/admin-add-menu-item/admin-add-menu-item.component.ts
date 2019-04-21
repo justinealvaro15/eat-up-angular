@@ -1,10 +1,10 @@
-import { Component, Inject, Input } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { SocialUser, AuthService } from "angularx-social-login";
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Shop, Consumables, BrandedConsumables } from 'app/user/shops/shops.model';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { Shop, Consumables, BrandedConsumables } from './../../../user/shops/shops.model';
-import { ShopsService } from './../../../user/shops/shops.service';
-import { FoodGroup, AddedMenu, FoodBeveragesMapping } from '../food-group';
+import { FoodGroup, FoodBeveragesMapping, AddedMenu } from 'app/user/food-estab/food-group';
+import { SocialUser, AuthService } from 'angularx-social-login';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ShopsService } from 'app/user/shops/shops.service';
 
 export interface DialogData {
   foodGroup: FoodGroup[];
@@ -13,16 +13,12 @@ export interface DialogData {
   isEdit?: boolean;
 }
 
-
-/**
- * @title Dialog Overview
- */
 @Component({
-  selector: 'app-add-menu-item',
-  templateUrl: 'add-menu-item.component.html',
-  styleUrls: ['add-menu-item.component.css'],
+  selector: 'app-admin-add-menu-item',
+  templateUrl: './admin-add-menu-item.component.html',
+  styleUrls: ['./admin-add-menu-item.component.scss']
 })
-export class AddMenuItemComponent {
+export class AdminAddMenuItemComponent implements OnInit {
   @Input() shop: Shop;
   foodGroupControl = new FormControl();
   addFoodFormGroup: FormGroup;
@@ -55,9 +51,10 @@ export class AddMenuItemComponent {
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
     private authService: AuthService,
-    private shopService: ShopsService) {}
+    private shopService: ShopsService
+  ) { }
 
-  ngOnInit () {
+  ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
@@ -67,11 +64,11 @@ export class AddMenuItemComponent {
       name: new FormControl(),
       price: new FormControl(),
       amount: new FormControl()
-    })
+    });
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddMenuItemDialog, {
+    const dialogRef = this.dialog.open(AdminAddMenuItemDialog, {
       width: '350px',
       data: {
         foodGroups: this.foodGroups,
@@ -103,17 +100,17 @@ export class AddMenuItemComponent {
 }
 
 @Component({
-  selector: 'add-menu-item-dialog',
-  templateUrl: 'add-menu-item-dialog.html',
+  selector: 'admin-add-menu-item-dialog',
+  templateUrl: 'admin-add-menu-item-dialog.html',
 })
-export class AddMenuItemDialog {
+export class AdminAddMenuItemDialog {
   size = 12;
   width1 = 250;
   width2 = 100;
   height = 100;
 
   constructor(
-    public dialogRef: MatDialogRef<AddMenuItemDialog>,
+    public dialogRef: MatDialogRef<AdminAddMenuItemDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     }
 
@@ -144,8 +141,3 @@ export class AddMenuItemDialog {
     return foodCategoryAndType ? foodCategoryAndType.isBranded : false
   }
 }
-
-
-/**  Copyright 2018 Google Inc. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license */

@@ -1,0 +1,36 @@
+<mat-card-title>{{title}}</mat-card-title>
+<mat-card *ngFor="let consumable of consumables; let i = index" class="item">
+  <div class="consumable-item">
+    <div class="consumable-name">
+      <span>
+        {{consumable.c_name}}
+      </span>
+      <span *ngIf="consumable.amount">
+        ({{consumable.amount}})
+      </span>
+    </div>
+
+    <div class="consumable-right">
+      <span class="price">
+        ₱{{consumable.price}}
+      </span>
+      <div *ngIf = "loggedIn">
+        <button (click)="openMenu(consumable, i)" mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      
+      <mat-slide-toggle class="option" 
+        color="primary" 
+        [checked]="checkActive(consumable)" 
+        (change)="deactivateMenuItem(consumable, i)">
+      </mat-slide-toggle>
+      <!-- <button mat-icon-button
+        #tooltip="matTooltip"
+        [matTooltip]="getTooltipText(consumable)"
+        (click)="tooltip.toggle()">
+        <mat-icon>info</mat-icon>
+      </button> -->
+    </div> 
+  </div>
+</mat-card>

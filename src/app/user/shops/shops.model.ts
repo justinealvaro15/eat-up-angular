@@ -31,6 +31,7 @@ export interface Shop {
     CLAYGO: string;
     fe_avg_rating: number;
     no_of_ratings: number;
+    lastUpdatedMenu: any;
     Food:{
         Branded: BrandedConsumables[];
         StreetFoods: Consumables[];
@@ -61,6 +62,7 @@ export class Consumables {
     c_avg_rating?: number;
     username?: string;
     amount?: string;
+    active?: boolean;
 }
 
 export class BrandedConsumables extends Consumables {
