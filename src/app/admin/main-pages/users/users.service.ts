@@ -53,7 +53,7 @@ export class UsersService {
   })
   }
 
-  getFilteredUsers():User[] {
+  getFilteredUsers():User[] { //get list of users
     return this._users.getValue().filter((user)=> { 
       return this.isUserNameorEmailMatch(user) ;
      });
@@ -64,7 +64,7 @@ export class UsersService {
     this.filterChanged.emit(this.filter);
   }
 
-  addUser (newUser: User) {
+  addUser (newUser: User) { //add new user to database
     return this.http.post<User>('http://localhost:3000/api/users', newUser).subscribe();
   }
 
@@ -89,7 +89,7 @@ export class UsersService {
     return this.http.put<User>(`http://localhost:3000/api/users/${user.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
   }
 
-  activateUser(user: any) { //active user to inactive user
+  activateUser(user: any) { //inactive user to active user
     //search the particular user then make user.status = active
     const payload = {
       user,
@@ -105,6 +105,20 @@ export class UsersService {
         }
       },
       active: true
+    }
+    return this.http.put<User>(`http://localhost:3000/api/users/${user.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
+  }
+
+  updateUserLastActive(user:any) { //update user last active date
+    const payload = {
+      last_active: {
+        year: user.last_active.year,
+        month: user.last_active.month,
+        day: user.last_active.day,
+        hour: user.last_active.hour,
+        minute:user.last_active.minute,
+        second:user.last_active.second
+      }
     }
     return this.http.put<User>(`http://localhost:3000/api/users/${user.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
   }

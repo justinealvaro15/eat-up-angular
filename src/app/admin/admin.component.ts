@@ -5,6 +5,10 @@ import { NavbarComponent } from '../../app/admin/components/navbar/navbar.compon
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
+import { AuthService } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
+import { UsersService } from "../admin/main-pages/users/users.service";
+
 
 @Component({
   selector: 'app-admin',
@@ -15,10 +19,21 @@ export class AdminComponent implements OnInit {
   private _router: Subscription;
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
+  private user: SocialUser;
+  public loggedIn: boolean;
 
-  constructor( public location: Location, private router: Router) {}
+  constructor( 
+    public location: Location, 
+    private router: Router,
+    private authService: AuthService,
+    private usersService:UsersService) {}
 
   ngOnInit() {
+    this.authService.authState.subscribe((user) => {
+        this.user = user;
+        this.loggedIn = (user != null);
+        this.userLastActiveUpdate();
+      });
       const isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
       if (isWindows && !document.getElementsByTagName('body')[0].classList.contains('sidebar-mini')) {
@@ -55,6 +70,24 @@ export class AdminComponent implements OnInit {
           ps = new PerfectScrollbar(elemSidebar);
       }
   }
+
+  userLastActiveUpdate(){
+    console.log("PRINT IS YOUR FRIEND");
+    const date = new Date();
+    const lastActiveUpdate = {
+      user_id: this.user.id,
+      last_active: {
+        year: date.getFullYear(),
+        month: date.getMonth(),
+        day: date.getDate(),
+        hour: date.getHours(),
+        minute: date.getMinutes(),
+        second: date.getSeconds()
+        }
+    }
+    this.usersService.updateUserLastActive(lastActiveUpdate);
+  }
+  
   ngAfterViewInit() {
       this.runOnRouteChange();
   }
