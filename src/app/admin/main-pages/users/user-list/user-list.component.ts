@@ -6,7 +6,6 @@ import { Subscription } from 'rxjs';
 import { User, Admin } from '../user.model';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from "angularx-social-login";
-import { GoogleLoginProvider } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 
 @Component({
