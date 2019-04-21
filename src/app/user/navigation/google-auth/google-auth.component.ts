@@ -47,7 +47,9 @@ export class GoogleAuthComponent implements OnInit {
   signInWithGoogle(): void {
     console.log("in signInWithGoogle");
     //window.alert("Sign in with your UP Mail account."); No need since the google log in pop up will inform the user
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID); 
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(response => {
+      this.addUser()}
+    ); 
     
     //n this.addUser();
     console.log("done");
@@ -62,7 +64,7 @@ export class GoogleAuthComponent implements OnInit {
          user_id: this.user.id,
          first_name: this.user.firstName,
          last_name: this.user.lastName,
-         photo: this.user.photoUrl,
+         photoUrl: this.user.photoUrl,
          date_joined: {
             year: date.getFullYear(),
             month: date.getMonth(),
@@ -94,7 +96,6 @@ export class GoogleAuthComponent implements OnInit {
         active: true,
         isAdmin: false
     }
-    
         this.usersService.addUser(newUser);
   }
   
