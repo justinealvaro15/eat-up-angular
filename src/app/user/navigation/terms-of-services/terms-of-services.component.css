@@ -31,18 +31,16 @@
 
   #title{
     background:#B71C1C;
+    margin-top: -1;px
     width: 100%;
     position: relative;
   }
 
   h2{
-    position: absolute;
     font-family: latoregular;
     font-size: 35px;
-    right: 110px;
     color: #F8E333;
-    text-align: left !important;
-    padding: 0px 0px 0px 0px;
+    margin: 5% 25% 0% 6%;
   }
 
   #detail1{
