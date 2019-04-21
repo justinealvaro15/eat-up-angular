@@ -2,15 +2,16 @@
   <div class="user-logged-in">
    
     <div *ngIf = "loggedIn; else loggedOut"> 
-        <a mat-list-item [routerLink]="['/eat-up/user/user-profile']" (click)="onClose()">
+        <div fxFlex fxLayout = "row">
+        <!--<a mat-list-item [routerLink]="['/eat-up/user/user-profile']" (click)="onClose()">-->
           <img class = "user-pic" src={{user.photoUrl}}>
           <h1 class = "user-name">{{user.name}}</h1>
-        </a>    
+        </div>    
     </div>
     <ng-template #loggedOut>
       <a mat-list-item (click)="alertUser()"> 
           <img class = "user-pic" src="./../../assets/sidenav-stuff/Profile/default.png" >
-          <h1 class = "user-name">Username</h1>
+          <h1 class = "user-name">Guest</h1>
       </a>
        
     </ng-template>
