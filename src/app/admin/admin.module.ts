@@ -127,13 +127,10 @@ import { AdminAddMenuItemComponent, AdminAddMenuItemDialog } from './main-pages/
     MakeAdminDialog,
     DeacUserDialog,
     AcUserDialog,
-<<<<<<< HEAD
     AddShopDialog,
-    AdminAddMenuItemDialog
-=======
+    AdminAddMenuItemDialog,
     DeacAdminDialog,
     AddShopDialog
->>>>>>> 6293e1b70d4cb983119add55efaee4007938ecce
   ]
 })
 
