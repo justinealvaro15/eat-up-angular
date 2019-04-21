@@ -212,6 +212,7 @@ export class DeacUserDialog {
 
   onYesClick() { //or on deactivate user
     const date = new Date();
+    console.log("deac yes");
     return {
       user_id : this.data.user_id,
       first_name: this.data.first_name,
@@ -225,7 +226,7 @@ export class DeacUserDialog {
           hour: date.getHours(),
           minute: date.getMinutes(),
           second: date.getSeconds()
-        }
+        } 
       },
       active: this.data.active
 

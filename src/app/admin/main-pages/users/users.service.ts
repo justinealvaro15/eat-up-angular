@@ -70,9 +70,20 @@ export class UsersService {
 
   deactivateUser(user: any) { //active user to inactive user
     //search the particular user then make user.status = inactive
-    console.log(user.user_id);
+    //goes in
     const payload = {
-      user,
+      user ,
+      deactivated: {
+        deactivated_by: user.deactivated.deactivated_by,
+        deactivated_on: {
+          year:user.deactivated.deactivated_on.year,
+          month:user.deactivated.deactivated_on.month,
+          day: user.deactivated.deactivated_on.day,
+          hour: user.deactivated.deactivated_on.hour,
+          minute: user.deactivated.deactivated_on.minute,
+          second: user.deactivated.deactivated_on.second,
+        }
+      },
       active: false
     }
     return this.http.put<User>(`http://localhost:3000/api/users/${user.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
@@ -82,6 +93,17 @@ export class UsersService {
     //search the particular user then make user.status = active
     const payload = {
       user,
+      deactivated: {
+        deactivated_by: user.deactivated.deactivated_by,
+        deactivated_on: {
+          year:user.deactivated.deactivated_on.year,
+          month:user.deactivateUser.deactivated_on.month,
+          day: user.deactivateUser.deactivated_on.day,
+          hour: user.deactivateUser.deactivated_on.hour,
+          minute: user.deactivateUser.deactivated_on.minute,
+          second: user.deactivateUser.deactivated_on.second,
+        }
+      },
       active: true
     }
     return this.http.put<User>(`http://localhost:3000/api/users/${user.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
