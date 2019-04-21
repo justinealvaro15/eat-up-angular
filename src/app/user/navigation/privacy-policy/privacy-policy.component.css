@@ -1,63 +1,69 @@
-.bounds {
-  background-color: #0E9300;
-  height :800px;
+@media (min-width: 320px){
+  h2{
+    font-size: 28px;   
+  }
+}
+
+@media (min-width: 370px){
+  h2{
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 403px){
+  h2{
+    font-size: 35px;
+  }
+}
+
+h2{
+  position: relative;
+  font-family: latoregular;
+  color: #F8E333;
+  padding: 5px 0px 0px 25px;
+}
+
+.arrow-pagename {
+  padding-top:20px;
+  text-align:center;
+  position: relative;
+  background:#B71C1C;
+  width: 100%;
+  color:  white;
+  padding: 0px 10px 10px 10px;
+  font-family: latoregular;
+}
+#back-arrow{
+  color: #F8E333;
+  font-size: 30px;
+}
+#pagename{
+  font-family: latobold;
+  font-size: 15px;
+  padding: 15px 0px 0px 10px;
 }
 
 
+#title{
+  background:#B71C1C;
+  margin-top: -1px;
+  width: 100%;
+  position: relative;
+}
 
-@media only screen and (max-width: 425px){
-  .bounds{
-    background-color: white;
-  }
-  .arrow-pagename {
-    padding-top:20px;
-    text-align:center;
-    position: relative;
-    background:#B71C1C;
-    width: 100%;
-    color:  white;
-    padding: 0px 10px 10px 10px;
-    font-family: latoregular;
-  }
-  #back-arrow{
-    color: #F8E333;
-    font-size: 30px;
-  }
-  #pagename{
-    font-family: latobold;
-    font-size: 15px;
-    padding: 15px 0px 0px 10px;
-  }
+#detail1{
+  padding: 0px 10px 0px 10px;
+  margin-top: 20px;
+  right: 10px;
+  height: 120px;
+  width: 200px; 
+  position: relative;
+}
 
-
-  #title{
-    background:#B71C1C;
-    width: 100%;
-    position: relative;
-  }
-
-  h2{
-    position: relative;
-    font-family: latoregular;
-    font-size: 35px;
-    color: #F8E333;
-    padding: 0px 0px 0px 25px;
-  }
-
-  #detail1{
-    padding: 0px 10px 10px 30px;
-    top: 0px;
-    right: 10px;
-    height: 150px;
-    width: 200px; 
-    position: relative;
-  }
-
-  p{
-    margin: 20px 30px 20px 30px;
-    color: rgb(82, 83, 82);
-    font-family: ralewaylight;
-    text-align: justify;
-    font-size: 13px;
-  }
+p{
+  margin: 20px 30px 20px 30px;
+  color: rgb(82, 83, 82);
+  font-family: ralewaylight;
+  text-align: justify;
+  font-size: 13px;
 }

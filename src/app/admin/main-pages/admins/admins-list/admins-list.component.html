@@ -1,5 +1,5 @@
-<div > <!--insert inside div: *ngIf = "Admins" --> 
-  <div> <!-- insert inside div: *ngFor-->
+<div  *ngIf = "admins">
+  <div *ngFor="let admin of admins">
     <hr>
       <mat-grid-list cols="5" rowHeight="75px">
             <mat-grid-tile colspan="1">
@@ -8,13 +8,13 @@
       
             <mat-grid-tile colspan="2">
                 <div fxLayout = "row">
-                    <div class = "admin-name"> Rommel Feria </div>
-                    <div class = "admin-email"> rpferia@up.edu.ph </div>
+                    <div class = "admin-name"> {{admin.first_name}} {{admin.last_name}}</div>
+                   <!-- <div class = "admin-email"> rpferia@up.edu.ph </div>-->
                 </div>
             </mat-grid-tile>
             <mat-grid-tile colspan="2">
                
-                    <button class = "deacUser-button" mat-raised-button (click)="deacUser(user)">Deactivate Admin</button>
+                    <button class = "deacUser-button" mat-raised-button (click)="deacAdmin(admin)">Deactivate Admin</button>
              
             </mat-grid-tile>
       </mat-grid-list>

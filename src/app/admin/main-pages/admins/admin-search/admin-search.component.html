@@ -1,1 +1,8 @@
 <br style = "line-height:8;">
+
+<div class="search-box-input">
+   <div [formGroup]="filter" class = "search">
+      <input type="text" placeholder="username" (keyup.enter)="setFilters()" formControlName="name_or_id">
+      <button class="magnifying_glass" (click)="setFilters()"></button>   
+  </div>
+</div>

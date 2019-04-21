@@ -26,17 +26,7 @@ export class GoogleAuthComponent implements OnInit {
       this.user = user;
       this.loggedIn = (user != null);
     });
-    //maybe do the adding here? does not work
-    // if (this.loggedIn) { //there is a logged in user
-    //   this.usersService.setFilter(FilterKeys.Name_Or_Email,this.user.email);
-    //   if (!this.usersService.getFilteredUsers()) { //NEW USER
-    //     console.log("adding user");
-    //     this.addUser(); //add new user to DB
-    //   } else { //RETURNING USER
 
-    //   }
-     
-    // }
   }
 
   constructor(
@@ -45,12 +35,16 @@ export class GoogleAuthComponent implements OnInit {
     ) { }
 
   signInWithGoogle(): void {
-    console.log("in signInWithGoogle");
     //window.alert("Sign in with your UP Mail account."); No need since the google log in pop up will inform the user
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID); 
-    
-    //n this.addUser();
-    console.log("done");
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(response => {
+      this.usersService.setFilter(FilterKeys.Name_Or_Id, this.user.id);
+      if (this.usersService.getFilteredUsers()==[]) {
+        this.addUser()
+      }
+    }
+     
+    ); 
+
   }
 
 
@@ -62,7 +56,7 @@ export class GoogleAuthComponent implements OnInit {
          user_id: this.user.id,
          first_name: this.user.firstName,
          last_name: this.user.lastName,
-         photo: this.user.photoUrl,
+         photoUrl: this.user.photoUrl,
          date_joined: {
             year: date.getFullYear(),
             month: date.getMonth(),
@@ -79,9 +73,9 @@ export class GoogleAuthComponent implements OnInit {
               minute: date.getMinutes(),
               second: date.getSeconds()
             },
-            removed: {
-              removed_by: null,
-              removed_on: {
+            deactivated: {
+              deactivated_by: null,
+              deactivated_on: {
               year: null,
               month: null,
               day: null,
@@ -94,7 +88,6 @@ export class GoogleAuthComponent implements OnInit {
         active: true,
         isAdmin: false
     }
-    
         this.usersService.addUser(newUser);
   }
   

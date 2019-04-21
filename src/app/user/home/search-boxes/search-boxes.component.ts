@@ -353,7 +353,7 @@ export class HomeSearchComponent implements OnInit {
     this.options = {
       multiple: false,
       closeOnSelect: true,
-      width: '295',
+      width: '100%',
       placeholder:"location"
     }
   }

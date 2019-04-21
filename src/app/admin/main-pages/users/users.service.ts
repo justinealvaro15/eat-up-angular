@@ -15,6 +15,7 @@ export class UsersService {
     private http: HttpClient,
   ) {
         this.updateUserList();
+        this.updateAdminList();
         // this.authService.authState.subscribe((user) => {
         //     this.user = user;
         // }) 
@@ -36,10 +37,19 @@ export class UsersService {
     getUsersDisplay() {
       return this.http.get<User[]>(`http://localhost:3000/api/users`);
     }
+    getAdminsDisplay() {
+      return this.http.get<Admin[]>(`http://localhost:3000/api/admin`);
+    }
 
   updateUserList() {
     this.getUsersDisplay().toPromise().then((users) => {
       this._users.next(users);
+  })
+  }
+
+  updateAdminList() {
+    this.getAdminsDisplay().toPromise().then((admins) => {
+      this._admins.next(admins);
   })
   }
 
@@ -57,6 +67,7 @@ export class UsersService {
   addUser (newUser: User) {
     return this.http.post<User>('http://localhost:3000/api/users', newUser).subscribe();
   }
+
   deactivateUser(user: any) { //active user to inactive user
     //search the particular user then make user.status = inactive
     console.log(user.user_id);
@@ -76,6 +87,12 @@ export class UsersService {
     return this.http.put<User>(`http://localhost:3000/api/users/${user.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
   }
 
+  getFilteredAdmins(): Admin[] {
+    return this._admins.getValue().filter((admin)=> {
+      return this.isAdminIdMatch(admin);
+    });
+  }
+
   adminStatus (user:any) {
     const payload = {
       user,
@@ -87,35 +104,20 @@ export class UsersService {
     return this.http.post<Admin>('http://localhost:3000/api/admin', newAdmin).subscribe();
   }
 
-  alreadyAdmin(): Admin[] {
-    return this._admins.getValue().filter((admin)=> {
-      return this.isAdminIdMatch(admin);
-    });
+  deactivateAdmin(admin: any) { //remove as admin
+    return this.http.delete<User>(`http://localhost:3000/api/admin/${admin.user_id} `).toPromise().then((res)=>{console.log(res); });
   }
 
-  // private isActive(user:User): boolean {
-  //   if (user.active == true) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
-  getUserByEmail(email: string) {
-    return this.http.get<User | null>(`http://localhost:3000/api/users/${email}`).pipe(
-        map((users: any) => {
-            return users.length > 0 ? users[0] : null;
-        })
-    );
-}
 
   private isAdminIdMatch(admin: Admin): boolean {
     if (!this.filter.name_or_id) {
       return true;
     }
-    const isId = admin.user_id===this.filter.name_or_id;
 
-    return isId;
+    const name = admin.first_name + " " + admin.last_name;
+    const isId = admin.user_id===this.filter.name_or_id;
+    const isName = name.toLowerCase().includes(this.filter.name_or_id.toLowerCase());
+    return isId||isName;
   }
 
   private isUserNameorEmailMatch(user:User): boolean{

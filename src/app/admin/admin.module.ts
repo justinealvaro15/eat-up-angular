@@ -49,7 +49,7 @@ import { UserListComponent, MakeAdminDialog, DeacUserDialog, AcUserDialog
  } from './main-pages/users/user-list/user-list.component';
 import { UserCardComponent } from './main-pages/users/user-card/user-card.component';
 import { ShopCardAdminComponent } from './main-pages/food-establishments/shop-card-admin/shop-card-admin.component';
-import { AdminsListComponent } from './main-pages/admins/admins-list/admins-list.component';
+import { AdminsListComponent, DeacAdminDialog } from './main-pages/admins/admins-list/admins-list.component';
 import { AdminSearchComponent } from './main-pages/admins/admin-search/admin-search.component';
 import { RatingsReviewsComponent } from './misc-pages/stats/ratings-reviews/ratings-reviews.component';
 import { UserContributionsComponent } from './misc-pages/stats/user-contributions/user-contributions.component';
@@ -109,6 +109,7 @@ import { AdminAddMenuItemComponent, AdminAddMenuItemDialog } from './main-pages/
     MakeAdminDialog,
     DeacUserDialog,
     AcUserDialog,
+    DeacAdminDialog,
     UserCardComponent,
     AddShopDialog,
     ShopCardAdminComponent,
@@ -126,8 +127,13 @@ import { AdminAddMenuItemComponent, AdminAddMenuItemDialog } from './main-pages/
     MakeAdminDialog,
     DeacUserDialog,
     AcUserDialog,
+<<<<<<< HEAD
     AddShopDialog,
     AdminAddMenuItemDialog
+=======
+    DeacAdminDialog,
+    AddShopDialog
+>>>>>>> 6293e1b70d4cb983119add55efaee4007938ecce
   ]
 })
 
