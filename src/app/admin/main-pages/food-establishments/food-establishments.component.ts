@@ -6,10 +6,12 @@ import { Shop } from 'app/user/shops/shops.model';
 import { LocationData, Location } from 'app/user/location/location.model';
 import { Subscription } from 'rxjs';
 import { LoadingService } from 'app/loading.service';
+import * as moment from 'moment';
 
 export interface AddedShop {
   fe_name: string,
   active: boolean,
+  lastUpdatedMenu: any,
   type: string,
   address: string,
   lat: number,
@@ -134,6 +136,7 @@ export class FoodEstablishmentsComponent implements OnInit {
           ExtraRice: result.ExtraRice || "None",
           fe_avg_rating: 0,
           no_of_ratings: 0,
+          lastUpdatedMenu: moment().format('LL'),
           Food: {
             Branded: [],
             StreetFoods: [],
@@ -154,6 +157,7 @@ export class FoodEstablishmentsComponent implements OnInit {
           image: result.image
         }
         this.shopService.addFoodEstablishment(newShop);
+        this.shops.push(newShop);
       }
     })
   }
@@ -270,6 +274,7 @@ export class AddShopDialog {
     return {
       fe_name: addShopFormGroup.get('fe_name').value,
       active: true,
+      lastUpdatedMenu: moment().format('LL'),
       type: addShopFormGroup.get('type').value,
       address: addShopFormGroup.get('address').value,
       long: addShopFormGroup.get('long').value,

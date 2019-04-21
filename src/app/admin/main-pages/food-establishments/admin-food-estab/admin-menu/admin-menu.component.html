@@ -1,44 +1,48 @@
+<div *ngIf="shop.lastUpdatedMenu" s>
+  Menu updated last {{shop.lastUpdatedMenu}}
+</div>
+
 <mat-card *ngIf="shop.Food.Meals && shop.Food.Meals.length">
-    <app-admin-menu-item [consumables]="shop.Food.Meals" title="Meals" [shop]="shop" foodOrBev="Food" type="Meals"></app-admin-menu-item>
-  </mat-card>
-  
-  <mat-card *ngIf="shop.Food.Meryenda && shop.Food.Meryenda.length">
-    <app-admin-menu-item [consumables]="shop.Food.Meryenda" title="Meryenda" [shop]="shop" foodOrBev="Food" type="Meryenda"></app-admin-menu-item>
-  </mat-card>
-  
-  <mat-card *ngIf="shop.Food.Sandwiches && shop.Food.Sandwiches.length">
-    <app-admin-menu-item [consumables]="shop.Food.Sandwiches" title="Sandwiches" [shop]="shop" foodOrBev="Food" type="Sandwiches"></app-admin-menu-item>
-  </mat-card>
-  
-  <mat-card *ngIf="shop.Food.PastaNoodles && shop.Food.PastaNoodles.length">
-    <app-admin-menu-item [consumables]="shop.Food.PastaNoodles" title="Pasta/Noodles" [shop]="shop" foodOrBev="Food" type="Meryenda"></app-admin-menu-item>
-  </mat-card>
-  
-  <mat-card *ngIf="shop.Food.Sweets && shop.Food.Sweets.length">
-    <app-admin-menu-item [consumables]="shop.Food.Sweets" title="Sweets" [shop]="shop" foodOrBev="Food" type="Sweets"></app-admin-menu-item>
-  </mat-card>
-  
-  <mat-card *ngIf="shop.Food.StreetFoods && shop.Food.StreetFoods.length">
-    <app-admin-menu-item [consumables]="shop.Food.StreetFoods" title="Street Foods" [shop]="shop" foodOrBev="Food" type="StreetFoods"></app-admin-menu-item>
-  </mat-card>
-  
-  <mat-card *ngIf="shop.Food.Branded && shop.Food.Branded.length">
-    <app-admin-menu-item [consumables]="shop.Food.Branded" title="Branded Food" [shop]="shop" foodOrBev="Food" type="Branded"></app-admin-menu-item>
-  </mat-card>
-  
-  <mat-card *ngIf="shop.Beverages.InHouse && shop.Beverages.InHouse.length">
-    <app-admin-menu-item [consumables]="shop.Beverages.InHouse" title="In-House Drinks" [shop]="shop" foodOrBev="Beverages" type="InHouse"></app-admin-menu-item>
-  </mat-card>
-  
-  <mat-card *ngIf="shop.Beverages.Branded && shop.Beverages.Branded.length">
-    <app-admin-menu-item [consumables]="shop.Beverages.Branded" title="Branded Drinks" [shop]="shop" foodOrBev="Beverages" type="Branded"></app-admin-menu-item>
-  </mat-card>
-  
-  <app-admin-add-menu-item class="button-bot" [shop]="shop"></app-admin-add-menu-item>
-  
-  <!-- <mat-card *ngIf="shop.BrandedConsumables && shop.BrandedConsumables.length">
-    <mat-card-title>Branded Consumables</mat-card-title>
-    <mat-card-content *ngFor="let branded of shop.BrandedConsumables">
-      <div>{{branded.bc_name}}</div>
-    </mat-card-content>
-  </mat-card> -->
+  <app-admin-menu-item [consumables]="shop.Food.Meals" title="Meals" [shop]="shop" foodOrBev="Food" type="Meals"></app-admin-menu-item>
+</mat-card>
+
+<mat-card *ngIf="shop.Food.Meryenda && shop.Food.Meryenda.length">
+  <app-admin-menu-item [consumables]="shop.Food.Meryenda" title="Meryenda" [shop]="shop" foodOrBev="Food" type="Meryenda"></app-admin-menu-item>
+</mat-card>
+
+<mat-card *ngIf="shop.Food.Sandwiches && shop.Food.Sandwiches.length">
+  <app-admin-menu-item [consumables]="shop.Food.Sandwiches" title="Sandwiches" [shop]="shop" foodOrBev="Food" type="Sandwiches"></app-admin-menu-item>
+</mat-card>
+
+<mat-card *ngIf="shop.Food.PastaNoodles && shop.Food.PastaNoodles.length">
+  <app-admin-menu-item [consumables]="shop.Food.PastaNoodles" title="Pasta/Noodles" [shop]="shop" foodOrBev="Food" type="Meryenda"></app-admin-menu-item>
+</mat-card>
+
+<mat-card *ngIf="shop.Food.Sweets && shop.Food.Sweets.length">
+  <app-admin-menu-item [consumables]="shop.Food.Sweets" title="Sweets" [shop]="shop" foodOrBev="Food" type="Sweets"></app-admin-menu-item>
+</mat-card>
+
+<mat-card *ngIf="shop.Food.StreetFoods && shop.Food.StreetFoods.length">
+  <app-admin-menu-item [consumables]="shop.Food.StreetFoods" title="Street Foods" [shop]="shop" foodOrBev="Food" type="StreetFoods"></app-admin-menu-item>
+</mat-card>
+
+<mat-card *ngIf="shop.Food.Branded && shop.Food.Branded.length">
+  <app-admin-menu-item [consumables]="shop.Food.Branded" title="Branded Food" [shop]="shop" foodOrBev="Food" type="Branded"></app-admin-menu-item>
+</mat-card>
+
+<mat-card *ngIf="shop.Beverages.InHouse && shop.Beverages.InHouse.length">
+  <app-admin-menu-item [consumables]="shop.Beverages.InHouse" title="In-House Drinks" [shop]="shop" foodOrBev="Beverages" type="InHouse"></app-admin-menu-item>
+</mat-card>
+
+<mat-card *ngIf="shop.Beverages.Branded && shop.Beverages.Branded.length">
+  <app-admin-menu-item [consumables]="shop.Beverages.Branded" title="Branded Drinks" [shop]="shop" foodOrBev="Beverages" type="Branded"></app-admin-menu-item>
+</mat-card>
+
+<app-admin-add-menu-item class="button-bot" [shop]="shop"></app-admin-add-menu-item>
+
+<!-- <mat-card *ngIf="shop.BrandedConsumables && shop.BrandedConsumables.length">
+  <mat-card-title>Branded Consumables</mat-card-title>
+  <mat-card-content *ngFor="let branded of shop.BrandedConsumables">
+    <div>{{branded.bc_name}}</div>
+  </mat-card-content>
+</mat-card> -->

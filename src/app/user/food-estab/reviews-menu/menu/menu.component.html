@@ -1,3 +1,7 @@
+<div *ngIf="shop.lastUpdatedMenu" s>
+  Menu updated last {{shop.lastUpdatedMenu}}
+</div>
+
 <mat-card *ngIf="shop.Food.Meals && shop.Food.Meals.length">
   <!-- <mat-card-title>Meals</mat-card-title>
   <mat-card *ngFor="let consumable of shop.Food.Meals" class="item">
