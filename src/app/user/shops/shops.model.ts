@@ -61,6 +61,7 @@ export class Consumables {
     c_avg_rating?: number;
     username?: string;
     amount?: string;
+    active?: boolean;
 }
 
 export class BrandedConsumables extends Consumables {

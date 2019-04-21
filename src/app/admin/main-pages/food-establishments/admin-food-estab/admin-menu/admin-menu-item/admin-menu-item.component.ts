@@ -62,7 +62,6 @@ export class AdminMenuItemComponent implements OnInit {
     this.addFoodFormGroup.get('foodCategoryAndType').setValue(foodCateg.value);
     this.addFoodFormGroup.get('name').setValue(consumable.c_name);
     this.addFoodFormGroup.get('price').setValue(consumable.price);
-    console.log(consumable instanceof BrandedConsumables);
     if (consumable.amount) { 
       this.addFoodFormGroup.get('amount').setValue(consumable.amount);
     }
@@ -82,8 +81,8 @@ export class AdminMenuItemComponent implements OnInit {
         const newMenu: Consumables | BrandedConsumables = {
           c_name: result.name,
           price: result.price,
-          c_avg_rating: 0,
-          username: this.user.name
+          username: this.user.name,
+          active: this.shop[result.group][result.type][index].active
         };
         if (result.amount) {
           newMenu.amount = result.amount;
@@ -95,5 +94,50 @@ export class AdminMenuItemComponent implements OnInit {
         window.alert("Food item Updated!");
       }
     });
+  }
+
+  deactivateMenuItem(consumable: Consumables | BrandedConsumables, index: number) {
+    const _FoodBev = this.foodGroups.find(categ => categ.name === this.foodOrBev);
+
+    const foodCateg = _FoodBev.category.find(val => {
+      return val.value.group === this.foodOrBev && val.value.type === this.type;
+    })
+
+    // console.log(foodCateg.value);
+
+    if(consumable.active == true || consumable.active == false) {
+      consumable.active = !consumable.active;
+    } else {
+      // if active attribute is undefined
+      consumable.active = false;
+    }
+
+    const newMenu: Consumables | BrandedConsumables = {
+      c_name: consumable.c_name,
+      price: consumable.price,
+      username: consumable.username,
+      active: consumable.active
+    }
+
+    this.shop[foodCateg.value.group][foodCateg.value.type][index] = newMenu;
+    // console.log(consumable.active);
+    this.shopService.editFoodOrBeverageByShopid(this.shop.fe_id, foodCateg.value.group, foodCateg.value.type, this.shop[foodCateg.value.group][foodCateg.value.type]);
+
+    var active: string;
+    if(consumable.active){
+      active = "activated";
+    } else {
+      active = "deactivated"
+    }
+
+    window.alert(consumable.c_name + " is now " + active + ".");
+  }
+
+  checkActive(consumable: Consumables | BrandedConsumables) {
+    if(consumable.active == null) {
+      return true;
+    } else {
+      return consumable.active;
+    }
   }
 }

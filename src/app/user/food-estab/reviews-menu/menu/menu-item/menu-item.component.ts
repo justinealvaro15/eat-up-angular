@@ -83,8 +83,8 @@ export class MenuItemComponent implements OnInit {
         const newMenu: Consumables | BrandedConsumables = {
           c_name: result.name,
           price: result.price,
-          c_avg_rating: 0,
-          username: this.user.name
+          username: this.user.name,
+          active: this.shop[result.group][result.type][index].active
         };
         if (result.amount) {
           newMenu.amount = result.amount;
@@ -93,7 +93,7 @@ export class MenuItemComponent implements OnInit {
         this.shop[result.group][result.type][index] = newMenu;
 
         this.shopService.editFoodOrBeverageByShopid(this.shop.fe_id, result.group, result.type, this.shop[result.group][result.type]);
-        window.alert("Food item Updated!");
+        window.alert(newMenu.c_name + " updated!");
       }
     });
   }

@@ -20,13 +20,15 @@
         </button>
       </div>
       
-      <button mat-icon-button
+      <mat-slide-toggle class="option" 
+        color="primary" 
+        [checked]="checkActive(consumable)" 
+        (change)="deactivateMenuItem(consumable, i)">
+      </mat-slide-toggle>
+      <!-- <button mat-icon-button
         #tooltip="matTooltip"
         [matTooltip]="getTooltipText(consumable)"
         (click)="tooltip.toggle()">
-        <mat-icon>info</mat-icon>
-      </button>
-      <!-- <button mat-icon-button>
         <mat-icon>info</mat-icon>
       </button> -->
     </div> 

@@ -87,6 +87,7 @@ export class AddMenuItemComponent {
           price: result.price,
           c_avg_rating: 0,
           amount: result.amount,
+          active: true
         };
         this.shop[result.group][result.type].push(newMenu);
 
