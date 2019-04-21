@@ -19,9 +19,9 @@ export interface User {
       minute: number;
       second: number;
     };
-    removed: {
-      removed_by: string;
-      removed_on: { //DATE
+    deactivated: {
+      deactivated_by: string;
+      deactivated_on: { //DATE
         year: number;
         month: number;
         day: number;

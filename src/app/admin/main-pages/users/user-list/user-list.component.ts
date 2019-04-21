@@ -5,6 +5,9 @@ import { HttpClientModule }    from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { User, Admin } from '../user.model';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from "angularx-social-login";
+import { GoogleLoginProvider } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
 
 @Component({
   selector: 'app-user-list',
@@ -20,10 +23,13 @@ export class UserListComponent implements OnInit, OnDestroy {
   filter: FormGroup;
   is_admin: true;
   is_not_admin: false;
+
+
   constructor(
     private fb: FormBuilder,
     public dialog: MatDialog,
-    private usersService: UsersService
+    private usersService: UsersService,
+    
   ) { }
 
   ngOnInit() {
@@ -180,11 +186,21 @@ export class DeacUserDialog {
   width1 = 250;
   width2 = 100;
   height = 100;
+  private user: SocialUser;
+  public loggedIn: boolean;
 
   constructor (
     public dialogRef: MatDialogRef<DeacUserDialog>,
+    private authService: AuthService,
     @Inject(MAT_DIALOG_DATA) public data: User
   ) {}
+
+    ngOnInit() {
+      this.authService.authState.subscribe((user) => {
+        this.user = user;
+        this.loggedIn = (user != null);
+      });
+    }
 
   onNoClick(): void {  //or on activate user
     // return {
@@ -195,11 +211,24 @@ export class DeacUserDialog {
   }
 
   onYesClick() { //or on deactivate user
+    const date = new Date();
     return {
       user_id : this.data.user_id,
       first_name: this.data.first_name,
       last_name:this.data.last_name,
+      deactivated: {
+        deactivated_by: this.user.firstName + " " + this.user.lastName,
+        deactivated_on: {
+          year: date.getFullYear(),
+          month: date.getMonth(),
+          day: date.getDate(),
+          hour: date.getHours(),
+          minute: date.getMinutes(),
+          second: date.getSeconds()
+        }
+      },
       active: this.data.active
+
     }
   }
 }
@@ -220,15 +249,26 @@ export class AcUserDialog {
     @Inject(MAT_DIALOG_DATA) public data: User
   ) {}
 
-  onNoClick(): void {  //or on activate user
+  onNoClick(): void {  
     this.dialogRef.close();
   }
 
-  onYesClick() { //or on deactivate user
+  onYesClick() {
     return {
       user_id : this.data.user_id,
       first_name: this.data.first_name,
       last_name:this.data.last_name,
+      deactivated: {
+        deactivated_by: null,
+        deactivated_on: {
+          year: null,
+          month: null,
+          day: null,
+          hour: null,
+          minute: null,
+          second:null
+        }
+      },
       active: this.data.active
     }
   }
