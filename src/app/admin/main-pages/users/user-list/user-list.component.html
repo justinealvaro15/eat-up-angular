@@ -3,13 +3,17 @@
         <hr>
         <mat-grid-list cols="5" rowHeight="75px">
             <mat-grid-tile colspan="1">
-                <img class = "user-picture" src="https://vignette.wikia.nocookie.net/sakurasounopetnakanojo/images/d/d7/Ryuunosuke_Akasaka.png/revision/latest?cb=20150109171438&path-prefix=es" alt="user-picture">
+                <img class = "user-picture" [src]="user.photoUrl" alt="user-picture">
             </mat-grid-tile>
       
             <mat-grid-tile colspan="2">
                 <div fxLayout = "row">
                     <div class = "user-name"> {{user.first_name}} {{user.last_name}} </div>
-                    <!--<div class = "user-email"> {{user.email}}</div>-->
+                    <div class = "user-date-joined">Joined On:  {{user.date_joined.day}}/{{user.date_joined.month}}/{{user.date_joined.year}} {{user.date_joined.hour}}:{{user.date_joined.minute}}:{{user.date_joined.second}}</div>
+                    <div *ngIf = "user.active; else inactive" class = "user-last-active">Last Active On: {{user.last_active.day}}/{{user.last_active.month}}/{{user.last_active.year}} {{user.last_active.hour}}:{{user.last_active.minute}}:{{user.last_active.second}}</div>
+                    <ng-template #inactive>
+                        <div class = "user-deactivated-on">Deactivated On: {{user.deactivated.deactivated_on.day}}/{{user.deactivated.deactivated_on.month}}/{{user.deactivated.deactivated_on.year}} {{user.deactivated.deactivated_on.hour}}:{{user.deactivated.deactivated_on.minute}}:{{user.deactivated.deactivated_on.second}}</div>
+                    </ng-template>
                 </div>
             </mat-grid-tile>
             <mat-grid-tile colspan="2">

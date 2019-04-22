@@ -37,7 +37,6 @@ export class UserComponent {
   }
   
   userLastActiveUpdate(){
-    console.log("PRINT IS YOUR FRIEND");
     const date = new Date();
     const lastActiveUpdate = {
       user_id: this.user.id,
