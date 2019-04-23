@@ -86,10 +86,13 @@ export class AdminAddMenuItemComponent implements OnInit {
           amount: result.amount,
           active: true
         };
-        this.shop[result.group][result.type].push(newMenu);
-
-        this.shopService.addFoodOrBeverageByShopId(this.shop.fe_id, result);
-        window.alert("Food Item Added");
+        if(this.shop[result.group][result.type].findIndex(x => x.c_name == result.name && x.amount == result.amount) < 0) {
+          this.shop[result.group][result.type].push(newMenu);
+          this.shopService.addFoodOrBeverageByShopId(this.shop.fe_id, result);
+          window.alert("Food Item Added");
+        } else {
+          window.alert(result.name + " already exists.");
+        }
       }
     });
   }
