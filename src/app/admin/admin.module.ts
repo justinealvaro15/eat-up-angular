@@ -57,7 +57,7 @@ import { AdminFoodEstabComponent } from './main-pages/food-establishments/admin-
 import { AdminMenuComponent } from './main-pages/food-establishments/admin-food-estab/admin-menu/admin-menu.component';
 import { AdminMenuItemComponent } from './main-pages/food-establishments/admin-food-estab/admin-menu/admin-menu-item/admin-menu-item.component';
 import { AdminAddMenuItemComponent, AdminAddMenuItemDialog } from './main-pages/food-establishments/admin-food-estab/admin-menu/admin-add-menu-item/admin-add-menu-item.component';
-
+import {AdminLoginDialog} from './admin.component';
 
 @NgModule({
   imports: [
@@ -119,7 +119,8 @@ import { AdminAddMenuItemComponent, AdminAddMenuItemDialog } from './main-pages/
     AdminMenuComponent,
     AdminMenuItemComponent,
     AdminAddMenuItemComponent,
-    AdminAddMenuItemDialog
+    AdminAddMenuItemDialog,
+    AdminLoginDialog
   ],
   entryComponents: [
     MakeAdminDialog,
@@ -128,7 +129,8 @@ import { AdminAddMenuItemComponent, AdminAddMenuItemDialog } from './main-pages/
     AddShopDialog,
     AdminAddMenuItemDialog,
     DeacAdminDialog,
-    AddShopDialog
+    AddShopDialog,
+    AdminLoginDialog
   ]
 })
 

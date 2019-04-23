@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
 import 'rxjs/add/operator/filter';
 import { NavbarComponent } from '../../app/admin/components/navbar/navbar.component';
@@ -7,8 +7,10 @@ import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
-import { UsersService } from "../admin/main-pages/users/users.service";
-
+import { UsersService, FilterKeys } from "../admin/main-pages/users/users.service";
+import { GoogleLoginProvider } from "angularx-social-login";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { CanActivate } from '@angular/router/src/utils/preactivation';
 
 @Component({
   selector: 'app-admin',
@@ -26,14 +28,10 @@ export class AdminComponent implements OnInit {
     public location: Location, 
     private router: Router,
     private authService: AuthService,
-    private usersService:UsersService) {}
+    private usersService:UsersService,
+    public dialog: MatDialog,) {}
 
-  ngOnInit() {
-    this.authService.authState.subscribe((user) => {
-        this.user = user;
-        this.loggedIn = (user != null);
-        this.userLastActiveUpdate();
-      });
+  ngOnInit() {    
       const isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
       if (isWindows && !document.getElementsByTagName('body')[0].classList.contains('sidebar-mini')) {
@@ -69,6 +67,31 @@ export class AdminComponent implements OnInit {
           let ps = new PerfectScrollbar(elemMainPanel);
           ps = new PerfectScrollbar(elemSidebar);
       }
+      this.authService.authState.subscribe((user) => {
+        this.user = user;
+        this.loggedIn = (user != null);
+        this.userLastActiveUpdate();
+      });
+     // this.adminLogin();
+  }
+ 
+  signInWithGoogle(): void { 
+    /*
+      1.Prevent accessing other admin pages by auto redirecting to users page if not admin //solved with guards
+      2. if google login closed auto redirect to users 
+      3. google log in pop up on admin home page
+      */
+    
+      this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  adminLogin() {
+    const dialogRef = this.dialog.open(AdminLoginDialog, {
+      width: '350px'
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {        
+    });
   }
 
   userLastActiveUpdate(){
@@ -114,6 +137,49 @@ export class AdminComponent implements OnInit {
           bool = true;
       }
       return bool;
+  }
+
+}
+
+
+@Component ({
+  selector: 'admin-login-dialog',
+  templateUrl: 'admin-login-dialog.html'
+})
+
+export class AdminLoginDialog {
+  size = 12;
+  width1 = 250;
+  width2 = 100;
+  height = 100;
+
+  constructor (
+    public dialogRef: MatDialogRef<AdminLoginDialog>,
+    private authService: AuthService,
+    private usersService:UsersService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+
+  ngOnInit() {
+    
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  onYesClick(): void { //on make admin
+    this.signInWithGoogle();
+  }
+
+  signInWithGoogle(): void { 
+    /*
+      1.Prevent accessing other admin pages by auto redirecting to users page if not admin
+      2. if google login closed auto redirect to users
+      3. google log in pop up on admin home page
+      */
+    
+    
   }
 
 }

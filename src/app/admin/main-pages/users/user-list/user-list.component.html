@@ -13,7 +13,7 @@
                     <div *ngIf = "user.active; else inactive" class = "user-last-active">Last Active On: {{user.last_active.day}}/{{user.last_active.month}}/{{user.last_active.year}} {{user.last_active.hour}}:{{user.last_active.minute}}:{{user.last_active.second}}</div>
                     <ng-template #inactive>
                         <div class = "user-deactivated-on">Deactivated On: {{user.deactivated.deactivated_on.day}}/{{user.deactivated.deactivated_on.month}}/{{user.deactivated.deactivated_on.year}} {{user.deactivated.deactivated_on.hour}}:{{user.deactivated.deactivated_on.minute}}:{{user.deactivated.deactivated_on.second}}</div>
-                    </ng-template>
+                    </ng-template> 
                 </div>
             </mat-grid-tile>
             <mat-grid-tile colspan="2">
