@@ -8,6 +8,7 @@ import { LoadingService } from './loading.service';
 })
 export class AppComponent {
   isLoading = false;
+  //googleauth: GoogleAuthComponent;
 
   constructor(
     public loadingScreenService: LoadingService
@@ -16,6 +17,6 @@ export class AppComponent {
   ngOnInit() {
     this.loadingScreenService.getIsLoading().subscribe(value => {
       Promise.resolve().then(() => this.isLoading = value);
-    })
+    });
   }
 }

@@ -12,7 +12,6 @@ import { LoadingService } from './loading.service';
 import { MatProgressSpinnerModule } from '@angular/material';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingHttpInterceptorService } from './loading-http-interceptor.service';
-
 // import { AuthService } from 'angularx-social-login';
 
 
@@ -38,7 +37,8 @@ export function provideConfig() {
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
+
   ],
   imports: [
     BrowserModule,

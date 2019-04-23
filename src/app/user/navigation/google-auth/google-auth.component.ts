@@ -39,8 +39,8 @@ export class GoogleAuthComponent implements OnInit {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(response => {
       this.usersService.setFilter(FilterKeys.Name_Or_Id, this.user.id);
       if (this.usersService.getFilteredUsers()==[]) {
-        this.addUser()
-      }
+        this.addUser();
+      } 
     }
      
     ); 
@@ -96,7 +96,20 @@ export class GoogleAuthComponent implements OnInit {
   }
 
   updateLastActive () {
-    
+    console.log("PRINT IS YOUR FRIEND");
+    const date = new Date();
+    const lastActiveUpdate = {
+      user_id: this.user.id,
+      last_active: {
+        year: date.getFullYear(),
+        month: date.getMonth(),
+        day: date.getDate(),
+        hour: date.getHours(),
+        minute: date.getMinutes(),
+        second: date.getSeconds()
+        }
+    }
+    this.usersService.updateUserLastActive(lastActiveUpdate);
   }
 
  

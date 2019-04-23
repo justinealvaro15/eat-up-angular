@@ -22,7 +22,7 @@
     font-size: 15px;
 }
 
-.user-email{
+.user-deactivated-on .user-last-active .user-date-joined {
     position: absolute;
     top: 38px;
     left: 10px;

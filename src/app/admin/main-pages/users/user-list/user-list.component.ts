@@ -6,7 +6,6 @@ import { Subscription } from 'rxjs';
 import { User, Admin } from '../user.model';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from "angularx-social-login";
-import { GoogleLoginProvider } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 
 @Component({
@@ -212,6 +211,7 @@ export class DeacUserDialog {
 
   onYesClick() { //or on deactivate user
     const date = new Date();
+    console.log("deac yes");
     return {
       user_id : this.data.user_id,
       first_name: this.data.first_name,
@@ -225,7 +225,7 @@ export class DeacUserDialog {
           hour: date.getHours(),
           minute: date.getMinutes(),
           second: date.getSeconds()
-        }
+        } 
       },
       active: this.data.active
 
