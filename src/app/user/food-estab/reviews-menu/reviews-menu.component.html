@@ -3,20 +3,30 @@
     <app-menu [shop]="shop"></app-menu>
     <footer> Eat UP Copyright 2019</footer>
   </mat-tab>
-  <mat-tab label="Reviews" id = "review" >
+  <mat-tab label="Reviews" id="review" >
     <!-- use center-align-column to everything you want to center -->
-    <div class="center-align-column"> 
-      <div *ngIf ="loggedIn; else noUserLoggedIn"> 
+    <div *ngIf="reviews.length==0">
+      <div>No reviews available.</div>
+      <!-- <footer> Eat UP Copyright 2019</footer> -->
+    </div>
+
+    <!-- <div>
+      No reviews available
+    </div> -->
+
+    <div *ngIf="reviews">
+      <div class="center-align-column"> 
+        <div *ngIf ="loggedIn; else noUserLoggedIn"> 
           <app-review-user [shop]="shop" [reviews]="reviews"></app-review-user>
           <mat-divider class="divider"></mat-divider>
           <display-reviews [shop]="shop" [reviews]="reviews"></display-reviews>
           <footer> Eat UP Copyright 2019</footer>
-      </div>
-      <ng-template #noUserLoggedin> 
+        </div>
+        <ng-template #noUserLoggedin> 
           <app-review-user [shop]="shop" [reviews]="reviews"></app-review-user>
           <footer> Eat UP Copyright 2019</footer>
-      </ng-template>
-      
+        </ng-template>
+      </div>
     </div>
  <!-- <footer> Eat UP Copyright 2019</footer> -->
   </mat-tab>

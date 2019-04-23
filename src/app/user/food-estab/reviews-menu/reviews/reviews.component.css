@@ -1,12 +1,18 @@
 
 .example-card{
-  width: 120% !important;
+  width: 120%;
   margin-top: 10px;
   left: -10%;  
 }
 
 .space-below{
   height: 50px;
+}
+
+.review-card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 /*
 
