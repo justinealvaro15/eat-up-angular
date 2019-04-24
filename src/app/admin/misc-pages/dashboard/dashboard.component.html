@@ -16,7 +16,7 @@
                             <i class="material-icons">remove_red_eye</i>
                         </div>
                         <p class="card-category">Total Views</p>
-                        <h3 class="card-title"> 700 </h3>
+                        <h3 class="card-title">73 </h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -31,7 +31,7 @@
                             <i class="material-icons"> people </i>
                         </div>
                         <p class="card-category">No. of Users</p>
-                        <h3 class="card-title">700</h3>
+                        <h3 class="card-title">{{totalUserCount()}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -415,8 +415,8 @@
                 </div>
             </div>
         </div> -->
-        <button  mat-raised-button color="primary" [routerLink]="['../stats/ratings-reviews']"> Food Establishments Ratings and Reviews</button>
-        <button  mat-raised-button color="primary" [routerLink]="['../stats/user-contributions']">User Contributions</button>
+        <button  mat-raised-button color="primary" [routerLink]="['../admin/stats/ratings-reviews']"> Food Establishments Ratings and Reviews</button>
+        <button  mat-raised-button color="primary" [routerLink]="['../admin/stats/user-contributions']">User Contributions</button>
     </div>
   </div>
   

@@ -49,7 +49,7 @@ import {
   MatTooltipModule,
   MatButtonToggleModule
 } from '@angular/material';
-import { GoogleAuthComponent } from './navigation/google-auth/google-auth.component';
+import { GoogleAuthComponent } from '../google-auth/google-auth.component';
 
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, LoginOpt} from "angularx-social-login";

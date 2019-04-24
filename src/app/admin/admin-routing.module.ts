@@ -16,23 +16,21 @@ import { UserContributionsComponent } from './misc-pages/stats/user-contribution
 import { AdminFoodEstabComponent } from './main-pages/food-establishments/admin-food-estab/admin-food-estab.component';
 import {AdminGuard} from './admin.guard';
 
-import {UserComponent} from '../user/user.component';
-
 const routes: Routes =[
     { path: 'eat-up/admin',
     component: AdminComponent,
-    canActivate:[AdminGuard],
+    /*canActivate:[AdminGuard],*/
     children: [
     { path: '', component: DashboardComponent  },
-    { path: 'dashboard',                   component: DashboardComponent,           canActivate:[AdminGuard]  },
-    { path: 'admins',                      component: AdminsComponent,              canActivate:[AdminGuard]  },
-    { path: 'users',                       component: UsersComponent,               canActivate:[AdminGuard]  },
-    { path: 'food-establishments',         component: FoodEstablishmentsComponent,  canActivate:[AdminGuard]  },
-    { path: 'menu',                        component: MenuComponent,                canActivate:[AdminGuard]  },
-    { path: 'stats',                       component: StatsComponent,               canActivate:[AdminGuard]  },
-    { path: 'stats/ratings-reviews',       component: RatingsReviewsComponent,      canActivate:[AdminGuard]  },
-    { path: 'stats/user-contributions',    component: UserContributionsComponent,   canActivate:[AdminGuard]  },
-    { path: 'food-establishments/:shopId', component: AdminFoodEstabComponent,      canActivate:[AdminGuard]  }
+    { path: 'dashboard',                   component: DashboardComponent  /*,canActivate:[AdminGuard],*/ },
+    { path: 'admins',                      component: AdminsComponent/*,canActivate:[AdminGuard],*/  },
+    { path: 'users',                       component: UsersComponent /*,canActivate:[AdminGuard],*/ },
+    { path: 'food-establishments',         component: FoodEstablishmentsComponent/*,canActivate:[AdminGuard],*/  },
+    { path: 'menu',                        component: MenuComponent/*,canActivate:[AdminGuard],*/  },
+    { path: 'stats',                       component: StatsComponent/*,canActivate:[AdminGuard],*/ },
+    { path: 'stats/ratings-reviews',       component: RatingsReviewsComponent/*,canActivate:[AdminGuard],*/  },
+    { path: 'stats/user-contributions',    component: UserContributionsComponent/*,canActivate:[AdminGuard],*/  },
+    { path: 'food-establishments/:shopId', component: AdminFoodEstabComponent/*,canActivate:[AdminGuard],*/   }
     ]}
   ];
     // { path: 'dashboard',      component: DashboardComponent },

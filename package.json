@@ -34,6 +34,7 @@
     "@asymmetrik/ngx-leaflet": "^5.0.1",
     "@types/select2": "^4.0.47",
     "ajv": "6.4.0",
+    "angulartics": "^1.6.0",
     "angularx-social-login": "^1.2.6",
     "arrive": "2.4.1",
     "bootstrap": "4.1.0",

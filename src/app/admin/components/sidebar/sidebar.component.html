@@ -1,9 +1,9 @@
 <div class="logo">
     <a href="/" class="simple-text">
         <div class="logo-img">
-            <img src="https://cdn-images-1.medium.com/max/1200/1*T5ZZInLN4A0XW26JWkNWTA.jpeg"/>
+            <img [src]="user.photoUrl"/>
         </div>
-        <p class = "admin-name"> Lois Anne Leal </p> 
+        <p class = "admin-name"> {{user.firstName}} {{user.lastName}} </p> 
     </a>
 </div>
 <div class="sidebar-wrapper">

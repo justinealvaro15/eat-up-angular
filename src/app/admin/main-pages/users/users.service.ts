@@ -48,7 +48,9 @@ export class UsersService {
   }
 
   updateAdminList() {
+    console.log(this.getAdminsDisplay().toPromise());
     this.getAdminsDisplay().toPromise().then((admins) => {
+      console.log(admins);
       this._admins.next(admins);
   })
   }
@@ -134,6 +136,7 @@ export class UsersService {
       user,
       isAdmin: true
     }
+    window.alert(user.user_id);
     return this.http.put<User>(`http://localhost:3000/api/users/${user.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
   }
   addAdmin(newAdmin: Admin) {
@@ -144,6 +147,9 @@ export class UsersService {
     return this.http.delete<User>(`http://localhost:3000/api/admin/${admin.user_id} `).toPromise().then((res)=>{console.log(res); });
   }
 
+  private avgRatingsGiven(user:User): number {
+    return 0;
+  }
 
   private isAdminIdMatch(admin: Admin): boolean {
     if (!this.filter.name_or_id) {
