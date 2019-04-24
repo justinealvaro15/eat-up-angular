@@ -3,14 +3,6 @@
     position: relative;
 }
 
-.add {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    z-index: 2;
-}
 
 .container.time {
     margin-bottom: 10px;
@@ -69,3 +61,11 @@ mat-hint, .mat-hint {
     font-size: 12px;
 }
 
+.add {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    z-index: 2;
+}
