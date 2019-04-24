@@ -18,6 +18,10 @@ export class ReviewsService {
     }
     private reviews: Review[] = [];
 
+    getAllReviews() {
+        return this.http.get<Review[]>(`http://localhost:3000/api/reviews`);
+    }
+
     getReviewsByNewest(shopId: string){
         return this.http.get<Review[]>(`http://localhost:3000/api/reviews/${shopId}`);
     }

@@ -1,9 +1,13 @@
 <br style = "line-height:8;">
 <mat-form-field>
   <mat-label>Filter by</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let option of options" [value]="option.value">
-      {{option.viewValue}}
-    </mat-option>
+  <mat-select [(value)]="filter" (selectionChange)="applyFilter(filter)">
+    <mat-option value="1">Highest Rated</mat-option>
+    <mat-option value="2">Lowest Rated</mat-option>
+    <mat-option value="3">Most Reviewed</mat-option>
+    <mat-option value="4">Least Reviewed</mat-option>
   </mat-select>
 </mat-form-field>
+
+<app-shop-card-admin *ngFor="let shop of filteredShops" [shop]="shop">{{shop}}</app-shop-card-admin>
+

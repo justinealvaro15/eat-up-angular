@@ -15,7 +15,7 @@ import {AppService} from '../app.service';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
   private _router: Subscription;

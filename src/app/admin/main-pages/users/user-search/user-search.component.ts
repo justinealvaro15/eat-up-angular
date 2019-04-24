@@ -9,7 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 @Component({
   selector: 'app-user-search',
   templateUrl: './user-search.component.html',
-  styleUrls: ['./user-search.component.scss']
+  styleUrls: ['./user-search.component.css']
 })
 export class UserSearchComponent implements OnInit {
   filter: FormGroup;
