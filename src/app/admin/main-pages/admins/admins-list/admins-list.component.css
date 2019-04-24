@@ -16,8 +16,8 @@
 
 .admin-name{
   position: absolute;
-  top: 22px;
-  left: 10px;
+  top: 20%;
+  left: 0px;
   font-family: latobold;
   font-size: 15px;
 }
