@@ -1,3 +1,8 @@
+.menu-update{
+    margin-top: 10px;
+    font-family: latobold;
+    font-size: 12px;
+}
 :host {
     display: flex;
     width: 100%;
@@ -15,7 +20,7 @@
 }
 
 mat-card{
-    margin-top: 20px;
+    margin-top: 10px;
     width: 90%;
     background-color: #BC000B;
     color: white;

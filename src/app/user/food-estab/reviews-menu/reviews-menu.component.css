@@ -38,6 +38,13 @@ mat-tab-group, mat-tab{
     margin: 6px;
 }
 
+.no-reviews{
+    margin-top: 40px;
+    font-family: ralewaylight;
+    text-align: center;
+    font-size: 16px;
+}
+
 footer{
     position: absolute;
     font-size: 10px;
