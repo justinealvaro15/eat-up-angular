@@ -7,10 +7,10 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ShopsService } from 'app/user/shops/shops.service';
 
 export interface DialogData {
-  foodGroup: FoodGroup[];
+  foodGroups: FoodGroup[];
   foodGroupControl: FormControl;
   addFoodFormGroup: FormGroup;
-  isEdit?: boolean;
+  isEdit: boolean;
 }
 
 @Component({

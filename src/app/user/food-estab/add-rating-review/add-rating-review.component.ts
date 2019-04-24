@@ -10,6 +10,7 @@ import * as moment from 'moment';
 
 export interface DialogData {
   addReviewFormGroup: FormGroup;
+  isEdit:boolean;
 }
 
 export interface AddedReview {
@@ -111,9 +112,11 @@ export class AddRatingReviewComponent {
 export class AddRatingReviewDialog {
   ratenum = 5;
   oldRating = 0;
-
+  isEdit: boolean;
   public user: SocialUser;
   public loggedIn: boolean;
+  size: number;
+  width: number;
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
