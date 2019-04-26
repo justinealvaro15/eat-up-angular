@@ -60,7 +60,7 @@ export class AppService implements OnInit {
 
   updatePageViews() { 
     this.getTotalPageViews().toPromise().then((pages)=>{ 
-        console.log(this._pageviews.next(pages));       
+        this._pageviews.next(pages);       
     });
   }
 

@@ -96,7 +96,7 @@ export class UserListComponent implements OnInit, OnDestroy {
          };
         
         this.usersService.addAdmin(newAdmin);
-        this.usersService.adminStatus(newAdmin);
+        this.usersService.isAdminStatusToTrue(newAdmin);
         window.alert(result.first_name + " is now an Admin"); 
         window.location.reload();
          

@@ -46,7 +46,7 @@ export class UsersService {
       this._users.next(users);
   })
   }
-  
+
   updateAdminList() {
     this.getAdminsDisplay().toPromise().then((admins) => {                          
       this._admins.next(admins);
@@ -129,14 +129,23 @@ export class UsersService {
     });
   }
 
-  adminStatus (user:any) {
+  isAdminStatusToTrue (user:any) {
     const payload = {
       user,
       isAdmin: true
     }
-    window.alert(user.user_id);
     return this.http.put<User>(`http://localhost:3000/api/users/${user.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
   }
+
+  isAdminStatusToFalse (admin:any) {
+    const payload = {
+      admin,
+      isAdmin: false
+    }
+    return this.http.put<User>(`http://localhost:3000/api/users/${admin.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
+  }
+
+
   addAdmin(newAdmin: Admin) {
     return this.http.post<Admin>('http://localhost:3000/api/admin', newAdmin).subscribe();
   }

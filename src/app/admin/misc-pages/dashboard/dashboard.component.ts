@@ -162,7 +162,7 @@ export class DashboardComponent implements OnInit {
 
   getTotalHomePageViews() {
     this.appService.setFilter(FilterKeys.Page_Name,"HomePage");
-    return this.appService.getPageViews()[0].total_views;;//[object Object]
+    return this.appService.getPageViews()[0].total_views;;
   }
 
 }
