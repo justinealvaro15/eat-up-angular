@@ -97,11 +97,11 @@ export class UsersService {
         deactivated_by: user.deactivated.deactivated_by,
         deactivated_on: {
           year:user.deactivated.deactivated_on.year,
-          month:user.deactivateUser.deactivated_on.month,
-          day: user.deactivateUser.deactivated_on.day,
-          hour: user.deactivateUser.deactivated_on.hour,
-          minute: user.deactivateUser.deactivated_on.minute,
-          second: user.deactivateUser.deactivated_on.second,
+          month:user.deactivated.deactivated_on.month,
+          day: user.deactivated.deactivated_on.day,
+          hour: user.deactivated.deactivated_on.hour,
+          minute: user.deactivated.deactivated_on.minute,
+          second: user.deactivated.deactivated_on.second,
         }
       },
       active: true
