@@ -46,11 +46,9 @@ export class UsersService {
       this._users.next(users);
   })
   }
-
+  
   updateAdminList() {
-    console.log(this.getAdminsDisplay().toPromise());
-    this.getAdminsDisplay().toPromise().then((admins) => {
-      console.log(admins);
+    this.getAdminsDisplay().toPromise().then((admins) => {                          
       this._admins.next(admins);
   })
   }

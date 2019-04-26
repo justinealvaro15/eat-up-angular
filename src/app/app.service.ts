@@ -57,16 +57,14 @@ export class AppService implements OnInit {
   getTotalPageViews() { 
     return this.http.get<PageViews[]>('http://localhost:3000/api/page_views');
   }
-  
+
   updatePageViews() { 
-    console.log(this.getTotalPageViews().toPromise()); //ITS IN HERE SO FAR
-    this.getTotalPageViews().toPromise().then((pages)=>{
-        console.log(this._pageviews.next(pages));
+    this.getTotalPageViews().toPromise().then((pages)=>{ 
+        console.log(this._pageviews.next(pages));       
     });
   }
 
-  getPageViews():PageViews[] { //get list of users. is in . G
-    console.log("ingetPageViews "+this._pageviews.getValue()); //WHY IS IT EMPTY
+  getPageViews():PageViews[] { //get list of users. is in . 
     return this._pageviews.getValue().filter((page)=> { //Server.js returns it right
       return this.isPageNameMatch(page) ;
      });
@@ -76,14 +74,11 @@ export class AppService implements OnInit {
     return this.http.put<PageViews>(`http://localhost:3000/api/page_views/${pagename}`,1);
   }
 
-  private isPageNameMatch(page:PageViews):boolean { //works on test
-    console.log("NANNN");
+  private isPageNameMatch(page:PageViews):boolean { 
     if (!this.filter.page_name) {
-      console.log("nani"); //also not executed
       return true;
     }
     const isPageName = page.name === this.filter.page_name;
-    console.log("in isPageName"); //NOT EXECUTED
     return isPageName;
   }
 

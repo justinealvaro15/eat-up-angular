@@ -1,5 +1,5 @@
 export interface PageViews {
     name: string;
-    count: number;
+    total_views: number;
 }
 

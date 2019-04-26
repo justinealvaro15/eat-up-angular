@@ -79,7 +79,6 @@ export class DashboardComponent implements OnInit {
       seq2 = 0;
   };
   ngOnInit() {
-    this.getTotalHomePageViews();
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
@@ -163,8 +162,7 @@ export class DashboardComponent implements OnInit {
 
   getTotalHomePageViews() {
     this.appService.setFilter(FilterKeys.Page_Name,"HomePage");
-    console.log(this.appService.getPageViews());
-    this.totalHomePageViews = this.appService.getPageViews()[0].count;
+    return this.appService.getPageViews()[0].total_views;;//[object Object]
   }
 
 }
