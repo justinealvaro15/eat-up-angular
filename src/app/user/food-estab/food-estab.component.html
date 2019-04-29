@@ -15,8 +15,8 @@
             <mat-grid-tile rowspan="8" colspan="5">
                 <img class="food-estab-img" src="{{shop.image ? shop.image : 'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17665746.jpg'}}" alt="food establishment picture">
                 <div class ="back-arrow" fxFlex fxFlexAlign="start">
-                        <a mat-icon-button href="/eat-up" >
-                            <mat-icon class = "back-arrow" alt="back"> arrow_back</mat-icon>
+                        <a mat-icon-button href="/eat-up/user/shops" >
+                            <mat-icon style="font-size: 35px;" alt="back"> arrow_back</mat-icon>
                         </a>
                 </div>
             </mat-grid-tile>
@@ -39,7 +39,7 @@
                     <div fxFlex fxLayout = "row">
                     <div class="map-button" (click) = "showMap()"> <mat-icon class="map-icon">place</mat-icon></div>
                     <div class="open-close-container" [class.closed]="!isShopOpen()" [class.open]="isShopOpen()">
-                        <div class= "open-close"  >{{isShopOpen(shop) ? "Open" : "Closed"}}</div>
+                        <div class= "open-close"  >{{isShopOpen(shop) ? "Open Now" : "Closed Now"}}</div>
                     </div>
                 </div>
             </mat-grid-tile>
@@ -61,7 +61,7 @@
             
             <mat-grid-tile rowspan="3"  colspan="5">
                 <div>
-                    <mat-button-toggle-group #group="matButtonToggleGroup">
+                    <mat-button-toggle-group #group="matButtonToggleGroup" value="" value="{{shop.AddlTakeOutCost || 'Free'}}">
                         <mat-button-toggle value="{{shop.AddlTakeOutCost || 'Free'}}" aria-label="Text align left"  >
                             <div><mat-icon class = "addtl-details-icons">work</mat-icon></div>
                             <div class = "addtl-details-name"> Takeout</div>
@@ -92,15 +92,11 @@
                         </mat-button-toggle>
                     </mat-button-toggle-group>
     
-                    <div fxLayout= "row">
+                    <div fxLayout= "row" class="info-container">
                         <div class="addtl-details-info"> Info: </div> 
-                        <div class="addtl-details-info" style="font-family: ralewaylight; margin-left: 3px"> {{group.value}} </div> 
+                        <div class="addtl-details-info" style="font-family: ralewayregular; margin-left: 3px"> {{group.value}} </div> 
                     </div>
                 </div>
-            </mat-grid-tile>
-    
-            <mat-grid-tile rowspan="2"  colspan="5" *ngIf="shop">
-                <app-add-rating-review *ngIf="reviews" [shop]="shop" [reviews]="reviews" style="margin-right: 20px;"></app-add-rating-review> 
             </mat-grid-tile>
         </mat-grid-list>
 

@@ -52,3 +52,9 @@ footer{
     left: 13px;
     margin-bottom: 5px;
   }
+
+.button-add-rating-review{
+    display: inline-block;
+    margin-left: 30%;
+    margin-bottom: 10px;
+}
