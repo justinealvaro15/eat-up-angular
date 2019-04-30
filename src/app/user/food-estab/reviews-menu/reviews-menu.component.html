@@ -5,10 +5,13 @@
   </mat-tab>
   <mat-tab label="Reviews" id="review" >
     <!-- use center-align-column to everything you want to center -->
+    <div style="margin-top: 20px; "></div>
+    <app-add-rating-review class="button-add-rating-review" *ngIf="reviews" [shop]="shop" [reviews]="reviews" ></app-add-rating-review> 
     <div *ngIf="reviews.length==0">
       <div class="no-reviews">No reviews available.</div>
       <!-- <footer> Eat UP Copyright 2019</footer> -->
     </div>
+    
 
     <!-- <div>
       No reviews available
@@ -18,7 +21,6 @@
       <div class="center-align-column"> 
         <div *ngIf ="loggedIn; else noUserLoggedIn"> 
           <app-review-user [shop]="shop" [reviews]="reviews"></app-review-user>
-          <mat-divider class="divider"></mat-divider>
           <display-reviews [shop]="shop" [reviews]="reviews"></display-reviews>
           <footer> Eat UP Copyright 2019</footer>
         </div>
