@@ -57,6 +57,7 @@ import { AdminFoodEstabComponent } from './main-pages/food-establishments/admin-
 import { AdminMenuComponent } from './main-pages/food-establishments/admin-food-estab/admin-menu/admin-menu.component';
 import { AdminMenuItemComponent } from './main-pages/food-establishments/admin-food-estab/admin-menu/admin-menu-item/admin-menu-item.component';
 import { AdminAddMenuItemComponent, AdminAddMenuItemDialog } from './main-pages/food-establishments/admin-food-estab/admin-menu/admin-add-menu-item/admin-add-menu-item.component';
+import { MatPaginatorModule, MatProgressSpinnerModule} from "@angular/material";
 
 @NgModule({
   imports: [
@@ -84,7 +85,9 @@ import { AdminAddMenuItemComponent, AdminAddMenuItemDialog } from './main-pages/
     FlexLayoutModule,
     MatSelectModule,
     MatButtonToggleModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatPaginatorModule, 
+    MatProgressSpinnerModule
   ],
   declarations: [
     AdminComponent,

@@ -1,9 +1,10 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User, Admin } from './user.model';
 import { AuthService, SocialUser } from 'angularx-social-login';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -122,6 +123,20 @@ export class UsersService {
     }
     return this.http.put<User>(`http://localhost:3000/api/users/${user.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
   }
+
+  
+  findUsers(
+    user_id='', filter = '', sortOrder = 'asc',
+    pageNumber = 0, pageSize = 20):  Observable<any> {
+
+    return this.http.get('http://localhost:3000/api/users');
+}
+
+  getAvgRating(user:any){
+    
+  }
+
+  //FOR ADMIN
 
   getFilteredAdmins(): Admin[] {
     return this._admins.getValue().filter((admin)=> {

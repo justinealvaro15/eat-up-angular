@@ -26,6 +26,10 @@ export class ReviewsService {
         return this.http.get<Review[]>(`http://localhost:3000/api/reviews/${shopId}`);
     }
 
+    // getReviewsByUserId(userId: string){
+    //     return this.http.get<Review[]>(`http://localhost:3000/api/reviews/${userId}`);
+    // }
+
     addReview(shopId: string, addedReview: AddedReview) {
         const payload =  {
             user: this.user,
