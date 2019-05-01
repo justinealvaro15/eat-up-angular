@@ -32,8 +32,6 @@ export class MapComponent implements OnInit {
       })
     }); 
 
-  	console.log(this.shop.coordinates.long);
-    console.log(this.shop.coordinates.lat);
     this.options = {
     layers: [
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
