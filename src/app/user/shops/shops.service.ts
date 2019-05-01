@@ -56,7 +56,35 @@ export class ShopsService {
     getShopsDisplay() {
         return this.http.get<Shop[]>('http://localhost:3000/api/shops');
     }
-
+    //NEW
+    getUsersAddedBrandedFoodItem (shopId: string, user_id:string) {
+        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/food/Branded/${user_id}`);
+    }
+    getUsersAddedStreetFoodItem (shopId: string, user_id:string) {
+        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/food/StreetFoods/${user_id}`);
+    }
+    getUsersAddedSweetFoodItem (shopId: string, user_id:string) {
+        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/food/Sweets/${user_id}`);
+    }
+    getUsersAddedSandwichFoodItem (shopId: string, user_id:string) {
+        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/food/Sandwiches/${user_id}`);
+    }
+    getUsersAddedPastaNoodleFoodItem (shopId: string, user_id:string) {
+        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/food/PastaNoodles/${user_id}`);
+    }
+    getUsersAddedMealFoodItem (shopId: string, user_id:string) {
+        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/food/Meals/${user_id}`);
+    }
+    getUsersAddedMeryendaFoodItem (shopId: string, user_id:string) {
+        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/food/Meryenda/${user_id}`);
+    }
+    getUsersAddedBrandedBeverageItem (shopId: string, user_id:string) {
+        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/beverage/Branded/${user_id}`);
+    }
+    getUsersAddedInHouseBeverageItem (shopId: string, user_id:string) {
+        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/beverage/InHouse/${user_id}`);
+    }
+    //END NEW
     updateShopList() {
         this.getShopsDisplay().toPromise().then((shops) => {
             this._shops.next(shops);
@@ -217,7 +245,7 @@ export class ShopsService {
             and figures out whether the chosen building of the user
             is near one of those shops.
         */
-        if (!this.filter.location) {
+        if (!this.filter.location || this.filter.location==0) {
             return filteredShops;
         }
 

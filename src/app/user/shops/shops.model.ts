@@ -60,6 +60,7 @@ export class Consumables {
     c_name: string;
     price: number;
     c_avg_rating?: number;
+    user_id?:string;
     username?: string;
     amount?: string;
     active?: boolean;

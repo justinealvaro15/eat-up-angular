@@ -34,7 +34,7 @@
   <ng-container matColumnDef="addedMenuItems">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> 
       <div class="center-menu" > Menu Items Added </div> </th>
-    <td mat-cell *matCellDef="let user"> 0 </td>
+    <td mat-cell *matCellDef="let user;let m = index"> {{numOfMenuItemsAddedByUsers[m]}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

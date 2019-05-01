@@ -83,6 +83,7 @@ export class MenuItemComponent implements OnInit {
         const newMenu: Consumables | BrandedConsumables = {
           c_name: result.name,
           price: result.price,
+          user_id: this.user.id,
           username: this.user.name,
           active: this.shop[result.group][result.type][index].active
         };
