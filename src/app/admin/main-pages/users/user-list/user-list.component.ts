@@ -72,8 +72,8 @@ export class UserListComponent implements OnInit, OnDestroy {
       data: {
           user_id: user.user_id,
           first_name: user.first_name,
-          last_name: user.last_name
-          //photoUrl:
+          last_name: user.last_name,
+          photoUrl: user.photoUrl
       }
     });
 
@@ -84,6 +84,7 @@ export class UserListComponent implements OnInit, OnDestroy {
            user_id: result.user_id,
            first_name: result.first_name,
            last_name: result.last_name,
+           photoUrl: result.photoUrl,
            admin_since: {
              year: date.getFullYear(),
              month: date.getMonth(),
@@ -171,7 +172,8 @@ export class MakeAdminDialog {
     return { 
       user_id: this.data.user_id,
       first_name: this.data.first_name,
-      last_name: this.data.last_name
+      last_name: this.data.last_name,
+      photoUrl: this.data.photoUrl
     }
   }
 }
