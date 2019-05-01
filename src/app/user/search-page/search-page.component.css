@@ -2,3 +2,9 @@ span {
     padding: 0 10px;
     font-style: italic;
 }
+
+.msg {
+    font-size: 14px;
+    color: black;
+    margin-top: 10px;
+}
