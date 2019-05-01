@@ -38,7 +38,7 @@ export interface Admin {
   user_id: string;
   first_name: string;
   last_name:string;
-  //photoUrl: string;
+  photoUrl: string;
   admin_since: { //DATE
     year: number;
     month: number;
