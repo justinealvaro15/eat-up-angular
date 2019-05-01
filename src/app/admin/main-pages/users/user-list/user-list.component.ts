@@ -54,7 +54,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   getFilteredUsers() {
     this.users = this.usersService.getFilteredUsers();
- 
+
   }
 
   isAdmin(user:User): boolean {
@@ -94,8 +94,9 @@ export class UserListComponent implements OnInit, OnDestroy {
            }
            //photoUrl:
          };
+        
         this.usersService.addAdmin(newAdmin);
-        this.usersService.adminStatus(newAdmin);
+        this.usersService.isAdminStatusToTrue(newAdmin);
         window.alert(result.first_name + " is now an Admin"); 
         window.location.reload();
          
@@ -211,7 +212,6 @@ export class DeacUserDialog {
 
   onYesClick() { //or on deactivate user
     const date = new Date();
-    console.log("deac yes");
     return {
       user_id : this.data.user_id,
       first_name: this.data.first_name,

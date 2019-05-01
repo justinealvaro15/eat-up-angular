@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SocialUser } from "angularx-social-login";
+import { AuthService } from "angularx-social-login";
 
 declare const $: any;
 declare interface RouteInfo {
@@ -29,11 +31,18 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
-
-  constructor() { }
+  public  user: SocialUser;
+  public loggedIn: boolean;
+  constructor(
+    private authService:AuthService
+  ) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
   }
   isMobileMenu() {
       if ($(window).width() > 991) {

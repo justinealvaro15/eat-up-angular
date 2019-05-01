@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import {UsersService} from '../../main-pages/users/users.service';
+import {AppService, FilterKeys} from '../../../app.service';
+import {PageViews} from '../../../page-views.model';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,8 +11,17 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  totalPageViews:PageViews[];
+  totalHomePageViews: number;
 
-  constructor() { }
+  constructor(
+    private usersservice:UsersService,
+    public appService: AppService
+  ) { }
+
+  totalUserCount(): number {
+    return this.usersservice.getFilteredUsers().length;
+  }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -145,6 +158,11 @@ export class DashboardComponent implements OnInit {
 
       //start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
+  }
+
+  getTotalHomePageViews() {
+    this.appService.setFilter(FilterKeys.Page_Name,"HomePage");
+    return this.appService.getPageViews()[0].total_views;;
   }
 
 }

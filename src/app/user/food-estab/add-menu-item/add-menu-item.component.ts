@@ -7,7 +7,7 @@ import { ShopsService } from './../../../user/shops/shops.service';
 import { FoodGroup, AddedMenu, FoodBeveragesMapping } from '../food-group';
 
 export interface DialogData {
-  foodGroup: FoodGroup[];
+  foodGroups: FoodGroup[];
   foodGroupControl: FormControl;
   addFoodFormGroup: FormGroup;
   isEdit?: boolean;
@@ -127,7 +127,6 @@ export class AddMenuItemDialog {
   width1 = 250;
   width2 = 100;
   height = 100;
-
   constructor(
     public dialogRef: MatDialogRef<AddMenuItemDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {

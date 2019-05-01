@@ -60,6 +60,7 @@ export class AdminsListComponent implements OnInit {
       
        dialogRef.afterClosed().subscribe((result: any) => {
             this.usersService.deactivateAdmin(result);
+            this.usersService.isAdminStatusToFalse(result);
             window.location.reload();
        });
   }

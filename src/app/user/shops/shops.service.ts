@@ -94,7 +94,6 @@ export class ShopsService {
     getShops(): BehaviorSubject<Shop[]> {
         return this._shops
     }
-
     getShopByHighestId() {
         return this.http.get<Shop>('http://localhost:3000/api/shops/highest');
     }
@@ -246,8 +245,7 @@ export class ShopsService {
     
         const isFoodEstabName = shop.fe_name.toLowerCase().includes(this.filter.fcs.toLowerCase());
 
-        const hasConsumableInFoodEstab = this.isConsumableInFoodEstab(shop); //not workin
-        console.log("IN isFCSMatch");
+        const hasConsumableInFoodEstab = this.isConsumableInFoodEstab(shop); 
         return isFoodEstabName || hasConsumableInFoodEstab;
     }
 

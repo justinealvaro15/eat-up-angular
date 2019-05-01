@@ -31,4 +31,10 @@ a{
   text-decoration: none;
 }
 
-
+.content-display-msg{
+  margin-top: 50%;
+  font-family: ralewaylight;
+  font-size: 22px;
+  line-height: 35px;
+  text-align: center;
+}

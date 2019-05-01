@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar fxHide.sm fxHide.md   fxHide.lg fxHide.xl color="primary">
     <button
       type="button"
       aria-label="Toggle sidenav"
@@ -7,17 +7,11 @@
         fxHide.md fxHide.lg fxHide.xl>
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
-    <a href="/">
-      <span fxHide.md   fxHide.lg fxHide.xl>eatUP</span>
+    <a href="/eat-up">
+      <span fxHide.sm fxHide.md   fxHide.lg fxHide.xl>eatUP</span>
     </a>
-  
-    <div id="container" fxFlex fxLayout="row" fxLayoutAlign="space-around center" fxHide.xs  fxHide.sm  >
-      <app-google-auth [header] = "true" [sidenav] = "false"></app-google-auth>
-      <a href="#"class="child">Home</a>
-      <a href="#" class="child">| eatUP |</a>
-      <a href="#" class="child">Settings</a>
-      <a href="#" class="child">About eatUP</a>
-      <a href="#" class="child" id="child7">Contact Us</a>
-      </div>
-    
   </mat-toolbar>
+
+<div class="content-display-msg" fxHide.xs>
+    Tablet and Desktop versions will be released soon!
+</div>

@@ -1,9 +1,15 @@
 <br style = "line-height:8;">
 
 <div class="search-box-input">
-   <div [formGroup]="filter" class = "search">
-      <input type="text" placeholder="username" (keyup.enter)="setFilters()" formControlName="name_or_id">
-      <button class="magnifying_glass" (click)="setFilters()"></button>   
+   <div fxLayout = "row" [formGroup]="filter" class = "search">
+      <div class="search-container">
+         <input type="text" placeholder="username" (keyup.enter)="setFilters()" formControlName="name_or_id">
+      </div>
+      <div class="search-button-container">
+            <button class="magnifying_glass" (click)="setFilters()">
+                <mat-icon class="search-icon"> search </mat-icon>
+            </button>
+        </div>
   </div>
 </div>
 

@@ -1,7 +1,7 @@
 <div  *ngIf = "admins">
   <div *ngFor="let admin of admins">
     <hr>
-      <mat-grid-list cols="5" rowHeight="75px">
+      <mat-grid-list cols="5" rowHeight="55px">
             <mat-grid-tile colspan="1">
                 <img class = "admin-picture" [src]="admin.photoUrl" alt="admin-picture">
             </mat-grid-tile>
@@ -9,7 +9,7 @@
             <mat-grid-tile colspan="2">
                 <div fxLayout = "row">
                     <div class = "admin-name"> {{admin.first_name}} {{admin.last_name}}</div>
-                   <!-- <div class = "admin-email"> rpferia@up.edu.ph </div>-->
+                    <div class = "admin-email">Admin Since: {{admin.admin_since.day}}/{{admin.admin_since.month}}/{{admin.admin_since.year}} {{admin.admin_since.hour}}:{{admin.admin_since.minute}}:{{admin.admin_since.second}} </div>
                 </div>
             </mat-grid-tile>
             <mat-grid-tile colspan="2">

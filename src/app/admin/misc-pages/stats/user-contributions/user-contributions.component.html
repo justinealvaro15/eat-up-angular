@@ -1,42 +1,52 @@
 <br style = "line-height:8;">
-<table mat-table [dataSource]="dataSource" matSort>
+
+
+<table mat-table [dataSource]="dataSource" (load)="getAvgRatingAndNumOfRatings()" matSort>
 
   <!-- Position Column -->
   <ng-container matColumnDef="position">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-    <td mat-cell *matCellDef="let user"> {{user.position}} </td>
+    <td mat-cell *matCellDef="let j = index;"> {{(j+1) + (paginator.pageIndex * paginator.pageSize)}} </td>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> 
       <div class="center">User Name</div> </th>
-    <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+    <td mat-cell *matCellDef="let user"> {{user.first_name}} {{user.last_name}} </td>
   </ng-container>
 
   <!-- Average Rating Column -->
   <ng-container matColumnDef="aveRating" colspan = 2>
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
       <div class="center"> Ave. Ratings </div>  </th>
-    <td mat-cell *matCellDef="let user"> {{user.aveRating}} </td>
+    <td mat-cell *matCellDef="let user;let k = index;"> {{avgRatingOfUsers[k]}} </td>
   </ng-container>
 
   <!-- Total Reviews Column -->
   <ng-container matColumnDef="totalReviews">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> 
       <div class="center"> Total Reviews </div> </th>
-    <td mat-cell *matCellDef="let user"> {{user.totalReviews}} </td>
+    <td mat-cell *matCellDef="let user;let l = index;"> {{numOfRatingOfUsers[l]}} </td>
   </ng-container>
 
     <!-- Menu Items Added Column -->
   <ng-container matColumnDef="addedMenuItems">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> 
       <div class="center-menu" > Menu Items Added </div> </th>
-    <td mat-cell *matCellDef="let user"> {{user.addedMenuItems}} </td>
+    <td mat-cell *matCellDef="let user"> 0 </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-paginator [length]="user?.usersCount" [pageSize]="10"
+  [pageSizeOptions]="[10, 15, 20]"></mat-paginator>
 </table>
+
+
 
 <footer> Eat UP Copyright 2019</footer>

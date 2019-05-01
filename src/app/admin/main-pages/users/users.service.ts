@@ -1,9 +1,10 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User, Admin } from './user.model';
 import { AuthService, SocialUser } from 'angularx-social-login';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,7 @@ export class UsersService {
   }
 
   updateAdminList() {
-    this.getAdminsDisplay().toPromise().then((admins) => {
+    this.getAdminsDisplay().toPromise().then((admins) => {                          
       this._admins.next(admins);
   })
   }
@@ -97,11 +98,11 @@ export class UsersService {
         deactivated_by: user.deactivated.deactivated_by,
         deactivated_on: {
           year:user.deactivated.deactivated_on.year,
-          month:user.deactivateUser.deactivated_on.month,
-          day: user.deactivateUser.deactivated_on.day,
-          hour: user.deactivateUser.deactivated_on.hour,
-          minute: user.deactivateUser.deactivated_on.minute,
-          second: user.deactivateUser.deactivated_on.second,
+          month:user.deactivated.deactivated_on.month,
+          day: user.deactivated.deactivated_on.day,
+          hour: user.deactivated.deactivated_on.hour,
+          minute: user.deactivated.deactivated_on.minute,
+          second: user.deactivated.deactivated_on.second,
         }
       },
       active: true
@@ -123,19 +124,43 @@ export class UsersService {
     return this.http.put<User>(`http://localhost:3000/api/users/${user.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
   }
 
+  
+  findUsers(
+    user_id='', filter = '', sortOrder = 'asc',
+    pageNumber = 0, pageSize = 20):  Observable<any> {
+
+    return this.http.get('http://localhost:3000/api/users');
+}
+
+  getAvgRating(user:any){
+    
+  }
+
+  //FOR ADMIN
+
   getFilteredAdmins(): Admin[] {
     return this._admins.getValue().filter((admin)=> {
       return this.isAdminIdMatch(admin);
     });
   }
 
-  adminStatus (user:any) {
+  isAdminStatusToTrue (user:any) {
     const payload = {
       user,
       isAdmin: true
     }
     return this.http.put<User>(`http://localhost:3000/api/users/${user.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
   }
+
+  isAdminStatusToFalse (admin:any) {
+    const payload = {
+      admin,
+      isAdmin: false
+    }
+    return this.http.put<User>(`http://localhost:3000/api/users/${admin.user_id} `,payload).toPromise().then((res)=>{console.log(res); });
+  }
+
+
   addAdmin(newAdmin: Admin) {
     return this.http.post<Admin>('http://localhost:3000/api/admin', newAdmin).subscribe();
   }
@@ -144,6 +169,9 @@ export class UsersService {
     return this.http.delete<User>(`http://localhost:3000/api/admin/${admin.user_id} `).toPromise().then((res)=>{console.log(res); });
   }
 
+  private avgRatingsGiven(user:User): number {
+    return 0;
+  }
 
   private isAdminIdMatch(admin: Admin): boolean {
     if (!this.filter.name_or_id) {

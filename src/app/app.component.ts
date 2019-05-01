@@ -18,5 +18,6 @@ export class AppComponent {
     this.loadingScreenService.getIsLoading().subscribe(value => {
       Promise.resolve().then(() => this.isLoading = value);
     });
+
   }
 }

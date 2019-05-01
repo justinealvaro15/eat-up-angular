@@ -5,6 +5,8 @@ import { map } from 'rxjs/operators';
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 import { UsersService } from "../admin/main-pages/users/users.service";
+import {AppService} from '../app.service';
+
 
 @Component({
   selector: 'user-root',
@@ -23,7 +25,8 @@ export class UserComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private authService: AuthService,
-    private usersService:UsersService
+    private usersService:UsersService,
+    public appService:AppService
     ) {}
 
   ngOnInit() {
@@ -33,7 +36,7 @@ export class UserComponent {
       this.userLastActiveUpdate();
     });
 
-    
+    this.appService.incTotalPageViews("HomePage");
   }
   
   userLastActiveUpdate(){

@@ -3,8 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
-import { User } from "../../../admin/main-pages/users/user.model";
-import { UsersService, FilterKeys } from "../../../admin/main-pages/users/users.service";
+import { User } from "../admin/main-pages/users/user.model";
+import { UsersService, FilterKeys } from "../admin/main-pages/users/users.service";
 
 @Component({
   selector: 'app-google-auth',
@@ -26,7 +26,6 @@ export class GoogleAuthComponent implements OnInit {
       this.user = user;
       this.loggedIn = (user != null);
     });
-
   }
 
   constructor(
@@ -45,6 +44,9 @@ export class GoogleAuthComponent implements OnInit {
      
     ); 
 
+  }
+  signOut(): void {
+    this.authService.signOut();
   }
 
 
@@ -91,12 +93,9 @@ export class GoogleAuthComponent implements OnInit {
         this.usersService.addUser(newUser);
   }
   
-  signOut(): void {
-    this.authService.signOut();
-  }
+ 
 
   updateLastActive () {
-    console.log("PRINT IS YOUR FRIEND");
     const date = new Date();
     const lastActiveUpdate = {
       user_id: this.user.id,

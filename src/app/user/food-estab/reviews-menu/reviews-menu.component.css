@@ -5,6 +5,7 @@ mat-tab-group, mat-tab{
 .mat-tab-header {
     z-index: 9999;
     position: sticky !important;
+    position: -webkit-sticky !important; /*for ios*/
     top: 52px;
     background-color: white !important;
 }
@@ -38,6 +39,13 @@ mat-tab-group, mat-tab{
     margin: 6px;
 }
 
+.no-reviews{
+    margin-top: 40px;
+    font-family: ralewaylight;
+    text-align: center;
+    font-size: 16px;
+}
+
 footer{
     position: absolute;
     font-size: 10px;
@@ -45,3 +53,9 @@ footer{
     left: 13px;
     margin-bottom: 5px;
   }
+
+.button-add-rating-review{
+    display: inline-block;
+    margin-left: 30%;
+    margin-bottom: 10px;
+}

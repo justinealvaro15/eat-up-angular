@@ -20,7 +20,7 @@ export class RatingsReviewsComponent{
   filteredShops: Shop[] = [];
   subscriptions: Subscription[] = [];
   reviews: Review[] = [];
-
+  filter: any;
   constructor(
     private shopService: ShopsService,
     private reviewService: ReviewsService,
