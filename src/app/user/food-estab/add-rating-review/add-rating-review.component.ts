@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { SocialUser } from "angularx-social-login";
 import { AuthService } from "angularx-social-login";
 import { ReviewsService } from 'app/user/reviews/reviews.service';
-import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Shop } from 'app/user/shops/shops.model';
 import { Review } from 'app/user/reviews/reviews.model';
 import * as moment from 'moment';
@@ -52,8 +52,8 @@ export class AddRatingReviewComponent {
       this.loggedIn = (user != null);
     });
     this.addReviewFormGroup = this.formBuilder.group({
-      rating: new FormControl(),
-      review: new FormControl()
+      rating: new FormControl('', [Validators.required]),
+      review: new FormControl('', [Validators.required])
     });
     // this.reviewService.getReviewsByNewest(this.shop.fe_id).subscribe((reviews) => {
     //   this.reviews = reviews;
