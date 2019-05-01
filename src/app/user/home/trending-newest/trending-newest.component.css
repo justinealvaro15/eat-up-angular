@@ -1,6 +1,11 @@
+mat-tab-group, mat-tab{
+    width: 100%;
+}
+
 .mat-tab-header {
     z-index: 9999;
     position: sticky !important;
+    position: -webkit-sticky !important; /*for ios*/
     top: 52px;
     background-color: white !important;
 }
@@ -21,6 +26,7 @@
     color:black;
     font-weight: 700;
 }
+
 
 footer{
     position: relative;

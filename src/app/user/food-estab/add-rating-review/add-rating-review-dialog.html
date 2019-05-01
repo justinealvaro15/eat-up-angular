@@ -7,7 +7,7 @@
 
   <mat-form-field [ngStyle]="{'font-size.px': size, 'width.px': width}" appearance="outline"  class="example-form">
     <mat-label>{{ data.isEdit ? 'Edit review' : 'Add review' }}</mat-label>
-    <input  matInput formControlName="review" #input2 maxlength="300" class="field">
+    <input  matInput formControlName="review" #input2 maxlength="300" class="field" required>
     <mat-hint align="end">{{input2.value?.length || 0}}/300</mat-hint>
   </mat-form-field>
 </div>

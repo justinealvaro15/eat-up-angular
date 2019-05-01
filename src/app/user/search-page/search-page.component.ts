@@ -36,6 +36,13 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
 
   getFilteredShops() {
-    this.shops = this.shopService.getFilteredShops();
+    this.shops = this.shopService.getFilteredShops().sort((a, b) => {
+      if (a.fe_avg_rating > b.fe_avg_rating) {
+        return -1;
+      } else if (a.fe_avg_rating < b.fe_avg_rating) {
+        return 1;
+      }
+      return 0;
+    });;
   }
 }

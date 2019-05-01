@@ -1,7 +1,7 @@
 import { Component, Inject, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { SocialUser, AuthService } from "angularx-social-login";
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Shop, Consumables, BrandedConsumables } from './../../../user/shops/shops.model';
 import { ShopsService } from './../../../user/shops/shops.service';
 import { FoodGroup, AddedMenu, FoodBeveragesMapping } from '../food-group';
@@ -64,9 +64,9 @@ export class AddMenuItemComponent {
     });
     this.addFoodFormGroup = this.formBuilder.group({
       foodCategoryAndType: new FormControl(),
-      name: new FormControl(),
-      price: new FormControl(),
-      amount: new FormControl()
+      name: new FormControl('', [Validators.required]),
+      price: new FormControl('', [Validators.required]),
+      amount: new FormControl('', [Validators.required])
     })
   }
 
