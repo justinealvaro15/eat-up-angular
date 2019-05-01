@@ -1,4 +1,6 @@
-
+.mat-dialog-container {
+    border-radius:0px !important;
+}
 .deactivated.mat-card {
     margin-top: 20px;
     width: 75%;
