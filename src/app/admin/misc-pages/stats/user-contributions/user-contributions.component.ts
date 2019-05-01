@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import {Component, OnInit, ViewChild, AfterViewInit, Input} from '@angular/core';
 import {MatSort, MatTableDataSource, MatPaginator} from '@angular/material';
 import {UsersService} from '../../../main-pages/users/users.service';
 import {User} from '../../../main-pages/users/user.model';
@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 import { finalize,catchError, tap, startWith } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import {ActivatedRoute} from '@angular/router';
-import {ReviewsService} from '../../../../user/reviews/reviews.service';
+import {ReviewsService, FilterKeys} from '../../../../user/reviews/reviews.service';
 import {Review} from '../../../../user/reviews/reviews.model';
 
 export interface PeriodicElement {
@@ -44,11 +44,15 @@ export class UserContributionsComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = ['position', 'name', 'aveRating', 'totalReviews', 'addedMenuItems'];
   user: User;
   users: User[];
-  getUsersSubscription: Subscription;
-  count:number = 0;
   dataSource : UsersTableDataSource;
   usersReviews: Review[];
-  reviews: Review[];
+  @Input() reviews: Review[];
+  filter_reviews:Review[];
+  getReviewsSubscription: Subscription;
+  getUserSubscription:Subscription;
+  getFilteredUserSubscription:Subscription;
+  avgRatingOfUsers: any[]=[];
+  numOfRatingOfUsers:any[]=[];
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -62,21 +66,24 @@ export class UserContributionsComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
 
-  //   this.countUsers();
-  //   this.getUsersSubscription = this.usersService.getUsersDisplay().subscribe((users) => { //For Initialization
-  //     this.getFilteredUsers();
-  //  });
-  //   this.getFilteredUsers();
     this.user = this.route.snapshot.data["user"];
     this.dataSource = new UsersTableDataSource(this.usersService);
     this.dataSource.loadUsers();
     //this.dataSource.sort = this.sort;
-    this.reviewsService.getAllReviews().subscribe((reviews) => {
-       this.reviews = reviews;//reviews is accessed
-      console.log(this.reviews);
+
+    this.getReviewsSubscription = this.reviewsService.getAllReviews().subscribe((reviews) => {
+      this.getReviews();
     });
-    console.log(this.reviews);
-    this.getAvgRating("108629913234861088608");
+    this.getUserSubscription = this.usersService.getUsersDisplay().subscribe((filter) => { 
+      this.getFilteredUsers();
+      this.getAvgRatingAndNumOfRatings();
+    });
+    this.getFilteredUsers();
+    this.getReviews();
+    //this.getAvgRatingAndNumOfRatings();
+  
+ 
+  
   }
 
   ngAfterViewInit() {
@@ -88,6 +95,13 @@ export class UserContributionsComponent implements AfterViewInit, OnInit {
             .subscribe();
   }
 
+  ngOnDestroy() {
+    try {
+      this.getUserSubscription.unsubscribe();
+      this.getReviewsSubscription.unsubscribe();
+    } catch { }
+  }
+
   loadUsersPage() {
     this.dataSource.loadUsers(
       "",
@@ -97,24 +111,54 @@ export class UserContributionsComponent implements AfterViewInit, OnInit {
       this.paginator.pageSize);
   }
 
+   
+
   getFilteredUsers() {
-    this.users = this.usersService.getFilteredUsers();
+    this.users = this.usersService.getFilteredUsers();  
   }
 
-  getAvgRating(user_id:string) {
-    this.usersReviews = this.getFilteredReviews(user_id);
-    console.log(this.usersReviews);
-    //return this.usersService.getAvgRating(user);
+  getReviews() {
+    this.reviews = this.reviewsService.getFilteredReviews();
+    //console.log("review list: "+this.reviews[0]);
   }
 
-
-  getFilteredReviews(user_id:string): Review[] {
-    console.log(this.reviews);
-    return (this.user ? this.reviews.filter(_review => {
-      return _review.user_id !== user_id;
-    }) : this.reviews) || [];
+  getFilteredReviews() {
+    this.filter_reviews = this.reviewsService.getFilteredReviews();
+   
   }
+
+  getAvgRatingAndNumOfRatings() {
+   
+    var i;
+    var users = this.usersService.getFilteredUsers();
+
+    for (i=0;i<users.length;i++) { //this.users.length
+      this.reviewsService.setFilter(FilterKeys.USER_ID,users[i].user_id);
+      this.getFilteredReviews();
+      this.avgRatingOfUsers.push(this.getAvg());
+      this.numOfRatingOfUsers.push(this.filter_reviews.length);
+    }
+
+  
+  }
+
+  getAvg(): string{
+    var sum = 0;
+    var j = 0;
+  
+ 
+    for (j=0;j<this.filter_reviews.length;j++){
+      sum = sum + this.filter_reviews[j].rating;
+    }
+
+  
+    var avg = (sum/this.filter_reviews.length).toFixed(2);
+    
+    return avg;
+  }
+
 }
+
 
 export class UsersTableDataSource implements DataSource<User> {
   private usersSubject = new BehaviorSubject<User[]>([]);

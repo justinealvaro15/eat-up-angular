@@ -1,7 +1,7 @@
 <br style = "line-height:8;">
 
 
-<table mat-table [dataSource]="dataSource" matSort>
+<table mat-table [dataSource]="dataSource" (load)="getAvgRatingAndNumOfRatings()" matSort>
 
   <!-- Position Column -->
   <ng-container matColumnDef="position">
@@ -20,14 +20,14 @@
   <ng-container matColumnDef="aveRating" colspan = 2>
     <th mat-header-cell *matHeaderCellDef mat-sort-header>
       <div class="center"> Ave. Ratings </div>  </th>
-    <td mat-cell *matCellDef="let user"> 1 </td>
+    <td mat-cell *matCellDef="let user;let k = index;"> {{avgRatingOfUsers[k]}} </td>
   </ng-container>
 
   <!-- Total Reviews Column -->
   <ng-container matColumnDef="totalReviews">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> 
       <div class="center"> Total Reviews </div> </th>
-    <td mat-cell *matCellDef="let user"> 0 </td>
+    <td mat-cell *matCellDef="let user;let l = index;"> {{numOfRatingOfUsers[l]}} </td>
   </ng-container>
 
     <!-- Menu Items Added Column -->
@@ -43,7 +43,8 @@
   <div class="spinner-container" *ngIf="dataSource.loading$ | async">
     <mat-spinner></mat-spinner>
   </div>
-  
+  <mat-paginator [length]="user?.usersCount" [pageSize]="10"
+  [pageSizeOptions]="[10, 15, 20]"></mat-paginator>
 </table>
 
 

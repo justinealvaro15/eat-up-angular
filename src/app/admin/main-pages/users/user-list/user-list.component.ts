@@ -54,7 +54,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   getFilteredUsers() {
     this.users = this.usersService.getFilteredUsers();
- 
+
   }
 
   isAdmin(user:User): boolean {
