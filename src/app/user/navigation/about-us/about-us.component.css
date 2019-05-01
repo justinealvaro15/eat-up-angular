@@ -122,15 +122,15 @@ p{
   width: 150px;
   height: 150px;
   bottom: 0px;
-  margin-bottom: 40%;
+  margin-bottom: 0%;
   align-self: center;
   padding: 10px 0px 10px 0px;
 }
 
 
 
-img{
+.detail-bottom{
   position: absolute;
-  bottom: 0px;
+  bottom: 0%;
   width: 100%;
 }
