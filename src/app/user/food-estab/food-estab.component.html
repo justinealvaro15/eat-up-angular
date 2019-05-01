@@ -27,7 +27,7 @@
                         <div class="shop-name"> {{shop.fe_name}} </div>
                             <div fxLayout="row">
                                 <app-stars [stars]="shop.fe_avg_rating"></app-stars>
-                                <div class = "rating-with-dot"> &middot; {{shop.fe_avg_rating || "Not yet rated"}}</div>
+                                <div class = "rating-with-dot"> &middot; {{shop.fe_avg_rating.toFixed(2) || "Not yet rated"}}</div>
                                 <!--<div class = "rating-with-dot">  ( {{shop.no_of_ratings}} )  </div> -->
                             </div>
                             <div fxLayout="row" class= "addr"> {{shop.address}} </div>
@@ -61,40 +61,62 @@
             
             <mat-grid-tile rowspan="3"  colspan="5">
                 <div>
-                    <mat-button-toggle-group #group="matButtonToggleGroup" value="" value="{{shop.AddlTakeOutCost || 'Free'}}">
-                        <mat-button-toggle value="{{shop.AddlTakeOutCost || 'Free'}}" aria-label="Text align left"  >
+                    <mat-button-toggle-group #group="matButtonToggleGroup">
+                        <mat-button-toggle value="1" aria-label="Text align left"  >
                             <div><mat-icon class = "addtl-details-icons">work</mat-icon></div>
                             <div class = "addtl-details-name"> Takeout</div>
                             <div class = "addtl-details-name" style="left:10px; top: 30px;"> Cost </div>
                         </mat-button-toggle>
     
-                        <mat-button-toggle value="{{shop.FreeWater || 'No'}}" >
+                        <mat-button-toggle value="2" >
                             <mat-icon class = "addtl-details-icons">local_drink</mat-icon>
                             <div class = "addtl-details-name" style="left:15px"> Free </div>
                             <div class = "addtl-details-name" style="left:10px; top: 30px;"> Water </div>
                         </mat-button-toggle>
     
-                        <mat-button-toggle value="{{shop.BYOBIncentive}}" fxFlex>
+                        <mat-button-toggle value="3" fxFlex>
                             <mat-icon class = "addtl-details-icons">video_label</mat-icon>
                             <div class = "addtl-details-name" style="left:10px"> BYOB </div>
                             <div class = "addtl-details-name" style="left:3px; top: 30px;" > Incentive </div>
                         </mat-button-toggle>
     
-                        <mat-button-toggle value="{{shop.SeatingCapacity}}" >
+                        <mat-button-toggle value="4" >
                             <mat-icon class = "addtl-details-icons">airline_seat_recline_normal</mat-icon>
                             <div class = "addtl-details-name"> Seating </div>
                             <div class = "addtl-details-name" style="top:30px"> Capacity </div>
                         </mat-button-toggle>
     
-                        <mat-button-toggle value="{{shop.CLAYGO}}" >
+                        <mat-button-toggle value="5" >
                             <mat-icon class = "addtl-details-icons">transfer_within_a_station</mat-icon>
                             <div class = "addtl-details-name"> CLAYGO</div>
                         </mat-button-toggle>
                     </mat-button-toggle-group>
     
                     <div fxLayout= "row" class="info-container">
-                        <div class="addtl-details-info"> Info: </div> 
-                        <div class="addtl-details-info" style="font-family: ralewayregular; margin-left: 3px"> {{group.value}} </div> 
+                        <div *ngIf="group.value == '1'">
+                            <div class="addtl-details-info"> Additional Takeout Cost:  </div> 
+                            <div class="addtl-details-info" style="font-family: ralewayregular; margin-left: 3px">{{shop.AddlTakeOutCost || 'Free'}}</div>
+                        </div>
+
+                        <div *ngIf="group.value == '2'">
+                            <div class="addtl-details-info"> Free Water:  </div> 
+                            <div class="addtl-details-info" style="font-family: ralewayregular; margin-left: 3px">{{shop.FreeWater || 'No'}}</div>
+                        </div>
+
+                        <div *ngIf="group.value == '3'">
+                            <div class="addtl-details-info"> Bring Your Own Baunan Incentive:  </div> 
+                            <div class="addtl-details-info" style="font-family: ralewayregular; margin-left: 3px">{{shop.BYOBIncentive || "None"}}</div>
+                        </div>
+
+                        <div *ngIf="group.value == '4'">
+                            <div class="addtl-details-info"> Seating Capacity:  </div> 
+                            <div class="addtl-details-info" style="font-family: ralewayregular; margin-left: 3px">{{shop.SeatingCapacity || "None"}}</div>
+                        </div>
+
+                        <div *ngIf="group.value == '5'">
+                            <div class="addtl-details-info"> Clean As You Go:  </div> 
+                            <div class="addtl-details-info" style="font-family: ralewayregular; margin-left: 3px">{{shop.CLAYGO || "No"}}</div>
+                        </div>
                     </div>
                 </div>
             </mat-grid-tile>
