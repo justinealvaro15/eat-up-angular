@@ -63,17 +63,6 @@ export class UserContributionsComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-
-  private _foodBranded: BehaviorSubject<BrandedConsumables[]|Consumables[]> = new BehaviorSubject<BrandedConsumables[]|Consumables[]>([]);
-  private _foodStreetFoods: BehaviorSubject<BrandedConsumables[]|Consumables[]> = new BehaviorSubject<BrandedConsumables[]|Consumables[]>([]);
-  private _foodSweets: BehaviorSubject<BrandedConsumables[]|Consumables[]> = new BehaviorSubject<BrandedConsumables[]|Consumables[]>([]);
-  private _foodSandwiches: BehaviorSubject<BrandedConsumables[]|Consumables[]> = new BehaviorSubject<BrandedConsumables[]|Consumables[]>([]);
-  private _foodPastaNoodles: BehaviorSubject<BrandedConsumables[]|Consumables[]> = new BehaviorSubject<BrandedConsumables[]|Consumables[]>([]);
-  private _foodMeals: BehaviorSubject<BrandedConsumables[]|Consumables[]> = new BehaviorSubject<BrandedConsumables[]|Consumables[]>([]);
-  private _foodMeryenda: BehaviorSubject<BrandedConsumables[]|Consumables[]> = new BehaviorSubject<BrandedConsumables[]|Consumables[]>([]);
-  private _bevBranded: BehaviorSubject<BrandedConsumables[]|Consumables[]> = new BehaviorSubject<BrandedConsumables[]|Consumables[]>([]);
-  private _bevInHouse: BehaviorSubject<BrandedConsumables[]|Consumables[]> = new BehaviorSubject<BrandedConsumables[]|Consumables[]>([]);
-
   constructor(
     private usersService: UsersService,
     private route: ActivatedRoute,
