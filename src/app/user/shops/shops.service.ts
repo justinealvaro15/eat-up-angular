@@ -56,35 +56,7 @@ export class ShopsService {
     getShopsDisplay() {
         return this.http.get<Shop[]>('http://localhost:3000/api/shops');
     }
-    //NEW
-    getUsersAddedBrandedFoodItem (shopId: string, user_id:string) {
-        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/food/Branded/${user_id}`);
-    }
-    getUsersAddedStreetFoodItem (shopId: string, user_id:string) {
-        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/food/StreetFoods/${user_id}`);
-    }
-    getUsersAddedSweetFoodItem (shopId: string, user_id:string) {
-        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/food/Sweets/${user_id}`);
-    }
-    getUsersAddedSandwichFoodItem (shopId: string, user_id:string) {
-        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/food/Sandwiches/${user_id}`);
-    }
-    getUsersAddedPastaNoodleFoodItem (shopId: string, user_id:string) {
-        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/food/PastaNoodles/${user_id}`);
-    }
-    getUsersAddedMealFoodItem (shopId: string, user_id:string) {
-        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/food/Meals/${user_id}`);
-    }
-    getUsersAddedMeryendaFoodItem (shopId: string, user_id:string) {
-        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/food/Meryenda/${user_id}`);
-    }
-    getUsersAddedBrandedBeverageItem (shopId: string, user_id:string) {
-        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/beverage/Branded/${user_id}`);
-    }
-    getUsersAddedInHouseBeverageItem (shopId: string, user_id:string) {
-        return this.http.get<BrandedConsumables[]|Consumables[]>(`http://localhost:3000/api/shops/${shopId}/beverage/InHouse/${user_id}`);
-    }
-    //END NEW
+  
     updateShopList() {
         this.getShopsDisplay().toPromise().then((shops) => {
             this._shops.next(shops);
@@ -203,7 +175,7 @@ export class ShopsService {
             active: active
         }
 
-        this.http.put(`http://localhost:3000/api/admin/deactivate/shop/${shopId}`, payload).subscribe();
+        this.http.put(`/api/admin/deactivate/shop/${shopId}`, payload).subscribe();
     }
 
     private getNearestShops(...args) { //any number of parameters (in this case 0 or 1)
