@@ -10,8 +10,8 @@ import { AuthService } from "angularx-social-login";
   styleUrls: ['./reviews-menu.component.css']
 })
 export class ReviewsMenuComponent implements OnInit {
-  public user: SocialUser;
-  public loggedIn: boolean;
+  private user: SocialUser;
+  private loggedIn: boolean;
 
   constructor(
     private authService: AuthService
