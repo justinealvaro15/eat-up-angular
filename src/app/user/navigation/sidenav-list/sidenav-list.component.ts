@@ -9,7 +9,7 @@ import { AuthService, SocialUser } from 'angularx-social-login';
 export class SidenavListComponent implements OnInit {
   @Output() closeSidenav = new EventEmitter<void>();
   private user: SocialUser;
-  private loggedIn: boolean;
+  public loggedIn: boolean;
 
   constructor(private authService: AuthService) { }
 
