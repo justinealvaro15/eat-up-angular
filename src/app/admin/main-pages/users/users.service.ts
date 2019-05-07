@@ -60,6 +60,12 @@ export class UsersService {
      });
   }
 
+  getDeacUsers(): User[] {
+    return this._users.getValue().filter((user)=> { 
+      return this.isDeacUser(user) ;
+     });
+  }
+
   setFilter(key: FilterKeys, filterValue: string) {
     this.filter[key] = filterValue;
     this.filterChanged.emit(this.filter);
@@ -132,9 +138,7 @@ export class UsersService {
     return this.http.get('http://localhost:3000/api/users');
 }
 
-  getAvgRating(user:any){
-    
-  }
+
 
   //FOR ADMIN
 
@@ -169,8 +173,8 @@ export class UsersService {
     return this.http.delete<User>(`http://localhost:3000/api/admin/${admin.user_id} `).toPromise().then((res)=>{console.log(res); });
   }
 
-  private avgRatingsGiven(user:User): number {
-    return 0;
+  private isDeacUser (user:User):boolean{
+    return !user.active;
   }
 
   private isAdminIdMatch(admin: Admin): boolean {
