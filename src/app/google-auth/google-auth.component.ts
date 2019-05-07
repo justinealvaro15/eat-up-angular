@@ -37,17 +37,18 @@ export class GoogleAuthComponent implements OnInit {
     //window.alert("Sign in with your UP Mail account."); No need since the google log in pop up will inform the user
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(response => {
       this.usersService.setFilter(FilterKeys.Name_Or_Id, this.user.id);
-      console.log(this.usersService.getDeacUsers());
-      
-      if (this.usersService.getDeacUsers().length!=0) {//user is on list of deactivated users
+      if (this.user) { //there is a logged in user
+        if (this.usersService.getDeacUsers().length!=0) {//user is on list of deactivated users
        
-        window.alert("Your account has been deactivated.");
-        this.signOut();
-      } else {
-        if (this.usersService.getFilteredUsers()==[]) { //new user
-          this.addUser();
-        } 
-      }
+          window.alert("Your account has been deactivated.");
+          this.signOut();
+        } else {
+          if (this.usersService.getFilteredUsers()==[]) { //new user
+            this.addUser();
+          } 
+        }
+      }      
+      
       
     }
      
