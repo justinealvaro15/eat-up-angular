@@ -71,12 +71,33 @@ export class AdminComponent implements OnInit {
           let ps = new PerfectScrollbar(elemMainPanel);
           ps = new PerfectScrollbar(elemSidebar);
       }
+
       this.authService.authState.subscribe((user) => {
         this.user = user;
         this.loggedIn = (user != null);
+        console.log("IN");
+        this.adminGuard();
         this.userLastActiveUpdate();
       });
+      this.adminGuard();
 
+
+  }
+
+  adminGuard () {
+    if (this.user) { //If there is a logged in user
+      this.usersService.setFilter(FilterKeys.Name_Or_Id, this.user.id);
+      if (this.usersService.getFilteredAdmins()==[]) { //not admin
+        window.alert("Unauthorized user");
+        window.location.replace('http://localhost:4200/eat-up/user/shops'); 
+      } else {
+        window.alert("Welcome "+this.user.firstName+" "+ this.user.lastName);
+      }
+      this.usersService.setFilter(FilterKeys.Name_Or_Id,"");
+    } else {  //no logged in user
+      window.alert("Unauthorized user");
+      window.location.replace('http://localhost:4200/eat-up/user/shops');
+    }
   }
  
 
