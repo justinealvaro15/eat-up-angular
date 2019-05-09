@@ -14,7 +14,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingHttpInterceptorService } from './loading-http-interceptor.service';
 // import { AuthService } from 'angularx-social-login';
 
-
 const googleLoginOptions: LoginOpt = {
   client_id: "305506356766-0q3pes92ks9buimmcchbtek02f3an0oc",
   scope: 'profile email',
@@ -52,8 +51,9 @@ export function provideConfig() {
   ],
   providers: [{
     provide: AuthServiceConfig,
-    useFactory: provideConfig
-  }, LoadingService
+    useFactory: provideConfig,
+    
+  }, LoadingService,
   ],
   bootstrap: [AppComponent]
 })

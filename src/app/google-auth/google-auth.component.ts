@@ -16,7 +16,6 @@ export class GoogleAuthComponent implements OnInit {
 
   private user: SocialUser;
   public loggedIn: boolean;
-
   //to know whether it was accessed from sidenav or header
   @Input () sidenav: boolean;
   @Input () header: boolean;
@@ -31,10 +30,14 @@ export class GoogleAuthComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private usersService:UsersService
-    ) { }
+    ) {
+    
+     }
+
 
   signInWithGoogle(): void {
     //window.alert("Sign in with your UP Mail account."); No need since the google log in pop up will inform the user
+    
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(response => {
       this.usersService.setFilter(FilterKeys.Name_Or_Id, this.user.id);
       if (this.user) { //there is a logged in user
@@ -47,12 +50,10 @@ export class GoogleAuthComponent implements OnInit {
             this.addUser();
           } 
         }
-      }      
-      
-      
-    }
-     
-    ); 
+      }            
+    }     
+    );
+  
 
   }
   signOut(): void {

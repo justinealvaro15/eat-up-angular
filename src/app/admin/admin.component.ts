@@ -9,8 +9,9 @@ import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 import { UsersService, FilterKeys } from "../admin/main-pages/users/users.service";
 import { GoogleLoginProvider } from "angularx-social-login";
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import {AppService} from '../app.service';
+import { MatDialog, MatDialogRef, MatDialogConfig,MAT_DIALOG_DATA } from '@angular/material';
+import { FormGroup, FormBuilder } from '@angular/forms';
+;
 
 @Component({
   selector: 'app-admin',
@@ -23,7 +24,7 @@ export class AdminComponent implements OnInit {
   private yScrollStack: number[] = [];
   private user: SocialUser;
   public loggedIn: boolean;
-
+  password:string;
   @Input() public adminSignIn: Function;
 
   constructor( 
@@ -31,8 +32,7 @@ export class AdminComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private usersService:UsersService,
-    public dialog: MatDialog,
-    private appService:AppService
+    public dialog: MatDialog
     ) {}
 
   ngOnInit() {    
@@ -71,20 +71,20 @@ export class AdminComponent implements OnInit {
           let ps = new PerfectScrollbar(elemMainPanel);
           ps = new PerfectScrollbar(elemSidebar);
       }
-
-      this.authService.authState.subscribe((user) => {
+     
+      this.authService.authState.subscribe( //does not run when no logged in user
+        (user) => {
         this.user = user;
         this.loggedIn = (user != null);
-        console.log("IN");
-        this.adminGuard();
+        //this.adminGuard();
         this.userLastActiveUpdate();
       });
-      this.adminGuard();
-
-
+  
+      this.passCheck();
   }
 
   adminGuard () {
+    console.log(this.user);
     if (this.user) { //If there is a logged in user
       this.usersService.setFilter(FilterKeys.Name_Or_Id, this.user.id);
       if (this.usersService.getFilteredAdmins()==[]) { //not admin
@@ -94,13 +94,37 @@ export class AdminComponent implements OnInit {
         window.alert("Welcome "+this.user.firstName+" "+ this.user.lastName);
       }
       this.usersService.setFilter(FilterKeys.Name_Or_Id,"");
-    } else {  //no logged in user
+    } 
+    else {  //no logged in user
       window.alert("Unauthorized user");
       window.location.replace('http://localhost:4200/eat-up/user/shops');
     }
   }
- 
 
+  passCheck() : void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "350px";
+    dialogConfig.hasBackdrop = true;
+    dialogConfig.data = {
+      password:this.password
+    }
+    this.dialog.open(PassDialog, dialogConfig);
+
+    const dialogRef = this.dialog.open(PassDialog, dialogConfig);
+
+    
+    dialogRef.afterClosed().subscribe(result => {
+      this.password = result;
+      if (this.password!="cs192kathaeatup5919") {
+        window.location.replace("http://studproj.up.edu.ph/eat-up/user/shops");
+      } else {
+        this.dialog.closeAll();
+      }
+    });
+}
 
   userLastActiveUpdate(){
     const date = new Date();
@@ -146,4 +170,45 @@ export class AdminComponent implements OnInit {
       return bool;
   }
 
+}
+
+export class pw {
+  type: string;
+  pw: string;
+}
+
+@Component ({
+  selector: 'pass-dialog',
+  templateUrl: 'pass-dialog.html'
+})
+
+export class PassDialog {
+  size = 12;
+  width1 = 250;
+  width2 = 100;
+  height = 100;
+  adminPassword:string;
+
+  constructor (
+    public dialogRef: MatDialogRef<PassDialog>,
+    @Inject(MAT_DIALOG_DATA) data
+  ) {
+  }
+
+    ngOnInit() {
+    }
+
+  onNoClick(): void {  //or on activate user
+
+    this.dialogRef.close();
+    window.location.replace('http://studproj.up.edu.ph/eat-up/user/shops');
+   
+  }
+
+  onYesClick() { //or on deactivate user
+    this.dialogRef.close(this.adminPassword);
+
+
+    
+  }
 }

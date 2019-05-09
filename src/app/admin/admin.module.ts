@@ -58,6 +58,7 @@ import { AdminMenuComponent } from './main-pages/food-establishments/admin-food-
 import { AdminMenuItemComponent } from './main-pages/food-establishments/admin-food-estab/admin-menu/admin-menu-item/admin-menu-item.component';
 import { AdminAddMenuItemComponent, AdminAddMenuItemDialog } from './main-pages/food-establishments/admin-food-estab/admin-menu/admin-add-menu-item/admin-add-menu-item.component';
 import { MatPaginatorModule, MatProgressSpinnerModule} from "@angular/material";
+import {PassDialog} from './admin.component';
 
 @NgModule({
   imports: [
@@ -112,6 +113,7 @@ import { MatPaginatorModule, MatProgressSpinnerModule} from "@angular/material";
     AcUserDialog,
     DeacAdminDialog,
     AddShopDialog,
+    PassDialog,
     ShopCardAdminComponent,
     AdminsListComponent,
     AdminSearchComponent,
@@ -130,7 +132,8 @@ import { MatPaginatorModule, MatProgressSpinnerModule} from "@angular/material";
     AddShopDialog,
     AdminAddMenuItemDialog,
     DeacAdminDialog,
-    AddShopDialog
+    AddShopDialog,
+    PassDialog
   ]
 })
 
