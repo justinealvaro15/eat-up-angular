@@ -10,6 +10,8 @@ import { Observable } from 'rxjs/Observable';
   providedIn: 'root'
 })
 export class UsersService {
+  private loggedInUserId= new BehaviorSubject(null);
+  currentLoggedInUserId = this.loggedInUserId.asObservable();
 
   constructor(     
     private authService: AuthService,

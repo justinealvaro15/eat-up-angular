@@ -46,7 +46,7 @@ export class GoogleAuthComponent implements OnInit {
           window.alert("Your account has been deactivated.");
           this.signOut();
         } else {
-          if (this.usersService.getFilteredUsers()==[]) { //new user
+          if (this.usersService.getFilteredUsers().length==0) { //new user
             this.addUser();
           } 
         }
@@ -63,7 +63,6 @@ export class GoogleAuthComponent implements OnInit {
 
   addUser() {
       //ADD NEW USER
-      console.log("no log in");
       const date = new Date();
       const newUser: User = {
          user_id: this.user.id,
