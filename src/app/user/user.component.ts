@@ -35,8 +35,7 @@ export class UserComponent {
       this.loggedIn = (user != null);
       this.userLastActiveUpdate();
     });
-
-    this.appService.incTotalPageViews("HomePage");
+    this.appService.incTotalPageViews();
   }
   
   userLastActiveUpdate(){

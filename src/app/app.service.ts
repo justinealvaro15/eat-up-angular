@@ -8,6 +8,11 @@ import { UsersService} from "./admin/main-pages/users/users.service";
 import {PageViews} from './page-views.model';
 import { BehaviorSubject } from 'rxjs';
 
+export class PW {
+  type:string;
+  pw:string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -41,6 +46,12 @@ export class AppService implements OnInit {
       this.filterChanged.emit(this.filter);
     }
 
+
+  retPass(){
+      return this.http.get<PW>('http://localhost:3000/api/pass');
+   }
+
+   
   setUser(user) {
     this.user = user;
   }
@@ -64,14 +75,17 @@ export class AppService implements OnInit {
     });
   }
 
+
   getPageViews():PageViews[] { //get list of users. is in . 
+    
     return this._pageviews.getValue().filter((page)=> { //Server.js returns it right
       return this.isPageNameMatch(page) ;
      });
   }
 
-  incTotalPageViews(pagename:string) {
-    return this.http.put<PageViews>(`http://localhost:3000/api/page_views/${pagename}`,1);
+
+  incTotalPageViews() {
+    return this.http.put<PageViews>(`http://localhost:3000/api/page_views/HomePage`,[]).toPromise().then((res) => { console.log(res); });
   }
 
   private isPageNameMatch(page:PageViews):boolean { 
