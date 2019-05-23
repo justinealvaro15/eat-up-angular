@@ -1,0 +1,9 @@
+<!--<h2 mat-dialog-title> Enter Password </h2>-->
+
+      <mat-form-field >
+        <input matInput type="password" placeholder="Enter the password" [(ngModel)]="adminPassword" >
+      </mat-form-field>
+
+
+  <button mat-raised-button color="primary" (click)="onNoClick()">  Cancel </button>
+  <button mat-raised-button (click)="onYesClick()" cdkFocusInitial> Enter </button>  
